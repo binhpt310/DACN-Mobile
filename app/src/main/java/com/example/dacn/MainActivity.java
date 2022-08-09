@@ -23,14 +23,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button home = (Button) findViewById(R.id.button1);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent home = new Intent(MainActivity.this, Home.class);
-                startActivity(home);
-            }
-        });
 
 
 
