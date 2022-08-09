@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN">
         <activity
+            android:name=".ontap_mucluc"
+            android:exported="false" />
+        <activity
             android:name=".Logo_screen"
             android:exported="false" />
         <activity
