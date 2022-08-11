@@ -5,17 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Logo_screen"
-    android:background="@color/light_green">
+    android:background="@color/hong">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="271dp"
-        android:layout_marginBottom="270dp"
-        android:foregroundGravity="center_vertical|center_horizontal"
-        app:srcCompat="@drawable/logo" />
+        android:layout_marginTop="170dp"
+        app:srcCompat="@drawable/img_knowledge" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="ÔN THI THPT QUỐC GIA"
+        android:textColor="@color/trang"
+        android:textSize="50sp" />
 </RelativeLayout>
