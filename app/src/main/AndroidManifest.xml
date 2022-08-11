@@ -4,11 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/img_knowledge"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/img_knowledge"
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN">
+        <activity
+            android:name=".ontap_tracnghiem"
+            android:exported="false" />
         <activity
             android:name=".thi_tracnghiem"
             android:exported="false" />
