@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ontap_mucluc"
+    android:background="@color/hong"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/timxanh"
+        android:id="@+id/footer">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/trang"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Đề số 1 - 2021"
+            android:textColor="@color/trang"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Câu hỏi"
+            android:textColor="@color/den80"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/txt_cauhoi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="01"
+            android:textColor="@color/den"
+            android:textSize="22dp"
+            app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/txt_socauhoi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="/50"
+            android:textColor="@color/den80"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/txt_socauhoi"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/txt_50"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:background="@color/timhong"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_clock"/>
+
+            <TextView
+                android:id="@+id/txt_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="49:00"
+                android:textColor="@color/den"
+                android:textSize="30dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/input_cauhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="15dp"
+            android:text="Ý nghĩa kinh tế của vị trí địa lí nước ta là"
+            android:textColor="@color/den"
+            android:textSize="20dp"
+            android:justificationMode="inter_word"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cautraloia"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_otracnghiem"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:justificationMode="inter_word"
+            android:text="Tạo điều kiện thực hiện chính sách mở cửa, hội nhập với các nước trên thế giới, thu hút vốn đầu tư của nước ngoài."
+            android:textColor="@color/mauchu"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cauhoi" />
+
+        <TextView
+            android:id="@+id/cautraloib"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_otracnghiem"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:justificationMode="inter_word"
+            android:text="Có vị trí địa lí đặc biệt quan trọng ở vùng Đông Nam Á, khu vực nhạy cảm với những biến động chính trị thế giới."
+            android:textColor="@color/mauchu"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cautraloia" />
+
+        <TextView
+            android:id="@+id/cautraloic"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_otracnghiem"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:justificationMode="inter_word"
+            android:text="Tạo điều kiện thuận lợi cho nước ta cùng chung sống hòa bình, hợp tác hữu nghị và cùng phát triển với các nước."
+            android:textColor="@color/mauchu"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cautraloib" />
+
+        <TextView
+            android:id="@+id/cautraloid"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_otracnghiem"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="10dp"
+            android:justificationMode="inter_word"
+            android:text="Có nhiều nét tương đồng về lịch sử, văn hóa – xã hội với các nước láng giềng."
+            android:textColor="@color/mauchu"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cautraloic" />
+
+        <TextView
+            android:id="@+id/btn_xemnhanh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Xem nhanh"
+            android:textColor="@color/den80"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
