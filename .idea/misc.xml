@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon.xml" value="0.131" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem.xml" value="0.131" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_logo_screen.xml" value="0.1796875" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_ontap_mucluc.xml" value="0.1796875" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_ontap_mucluc2.xml" value="0.1796875" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thi_mucluc.xml" value="0.1" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.3333333333333333" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/bg_otracnghiem.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/layout/activity_home.xml" value="0.264" />

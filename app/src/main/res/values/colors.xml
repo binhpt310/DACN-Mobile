@@ -4,9 +4,10 @@
     <color name="timnhat">#C689C6</color>
     <color name="timhong">#E8A0BF</color>
     <color name="hong">#FCC5C0</color>
-    <color name="xanhla">#5FD068</color>
-    <color name="maudo">#EB4747</color>
+    <color name="xanhla">#96FF72</color>
+    <color name="maudo">#FF9C9C</color>
     <color name="trang">#FFFFFFFF</color>
     <color name="den">#000000</color>
-    <color name="den70">#4D4D4D</color>
+    <color name="den80">#333333</color>
+    <color name="mauchu">#453F38</color>
 </resources>
