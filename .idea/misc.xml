@@ -12,14 +12,19 @@
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem.xml" value="0.131" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem_do.xml" value="0.1325" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem_xanh.xml" value="0.1325" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_dehaze.xml" value="0.11333333333333334" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/menu_nav.xml" value="0.1095" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_logo_screen.xml" value="0.1796875" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_ontap_mucluc.xml" value="0.1796875" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_ontap_mucluc2.xml" value="0.1796875" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_ontap_tracnghiem.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thi_mucluc.xml" value="0.1" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thi_mucluc.xml" value="0.16666666666666666" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.22" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_trangchu.xml" value="0.22" />
         <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/bg_otracnghiem.xml" value="0.17864583333333334" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/layout_header.xml" value="0.22" />
+        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/menu/menu_nav.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/layout/activity_home.xml" value="0.264" />

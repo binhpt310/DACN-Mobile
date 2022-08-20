@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ontap_mucluc"
+    tools:context=".thi_tracnghiem"
     android:background="@color/hong"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/timxanh"
         android:id="@+id/footer">
 
@@ -49,7 +49,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="Câu hỏi"
             android:textColor="@color/den80"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/txt_cauhoi"/>
@@ -62,7 +62,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="01"
             android:textColor="@color/den"
-            android:textSize="22dp"
+            android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/txt_socauhoi"/>
@@ -74,7 +74,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="/50"
             android:textColor="@color/den80"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/txt_socauhoi"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/txt_50"/>
@@ -101,7 +101,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="49:00"
                 android:textColor="@color/den"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:layout_marginStart="5dp"/>
 
         </LinearLayout>
@@ -121,7 +121,7 @@
             android:padding="15dp"
             android:text="Ý nghĩa kinh tế của vị trí địa lí nước ta là"
             android:textColor="@color/den"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +137,7 @@
             android:justificationMode="inter_word"
             android:text="Tạo điều kiện thực hiện chính sách mở cửa, hội nhập với các nước trên thế giới, thu hút vốn đầu tư của nước ngoài."
             android:textColor="@color/mauchu"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_cauhoi" />
@@ -153,7 +153,7 @@
             android:justificationMode="inter_word"
             android:text="Có vị trí địa lí đặc biệt quan trọng ở vùng Đông Nam Á, khu vực nhạy cảm với những biến động chính trị thế giới."
             android:textColor="@color/mauchu"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cautraloia" />
@@ -169,7 +169,7 @@
             android:justificationMode="inter_word"
             android:text="Tạo điều kiện thuận lợi cho nước ta cùng chung sống hòa bình, hợp tác hữu nghị và cùng phát triển với các nước."
             android:textColor="@color/mauchu"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cautraloib" />
@@ -185,7 +185,7 @@
             android:justificationMode="inter_word"
             android:text="Có nhiều nét tương đồng về lịch sử, văn hóa – xã hội với các nước láng giềng."
             android:textColor="@color/mauchu"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cautraloic" />
@@ -198,7 +198,7 @@
             android:padding="15dp"
             android:text="Xem nhanh"
             android:textColor="@color/den80"
-            android:textSize="22dp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
