@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ontap_mucluc_2 extends AppCompatActivity {
+public class dang_ky extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ontap_mucluc2);
+        setContentView(R.layout.activity_dang_ky);
     }
 }
