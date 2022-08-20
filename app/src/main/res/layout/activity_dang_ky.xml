@@ -86,6 +86,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Tên người dùng"
         android:textSize="20sp"
         android:textStyle="bold" />

@@ -19,6 +19,12 @@
             android:name=".thi_tracnghiem"
             android:exported="false" />
         <activity
+            android:name=".dang_nhap"
+            android:exported="false" />
+        <activity
+            android:name=".dang_ky"
+            android:exported="false" />
+        <activity
             android:name=".Logo_screen"
             android:exported="true">
 

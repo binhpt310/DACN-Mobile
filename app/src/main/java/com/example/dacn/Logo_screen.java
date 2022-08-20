@@ -37,7 +37,7 @@ public class Logo_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Logo_screen.this, trangchu.class);
+                Intent intent = new Intent(Logo_screen.this, dang_nhap.class);
                 startActivity(intent);
                 finish();
             }
