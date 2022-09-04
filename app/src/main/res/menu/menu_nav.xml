@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_trangchu"
-            android:title="Trang chủ"
-            android:icon="@drawable/ic_clock"/>
+        <item
+            android:id="@+id/nav_trangchu"
+            android:title="Trang chủ"/>
 
         <item android:id="@+id/nav_taothehoctap"
             android:title="Tạo thẻ học tập"
