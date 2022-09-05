@@ -1,4 +1,4 @@
-package com.example.dacn;
+package com.example.dacn.popup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,12 +7,14 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
 
-public class popup_ket_thuc_thi_thu extends AppCompatActivity {
+import com.example.dacn.R;
+
+public class popup_hoan_thanh_thi_thu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popup_ket_thuc_thi_thu);
+        setContentView(R.layout.activity_popup_hoan_thanh_thi_thu);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -27,5 +29,6 @@ public class popup_ket_thuc_thi_thu extends AppCompatActivity {
         params.x = 0;
         params.y = 0;
         getWindow().setAttributes(params);
+
     }
 }

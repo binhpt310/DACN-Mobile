@@ -1,4 +1,4 @@
-package com.example.dacn;
+package com.example.dacn.dangnhap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,31 +8,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class dang_nhap extends AppCompatActivity {
+import com.example.dacn.R;
 
-    Button btn_dangnhap;
-    TextView txt_dangky;
+public class dang_ky extends AppCompatActivity {
+
+    Button btn_dangky;
+    TextView txt_dangnhap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dang_nhap);
+        setContentView(R.layout.activity_dang_ky);
 
-        btn_dangnhap = findViewById(R.id.btn_dangnhap);
-        txt_dangky = findViewById(R.id.btn_dangkyotrangdangnhap);
+        btn_dangky = findViewById(R.id.btn_dangky);
+        txt_dangnhap = findViewById(R.id.dangnhapotrangdangky);
 
-        btn_dangnhap.setOnClickListener(new View.OnClickListener() {
+        btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(dang_nhap.this, trangchu.class);
+                Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        txt_dangky.setOnClickListener(new View.OnClickListener() {
+        txt_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(dang_nhap.this, dang_ky.class);
+                Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                 startActivity(intent);
                 finish();
             }

@@ -13,13 +13,27 @@
             android:name=".lich_su_lam_bai"
             android:exported="false" />
         <activity
-            android:name=".popup_ket_thuc_thi_thu"
+            android:name=".popup.popup_ket_thuc_thi_thu"
             android:exported="false" />
         <activity
-            android:name=".popup_hoan_thanh_thi_thu"
+            android:name=".popup.popup_hoan_thanh_thi_thu"
             android:exported="false" />
         <activity
-            android:name=".trangchu"
+            android:name=".trangchu2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mucluc.mucluc"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.veapp"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.thaydoithongtin"
             android:exported="false" />
         <activity
             android:name=".ontap_tracnghiem"
@@ -28,20 +42,14 @@
             android:name=".thi_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".dang_nhap"
+            android:name=".dangnhap.dang_nhap"
             android:exported="false" />
         <activity
-            android:name=".dang_ky"
+            android:name=".dangnhap.dang_ky"
             android:exported="false" />
         <activity
-            android:name=".Logo_screen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".dangnhap.Logo_screen"
+            android:exported="false" />
     </application>
 
 </manifest>

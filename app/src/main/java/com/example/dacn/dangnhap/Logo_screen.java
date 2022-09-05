@@ -1,9 +1,8 @@
-package com.example.dacn;
+package com.example.dacn.dangnhap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -11,6 +10,8 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.animation.AnimationUtils;
+
+import com.example.dacn.R;
 
 public class Logo_screen extends AppCompatActivity {
 

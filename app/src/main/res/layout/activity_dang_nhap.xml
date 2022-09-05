@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hong"
-    tools:context=".dang_nhap">
+    tools:context=".dangnhap.dang_nhap">
 
     <ImageView
         android:id="@+id/img_tron"
