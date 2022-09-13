@@ -7,8 +7,8 @@
     tools:context=".popup.popup_hoan_thanh_thi_thu">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="250dp"
-        android:layout_height="400dp"
+        android:layout_width="390dp"
+        android:layout_height="280dp"
         android:background="@color/timxanh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,26 +33,27 @@
             android:id="@+id/button"
             android:layout_width="145dp"
             android:layout_height="70dp"
-            android:layout_marginBottom="132dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/roboto_bold"
             android:text="CHƯA XONG!"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.065"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="145dp"
             android:layout_height="70dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/maudo"
             android:fontFamily="@font/roboto_bold"
             android:text="ĐÃ XONG!"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintHorizontal_bias="0.934"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
