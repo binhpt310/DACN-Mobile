@@ -30,4 +30,12 @@ public class veapp extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        Intent intent = new Intent(this, mucluc.class);
+        startActivity(intent);
+    }
 }
