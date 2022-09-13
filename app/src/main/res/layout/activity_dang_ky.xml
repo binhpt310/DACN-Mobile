@@ -56,9 +56,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email hoặc tên đăng nhập"
-            android:inputType="text"
             android:background="@color/trang"
+            android:hint="Email hoặc tên đăng nhập"
+            android:inputType="text|textEmailAddress"
             android:maxLength="25" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,9 +81,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/edit_txt_mk"
+            android:background="@color/trang"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
-            android:background="@color/trang"
             android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,6 +107,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/edit_txt_nhaplaimk"
             android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
             android:background="@color/trang"
