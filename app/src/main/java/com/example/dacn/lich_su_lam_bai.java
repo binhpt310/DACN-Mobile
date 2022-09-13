@@ -30,7 +30,7 @@ public class lich_su_lam_bai extends AppCompatActivity {
         String[] tenmonhoc = getResources().getStringArray(R.array.ten_mon_hoc);
         String[] tendethi = getResources().getStringArray(R.array.ten_de_thi);
 
-        while (tenmonhoc != null && tendethi != null)
+        while (tenmonhoc != null || tendethi != null)
         {
             int i = 0;
             LichSuLamBaiModels.add(new Lich_su_lam_bai_model(tenmonhoc[i], tendethi[i]));

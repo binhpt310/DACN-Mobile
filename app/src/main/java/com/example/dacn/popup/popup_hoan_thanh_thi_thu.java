@@ -22,7 +22,7 @@ public class popup_hoan_thanh_thi_thu extends AppCompatActivity {
         int Width = dm.widthPixels;
         int Height = dm.heightPixels;
 
-        getWindow().setLayout((int)(Width), (int)(Height));
+        getWindow().setLayout((int)(Width*.5), (int)(Height*.5));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;

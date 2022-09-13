@@ -14,18 +14,14 @@
             android:exported="false" />
         <activity
             android:name=".popup.popup_ket_thuc_thi_thu"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
             android:exported="false" />
         <activity
             android:name=".popup.popup_hoan_thanh_thi_thu"
             android:exported="false" />
         <activity
             android:name=".trangchu2"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".mucluc.mucluc"
             android:exported="false" />
@@ -49,7 +45,12 @@
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

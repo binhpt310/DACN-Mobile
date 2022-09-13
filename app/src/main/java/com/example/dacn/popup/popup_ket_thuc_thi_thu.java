@@ -1,15 +1,22 @@
 package com.example.dacn.popup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.example.dacn.R;
 
-public class popup_ket_thuc_thi_thu extends AppCompatActivity {
+public class popup_ket_thuc_thi_thu extends Activity  {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +29,7 @@ public class popup_ket_thuc_thi_thu extends AppCompatActivity {
         int Width = dm.widthPixels;
         int Height = dm.heightPixels;
 
-        getWindow().setLayout((int)(Width), (int)(Height));
+        getWindow().setLayout((int)(Width*.9), (int)(Height*.5));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -30,4 +37,6 @@ public class popup_ket_thuc_thi_thu extends AppCompatActivity {
         params.y = 0;
         getWindow().setAttributes(params);
     }
+
+
 }

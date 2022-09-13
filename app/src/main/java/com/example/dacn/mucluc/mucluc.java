@@ -83,5 +83,7 @@ public class mucluc extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        Intent intent = new Intent(this, trangchu2.class);
+        startActivity(intent);
     }
 }
