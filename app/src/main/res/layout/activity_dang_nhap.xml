@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_tenngdung"
+        android:id="@+id/txt_email_ngdung"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         app:hintTextColor="@color/den80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_tenngdung"
+        app:layout_constraintTop_toBottomOf="@+id/txt_email_ngdung"
         app:startIconDrawable="@drawable/ic_lock"
         app:passwordToggleEnabled="true">
 

@@ -17,7 +17,6 @@ import com.example.dacn.R;
 
 public class popup_ket_thuc_thi_thu extends Activity  {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

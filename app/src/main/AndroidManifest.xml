@@ -45,6 +45,7 @@
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
+            android:theme="@style/Theme.DACN"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
