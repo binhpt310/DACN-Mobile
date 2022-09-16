@@ -1,6 +1,8 @@
-package com.example.dacn;
+package com.example.dacn.cauhoi;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dacn.R;
 import com.example.dacn.popup.*;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +10,6 @@ import android.os.CountDownTimer;
 import android.widget.TextView;
 
 public class thi_tracnghiem extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

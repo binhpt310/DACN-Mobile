@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dacn">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/img_knowledge"
         android:label="@string/app_name"
         android:roundIcon="@drawable/img_knowledge"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN">
         <activity
@@ -32,20 +35,19 @@
             android:name=".mucluc.thaydoithongtin"
             android:exported="false" />
         <activity
-            android:name=".ontap_tracnghiem"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".thi_tracnghiem"
+            android:name=".cauhoi.thi_tracnghiem"
             android:exported="false" />
         <activity
             android:name=".dangnhap.dang_nhap"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_ky"
+            android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
-            android:theme="@style/Theme.DACN"
+            android:name=".dangnhap.dang_ky"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

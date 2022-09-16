@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dacn.dangnhap.dang_nhap;
+import com.example.dacn.cauhoi.thi_tracnghiem;
 import com.example.dacn.mucluc.mucluc;
 
 public class trangchu2 extends AppCompatActivity {
@@ -21,7 +21,7 @@ public class trangchu2 extends AppCompatActivity {
         setContentView(R.layout.activity_trangchu2);
 
         img_mucluc = findViewById(R.id.img_mucluc);
-        TextView thi = findViewById(R.id.test_txt_trang_chu);
+        //TextView thi = findViewById(R.id.test_txt_trang_chu);
 
         img_mucluc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,12 +33,12 @@ public class trangchu2 extends AppCompatActivity {
             }
         });
 
-        thi.setOnClickListener(new View.OnClickListener() {
+        /*thi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), thi_tracnghiem.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }

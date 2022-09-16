@@ -7,39 +7,17 @@
     tools:context=".trangchu2"
     android:background="@color/hong">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/timxanh"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/img_mucluc"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/ic_dehaze"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/img_mucluc"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_dehaze"
-            app:tint="@color/trang"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="15dp"/>
-
-        <TextView
-            android:id="@+id/test_txt_trang_chu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Trang chủ"
-            android:textColor="@color/trang"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/square"
+        android:padding="5dp"/>
 
     <LinearLayout
         android:id="@+id/lichsu"
@@ -51,7 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/gdcd"
         app:layout_constraintEnd_toStartOf="@+id/dia"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/img_mucluc">
 
         <ImageView
             android:layout_width="100dp"
@@ -78,7 +56,7 @@
         app:layout_constraintBottom_toTopOf="@+id/anhvan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lichsu"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/img_mucluc">
 
         <ImageView
             android:layout_width="100dp"

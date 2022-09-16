@@ -29,7 +29,7 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Đăng Ký"
         android:textColor="@color/timxanh"
@@ -39,31 +39,55 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_email_ngdung"
+        android:id="@+id/layoutdki_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColorHint="@color/den"
         app:boxStrokeColor="@color/den80"
-        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
         app:hintTextColor="@color/den80"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text1"
         app:startIconDrawable="@drawable/ic_person">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtdki_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/trang"
             android:hint="Email"
             android:inputType="text|textEmailAddress"
             android:maxLength="25" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_nhapmatkhau"
+        android:id="@+id/layout_tenngdung"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColorHint="@color/den"
+        app:boxStrokeColor="@color/den80"
+        app:hintTextColor="@color/den80"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutdki_email"
+        app:startIconDrawable="@drawable/ic_person">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên người dùng"
+            android:inputType="text|textEmailAddress"
+            android:maxLength="25"
+            android:id="@+id/txtdki_tenngdung"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_nhapmatkhau"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
@@ -74,22 +98,21 @@
         app:hintTextColor="@color/den80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email_ngdung"
-        app:startIconDrawable="@drawable/ic_lock"
-        app:passwordToggleEnabled="true">
+        app:layout_constraintTop_toBottomOf="@+id/layout_tenngdung"
+        app:passwordToggleEnabled="true"
+        app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtdki_matkhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_txt_mk"
-            android:background="@color/trang"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_nhaplaimatkhau"
+        android:id="@+id/layout_nhaplaimatkhau"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
@@ -100,17 +123,16 @@
         app:hintTextColor="@color/den80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nhapmatkhau"
+        app:layout_constraintTop_toBottomOf="@+id/layout_nhapmatkhau"
         app:startIconDrawable="@drawable/ic_lock"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_txt_nhaplaimk"
+            android:id="@+id/txtdki_nhaplaimk"
             android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
-            android:background="@color/trang"
             android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,7 +148,7 @@
         android:textColor="@color/trang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_nhaplaimatkhau"/>
+        app:layout_constraintTop_toBottomOf="@+id/layout_nhaplaimatkhau"/>
 
     <LinearLayout
         android:layout_width="match_parent"
