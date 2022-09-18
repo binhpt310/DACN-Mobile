@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dacn.Api.RetrofitInterface;
 import com.example.dacn.R;
 import com.example.dacn.trangchu2;
 import com.google.android.material.textfield.TextInputEditText;
@@ -65,8 +66,12 @@ public class dang_nhap extends AppCompatActivity {
                             Intent intent = new Intent(dang_nhap.this, trangchu2.class);
                             startActivity(intent);
                             finish();
+                        } else if (response.code() == 401) {
+                            Toast.makeText(dang_nhap.this, "Email không tồn tại", Toast.LENGTH_LONG).show();
+                        } else if (response.code() == 402) {
+                            Toast.makeText(dang_nhap.this, "Sai mật khẩu", Toast.LENGTH_LONG).show();
                         } else if (response.code() == 404) {
-                            Toast.makeText(dang_nhap.this, "OK", Toast.LENGTH_LONG).show();
+                            Toast.makeText(dang_nhap.this, "Lỗi", Toast.LENGTH_LONG).show();
                         }
                     }
 

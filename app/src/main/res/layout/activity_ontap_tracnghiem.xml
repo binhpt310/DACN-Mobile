@@ -235,7 +235,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/input_cauhoi"
+            android:id="@+id/inputon_cauhoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
@@ -249,7 +249,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/cautraloia"
+            android:id="@+id/oncautraloia"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_otracnghiem"
@@ -261,10 +261,10 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_cauhoi" />
+            app:layout_constraintTop_toBottomOf="@+id/inputon_cauhoi" />
 
         <TextView
-            android:id="@+id/cautraloib"
+            android:id="@+id/oncautraloib"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -277,10 +277,10 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cautraloia" />
+            app:layout_constraintTop_toBottomOf="@+id/oncautraloia" />
 
         <TextView
-            android:id="@+id/cautraloic"
+            android:id="@+id/oncautraloic"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -293,10 +293,10 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cautraloib" />
+            app:layout_constraintTop_toBottomOf="@+id/oncautraloib" />
 
         <TextView
-            android:id="@+id/cautraloid"
+            android:id="@+id/oncautraloid"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -309,7 +309,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cautraloic" />
+            app:layout_constraintTop_toBottomOf="@+id/oncautraloic" />
 
         <TextView
             android:id="@+id/btn_xemnhanh"

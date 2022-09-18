@@ -3,6 +3,7 @@
     package="com.example.dacn">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -35,7 +36,7 @@
             android:name=".mucluc.thaydoithongtin"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".dangnhap.dang_ky"
             android:exported="false" />
         <activity
             android:name=".cauhoi.thi_tracnghiem"
@@ -47,7 +48,7 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_ky"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
