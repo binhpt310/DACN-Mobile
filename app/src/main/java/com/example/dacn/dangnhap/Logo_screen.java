@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.animation.AnimationUtils;
 
+import com.example.dacn.FirstInstall.MySharedPreferences;
+import com.example.dacn.FirstInstall.OnBoardingScreen;
 import com.example.dacn.R;
 
 public class Logo_screen extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 2000;
+    int SPLASH_SCREEN = 2000;
+    private static final String key_first_install = "KEY_FIRST_INSTALL";
 
     ImageView logo;
     TextView txtTenApp;
@@ -35,15 +38,29 @@ public class Logo_screen extends AppCompatActivity {
         logo.setAnimation(anim_tren);
         txtTenApp.setAnimation(anim_duoi);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        final MySharedPreferences mySharedPreferences = new MySharedPreferences(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Logo_screen.this, dang_nhap.class);
-                startActivity(intent);
-                finish();
+                if (mySharedPreferences.getBooleanVal(key_first_install)){
+                    Intent intent = new Intent(Logo_screen.this, dang_nhap.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Intent intent = new Intent(Logo_screen.this, OnBoardingScreen.class);
+                    mySharedPreferences.putBooleanVal(key_first_install,true);
+                    startActivity(intent);
+                }
             }
         },SPLASH_SCREEN);
     }
+
 
 
 
