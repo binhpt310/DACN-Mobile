@@ -1,6 +1,33 @@
 <resources>
     <string name="app_name">Ôn Thi THPT</string>
 
+    <string name="nav_trangchu">Trang Chủ</string>
+    <string name="nav_taothehoctap">Thẻ học tập</string>
+
+    <string name="nav_nguoidung">Người dùng</string>
+    <string name="nav_thongtin">Thông tin cá nhân</string>
+    <string name="nav_ketqua">Kết quả học tập</string>
+
+    <string name="nav_khac">Khác</string>
+    <string name="nav_nhomfb">Nhóm học tập</string>
+    <string name="nav_veapp">Về chúng tôi</string>
+    <string name="nav_dangxuat">Đăng xuất</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="ten_mon_hoc">
+        <item>Môn địa lý 12</item>
+        <item>Môn GDCD 12</item>
+        <item>Môn tiếng Anh 12</item>
+        <item>Môn lịch sử 12</item>
+    </string-array>
+
+
+    <string-array name="ten_de_thi">//Lay API de co ten de thi
+        <item>Đề thi 2019</item>
+        <item>Đề thi 2020</item>
+        <item>Đề thi 2021</item>
+        <item>Đề thi 2022</item>
+    </string-array>
 </resources>
