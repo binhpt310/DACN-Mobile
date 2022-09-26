@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cauhoi.ontap_tracnghiem"
     android:background="@color/hong"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".cauhoi.ontap_tracnghiem">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/timxanh"
-        android:id="@+id/footer">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginStart="15dp"
             android:src="@drawable/ic_back"
-            app:tint="@color/trang"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="15dp"/>
+            app:tint="@color/trang" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,10 +41,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
 
         <TextView
+            android:id="@+id/txt_cauhoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -51,10 +60,10 @@
             android:textColor="@color/den80"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/txt_cauhoi"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/txt_socauhoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -64,10 +73,10 @@
             android:textColor="@color/den"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/txt_socauhoi"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/txt_50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -76,254 +85,273 @@
             android:textColor="@color/den80"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/txt_socauhoi"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/txt_50"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="5dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="7dp"
-            android:src="@drawable/bg_line_xam"
             android:layout_weight="1"
-            android:padding="2dp"/>
+            android:padding="2dp"
+            android:src="@drawable/bg_line_xam" />
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_on_xemnhanh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-        <TextView
-            android:id="@+id/inputon_cauhoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="15dp"
-            android:text="Ý nghĩa kinh tế của vị trí địa lí nước ta là"
-            android:textColor="@color/den"
-            android:textSize="20sp"
-            android:justificationMode="inter_word"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/oncautraloia"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_otracnghiem"
-            android:fontFamily="@font/roboto_medium"
-            android:padding="10dp"
-            android:justificationMode="inter_word"
-            android:text="Tạo điều kiện thực hiện chính sách mở cửa, hội nhập với các nước trên thế giới, thu hút vốn đầu tư của nước ngoài."
-            android:textColor="@color/mauchu"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputon_cauhoi" />
-
-        <TextView
-            android:id="@+id/oncautraloib"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/bg_otracnghiem"
-            android:fontFamily="@font/roboto_medium"
-            android:padding="10dp"
-            android:justificationMode="inter_word"
-            android:text="Có vị trí địa lí đặc biệt quan trọng ở vùng Đông Nam Á, khu vực nhạy cảm với những biến động chính trị thế giới."
-            android:textColor="@color/mauchu"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oncautraloia" />
-
-        <TextView
-            android:id="@+id/oncautraloic"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/bg_otracnghiem"
-            android:fontFamily="@font/roboto_medium"
-            android:padding="10dp"
-            android:justificationMode="inter_word"
-            android:text="Tạo điều kiện thuận lợi cho nước ta cùng chung sống hòa bình, hợp tác hữu nghị và cùng phát triển với các nước."
-            android:textColor="@color/mauchu"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oncautraloib" />
-
-        <TextView
-            android:id="@+id/oncautraloid"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/bg_otracnghiem"
-            android:fontFamily="@font/roboto_medium"
-            android:padding="10dp"
-            android:justificationMode="inter_word"
-            android:text="Có nhiều nét tương đồng về lịch sử, văn hóa – xã hội với các nước láng giềng."
-            android:textColor="@color/mauchu"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oncautraloic" />
-
-        <TextView
-            android:id="@+id/btn_xemnhanh"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Xem nhanh"
-            android:textColor="@color/den80"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:animateLayoutChanges="true">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/inputon_cauhoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:justificationMode="inter_word"
+                android:padding="15dp"
+                android:textColor="@color/den"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/oncautraloia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_otracnghiem"
+                android:fontFamily="@font/roboto_medium"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:textColor="@color/mauchu"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputon_cauhoi" />
+
+            <TextView
+                android:id="@+id/oncautraloib"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_otracnghiem"
+                android:fontFamily="@font/roboto_medium"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:textColor="@color/mauchu"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/oncautraloia" />
+
+            <TextView
+                android:id="@+id/oncautraloic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_otracnghiem"
+                android:fontFamily="@font/roboto_medium"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:textColor="@color/mauchu"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/oncautraloib" />
+
+            <TextView
+                android:id="@+id/oncautraloid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_otracnghiem"
+                android:fontFamily="@font/roboto_medium"
+                android:justificationMode="inter_word"
+                android:padding="10dp"
+                android:textColor="@color/mauchu"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/oncautraloic" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/btn_on_xemnhanh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:padding="10dp"
+        android:text="Tiếp theo"
+        android:textAlignment="center"
+        android:textColor="@color/den80"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

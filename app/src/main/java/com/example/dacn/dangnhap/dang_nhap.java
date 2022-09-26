@@ -1,5 +1,7 @@
 package com.example.dacn.dangnhap;
 
+import static com.example.dacn.RetrofitInterface.retrofitInterface;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dacn.Api.RetrofitInterface;
+import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
 import com.example.dacn.trangchu2;
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,8 +21,6 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class dang_nhap extends AppCompatActivity {
 
@@ -28,10 +28,6 @@ public class dang_nhap extends AppCompatActivity {
     TextView txt_dangky;
 
     TextInputEditText email, matkhau;
-
-    private Retrofit retrofit;
-    private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.1.5:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +39,6 @@ public class dang_nhap extends AppCompatActivity {
 
         email = findViewById(R.id.txtdn_email);
         matkhau = findViewById(R.id.txtdn_matkhau);
-
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override

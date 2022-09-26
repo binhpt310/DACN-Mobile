@@ -1,15 +1,16 @@
 package com.example.dacn.cauhoi;
+import static com.example.dacn.RetrofitInterface.retrofitInterface;
+
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dacn.Api.RetrofitInterface;
+import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
-import com.example.dacn.dangnhap.dang_ky;
 
 import java.util.List;
 
@@ -21,28 +22,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ontap_tracnghiem extends AppCompatActivity {
 
-    TextView cauhoi,cautraloia,cautraloib,cautraloic,cautraloid;
+    TextView cauhoi, cautraloia, cautraloib, cautraloic, cautraloid, xemnhanh;
 
-    private Retrofit retrofit;
-    private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.1.5:3000";
+    public int Cauhoihientai = 0;
+
+    String cauHoi;
+    String cauA;
+    String cauB;
+    String cauC;
+    String cauD;
+    String anw ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ontap_tracnghiem);
 
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofitInterface = retrofit.create(RetrofitInterface.class);
-
-        cauhoi = findViewById(R.id.inputon_cauhoi);
-        cautraloia = findViewById(R.id.oncautraloia);
-        cautraloib = findViewById(R.id.oncautraloib);
-        cautraloic = findViewById(R.id.oncautraloic);
-        cautraloid = findViewById(R.id.oncautraloid);
+        khaibao();
 
         Call<List<CauHoiTracNghiem>> call = retrofitInterface.getCauHoiTracNghiem();
 
@@ -51,12 +47,12 @@ public class ontap_tracnghiem extends AppCompatActivity {
             public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
                 List<CauHoiTracNghiem> adslist = response.body();
 
-                String cauHoi = adslist.get(0).getQuestion();
-                String cauA = adslist.get(0).getA();
-                String cauB = adslist.get(0).getB();
-                String cauC = adslist.get(0).getC();
-                String cauD= adslist.get(0).getD();
-                String anw = adslist.get(0).getAnw();
+                cauHoi = adslist.get(Cauhoihientai).getQuestion();
+                cauA = adslist.get(Cauhoihientai).getA();
+                cauB = adslist.get(Cauhoihientai).getB();
+                cauC = adslist.get(Cauhoihientai).getC();
+                cauD = adslist.get(Cauhoihientai).getD();
+                anw = adslist.get(Cauhoihientai).getAnw();
 
                 cauhoi.setText(cauHoi);
                 cautraloia.setText(cauA);
@@ -64,7 +60,32 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 cautraloic.setText(cauC);
                 cautraloid.setText(cauD);
 
-                cautraloia.setOnClickListener(new View.OnClickListener() {
+                xemnhanh.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Cauhoihientai++;
+
+                        if (Cauhoihientai < (adslist.size())){
+                            cauHoi = adslist.get(Cauhoihientai).getQuestion();
+                            cauA = adslist.get(Cauhoihientai).getA();
+                            cauB = adslist.get(Cauhoihientai).getB();
+                            cauC = adslist.get(Cauhoihientai).getC();
+                            cauD = adslist.get(Cauhoihientai).getD();
+                            anw = adslist.get(Cauhoihientai).getAnw();
+                        } else {
+                            xemnhanh.setOnClickListener(null);
+                        }
+
+                        cauhoi.setText(cauHoi);
+                        cautraloia.setText(cauA);
+                        cautraloib.setText(cauB);
+                        cautraloic.setText(cauC);
+                        cautraloid.setText(cauD);
+                    }
+                });
+
+                /*cautraloia.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (cauA.equals(anw)) {
@@ -146,7 +167,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
                         cautraloib.setOnClickListener(null);
                         cautraloic.setOnClickListener(null);
                     }
-                });
+                });*/
 
             }
 
@@ -155,6 +176,15 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
+    private void khaibao() {
+        cauhoi = findViewById(R.id.inputon_cauhoi);
+        cautraloia = findViewById(R.id.oncautraloia);
+        cautraloib = findViewById(R.id.oncautraloib);
+        cautraloic = findViewById(R.id.oncautraloic);
+        cautraloid = findViewById(R.id.oncautraloid);
+        xemnhanh = findViewById(R.id.btn_on_xemnhanh);
+    }
+
 }
