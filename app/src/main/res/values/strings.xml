@@ -24,7 +24,7 @@
     </string-array>
 
 
-    <string-array name="ten_de_thi"> //Lay API de co ten de thi
+    <string-array name="ten_de_thi">//Lay API de co ten de thi
         <item>Đề thi 2019</item>
         <item>Đề thi 2020</item>
         <item>Đề thi 2021</item>

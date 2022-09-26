@@ -2,6 +2,7 @@ package com.example.dacn.dangnhap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,12 +11,16 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
+import com.example.dacn.FirstInstall.MySharedPreferences;
+import com.example.dacn.FirstInstall.OnBoardingScreen;
 import com.example.dacn.R;
-
+import com.example.dacn.dangnhap.Connectivity;
 public class Logo_screen extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 2000;
+    int SPLASH_SCREEN = 2000;
+    private static final String key_first_install = "KEY_FIRST_INSTALL";
 
     ImageView logo;
     TextView txtTenApp;
@@ -35,14 +40,33 @@ public class Logo_screen extends AppCompatActivity {
         logo.setAnimation(anim_tren);
         txtTenApp.setAnimation(anim_duoi);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(Logo_screen.this, dang_nhap.class);
-                startActivity(intent);
-                finish();
-            }
-        },SPLASH_SCREEN);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Context context = getApplicationContext();
+
+        if (Connectivity.isConnected(context)) {
+            final MySharedPreferences mySharedPreferences = new MySharedPreferences(this);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (mySharedPreferences.getBooleanVal(key_first_install)) {
+                        Intent intent = new Intent(Logo_screen.this, dang_nhap.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(Logo_screen.this, OnBoardingScreen.class);
+                        mySharedPreferences.putBooleanVal(key_first_install, true);
+                        startActivity(intent);
+                    }
+                }
+            }, SPLASH_SCREEN);
+        }
+
+        else
+            Toast.makeText(context, "Không có kết nối mạng", Toast.LENGTH_SHORT).show();
     }
 
 
