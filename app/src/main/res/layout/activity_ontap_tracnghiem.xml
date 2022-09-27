@@ -63,28 +63,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_socauhoi"
+            android:id="@+id/txt_on_socauhoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginTop="13dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="01"
             android:textColor="@color/den"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_50"
+            android:id="@+id/txt_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="/50"
+            android:text="/20"
             android:textColor="@color/den80"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/txt_socauhoi"
+            app:layout_constraintStart_toEndOf="@+id/txt_on_socauhoi"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
