@@ -15,6 +15,7 @@ import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -52,6 +53,8 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
+
+                //onTouch();
 
                 xemnhanh.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -180,17 +183,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
         tv[0].setText(arg[0]);
 
-        int n = 5;
-        int A[] = uniqueRandomArray(n);
-        for(int i = 1; i<n; i++){
-            tv[i].setText(arg[(A[i])]);
-            Log.e("dd", String.valueOf(A[i]));
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i=1; i<5; i++) list.add(i);
+        Collections.shuffle(list);
+        for (int i=0; i<4; i++) {
+            tv[i+1].setText(arg[(list.get(i))]);
+            //Log.e("dd", String.valueOf((list.get(i))));
         }
 
         socau.setText(String.valueOf(Cauhoihientai+1));
     }
 
-    /*public boolean onTouch (@NonNull MotionEvent motionEvent) {
+    public boolean onTouch (@NonNull MotionEvent motionEvent) {
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = motionEvent.getX();
@@ -204,28 +208,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 } else if (x1>x2) {
                     Cauhoihientai--;
             } break;
-        }
-        return false;
-    }*/
-
-    public static int[] uniqueRandomArray(int n){
-        int [] A = new int[n];
-        for(int i = 0; i< A.length; ){
-            if(i == A.length){
-                break;
-            }
-            int b = (int)(Math.random() *n) + 1;
-            if(f(A,b) == false){
-                A[i++] = b;
-            }
-        }
-        return A;
-    }
-    public static boolean f(int[] A, int n){
-        for(int i=0; i<A.length; i++){
-            if(A[i] == n){
-                return true;
-            }
         }
         return false;
     }
