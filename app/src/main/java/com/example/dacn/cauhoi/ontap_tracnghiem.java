@@ -1,10 +1,12 @@
 package com.example.dacn.cauhoi;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
 
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -32,7 +35,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
     public int Cauhoihientai = 0;
 
-    Random random = new Random();
+    float x1,x2,y1,y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Cauhoihientai++;
-                        Log.e("ee", String.valueOf(Cauhoihientai));
 
                         if (Cauhoihientai < (adslist.size())){
                             gan_gia_tri(adslist,ar_string,ar_textview);
@@ -64,15 +66,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                         }
                     }
                 });
-
-                /*for (int i=1;i<5;i++) {
-                    ar_textview[].setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            ktradungsai(ar_textview[],ar_string[]);
-                        }
-                    });
-                }*/
 
                 /*cautraloia.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -187,29 +180,56 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
         tv[0].setText(arg[0]);
 
-        //random trùng
-        for (int i=1;i<5;i++) {
-            int value = random.nextInt((5 - 1) + 1) + 1;
-            tv[i].setText(arg[value]);
+        int n = 5;
+        int A[] = uniqueRandomArray(n);
+        for(int i = 1; i<n; i++){
+            tv[i].setText(arg[(A[i])]);
+            Log.e("dd", String.valueOf(A[i]));
         }
-
-        /*tv[1].setText(arg[1]);
-        tv[2].setText(arg[2]);
-        tv[3].setText(arg[3]);
-        tv[4].setText(arg[4]);*/
 
         socau.setText(String.valueOf(Cauhoihientai+1));
     }
 
+    /*public boolean onTouch (@NonNull MotionEvent motionEvent) {
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = motionEvent.getX();
+                y1 = motionEvent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = motionEvent.getX();
+                y2 = motionEvent.getY();
+                if (x1<x2) {
+                    Cauhoihientai++;
+                } else if (x1>x2) {
+                    Cauhoihientai--;
+            } break;
+        }
+        return false;
+    }*/
 
-    /*private void ktradungsai(TextView a[], String arg[]) {
-        for (int i=1; i<4; i++) {
-            int j=i;
-            if (arg[i].equals(arg[5])) {
-                a[j].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+    public static int[] uniqueRandomArray(int n){
+        int [] A = new int[n];
+        for(int i = 0; i< A.length; ){
+            if(i == A.length){
+                break;
             }
+            int b = (int)(Math.random() *n) + 1;
+            if(f(A,b) == false){
+                A[i++] = b;
             }
-        }*/
+        }
+        return A;
+    }
+    public static boolean f(int[] A, int n){
+        for(int i=0; i<A.length; i++){
+            if(A[i] == n){
+                return true;
+            }
+        }
+        return false;
+    }
+
         /*if (cauA.equals(arg[5])) {
             a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
         } else {
