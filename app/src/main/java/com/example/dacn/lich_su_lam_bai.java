@@ -26,15 +26,20 @@ public class lich_su_lam_bai extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void setup_lichsulambai_model() {
-        String[] tenmonhoc = getResources().getStringArray(R.array.ten_mon_hoc);
-        String[] tendethi = getResources().getStringArray(R.array.ten_de_thi);
+//    private void setup_lichsulambai_model() {
+//        String[] tenmonhoc = getResources().getStringArray(R.array.ten_mon_hoc);
+//        String[] tendethi = getResources().getStringArray(R.array.ten_de_thi);
+//
+//        while (tenmonhoc != null || tendethi != null)
+//        {
+//            int i = 0;
+//            LichSuLamBaiModels.add(new Lich_su_lam_bai_model(tenmonhoc[i], tendethi[i]));
+//            i++;
+//        }
+//    }
 
-        while (tenmonhoc != null || tendethi != null)
-        {
-            int i = 0;
-            LichSuLamBaiModels.add(new Lich_su_lam_bai_model(tenmonhoc[i], tendethi[i]));
-            i++;
-        }
+    private void setup_lichsulambai_model(){
+        LichSuLamBaiModels.add(new Lich_su_lam_bai_model("Địa", "Đề thi"));
+        LichSuLamBaiModels.add(new Lich_su_lam_bai_model("toán", "Đề thi 2"));
     }
 }

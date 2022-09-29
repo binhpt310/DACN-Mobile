@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/img_knowledge"
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN"
+        android:largeHeap="true"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".FirstInstall.OnBoardingScreen"
@@ -27,7 +28,7 @@
             android:name=".popup.popup_hoan_thanh_thi_thu"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
             android:name=".mucluc.mucluc"
@@ -51,7 +52,7 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".trangchu2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
