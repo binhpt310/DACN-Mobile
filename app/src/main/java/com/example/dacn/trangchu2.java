@@ -21,7 +21,7 @@ public class trangchu2 extends AppCompatActivity {
         setContentView(R.layout.activity_trangchu2);
 
         img_mucluc = findViewById(R.id.img_mucluc);
-        //TextView thi = findViewById(R.id.test_txt_trang_chu);
+        View thi = findViewById(R.id.lichsu);
 
         img_mucluc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,12 +33,12 @@ public class trangchu2 extends AppCompatActivity {
             }
         });
 
-        /*thi.setOnClickListener(new View.OnClickListener() {
+        thi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), thi_tracnghiem.class);
+                Intent intent = new Intent(getApplicationContext(), bo_de_thi.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }
