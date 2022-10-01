@@ -22,8 +22,8 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-//            .baseUrl("http://192.168.1.8:3000")
-            .baseUrl("http://10.45.161.167:3000")
+            .baseUrl("http://192.168.1.4:3000")
+         //   .baseUrl("http://10.45.161.167:3000")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);
@@ -36,5 +36,8 @@ public interface RetrofitInterface {
 
     @GET("/ques")
     Call<List<CauHoiTracNghiem>> getCauHoiTracNghiem();
+
+    @POST("/sendOTP")
+    Call<CheckEmailResult> checkemail(@Body HashMap<String, String> map);
 
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
+import com.example.dacn.quenmatkhau1;
 import com.example.dacn.trangchu2;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -25,8 +26,7 @@ import retrofit2.Response;
 public class dang_nhap extends AppCompatActivity {
 
     Button btn_dangnhap;
-    TextView txt_dangky;
-
+    TextView txt_dangky, txt_quenmk;
     TextInputEditText email, matkhau;
 
     @Override
@@ -34,11 +34,7 @@ public class dang_nhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
 
-        btn_dangnhap = findViewById(R.id.btn_dangnhap);
-        txt_dangky = findViewById(R.id.btn_dangkyotrangdangnhap);
-
-        email = findViewById(R.id.txtdn_email);
-        matkhau = findViewById(R.id.txtdn_matkhau);
+        khaibao();
 
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,5 +78,25 @@ public class dang_nhap extends AppCompatActivity {
                 finish();
             }
         });
+
+        txt_quenmk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(dang_nhap.this, quenmatkhau1.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    private void khaibao() {
+
+        btn_dangnhap = findViewById(R.id.btn_dangnhap);
+        txt_dangky = findViewById(R.id.btn_dangkyotrangdangnhap);
+
+        email = findViewById(R.id.txtdn_email);
+        matkhau = findViewById(R.id.txtdn_matkhau);
+
+        txt_quenmk = findViewById(R.id.txt_quenmk);
     }
 }

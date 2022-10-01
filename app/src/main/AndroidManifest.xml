@@ -21,10 +21,10 @@
             android:name=".quenmatkhau3"
             android:exported="false" />
         <activity
-            android:name=".quenmatkhau2"
+            android:name=".quenmatkhau1"
             android:exported="false" />
         <activity
-            android:name=".quenmatkhau1"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
             android:name=".bo_de_thi"
@@ -67,7 +67,7 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".quenmatkhau2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

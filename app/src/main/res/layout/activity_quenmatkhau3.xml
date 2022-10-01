@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_xacnhan"
+        android:id="@+id/btn_capnhat"
         android:layout_width="270dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/timxanh"

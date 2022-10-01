@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/btn_xacnhan"
+        android:id="@+id/btn_quaylai"
         android:layout_width="270dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/timxanh"
