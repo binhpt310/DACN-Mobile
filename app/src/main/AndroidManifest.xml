@@ -15,6 +15,18 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".quenmatkhau4"
+            android:exported="false" />
+        <activity
+            android:name=".quenmatkhau3"
+            android:exported="false" />
+        <activity
+            android:name=".quenmatkhau2"
+            android:exported="false" />
+        <activity
+            android:name=".quenmatkhau1"
+            android:exported="false" />
+        <activity
             android:name=".bo_de_thi"
             android:exported="false" />
         <activity
@@ -31,7 +43,7 @@
             android:name=".popup.popup_hoan_thanh_thi_thu"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
             android:name=".mucluc.mucluc"
@@ -55,7 +67,7 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

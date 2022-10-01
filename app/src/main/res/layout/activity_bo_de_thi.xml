@@ -109,19 +109,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/trang"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/linearLayout1">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radio_on"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_bold"
-            android:text="Ôn tập"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginStart="50dp"
+            android:text="Ôn tập"/>
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radio_thi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

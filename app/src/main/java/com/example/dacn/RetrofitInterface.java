@@ -23,7 +23,7 @@ public interface RetrofitInterface {
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
 //            .baseUrl("http://192.168.1.8:3000")
-            .baseUrl("http://192.168.2.153:3000")
+            .baseUrl("http://10.45.161.167:3000")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);

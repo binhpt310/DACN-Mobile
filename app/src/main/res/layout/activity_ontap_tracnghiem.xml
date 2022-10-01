@@ -338,6 +338,7 @@
         android:id="@+id/btn_on_xemnhanh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto_medium"
         android:padding="10dp"
         android:text="Tiếp theo"

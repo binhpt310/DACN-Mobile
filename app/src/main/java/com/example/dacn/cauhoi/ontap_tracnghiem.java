@@ -70,6 +70,33 @@ public class ontap_tracnghiem extends AppCompatActivity {
                     }
                 });
 
+                /*ar_textview[1].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        checkDapAn(ar_textview,ar_string);
+                    }
+                });
+
+                ar_textview[2].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        checkDapAn(ar_textview,ar_string);
+                    }
+                });
+
+                ar_textview[3].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        checkDapAn(ar_textview,ar_string);
+                    }
+                });
+
+                ar_textview[4].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        checkDapAn(ar_textview,ar_string);
+                    }
+                });*/
                 /*cautraloia.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -88,69 +115,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                         cautraloib.setOnClickListener(null);
                         cautraloic.setOnClickListener(null);
                         cautraloid.setOnClickListener(null);
-                    }
-                });
-
-                cautraloib.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (cauB.equals(anw)) {
-                            cautraloib.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                        } else {
-                            cautraloib.setBackgroundResource(R.drawable.bg_otracnghiem_do);
-                            if (cauA.equals(anw)) {
-                                cautraloia.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauC.equals(anw)) {
-                                cautraloic.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauD.equals(anw)) {
-                                cautraloid.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            }
-                        }
-                        cautraloia.setOnClickListener(null);
-                        cautraloic.setOnClickListener(null);
-                        cautraloid.setOnClickListener(null);
-                    }
-                });
-
-                cautraloic.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (cauC.equals(anw)) {
-                            cautraloic.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                        } else {
-                            cautraloic.setBackgroundResource(R.drawable.bg_otracnghiem_do);
-                            if (cauA.equals(anw)) {
-                                cautraloia.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauB.equals(anw)) {
-                                cautraloib.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauD.equals(anw)) {
-                                cautraloid.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            }
-                        }
-                        cautraloia.setOnClickListener(null);
-                        cautraloib.setOnClickListener(null);
-                        cautraloid.setOnClickListener(null);
-                    }
-                });
-
-                cautraloid.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (cauD.equals(anw)) {
-                            cautraloid.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                        } else {
-                            cautraloid.setBackgroundResource(R.drawable.bg_otracnghiem_do);
-                            if (cauA.equals(anw)) {
-                                cautraloia.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauB.equals(anw)) {
-                                cautraloib.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauC.equals(anw)) {
-                                cautraloic.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            }
-                        }
-                        cautraloia.setOnClickListener(null);
-                        cautraloib.setOnClickListener(null);
-                        cautraloic.setOnClickListener(null);
                     }
                 });*/
 
@@ -182,13 +146,19 @@ public class ontap_tracnghiem extends AppCompatActivity {
         arg[5] = a.get(Cauhoihientai).getAnw();
 
         tv[0].setText(arg[0]);
+        tv[1].setText(arg[1]);
+        tv[2].setText(arg[2]);
+        tv[3].setText(arg[3]);
+        tv[4].setText(arg[4]);
+
+        checkDapAn(tv, arg);
 
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i=1; i<5; i++) list.add(i);
         Collections.shuffle(list);
         for (int i=0; i<4; i++) {
             tv[i+1].setText(arg[(list.get(i))]);
-            //Log.e("dd", String.valueOf((list.get(i))));
+            Log.e("dd", String.valueOf((list.get(i))));
         }
 
         socau.setText(String.valueOf(Cauhoihientai+1));
@@ -212,6 +182,20 @@ public class ontap_tracnghiem extends AppCompatActivity {
         return false;
     }
 
+    public void checkDapAn (TextView[] txtvw, String[] ans){
+        if (ans[1].contentEquals(ans[5])) {
+            txtvw[1].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+        }
+        else if (ans[2].contentEquals(ans[5])) {
+            txtvw[2].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+        }
+        else if (ans[3].contentEquals(ans[5])) {
+            txtvw[3].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+        }
+        else if (ans[4].contentEquals(ans[5])) {
+            txtvw[4].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+        }
+    }
         /*if (cauA.equals(arg[5])) {
             a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
         } else {
