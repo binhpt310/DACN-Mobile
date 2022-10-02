@@ -1,14 +1,16 @@
-package com.example.dacn;
+package com.example.dacn.quenmatkhau;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class quenmatkhau3 extends AppCompatActivity {
+import com.example.dacn.R;
+
+public class quenmatkhau4 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quenmatkhau3);
+        setContentView(R.layout.activity_quenmatkhau4);
     }
 }

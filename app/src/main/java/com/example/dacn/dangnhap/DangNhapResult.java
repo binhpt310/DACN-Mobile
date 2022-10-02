@@ -2,13 +2,13 @@ package com.example.dacn.dangnhap;
 
 public class DangNhapResult {
     private String email;
-    private String matkhau;
+    private String tenngdung;
 
     public String getEmail() {
         return email;
     }
 
-    public String getMatkhau() {
-        return matkhau;
+    public String getTenngdung() {
+        return tenngdung;
     }
 }

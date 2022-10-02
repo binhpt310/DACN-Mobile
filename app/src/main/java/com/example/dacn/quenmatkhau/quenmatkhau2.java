@@ -1,23 +1,20 @@
-package com.example.dacn;
+package com.example.dacn.quenmatkhau;
 
-import static android.content.ContentValues.TAG;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.dacn.dangnhap.dang_nhap;
-import com.example.dacn.mucluc.mucluc;
+import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
 
 import java.util.HashMap;
 
@@ -97,7 +94,7 @@ public class quenmatkhau2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gangtri();
-                email = TruyenEmail.trEmail;
+                email = TruyenDuLieu.trEmail_quenmk;
 
                 HashMap<String, String> map = new HashMap<>();
 

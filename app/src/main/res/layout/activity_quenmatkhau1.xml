@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".quenmatkhau1"
+    tools:context=".quenmatkhau.quenmatkhau1"
     android:background="@color/hong">
 
     <TextView

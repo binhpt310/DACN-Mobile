@@ -1,4 +1,4 @@
-package com.example.dacn;
+package com.example.dacn.quenmatkhau;
 
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
@@ -11,9 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.dacn.dangnhap.DangNhapResult;
-import com.example.dacn.dangnhap.dang_ky;
-import com.example.dacn.dangnhap.dang_nhap;
+import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
 
 import java.util.HashMap;
 
@@ -64,7 +63,7 @@ public class quenmatkhau1 extends AppCompatActivity {
     }
     private void nextActivity() {
         String truyenEmail = ed_email.getText().toString().trim();
-        TruyenEmail.trEmail = truyenEmail;
+        TruyenDuLieu.trEmail_quenmk = truyenEmail;
 
         Intent intent = new Intent(quenmatkhau1.this, quenmatkhau2.class);
         startActivity(intent);

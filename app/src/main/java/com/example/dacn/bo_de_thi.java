@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.dacn.adapter.Bo_de_thi_adapter;
 import com.example.dacn.model.Bo_de_thi_model;
@@ -12,7 +13,10 @@ import com.example.dacn.model.Bo_de_thi_model;
 import java.util.ArrayList;
 
 public class bo_de_thi extends AppCompatActivity {
+
     ArrayList<Bo_de_thi_model> Bodethimodels = new ArrayList<Bo_de_thi_model>();
+
+    String tenmon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,6 +27,9 @@ public class bo_de_thi extends AppCompatActivity {
         Bo_de_thi_adapter adapter = new Bo_de_thi_adapter(this, Bodethimodels);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        tenmon = TruyenDuLieu.trMon;
+        Log.e("vv", tenmon);
     }
 
     private void setup_Bo_de_thi_model(){

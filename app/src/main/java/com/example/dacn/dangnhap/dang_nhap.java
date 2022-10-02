@@ -6,14 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
-import com.example.dacn.quenmatkhau1;
+import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.mucluc.mucluc;
+import com.example.dacn.quenmatkhau.quenmatkhau1;
+import com.example.dacn.quenmatkhau.quenmatkhau2;
 import com.example.dacn.trangchu2;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -28,6 +31,7 @@ public class dang_nhap extends AppCompatActivity {
     Button btn_dangnhap;
     TextView txt_dangky, txt_quenmk;
     TextInputEditText email, matkhau;
+    String s_email,s_tenngdung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +52,13 @@ public class dang_nhap extends AppCompatActivity {
                 call.enqueue(new Callback<DangNhapResult>() {
                     @Override
                     public void onResponse(Call<DangNhapResult> call, Response<DangNhapResult> response) {
+                        DangNhapResult dangNhap = response.body();
+
                         if (response.code() == 200) {
-                            Intent intent = new Intent(dang_nhap.this, trangchu2.class);
+                            TruyenDuLieu.trEmail_dnhap = dangNhap.getEmail();;
+                            TruyenDuLieu.trTenTk_dnhap = dangNhap.getTenngdung();
+
+                            Intent intent = new Intent(dang_nhap.this, mucluc.class);
                             startActivity(intent);
                             finish();
                         } else if (response.code() == 401) {
@@ -99,4 +108,5 @@ public class dang_nhap extends AppCompatActivity {
 
         txt_quenmk = findViewById(R.id.txt_quenmk);
     }
+
 }

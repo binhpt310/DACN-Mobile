@@ -27,10 +27,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class dang_ky extends AppCompatActivity{
 
-    boolean temp = false;
-    /*String chckppw ="i";
-    String passwrd ="i";*/
-
     Button btn_dangky;
     TextView txt_dangnhap;
     TextInputEditText email, tenngdung, matkhau, nhaplaimk;
@@ -40,13 +36,7 @@ public class dang_ky extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
 
-        btn_dangky = findViewById(R.id.btn_dangky);
-        txt_dangnhap = findViewById(R.id.dangnhapotrangdangky);
-
-        email = findViewById(R.id.txtdki_email);
-        tenngdung = findViewById(R.id.txtdki_tenngdung);
-        matkhau = findViewById(R.id.txtdki_matkhau);
-        nhaplaimk = findViewById(R.id.txtdki_nhaplaimk);
+        khaibao();
 
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +82,16 @@ public class dang_ky extends AppCompatActivity{
         });
     }
 
+    private void khaibao() {
+        btn_dangky = findViewById(R.id.btn_dangky);
+        txt_dangnhap = findViewById(R.id.dangnhapotrangdangky);
+
+        email = findViewById(R.id.txtdki_email);
+        tenngdung = findViewById(R.id.txtdki_tenngdung);
+        matkhau = findViewById(R.id.txtdki_matkhau);
+        nhaplaimk = findViewById(R.id.txtdki_nhaplaimk);
+    }
+
     private boolean validateEmail() {
         String emailInput = email.getText().toString().trim();
         if (emailInput.isEmpty()) {
@@ -108,7 +108,7 @@ public class dang_ky extends AppCompatActivity{
 
     private boolean validatePassword() {
         String nhap_mk = matkhau.getText().toString().trim();
-        String  nhap_lai_mk = nhaplaimk.getText().toString().trim();
+        String nhap_lai_mk = nhaplaimk.getText().toString().trim();
         if (nhap_mk.isEmpty()) {
             Toast.makeText(this, "Mật khẩu đang để trống", Toast.LENGTH_SHORT).show();
             return false;
