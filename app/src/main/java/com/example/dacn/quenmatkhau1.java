@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.dacn.dangnhap.DangNhapResult;
+import com.example.dacn.dangnhap.dang_ky;
 import com.example.dacn.dangnhap.dang_nhap;
 
 import java.util.HashMap;
@@ -40,25 +41,33 @@ public class quenmatkhau1 extends AppCompatActivity {
 
                 map.put("email", ed_email.getText().toString());
 
-                Call<CheckEmailResult> call = retrofitInterface.checkemail(map);
+                Call<Void> call = retrofitInterface.checkemail(map);
 
-                call.enqueue(new Callback<CheckEmailResult>() {
+                call.enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<CheckEmailResult> call, Response<CheckEmailResult> response) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
-                            Toast.makeText(quenmatkhau1.this,"ok",Toast.LENGTH_SHORT).show();
-                        } else if (response.code() == 404) {
+                            nextActivity();
+                        } else if (response.code() == 400) {
                             Toast.makeText(quenmatkhau1.this,"Email không tồn tại",Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<CheckEmailResult> call, Throwable t) {
+                    public void onFailure(Call<Void> call, Throwable t) {
                         Toast.makeText(quenmatkhau1.this, t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
 
             }
         });
+    }
+    private void nextActivity() {
+        String truyenEmail = ed_email.getText().toString().trim();
+        TruyenEmail.trEmail = truyenEmail;
+
+        Intent intent = new Intent(quenmatkhau1.this, quenmatkhau2.class);
+        startActivity(intent);
+
     }
 }
