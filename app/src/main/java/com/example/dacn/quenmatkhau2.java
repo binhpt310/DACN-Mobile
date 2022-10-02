@@ -5,6 +5,7 @@ import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.text.Editable;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.dacn.dangnhap.dang_nhap;
+import com.example.dacn.mucluc.mucluc;
 
 import java.util.HashMap;
 
@@ -96,22 +98,28 @@ public class quenmatkhau2 extends AppCompatActivity {
             public void onClick(View view) {
                 gangtri();
                 email = TruyenEmail.trEmail;
-                Log.e("mm", email);
-                Log.e("dd", otp);
 
                 HashMap<String, String> map = new HashMap<>();
 
                 map.put("email", email);
                 map.put("otp", otp);
 
-                Call<Void> call = retrofitInterface.checkgiatri(map);
+                Call<Void> call = retrofitInterface.checkOTP(map);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
-                            Toast.makeText(quenmatkhau2.this, "ok",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(quenmatkhau2.this, quenmatkhau3.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (response.code() == 201) {
+                            Toast.makeText(quenmatkhau2.this, "Mã OTP đã hết hiệu lực, bạn nhập lại nhé!",Toast.LENGTH_SHORT).show();
+                            xoagiatri();
+                        } else if (response.code() == 202) {
+                            Toast.makeText(quenmatkhau2.this, "Sai OTP",Toast.LENGTH_SHORT).show();
+                            xoagiatri();
                         } else if (response.code() == 400) {
-                            Toast.makeText(quenmatkhau2.this, "không",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(quenmatkhau2.this, "Không tìm thấy tài khoản email",Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -131,6 +139,14 @@ public class quenmatkhau2 extends AppCompatActivity {
         otp3 = ed_otp3.getText().toString();
         otp4 = ed_otp4.getText().toString();
         otp = otp1 + otp2 + otp3 + otp4;
+    }
+
+    private void xoagiatri() {
+        ed_otp1.getText().clear();
+        ed_otp2.getText().clear();
+        ed_otp3.getText().clear();
+        ed_otp4.getText().clear();
+        ed_otp1.requestFocus();
     }
 
     private void khaibao() {

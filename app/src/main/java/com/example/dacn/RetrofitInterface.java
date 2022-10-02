@@ -40,7 +40,7 @@ public interface RetrofitInterface {
     @POST("/sendOTP")
     Call<Void> checkemail(@Body HashMap<String, String> map);
 
-    @POST("/checkgiatri")
-    Call<Void> checkgiatri (@Body HashMap<String, String> map);
+    @POST("/verifyOTP")
+    Call<Void> checkOTP (@Body HashMap<String, String> map);
 
 }
