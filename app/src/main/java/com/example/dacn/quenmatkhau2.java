@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dacn.dangnhap.dang_nhap;
+
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -102,14 +104,14 @@ public class quenmatkhau2 extends AppCompatActivity {
                 map.put("email", email);
                 map.put("otp", otp);
 
-                Call<Void> call = retrofitInterface.checkOTP(map);
+                Call<Void> call = retrofitInterface.checkgiatri(map);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
-                            Toast.makeText(quenmatkhau2.this,"ok",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(quenmatkhau2.this, "ok",Toast.LENGTH_SHORT).show();
                         } else if (response.code() == 400) {
-                            Toast.makeText(quenmatkhau2.this,"Email không tồn tại",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(quenmatkhau2.this, "không",Toast.LENGTH_SHORT).show();
                         }
                     }
 
