@@ -45,7 +45,7 @@
             android:layout_height="48dp"
             android:fontFamily="@font/roboto_regular"
             android:hint="Nhập mật khẩu của bạn"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textColor="@color/den80"
             android:textSize="18sp" />
     </LinearLayout>
@@ -74,7 +74,7 @@
             android:layout_height="48dp"
             android:fontFamily="@font/roboto_regular"
             android:hint="Nhập lại mật khẩu của bạn"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textColor="@color/den80"
             android:textSize="18sp" />
     </LinearLayout>

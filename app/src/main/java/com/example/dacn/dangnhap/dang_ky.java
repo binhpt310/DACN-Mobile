@@ -53,7 +53,7 @@ public class dang_ky extends AppCompatActivity{
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
-                            Intent intent = new Intent(dang_ky.this, trangchu2.class);
+                            Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                             startActivity(intent);
                             finish();
                         } else if (response.code() == 201) {

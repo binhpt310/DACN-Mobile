@@ -1,8 +1,10 @@
 package com.example.dacn.mucluc;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,9 +19,11 @@ import com.example.dacn.trangchu2;
 
 public class mucluc extends AppCompatActivity {
 
+    private static final int MY_REQUEST_CODE = 1;
     ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat;
     ImageView img_close;
     TextView txt_tenngdung, txt_email;
+    String tenngdung,email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +31,17 @@ public class mucluc extends AppCompatActivity {
 
         khaibao();
 
-        txt_email.setText(TruyenDuLieu.trEmail_dnhap);
-        txt_tenngdung.setText(TruyenDuLieu.trTenTk_dnhap);
+        tenngdung = TruyenDuLieu.trTenTk_dnhap;
+        email = TruyenDuLieu.trEmail_dnhap;
+        txt_email.setText(email);
+        txt_tenngdung.setText(tenngdung);
 
         chinhsuathongtin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
-                startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-                finish();
+                startActivity(intent);
             }
         });
 
@@ -67,6 +72,9 @@ public class mucluc extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
+
+                TruyenDuLieu.trEmail_dnhap="";
+                TruyenDuLieu.trTenTk_dnhap="";
             }
         });
 
@@ -99,4 +107,20 @@ public class mucluc extends AppCompatActivity {
         Intent intent = new Intent(this, trangchu2.class);
         startActivity(intent);
     }
+
+    /*private void nextActivity(){
+        Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
+        intent.putExtra("key_tenngdung", tenngdung);
+        startActivityForResult(intent, MY_REQUEST_CODE);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (MY_REQUEST_CODE == requestCode && resultCode == Activity.RESULT_OK) {
+            txt_tenngdung.setText(data.getStringExtra("key_key_tenngdung"));
+        }
+    }*/
 }

@@ -23,7 +23,7 @@ public interface RetrofitInterface {
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
             .baseUrl("http://192.168.1.7:3000")
-         //   .baseUrl("http://10.45.161.167:3000")
+            //.baseUrl("http://172.30.167.85:3000")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);
@@ -43,4 +43,9 @@ public interface RetrofitInterface {
     @POST("/verifyOTP")
     Call<Void> checkOTP (@Body HashMap<String, String> map);
 
+    @POST("/changepass")
+    Call<Void> changePassword (@Body HashMap<String, String> map);
+
+    @POST("/changeinfo")
+    Call<Void> changeInfo (@Body HashMap<String, String> map);
 }

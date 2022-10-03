@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text1">
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Hãy điền OTP gồm 6 số vừa được gửi đến số "
+            android:text="Hãy điền OTP gồm 4 số vừa được gửi đến email "
             android:textColor="@color/den"
             android:textSize="18sp" />
 
