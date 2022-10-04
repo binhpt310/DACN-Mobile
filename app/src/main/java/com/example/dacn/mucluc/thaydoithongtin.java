@@ -2,10 +2,12 @@ package com.example.dacn.mucluc;
 
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class thaydoithongtin extends AppCompatActivity {
-
+    private static int RESULT_LOAD_IMAGE = 1;
     CircleImageView ava;
     FloatingActionButton camera;
     ImageView img_back;
@@ -123,6 +125,34 @@ public class thaydoithongtin extends AppCompatActivity {
         String trEmail_thaydoi = tengndung.getText().toString().trim();
         TruyenDuLieu.trTenTk_dnhap = trEmail_thaydoi;
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK){
+
+            Uri imageUri = data.getData();
+            ava.setImageURI(imageUri);
+        }
+
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
     }
 
 }

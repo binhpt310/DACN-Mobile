@@ -31,6 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/img_tat">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ava_mucluc"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:src="@drawable/img_reader"

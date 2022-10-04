@@ -6,7 +6,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,13 +20,16 @@ import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.lich_su_lam_bai;
 import com.example.dacn.trangchu2;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class mucluc extends AppCompatActivity {
 
-    private static final int MY_REQUEST_CODE = 1;
     ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat;
     ImageView img_close;
+    CircleImageView avamuluc;
     TextView txt_tenngdung, txt_email;
     String tenngdung,email;
+    Intent intent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +104,7 @@ public class mucluc extends AppCompatActivity {
         dangxuat = findViewById(R.id.dangxuat);
         img_close = findViewById(R.id.img_tat);
 
+        avamuluc = findViewById(R.id.ava_mucluc);
         txt_email = findViewById(R.id.txt_email_mucluc);
         txt_tenngdung = findViewById(R.id.txt_tenngdung_mucluc);
     }
@@ -116,6 +123,12 @@ public class mucluc extends AppCompatActivity {
         txt_tenngdung.setText(TruyenDuLieu.trTenTk_dnhap);
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        }
+    }
+
     /*private void nextActivity(){
         Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
         intent.putExtra("key_tenngdung", tenngdung);
@@ -131,4 +144,3 @@ public class mucluc extends AppCompatActivity {
             txt_tenngdung.setText(data.getStringExtra("key_key_tenngdung"));
         }
     }*/
-}
