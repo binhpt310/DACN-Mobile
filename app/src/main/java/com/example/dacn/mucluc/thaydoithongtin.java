@@ -35,7 +35,7 @@ public class thaydoithongtin extends AppCompatActivity {
     ImageView img_back;
     EditText tengndung, matkhau, nhaplaimk;
     Button btn_luuthaydoi;
-    String email,tr_tenngdung;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,7 @@ public class thaydoithongtin extends AppCompatActivity {
         setContentView(R.layout.activity_thaydoithongtin);
 
         khaibao();
-
-        tengndung.setText(getIntent().getStringExtra("key_tenngdung"));
+        tengndung.setText(TruyenDuLieu.trTenTk_dnhap);
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +59,6 @@ public class thaydoithongtin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 email = TruyenDuLieu.trEmail_dnhap;
-                tr_tenngdung = TruyenDuLieu.trTenTk_dnhap;
 
                 HashMap<String, String> map = new HashMap<>();
 
@@ -73,14 +71,15 @@ public class thaydoithongtin extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
-                            //backActivity();
-                            tr_tenngdung = tengndung.getText().toString().trim();
+                            backActivity();
+                            Toast.makeText(thaydoithongtin.this,"OK",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(thaydoithongtin.this, mucluc.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                            finish();
                         } else if (response.code() == 400) {
                             Toast.makeText(thaydoithongtin.this,"Lỗi",Toast.LENGTH_SHORT).show();
-
                         }
                     }
 
@@ -112,25 +111,6 @@ public class thaydoithongtin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private boolean validatePassword() {
-        String nhap_mk = matkhau.getText().toString().trim();
-        String nhap_lai_mk = nhaplaimk.getText().toString().trim();
-
-        if (nhap_lai_mk.isEmpty()) {
-            Toast.makeText(this, "Nhập lại mật khẩu đang để trống", Toast.LENGTH_SHORT).show();
-            return false;
-        }  if (nhap_mk.length()<5) {
-            Toast.makeText(this, "Mật khẩu quá ngắn", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (!nhap_mk.equals(nhap_lai_mk)) {
-            Toast.makeText(this, "Mật khẩu khác nhau", Toast.LENGTH_SHORT).show();
-            return false;
-        }else {
-            return true;
-        }
-    }
-
     /*private void backActivity() {
         String str_tenngdungup = tengndung.getText().toString().trim();
         Intent returnIntent = new Intent();
@@ -138,5 +118,11 @@ public class thaydoithongtin extends AppCompatActivity {
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }*/
+
+    private void backActivity() {
+        String trEmail_thaydoi = tengndung.getText().toString().trim();
+        TruyenDuLieu.trTenTk_dnhap = trEmail_thaydoi;
+        finish();
+    }
 
 }

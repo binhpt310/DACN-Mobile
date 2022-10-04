@@ -33,6 +33,7 @@ public class mucluc extends AppCompatActivity {
 
         tenngdung = TruyenDuLieu.trTenTk_dnhap;
         email = TruyenDuLieu.trEmail_dnhap;
+
         txt_email.setText(email);
         txt_tenngdung.setText(tenngdung);
 
@@ -40,8 +41,9 @@ public class mucluc extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -106,6 +108,12 @@ public class mucluc extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         Intent intent = new Intent(this, trangchu2.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        txt_tenngdung.setText(TruyenDuLieu.trTenTk_dnhap);
     }
 
     /*private void nextActivity(){

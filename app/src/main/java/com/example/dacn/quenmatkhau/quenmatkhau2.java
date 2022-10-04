@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dacn.R;
@@ -27,6 +28,7 @@ public class quenmatkhau2 extends AppCompatActivity {
     EditText ed_otp1,ed_otp2,ed_otp3,ed_otp4;
     Button btn_xacnhan;
     String otp,otp1,otp2,otp3,otp4, email;
+    TextView guilai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +130,33 @@ public class quenmatkhau2 extends AppCompatActivity {
             }
         });
 
+        guilai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                email = TruyenDuLieu.trEmail_quenmk;
+                HashMap<String, String> map = new HashMap<>();
+
+                map.put("email", email);
+
+                Call<Void> call = retrofitInterface.checkemail(map);
+
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.code() == 200) {
+                            Toast.makeText(quenmatkhau2.this,"Đã gửi OTP",Toast.LENGTH_SHORT).show();
+                        } else if (response.code() == 400) {
+                            Toast.makeText(quenmatkhau2.this,"Lỗi",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(quenmatkhau2.this, t.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
     }
 
     private void gangtri() {
@@ -151,7 +180,7 @@ public class quenmatkhau2 extends AppCompatActivity {
         ed_otp2 = findViewById(R.id.ed_otp2);
         ed_otp3 = findViewById(R.id.ed_otp3);
         ed_otp4 = findViewById(R.id.ed_otp4);
-
+        guilai = findViewById(R.id.btn_guilai_quenmk);
         btn_xacnhan = findViewById(R.id.btn_xacnhan);
     }
 }
