@@ -2,21 +2,72 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dacn">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/img_knowledge"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/img_knowledge"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DACN">
+        android:theme="@style/Theme.DACN"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".Logo_screen"
+            android:name=".quenmatkhau.quenmatkhau4"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".quenmatkhau.quenmatkhau3"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".quenmatkhau.quenmatkhau2"
+            android:exported="false" />
+        <activity
+            android:name=".cauhoi.ontap_tracnghiem"
+            android:exported="false" />
+        <activity
+            android:name=".bo_de_thi"
+            android:exported="false" />
+        <activity
+            android:name=".FirstInstall.OnBoardingScreen"
+            android:exported="false" />
+        <activity
+            android:name=".lich_su_lam_bai"
+            android:exported="false" />
+        <activity
+            android:name=".popup.popup_ket_thuc_thi_thu"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".popup.popup_hoan_thanh_thi_thu"
+            android:exported="false" />
+        <activity
+            android:name=".dangnhap.dang_ky"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.mucluc"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.veapp"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.thaydoithongtin"
+            android:exported="false" />
+        <activity
+            android:name=".quenmatkhau.quenmatkhau1"
+            android:exported="false" />
+        <activity
+            android:name=".cauhoi.thi_tracnghiem"
+            android:exported="false" />
+        <activity
+            android:name=".trangchu2"
+            android:exported="false" />
+        <activity
+            android:name=".dangnhap.Logo_screen"
+            android:exported="false" />
+        <activity
+            android:name=".dangnhap.dang_nhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

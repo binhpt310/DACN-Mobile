@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_scr_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2196F3"
+    tools:context=".FirstInstall.OnBoardingScreen">
+
+    <TextView
+        android:id="@+id/onboarding_scr_txt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="437dp"
+        android:layout_marginBottom="435dp"
+        android:text="This is the first time you install the app"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+</LinearLayout>
