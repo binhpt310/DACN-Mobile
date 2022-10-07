@@ -7,12 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.example.dacn.cauhoi.thi_tracnghiem;
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.mucluc.mucluc;
-import com.example.dacn.quenmatkhau.quenmatkhau1;
-import com.example.dacn.quenmatkhau.quenmatkhau2;
 
 public class trangchu2 extends AppCompatActivity {
 
@@ -49,7 +46,7 @@ public class trangchu2 extends AppCompatActivity {
         lsu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TruyenDuLieu.trMon="his";
+                TruyenDuLieu.trMon="His";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }
@@ -58,7 +55,7 @@ public class trangchu2 extends AppCompatActivity {
         dia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TruyenDuLieu.trMon="geo";
+                TruyenDuLieu.trMon="Geo";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }
@@ -67,7 +64,7 @@ public class trangchu2 extends AppCompatActivity {
         anhvan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TruyenDuLieu.trMon="eng";
+                TruyenDuLieu.trMon="Eng";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }
@@ -76,7 +73,7 @@ public class trangchu2 extends AppCompatActivity {
         gdcd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TruyenDuLieu.trMon="gdcd";
+                TruyenDuLieu.trMon="Gdcd";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }

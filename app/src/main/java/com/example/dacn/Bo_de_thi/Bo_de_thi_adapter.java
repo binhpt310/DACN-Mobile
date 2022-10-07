@@ -1,19 +1,18 @@
-package com.example.dacn.adapter;
+package com.example.dacn.Bo_de_thi;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
-import com.example.dacn.model.Bo_de_thi_model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Bo_de_thi_adapter extends RecyclerView.Adapter<Bo_de_thi_adapter.MyViewHolder> {
     ArrayList<Bo_de_thi_model> Bodethimodels;
@@ -40,17 +39,18 @@ public class Bo_de_thi_adapter extends RecyclerView.Adapter<Bo_de_thi_adapter.My
     }
 
     public static  class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView sothutu, tendethi;
+        TextView sothutu;
+        ImageView img_mon;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
             sothutu = itemView.findViewById(R.id.so_thu_tu_bo_de_thi);
-            tendethi = itemView.findViewById(R.id.ten_bo_de_thi);
+            img_mon = itemView.findViewById(R.id.img_mon);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull Bo_de_thi_adapter.MyViewHolder holder, int position) {
         holder.sothutu.setText(Bodethimodels.get(position).getSo_thu_tu_bo_de_thi());
-        holder.tendethi.setText(Bodethimodels.get(position).getTen_bo_de_thi());
+        holder.img_mon.setImageResource(Bodethimodels.get(position).getImg_mon());
     }
 }

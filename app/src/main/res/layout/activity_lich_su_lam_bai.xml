@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/trang"
-    tools:context=".lich_su_lam_bai">
+    tools:context=".Lich_su_lam_bai.lich_su_lam_bai">
 
     <LinearLayout
         android:id="@+id/linearLayout"

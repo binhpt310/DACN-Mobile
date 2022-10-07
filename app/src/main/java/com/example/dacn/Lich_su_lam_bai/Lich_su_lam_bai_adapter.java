@@ -1,4 +1,4 @@
-package com.example.dacn.adapter;
+package com.example.dacn.Lich_su_lam_bai;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
-import com.example.dacn.model.Lich_su_lam_bai_model;
 
 import java.util.ArrayList;
 

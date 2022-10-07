@@ -4,122 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bo_de_thi">
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    tools:context=".Bo_de_thi.bo_de_thi"
+    android:background="@color/hong">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_bo_de_thi"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/timxanh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/trang"
+        <ImageView
+            android:id="@+id/img_back_bo_de_thi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/trang"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="15dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Lịch sử"
+            android:textColor="@color/trang"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="2019"
-                android:textColor="@color/den"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:background="@color/timxanh"
-                app:layout_constraintBottom_toBottomOf="parent"
-                ></View>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/trang">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="2020"
-                android:textColor="@color/den"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/trang">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="2021"
-                android:textColor="@color/den"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/trang">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="2022"
-                android:textColor="@color/den"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.506" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@id/linearLayout2"
+    <RadioGroup
+        android:id="@id/radio_gr"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/trang"
+        android:layout_marginTop="5dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout1">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_bo_de_thi">
 
         <RadioButton
             android:id="@+id/radio_on"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_bold"
-            android:layout_marginStart="50dp"
-            android:text="Ôn tập"/>
+            android:text="Ôn tập"
+            android:textSize="16sp"
+            android:textColor="@color/den"/>
 
         <RadioButton
             android:id="@+id/radio_thi"
@@ -127,19 +66,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_bold"
-            android:text="Thi thử" />
-    </LinearLayout>
+            android:text="Thi thử"
+            android:textSize="16sp"
+            android:textColor="@color/den" />
+    </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-
         android:id="@+id/recyclerview_bo_de_thi"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/trang"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/radio_gr">
 
     </androidx.recyclerview.widget.RecyclerView>
 

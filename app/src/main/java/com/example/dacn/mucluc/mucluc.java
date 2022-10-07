@@ -1,15 +1,10 @@
 package com.example.dacn.mucluc;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +12,7 @@ import android.widget.TextView;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_nhap;
-import com.example.dacn.lich_su_lam_bai;
+import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
 import com.example.dacn.trangchu2;
 
 import de.hdodenhof.circleimageview.CircleImageView;
