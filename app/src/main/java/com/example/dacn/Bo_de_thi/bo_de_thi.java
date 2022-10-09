@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dacn.R;
@@ -35,6 +36,7 @@ public class bo_de_thi extends AppCompatActivity {
     ImageView btn_back;
     RadioGroup radioGroup;
     RecyclerView recyclerView;
+    TextView txt_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class bo_de_thi extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         tenmon = TruyenDuLieu.trMon;
+
+        txt_toolbar = findViewById(R.id.text_toolbar_bode);
+        txt_toolbar.setText(TruyenDuLieu.trTenMon);
 
         btn_back = findViewById(R.id.img_back_bo_de_thi);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -94,27 +99,6 @@ public class bo_de_thi extends AppCompatActivity {
             }
         });
 
-        /*HashMap<String, String> map = new HashMap<>();
-        map.put("sub", made);
-        Call<List<BoDe>> call = retrofitInterface.getBoDe();
-        call.enqueue(new Callback<List<BoDe>>() {
-            @Override
-            public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
-                Bodethimodels = response.body();
-                if (response.code() == 200) {
-                    Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(Bodethimodels);
-                    recyclerView.setAdapter(bo_de_thi_adapter);
-                } else if (response.code() == 404) {
-                    Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<BoDe>> call, Throwable t) {
-                Toast.makeText(bo_de_thi.this,"Fail",Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
 }

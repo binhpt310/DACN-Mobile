@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/img_back_ontap"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="15dp"
@@ -29,12 +30,13 @@
             app:tint="@color/trang" />
 
         <TextView
+            android:id="@+id/text_toolbar_ontap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Ôn Tập - môn Địa lý"
+            android:text="Ôn tập Địa lý - đề số 03"
             android:textColor="@color/trang"
-            android:textSize="26sp"
+            android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

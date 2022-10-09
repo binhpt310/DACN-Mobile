@@ -5,7 +5,11 @@ public class TruyenDuLieu {
 
     public static String trMon = "";
 
+    public static String trTenMon = "";
+
     public static String trMaDe = "";
+
+    public static String trTenMaDe = "";
 
     public static String trEmail_dnhap = "";
 
