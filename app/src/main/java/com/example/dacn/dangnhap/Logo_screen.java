@@ -17,6 +17,8 @@ import com.example.dacn.FirstInstall.MySharedPreferences;
 import com.example.dacn.FirstInstall.OnBoardingScreen;
 import com.example.dacn.R;
 import com.example.dacn.dangnhap.Connectivity;
+import com.example.dacn.onboarding.waiting;
+
 public class Logo_screen extends AppCompatActivity {
 
     int SPLASH_SCREEN = 2000;
@@ -57,7 +59,7 @@ public class Logo_screen extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        Intent intent = new Intent(Logo_screen.this, OnBoardingScreen.class);
+                        Intent intent = new Intent(Logo_screen.this, waiting.class);
                         mySharedPreferences.putBooleanVal(key_first_install, true);
                         startActivity(intent);
                     }
