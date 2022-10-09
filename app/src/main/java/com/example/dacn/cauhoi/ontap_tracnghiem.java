@@ -67,6 +67,31 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
 
+                /*ar_textview[1].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean result = ar_textview[1].getText().toString().equals(ar_string[5]);
+                        if (result)
+                            ar_textview[1].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+                        else {
+                            ar_textview[1].setBackgroundResource(R.drawable.bg_otracnghiem_do);
+                            for (int i=1;i<5;i++) {
+                                if (ar_textview[i].getText().toString().equals(ar_string[5])) {
+                                    ar_textview[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+                                }
+                            }
+                        }
+                        Log.e("String", ar_string[5]);
+                        Log.e("Textview", ar_textview[1].getText().toString());
+                        Log.e("Dung sai", String.valueOf(result));
+                    }
+                });*/
+
+                bamtracnghiem(ar_textview[1], ar_textview, ar_string[5]);
+                bamtracnghiem(ar_textview[2], ar_textview, ar_string[5]);
+                bamtracnghiem(ar_textview[3], ar_textview, ar_string[5]);
+                bamtracnghiem(ar_textview[4], ar_textview, ar_string[5]);
+
                 xemnhanh.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -78,62 +103,40 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                         } else {
                             xemnhanh.setOnClickListener(null);
                         }
+                        bamtracnghiem(ar_textview[1], ar_textview, ar_string[5]);
+                        bamtracnghiem(ar_textview[2], ar_textview, ar_string[5]);
+                        bamtracnghiem(ar_textview[3], ar_textview, ar_string[5]);
+                        bamtracnghiem(ar_textview[4], ar_textview, ar_string[5]);
                     }
                 });
-
-                /*ar_textview[1].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        checkDapAn(ar_textview,ar_string);
-                    }
-                });
-
-                ar_textview[2].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        checkDapAn(ar_textview,ar_string);
-                    }
-                });
-
-                ar_textview[3].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        checkDapAn(ar_textview,ar_string);
-                    }
-                });
-
-                ar_textview[4].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        checkDapAn(ar_textview,ar_string);
-                    }
-                });*/
-                /*cautraloia.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (cauA.equals(anw)) {
-                            cautraloia.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                        } else {
-                            cautraloia.setBackgroundResource(R.drawable.bg_otracnghiem_do);
-                            if (cauB.equals(anw)) {
-                                cautraloib.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauC.equals(anw)) {
-                                cautraloic.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            } else if (cauD.equals(anw)) {
-                                cautraloid.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            }
-                        }
-                        cautraloib.setOnClickListener(null);
-                        cautraloic.setOnClickListener(null);
-                        cautraloid.setOnClickListener(null);
-                    }
-                });*/
 
             }
 
             @Override
             public void onFailure(Call<List<CauHoiTracNghiem>> call, Throwable t) {
                 Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void bamtracnghiem(TextView a, TextView tv[], String b) {
+        a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean result = a.getText().toString().equals(b);
+                if (result)
+                    a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+                else {
+                    a.setBackgroundResource(R.drawable.bg_otracnghiem_do);
+                    for (int i=1;i<5;i++) {
+                        if (tv[i].getText().toString().equals(b)) {
+                            tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+                        }
+                    }
+                }
+                Log.e("String", b);
+                Log.e("Textview", a.getText().toString());
+                Log.e("Dung sai", String.valueOf(result));
             }
         });
     }
@@ -162,8 +165,6 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         tv[3].setText(arg[3]);
         tv[4].setText(arg[4]);
 
-        checkDapAn(tv, arg);
-
         //random vị trí textview để mảng dữ liệu đưa vào
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i=1; i<5; i++) list.add(i);
@@ -173,7 +174,13 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
             Log.e("dd", String.valueOf((list.get(i))));
         }
 
+        //set câu hỏi hiện tại
         socau.setText(String.valueOf(Cauhoihientai+1));
+
+        //xóa background ô đáp án khi đổi câu hỏi.
+        for (int i = 1; i < 5; i++) {
+            tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
+        }
     }
 
 
