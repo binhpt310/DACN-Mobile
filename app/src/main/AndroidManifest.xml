@@ -24,10 +24,10 @@
             android:name=".quenmatkhau.quenmatkhau2"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".Bo_de_thi.bo_de_thi"
             android:exported="false" />
         <activity
-            android:name=".Bo_de_thi.bo_de_thi"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
             android:name=".FirstInstall.OnBoardingScreen"

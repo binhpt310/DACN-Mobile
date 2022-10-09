@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/hong"
     android:orientation="vertical"
-    tools:context=".cauhoi.ontap_tracnghiem">
+    tools:context=".cauhoi.ontap_tracnghiem"
+    android:id="@+id/layout_ontap_tracnghiem">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"

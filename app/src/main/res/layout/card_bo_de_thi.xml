@@ -8,7 +8,8 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="20dp"
     android:background="@color/hong"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="5dp"
+    android:id="@+id/layout_card_de">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,14 +26,24 @@
             android:src="@drawable/img_book" />
 
         <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Đề số"
+            android:textColor="@color/den"
+            android:textSize="20sp"
+            android:layout_marginStart="30dp"/>
+
+        <TextView
             android:id="@+id/so_thu_tu_bo_de_thi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="Đề 01"
+            android:text="01"
             android:textColor="@color/den"
             android:textSize="20sp"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="5dp"/>
 
     </LinearLayout>
 

@@ -1,6 +1,8 @@
 package com.example.dacn.Bo_de_thi;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,49 +10,84 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bo_de_thi_adapter extends RecyclerView.Adapter<Bo_de_thi_adapter.MyViewHolder> {
-    ArrayList<Bo_de_thi_model> Bodethimodels;
-    Context context;
-    public Bo_de_thi_adapter(Context context, ArrayList<Bo_de_thi_model> Bodethimodels){
-        this.context = context;
+    private final List<BoDe> Bodethimodels;
+    private Context mcontext;
+
+    public Bo_de_thi_adapter(Context context, List<BoDe> Bodethimodels){
+        this.mcontext = context;
         this.Bodethimodels = Bodethimodels;
     }
 
     @NonNull
     @Override
-    public Bo_de_thi_adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.card_bo_de_thi, parent, false);
-
-        return new Bo_de_thi_adapter.MyViewHolder(view);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_bo_de_thi, parent, false);
+        return new MyViewHolder(view);
     }
 
 
     @Override
     public int getItemCount() {
-
-        return Bodethimodels.size();
+        if (Bodethimodels != null) {
+            return Bodethimodels.size();
+        }
+        return 0;
     }
 
     public static  class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView sothutu;
-        ImageView img_mon;
+        private final TextView sothutu,textView;
+        private ImageView img_mon;
+        private CardView cardView;
+
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
             sothutu = itemView.findViewById(R.id.so_thu_tu_bo_de_thi);
             img_mon = itemView.findViewById(R.id.img_mon);
+            textView = itemView.findViewById(R.id.textview);
+            cardView = itemView.findViewById(R.id.layout_card_de);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull Bo_de_thi_adapter.MyViewHolder holder, int position) {
-        holder.sothutu.setText(Bodethimodels.get(position).getSo_thu_tu_bo_de_thi());
-        holder.img_mon.setImageResource(Bodethimodels.get(position).getImg_mon());
+        BoDe boDe = Bodethimodels.get(position);
+        if (boDe == null) {
+            return;
+        }
+        holder.sothutu.setText(String.valueOf(boDe.getCode()));
+        if (TruyenDuLieu.trMon == "His") {
+            holder.img_mon.setImageResource(R.drawable.img_history);
+        } else if (TruyenDuLieu.trMon == "Geo") {
+            holder.img_mon.setImageResource(R.drawable.img_global);
+        } else if (TruyenDuLieu.trMon == "Eng") {
+            holder.img_mon.setImageResource(R.drawable.img_international);
+        } else if (TruyenDuLieu.trMon == "Gdcd") {
+            holder.img_mon.setImageResource(R.drawable.img_emotional);
+        }
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity(boDe);
+            }
+        });
+    }
+
+    private void nextActivity(BoDe boDe) {
+        Intent intent = new Intent(mcontext, ontap_tracnghiem.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Truyền mã bộ đề", boDe);
+        intent.putExtras(bundle);
+        mcontext.startActivity(intent);
     }
 }

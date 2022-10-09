@@ -1,5 +1,6 @@
 package com.example.dacn;
 
+import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.dangnhap.DangNhapResult;
 import com.google.gson.Gson;
@@ -22,7 +23,7 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:3000")
+            .baseUrl("http://192.168.1.5:3000")
             //.baseUrl("http://172.30.167.85:3000")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
@@ -34,8 +35,8 @@ public interface RetrofitInterface {
     @POST("/signup")
     Call<Void> executeSignup (@Body HashMap<String, String> map);
 
-    @GET("/ques")
-    Call<List<CauHoiTracNghiem>> getCauHoiTracNghiem();
+    @POST("/ques")
+    Call<List<CauHoiTracNghiem>> getCauHoiTracNghiem(@Body HashMap<String, String> map);
 
     @POST("/sendOTP")
     Call<Void> checkemail(@Body HashMap<String, String> map);
@@ -48,4 +49,7 @@ public interface RetrofitInterface {
 
     @POST("/changeinfo")
     Call<Void> changeInfo (@Body HashMap<String, String> map);
+
+    @POST("/list")
+    Call<List<BoDe>> getBoDe (@Body HashMap<String, String> map);
 }
