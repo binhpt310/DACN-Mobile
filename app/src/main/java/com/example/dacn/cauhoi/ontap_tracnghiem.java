@@ -66,6 +66,7 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
+                resetBackground(ar_textview);
 
                 xemnhanh.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -138,6 +139,28 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         });
     }
 
+    /*private void callApi(Context context) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("sub", TruyenDuLieu.trMaDe);
+        map.put("Code", MaBoDe);
+        Call<List<CauHoiTracNghiem>> call = retrofitInterface.getCauHoiTracNghiem(map);
+        call.enqueue(new Callback<List<CauHoiTracNghiem>>() {
+            @Override
+            public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
+                List<CauHoiTracNghiem> adslist = response.body();
+
+                gan_gia_tri(adslist, ar_string, ar_textview);
+
+                gestureDetector = new GestureDetector(context, this);
+            }
+
+            @Override
+            public void onFailure(Call<List<CauHoiTracNghiem>> call, Throwable t) {
+                Toast.makeText(ontap_tracnghiem.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }*/
+
     private void khaibao() {
         ar_textview[0] = findViewById(R.id.inputon_cauhoi);
         ar_textview[1] = findViewById(R.id.oncautraloia);
@@ -162,33 +185,39 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         tv[3].setText(arg[3]);
         tv[4].setText(arg[4]);
 
-        checkDapAn(tv, arg);
-
         //random vị trí textview để mảng dữ liệu đưa vào
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i=1; i<5; i++) list.add(i);
+
         Collections.shuffle(list);
         for (int i=0; i<4; i++) {
             tv[i+1].setText(arg[(list.get(i))]);
             Log.e("dd", String.valueOf((list.get(i))));
         }
-
+        checkDapAn(tv,arg);
         socau.setText(String.valueOf(Cauhoihientai+1));
     }
 
 
     public void checkDapAn (TextView[] txtvw, String[] ans){
-        if (ans[1].contentEquals(ans[5])) {
-            txtvw[1].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+        for (int i = 1; i < 5; i++) {
+            txtvw[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (int j = 1; j < 5; j++) {
+                        if (ans[j].equals(ans[5])) {
+                            txtvw[j].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+                        } else
+                            txtvw[j].setBackgroundResource(R.drawable.bg_otracnghiem_do);
+                    }
+                }
+            });
         }
-        else if (ans[2].contentEquals(ans[5])) {
-            txtvw[2].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-        }
-        else if (ans[3].contentEquals(ans[5])) {
-            txtvw[3].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-        }
-        else if (ans[4].contentEquals(ans[5])) {
-            txtvw[4].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+    }
+
+    public void resetBackground(TextView[] txtvw) {
+        for (int i = 1; i < 5; i++) {
+            txtvw[i].setBackgroundResource(R.drawable.bg_otracnghiem);
         }
     }
 

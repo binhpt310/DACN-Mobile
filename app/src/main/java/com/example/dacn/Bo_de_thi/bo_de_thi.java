@@ -61,10 +61,10 @@ public class bo_de_thi extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.radio_thi:
-                        loaide = "_review";
+                        loaide = "_exam";
                         break;
                     case R.id.radio_on:
-                        loaide = "_exam";
+                        loaide = "_review";
                         break;
                 }
                 TruyenDuLieu.trMaDe = tenmon+loaide;
@@ -93,28 +93,6 @@ public class bo_de_thi extends AppCompatActivity {
                 });
             }
         });
-
-        /*HashMap<String, String> map = new HashMap<>();
-        map.put("sub", made);
-        Call<List<BoDe>> call = retrofitInterface.getBoDe();
-        call.enqueue(new Callback<List<BoDe>>() {
-            @Override
-            public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
-                Bodethimodels = response.body();
-                if (response.code() == 200) {
-                    Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(Bodethimodels);
-                    recyclerView.setAdapter(bo_de_thi_adapter);
-                } else if (response.code() == 404) {
-                    Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<BoDe>> call, Throwable t) {
-                Toast.makeText(bo_de_thi.this,"Fail",Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
 }
