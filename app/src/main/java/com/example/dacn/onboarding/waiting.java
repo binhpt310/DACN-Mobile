@@ -59,7 +59,7 @@ public class waiting extends AppCompatActivity {
 
     public void setUpindicator(int position){
 
-        dots = new TextView[4];
+        dots = new TextView[3];
         mDotLayout.removeAllViews();
 
         for (int i = 0 ; i < dots.length ; i++){
@@ -67,12 +67,12 @@ public class waiting extends AppCompatActivity {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226"));
             dots[i].setTextSize(35);
-            dots[i].setTextColor(getResources().getColor(R.color.inactive,getApplicationContext().getTheme()));
+            dots[i].setTextColor(getResources().getColor(R.color.trang,getApplicationContext().getTheme()));
             mDotLayout.addView(dots[i]);
 
         }
 
-        dots[position].setTextColor(getResources().getColor(R.color.active,getApplicationContext().getTheme()));
+        dots[position].setTextColor(getResources().getColor(R.color.timxanh,getApplicationContext().getTheme()));
 
     }
 

@@ -19,27 +19,23 @@ public class waiting_adapter extends PagerAdapter {
 
     int images[] = {
 
-            R.drawable.image1,
-            R.drawable.image2,
-            R.drawable.image3,
-            R.drawable.image4
-
+            R.drawable.img_onboard1,
+            R.drawable.img_onboard2,
+            R.drawable.img_onboard3
     };
 
     int headings[] = {
 
             R.string.heading_one,
             R.string.heading_two,
-            R.string.heading_three,
-            R.string.heading_fourth
+            R.string.heading_three
     };
 
     int description[] = {
 
       R.string.desc_one,
       R.string.desc_two,
-      R.string.desc_three,
-      R.string.desc_fourth
+      R.string.desc_three
     };
 
     public waiting_adapter(Context context){

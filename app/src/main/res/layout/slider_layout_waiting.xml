@@ -10,8 +10,8 @@
         android:id="@+id/titleImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/image1"/>
+        android:layout_marginTop="5dp"
+        android:src="@drawable/img_onboard1" />
 
     <TextView
         android:id="@+id/texttitle"
@@ -21,8 +21,8 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/heading_one"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28dp"/>
+        android:textColor="@color/timxanh"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/textdeccription"
@@ -32,8 +32,8 @@
         android:fontFamily="@font/poppins"
         android:text="@string/desc_one"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16dp"/>
+        android:textColor="@color/den"
+        android:textSize="20dp" />
 
 
 </LinearLayout>

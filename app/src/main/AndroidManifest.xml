@@ -64,15 +64,15 @@
             android:name=".trangchu2"
             android:exported="false" />
         <activity
-            android:name=".onboarding.waiting"
 
+            android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
             android:name=".dangnhap.dang_nhap"
             android:exported="false"/>
 
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".onboarding.waiting"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
