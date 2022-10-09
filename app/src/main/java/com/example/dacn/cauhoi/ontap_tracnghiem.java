@@ -51,25 +51,22 @@ public class ontap_tracnghiem extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
                 List<CauHoiTracNghiem> adslist = response.body();
-
                 gan_gia_tri(adslist,ar_string,ar_textview);
 
-                //onTouch();
 
                 xemnhanh.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         Cauhoihientai++;
-
                         if (Cauhoihientai < (adslist.size())){
                             gan_gia_tri(adslist,ar_string,ar_textview);
+                            resetBackground(ar_textview);
+
                         } else {
                             xemnhanh.setOnClickListener(null);
                         }
                     }
                 });
-
                 /*ar_textview[1].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -151,16 +148,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
         tv[3].setText(arg[3]);
         tv[4].setText(arg[4]);
 
-        checkDapAn(tv, arg);
-
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<5; i++) list.add(i);
+        for (int i=1; i<5; i++) {
+            list.add(i);
+        }
+
         Collections.shuffle(list);
+
         for (int i=0; i<4; i++) {
             tv[i+1].setText(arg[(list.get(i))]);
             Log.e("dd", String.valueOf((list.get(i))));
         }
-
+        checkDapAn(tv,arg);
         socau.setText(String.valueOf(Cauhoihientai+1));
     }
 
@@ -182,35 +181,28 @@ public class ontap_tracnghiem extends AppCompatActivity {
         return false;
     }
 
-    public void checkDapAn (TextView[] txtvw, String[] ans){
-        if (ans[1].contentEquals(ans[5])) {
-            txtvw[1].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-        }
-        else if (ans[2].contentEquals(ans[5])) {
-            txtvw[2].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-        }
-        else if (ans[3].contentEquals(ans[5])) {
-            txtvw[3].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-        }
-        else if (ans[4].contentEquals(ans[5])) {
-            txtvw[4].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+    public void checkDapAn (TextView[] txtvw, String[] ans) {
+        for (int i = 1; i < 5; i++) {
+            txtvw[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (int j = 1; j < 5; j++){
+                        if (ans[j].equals(ans[5])) {
+                            txtvw[j].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+                        } else
+                            txtvw[j].setBackgroundResource(R.drawable.bg_otracnghiem_do);
+                    }
+                }
+            });
         }
     }
-        /*if (cauA.equals(arg[5])) {
-            a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-        } else {
-            a.setBackgroundResource(R.drawable.bg_otracnghiem_do);
-            if (cauB.equals(arg[5])) {
-                b.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-            } else if (cauC.equals(arg[5])) {
-                c.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-            } else if (cauD.equals(arg[5])) {
-                d.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-            }
+
+    public void resetBackground(TextView[] txtvw)
+    {
+        for (int i = 1; i<5; i++)
+        {
+            txtvw[i].setBackgroundResource(R.drawable.bg_otracnghiem);
         }
-        b.setOnClickListener(null);
-        c.setOnClickListener(null);
-        d.setOnClickListener(null);*/
-    //}
+    }
 
 }
