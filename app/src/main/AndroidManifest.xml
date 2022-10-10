@@ -24,16 +24,16 @@
             android:name=".quenmatkhau.quenmatkhau2"
             android:exported="false" />
         <activity
-            android:name=".Bo_de_thi.bo_de_thi"
+            android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".bo_de_thi"
             android:exported="false" />
         <activity
             android:name=".FirstInstall.OnBoardingScreen"
             android:exported="false" />
         <activity
-            android:name=".Lich_su_lam_bai.lich_su_lam_bai"
+            android:name=".lich_su_lam_bai"
             android:exported="false" />
         <activity
             android:name=".popup.popup_ket_thuc_thi_thu"
@@ -61,13 +61,14 @@
             android:name=".cauhoi.thi_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_nhap"
-            android:exported="false" />
-        <activity
-            android:name=".dangnhap.Logo_screen"
-            android:exported="false" />
-        <activity
             android:name=".trangchu2"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.waiting"
+
+            android:exported="false" />
+        <activity
+            android:name=".dangnhap.dang_nhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
