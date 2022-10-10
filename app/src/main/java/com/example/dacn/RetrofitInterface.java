@@ -23,8 +23,8 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.5:3000")
-            //.baseUrl("http://172.30.167.85:3000")
+            //.baseUrl("http://192.168.1.5:3000")
+            .baseUrl("http://172.31.10.125:3000")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);

@@ -125,15 +125,18 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                     for (int i=1;i<5;i++) {
                         if (tv[i].getText().toString().equals(b)) {
                             tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
-                            tv[i].setOnClickListener(null);
                         }
                     }
                 }
                 Log.e("String", b);
                 Log.e("Textview", a.getText().toString());
                 Log.e("Dung sai", String.valueOf(result));
+                for (int i=1;i<5;i++) {
+                    tv[i].setOnClickListener(null);
+                }
             }
         });
+
     }
 
     private void khaibao() {

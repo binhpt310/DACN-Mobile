@@ -14,26 +14,28 @@
         android:src="@drawable/img_onboard1" />
 
     <TextView
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:id="@+id/texttitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/heading_one"
         android:textAlignment="center"
         android:textColor="@color/timxanh"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/textdeccription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/roboto_medium"
         android:text="@string/desc_one"
         android:textAlignment="center"
         android:textColor="@color/den"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
 
 </LinearLayout>

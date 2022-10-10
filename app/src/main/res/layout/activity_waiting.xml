@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hong"
-    tools:context=".onboarding.waiting">
+    tools:context=".FirstInstall.waiting">
 
-    <Button
+    <TextView
         android:id="@+id/skipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/timxanh"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/roboto_medium"
         android:text="Bỏ qua"
         android:textColor="@color/timxanh"
-        android:textSize="20sp"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

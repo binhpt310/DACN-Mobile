@@ -35,8 +35,8 @@
 
 
     //Description
-    <string name="desc_one">Chúng tôi đến từ trường Đại học công nghệ thông tin-ĐHQGHCM</string>
-    <string name="desc_two">ôn tập thuận tiện và thi thử có giới hạn thời gian giúp bạn làm quen với áp lực phòng thi </string>
+    <string name="desc_one">Chúng tôi đến từ trường Đại học công nghệ thông tin-ĐHQGHCM.</string>
+    <string name="desc_two">Ôn tập thuận tiện và thi thử có giới hạn thời gian giúp bạn làm quen với áp lực phòng thi. </string>
     <string name="desc_three">Có kết hoạch học tập rõ ràng, nhớ luyện tập chăm chỉ để đạt được kết quả tốt nhất nhé!</string>
 
 </resources>

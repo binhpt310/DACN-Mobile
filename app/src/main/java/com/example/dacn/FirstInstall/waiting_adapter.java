@@ -1,4 +1,4 @@
-package com.example.dacn.adapter;
+package com.example.dacn.FirstInstall;
 
 import android.content.Context;
 import android.view.LayoutInflater;

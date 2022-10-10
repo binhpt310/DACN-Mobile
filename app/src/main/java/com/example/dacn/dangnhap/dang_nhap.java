@@ -58,7 +58,7 @@ public class dang_nhap extends AppCompatActivity {
                             TruyenDuLieu.trEmail_dnhap = dangNhap.getEmail();;
                             TruyenDuLieu.trTenTk_dnhap = dangNhap.getTenngdung();
 
-                            Intent intent = new Intent(dang_nhap.this, mucluc.class);
+                            Intent intent = new Intent(dang_nhap.this, trangchu2.class);
                             startActivity(intent);
                             finish();
                         } else if (response.code() == 401) {

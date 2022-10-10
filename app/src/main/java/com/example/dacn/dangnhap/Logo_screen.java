@@ -14,10 +14,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.example.dacn.FirstInstall.MySharedPreferences;
-import com.example.dacn.FirstInstall.OnBoardingScreen;
 import com.example.dacn.R;
-import com.example.dacn.dangnhap.Connectivity;
-import com.example.dacn.onboarding.waiting;
+import com.example.dacn.FirstInstall.waiting;
 
 public class Logo_screen extends AppCompatActivity {
 
