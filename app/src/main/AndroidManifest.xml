@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".popup.popup_dang_xuat"
+            android:exported="false" />
+        <activity
             android:name=".hengio_1"
             android:exported="false" />
         <activity
@@ -64,13 +67,13 @@
             android:name=".dangnhap.dang_nhap"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".trangchu2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

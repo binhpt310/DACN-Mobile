@@ -1,22 +1,28 @@
 package com.example.dacn.popup;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dacn.R;
+import com.example.dacn.dangnhap.dang_nhap;
 
-public class popup_hoan_thanh_thi_thu extends AppCompatActivity {
+public class popup_dang_xuat extends AppCompatActivity {
+
+    Button btn_olai, btn_dangxuat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popup_hoan_thanh_thi_thu);
+        setContentView(R.layout.activity_popup_dang_xuat);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -32,6 +38,17 @@ public class popup_hoan_thanh_thi_thu extends AppCompatActivity {
         params.x = 0;
         params.y = 0;
         getWindow().setAttributes(params);
+
+        btn_olai = findViewById(R.id.btn_olai);
+        btn_dangxuat = findViewById(R.id.btn_dangxuat);
+
+        btn_dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(popup_dang_xuat.this, dang_nhap.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
