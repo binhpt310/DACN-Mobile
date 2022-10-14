@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".hengio_1"
+            android:exported="false" />
+        <activity
             android:name=".quenmatkhau.quenmatkhau4"
             android:exported="false" />
         <activity
