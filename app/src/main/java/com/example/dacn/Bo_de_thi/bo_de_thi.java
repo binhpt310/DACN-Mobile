@@ -116,6 +116,7 @@ public class bo_de_thi extends AppCompatActivity {
                                 Toast.makeText(bo_de_thi.this,"Fail",Toast.LENGTH_SHORT).show();
                             }
                         });
+
                         break;
                 }
                 /*TruyenDuLieu.trMaDe = tenmon+loaide;
@@ -145,10 +146,9 @@ public class bo_de_thi extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void callApi() {
 
     }
+
+
 
 }

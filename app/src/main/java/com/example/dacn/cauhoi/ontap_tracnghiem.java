@@ -82,6 +82,7 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
+                resetBackground(ar_textview);
 
                 bamtracnghiem(ar_textview[1], ar_textview, ar_string[5]);
                 bamtracnghiem(ar_textview[2], ar_textview, ar_string[5]);
@@ -113,6 +114,7 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         });
     }
 
+
     private void bamtracnghiem(TextView a, TextView tv[], String b) {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +140,7 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         });
 
     }
+
 
     private void khaibao() {
         ar_textview[0] = findViewById(R.id.inputon_cauhoi);
@@ -168,13 +171,12 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         //random vị trí textview để mảng dữ liệu đưa vào
         ArrayList<Integer> list = new ArrayList<Integer>();
         for (int i=1; i<5; i++) list.add(i);
+
         Collections.shuffle(list);
         for (int i=0; i<4; i++) {
             tv[i+1].setText(arg[(list.get(i))]);
             Log.e("dd", String.valueOf((list.get(i))));
         }
-
-        //set câu hỏi hiện tại
         socau.setText(String.valueOf(Cauhoihientai+1));
 
         //xóa background ô đáp án khi đổi câu hỏi.
