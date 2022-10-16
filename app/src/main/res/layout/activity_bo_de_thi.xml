@@ -56,10 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_weight="1"
+            android:checked="false"
             android:fontFamily="@font/roboto_bold"
             android:text="Ôn tập"
-            android:textSize="16sp"
-            android:textColor="@color/den"/>
+            android:textColor="@color/den"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/radio_thi"

@@ -82,7 +82,6 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
-                resetBackground(ar_textview);
 
                 bamtracnghiem(ar_textview[1], ar_textview, ar_string[5]);
                 bamtracnghiem(ar_textview[2], ar_textview, ar_string[5]);

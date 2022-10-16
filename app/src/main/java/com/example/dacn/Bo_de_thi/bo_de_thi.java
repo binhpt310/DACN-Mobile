@@ -60,6 +60,8 @@ public class bo_de_thi extends AppCompatActivity {
         });
 
         radioGroup = findViewById(R.id.radio_gr);
+
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {

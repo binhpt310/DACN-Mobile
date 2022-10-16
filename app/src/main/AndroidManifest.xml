@@ -16,6 +16,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".popup.popup_dang_xuat"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
             android:exported="false" />
         <activity
             android:name=".hengio_1"

@@ -31,14 +31,14 @@ public class popup_dang_xuat extends AppCompatActivity {
         int Width = dm.widthPixels;
         int Height = dm.heightPixels;
 
-        getWindow().setLayout((int)(Width*.5), (int)(Height*.5));
+        getWindow().setLayout((int)(Width*.9), (int)(Height*.5));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
         params.y = 0;
         getWindow().setAttributes(params);
-
+        setTitle("");
         btn_olai = findViewById(R.id.btn_olai);
         btn_dangxuat = findViewById(R.id.btn_dangxuat);
 
@@ -47,6 +47,13 @@ public class popup_dang_xuat extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(popup_dang_xuat.this, dang_nhap.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_olai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
