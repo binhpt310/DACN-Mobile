@@ -47,6 +47,7 @@ public class trangchu2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TruyenDuLieu.trMon="His";
+                TruyenDuLieu.trTenMon = "Lịch sử";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }
@@ -56,6 +57,7 @@ public class trangchu2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TruyenDuLieu.trMon="Geo";
+                TruyenDuLieu.trTenMon = "Địa lý";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }
@@ -65,6 +67,7 @@ public class trangchu2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TruyenDuLieu.trMon="Eng";
+                TruyenDuLieu.trTenMon = "Anh văn";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }
@@ -74,6 +77,7 @@ public class trangchu2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TruyenDuLieu.trMon="Gdcd";
+                TruyenDuLieu.trTenMon = "GDCD";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
             }

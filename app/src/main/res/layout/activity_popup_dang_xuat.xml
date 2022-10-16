@@ -10,7 +10,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/check_circle"
+        android:src="@drawable/ic_logout"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
-        android:text="Bạn đã hoàn thành bài thi?"
+        android:text="Bạn muốn đăng xuất?"
         android:textAlignment="center"
         android:textColor="@color/trang"
         android:textSize="25sp"
@@ -31,31 +31,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="165dp"
+        android:id="@+id/btn_olai"
+        android:layout_width="155dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/timhong"
         android:fontFamily="@font/roboto_bold"
-        android:text="Làm tiếp"
+        android:text="Ở lại"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_dangxuat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="165dp"
+        android:id="@+id/btn_dangxuat"
+        android:layout_width="155dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/maudo"
         android:fontFamily="@font/roboto_bold"
-        android:text="Hoàn thành"
+        android:text="Đăng xuất"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/btn_olai"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,12 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".popup.popup_dang_xuat"
+            android:exported="false" />
+        <activity
+            android:name=".hengio_1"
+            android:exported="false" />
+        <activity
             android:name=".quenmatkhau.quenmatkhau4"
             android:exported="false" />
         <activity
@@ -28,9 +34,6 @@
             android:exported="false" />
         <activity
             android:name=".cauhoi.ontap_tracnghiem"
-            android:exported="false" />
-        <activity
-            android:name=".FirstInstall.OnBoardingScreen"
             android:exported="false" />
         <activity
             android:name=".Lich_su_lam_bai.lich_su_lam_bai"
@@ -65,6 +68,9 @@
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
+            android:exported="false" />
+        <activity
+            android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
             android:name=".trangchu2"

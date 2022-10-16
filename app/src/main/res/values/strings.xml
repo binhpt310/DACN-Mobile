@@ -25,4 +25,18 @@
     <string-array name="ten_de_thi">//Lay API de co ten de thi
         <item>Đề thi 2019</item>
     </string-array>
+
+
+
+    //Headings
+    <string name="heading_one">Một sản phẩm của đồ án chuyên ngành</string>
+    <string name="heading_two">Dễ dàng ôn luyện</string>
+    <string name="heading_three">Bắt đầu nào!</string>
+
+
+    //Description
+    <string name="desc_one">Chúng tôi đến từ trường Đại học công nghệ thông tin-ĐHQGHCM.</string>
+    <string name="desc_two">Ôn tập thuận tiện và thi thử có giới hạn thời gian giúp bạn làm quen với áp lực phòng thi. </string>
+    <string name="desc_three">Có kết hoạch học tập rõ ràng, nhớ luyện tập chăm chỉ để đạt được kết quả tốt nhất nhé!</string>
+
 </resources>

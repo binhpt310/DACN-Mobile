@@ -13,6 +13,7 @@ import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
+import com.example.dacn.popup.popup_dang_xuat;
 import com.example.dacn.trangchu2;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -71,10 +72,8 @@ public class mucluc extends AppCompatActivity {
         dangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mucluc.this, dang_nhap.class);
+                Intent intent = new Intent(getApplicationContext(), popup_dang_xuat.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-                finish();
 
                 TruyenDuLieu.trEmail_dnhap="";
                 TruyenDuLieu.trTenTk_dnhap="";
