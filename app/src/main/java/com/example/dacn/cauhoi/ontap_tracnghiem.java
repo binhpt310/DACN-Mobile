@@ -36,8 +36,9 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
     TextView[] ar_textview = new TextView[5];
     String[] ar_string = new String[6];
     ImageView btn_back;
-
+    ImageView[] arr_img_progress = new ImageView[20];
     public int Cauhoihientai = 0;
+    public int img = 0;
 
     private float x1,x2,y1,y2;
     private static int MIN_DISTANCE = 150;
@@ -92,15 +93,21 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                     @Override
                     public void onClick(View view) {
                         Cauhoihientai++;
-                        if (Cauhoihientai < (adslist.size())){
+
+//                      if (Cauhoihientai < (adslist.size())){
+                          if (Cauhoihientai < 20){
                             gan_gia_tri(adslist,ar_string,ar_textview);
-                        } else {
-                            xemnhanh.setOnClickListener(null);
+                            arr_img_progress[img].setImageResource(R.drawable.bg_otracnghiem_xanh);
+
                         }
+//                        if (Cauhoihientai == 18){
+//                            xemnhanh.setClickable(false);
+
                         bamtracnghiem(ar_textview[1], ar_textview, ar_string[5]);
                         bamtracnghiem(ar_textview[2], ar_textview, ar_string[5]);
                         bamtracnghiem(ar_textview[3], ar_textview, ar_string[5]);
                         bamtracnghiem(ar_textview[4], ar_textview, ar_string[5]);
+                        img++;
                     }
                 });
 
@@ -119,13 +126,19 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
             @Override
             public void onClick(View view) {
                 boolean result = a.getText().toString().equals(b);
-                if (result)
+
+                if (result) {
                     a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+
+                }
+
                 else {
                     a.setBackgroundResource(R.drawable.bg_otracnghiem_do);
+
                     for (int i=1;i<5;i++) {
                         if (tv[i].getText().toString().equals(b)) {
                             tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
+
                         }
                     }
                 }
@@ -135,6 +148,7 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                 for (int i=1;i<5;i++) {
                     tv[i].setOnClickListener(null);
                 }
+
             }
         });
 
@@ -151,6 +165,27 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         socau = findViewById(R.id.txt_on_socauhoi);
         btn_back = findViewById(R.id.img_back_ontap);
         txt_toolbar = findViewById(R.id.text_toolbar_ontap);
+
+        arr_img_progress[0] = findViewById(R.id.progress_1);
+        arr_img_progress[1] = findViewById(R.id.progress_2);
+        arr_img_progress[2] = findViewById(R.id.progress_3);
+        arr_img_progress[3] = findViewById(R.id.progress_4);
+        arr_img_progress[4] = findViewById(R.id.progress_5);
+        arr_img_progress[5] = findViewById(R.id.progress_6);
+        arr_img_progress[6] = findViewById(R.id.progress_7);
+        arr_img_progress[7] = findViewById(R.id.progress_8);
+        arr_img_progress[8] = findViewById(R.id.progress_9);
+        arr_img_progress[9] = findViewById(R.id.progress_10);
+        arr_img_progress[10] = findViewById(R.id.progress_11);
+        arr_img_progress[11] = findViewById(R.id.progress_12);
+        arr_img_progress[12] = findViewById(R.id.progress_13);
+        arr_img_progress[13] = findViewById(R.id.progress_14);
+        arr_img_progress[14] = findViewById(R.id.progress_15);
+        arr_img_progress[15] = findViewById(R.id.progress_16);
+        arr_img_progress[16] = findViewById(R.id.progress_17);
+        arr_img_progress[17] = findViewById(R.id.progress_18);
+        arr_img_progress[18] = findViewById(R.id.progress_19);
+        arr_img_progress[19] = findViewById(R.id.progress_20);
     }
 
     private void gan_gia_tri(List<CauHoiTracNghiem> a, String arg[], TextView tv[]) {

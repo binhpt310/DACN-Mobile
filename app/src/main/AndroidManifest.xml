@@ -74,6 +74,7 @@
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
+
             android:name=".trangchu2"
             android:exported="true">
             <intent-filter>
@@ -83,5 +84,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
