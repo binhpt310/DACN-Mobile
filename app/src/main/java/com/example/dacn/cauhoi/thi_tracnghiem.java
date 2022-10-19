@@ -52,7 +52,7 @@ public class thi_tracnghiem extends AppCompatActivity {
 
         khaibao();
 
-        String text = "Ôn tập " + TruyenDuLieu.trTenMon + " - đề số " + MaBoDe;
+        String text = "Đề thi " + TruyenDuLieu.trTenMon + " - đề số " + MaBoDe;
         txt_toolbar.setText(text);
 
         //Call the timer
