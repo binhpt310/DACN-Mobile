@@ -1,5 +1,6 @@
 package com.example.dacn.Bo_de_thi;
 
+import static android.content.ContentValues.TAG;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -88,34 +89,62 @@ public class bo_de_thi extends AppCompatActivity {
                 }
             });
         }
-        else if (radiothi.isChecked())
-        {
-            loaide = "_exam";
-            TruyenDuLieu.trMaDe = tenmon+loaide;
 
-            HashMap<String, String> map = new HashMap<>();
-            map.put("sub", TruyenDuLieu.trMaDe);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.radio_thi:
+                        loaide = "_exam";
+                        TruyenDuLieu.trMaDe = tenmon + loaide;
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("sub", TruyenDuLieu.trMaDe);
+                        Call<List<BoDe>> call = retrofitInterface.getBoDe(map);
+                        call.enqueue(new Callback<List<BoDe>>() {
+                            @Override
+                            public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
+                                Bodethimodels = response.body();
+                                if (response.code() == 200) {
+                                    Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(bo_de_thi.this, Bodethimodels);
+                                    recyclerView.setAdapter(bo_de_thi_adapter);
+                                } else if (response.code() == 404) {
+                                    Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
+                                }
+                            }
 
-            Call<List<BoDe>> call = retrofitInterface.getBoDe(map);
-            call.enqueue(new Callback<List<BoDe>>() {
-                @Override
-                public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
-                    Bodethimodels = response.body();
-                    if (response.code() == 200) {
-                        Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(bo_de_thi.this,Bodethimodels);
-                        recyclerView.setAdapter(bo_de_thi_adapter);
-                    } else if (response.code() == 404) {
-                        Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
-                    }
+                            @Override
+                            public void onFailure(Call<List<BoDe>> call, Throwable t) {
+                                Toast.makeText(bo_de_thi.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        break;
+                    case R.id.radio_on:
+                        loaide = "_review";
+                        TruyenDuLieu.trMaDe = tenmon + loaide;
+                        HashMap<String, String> maps = new HashMap<>();
+                        maps.put("sub", TruyenDuLieu.trMaDe);
+                        Call<List<BoDe>> calls = retrofitInterface.getBoDe(maps);
+                        calls.enqueue(new Callback<List<BoDe>>() {
+                            @Override
+                            public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
+                                Bodeonmodels = response.body();
+                                if (response.code() == 200) {
+                                    Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(bo_de_thi.this, Bodeonmodels);
+                                    recyclerView.setAdapter(bo_de_on_adapter);
+                                } else if (response.code() == 404) {
+                                    Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
+                                }
+                            }
 
+                            @Override
+                            public void onFailure(Call<List<BoDe>> call, Throwable t) {
+                                Toast.makeText(bo_de_thi.this, "Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        break;
                 }
-
-                @Override
-                public void onFailure(Call<List<BoDe>> call, Throwable t) {
-                    Toast.makeText(bo_de_thi.this,"Fail",Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+            }
+        });
 
     }
 

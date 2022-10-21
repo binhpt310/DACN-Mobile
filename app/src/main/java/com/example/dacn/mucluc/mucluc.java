@@ -123,18 +123,3 @@ public class mucluc extends AppCompatActivity {
         }
     }
 
-    /*private void nextActivity(){
-        Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
-        intent.putExtra("key_tenngdung", tenngdung);
-        startActivityForResult(intent, MY_REQUEST_CODE);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (MY_REQUEST_CODE == requestCode && resultCode == Activity.RESULT_OK) {
-            txt_tenngdung.setText(data.getStringExtra("key_key_tenngdung"));
-        }
-    }*/
