@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Nhập số điện thoại của bạn để tiếp tục nhé!"
+            android:text="Nhập email của bạn để tiếp tục nhé!"
             android:textColor="@color/den"
             android:textSize="20sp" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Mã xác nhận sẽ được gửi qua số điện thoại này."
+            android:text="Mã xác nhận sẽ được gửi qua email này."
             android:textColor="@color/den"
             android:textSize="18sp" />
 

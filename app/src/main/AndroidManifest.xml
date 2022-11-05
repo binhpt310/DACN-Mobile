@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +17,8 @@
         android:roundIcon="@drawable/img_knowledge"
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".popup.popup_dang_xuat"
             android:theme="@style/Theme.AppCompat.Dialog.Alert"
@@ -65,7 +70,7 @@
             android:name=".cauhoi.thi_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_nhap"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
@@ -74,14 +79,12 @@
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.dang_nhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

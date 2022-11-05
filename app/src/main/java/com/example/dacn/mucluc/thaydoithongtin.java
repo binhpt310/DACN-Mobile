@@ -1,14 +1,21 @@
 package com.example.dacn.mucluc;
 
+import static android.content.ContentValues.TAG;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.dacn.R;
+import com.example.dacn.RetrofitInterface;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.quenmatkhau.quenmatkhau1;
 import com.example.dacn.quenmatkhau.quenmatkhau2;
@@ -23,21 +31,34 @@ import com.example.dacn.quenmatkhau.quenmatkhau3;
 import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class thaydoithongtin extends AppCompatActivity {
     private static int RESULT_LOAD_IMAGE = 1;
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
     CircleImageView ava;
     FloatingActionButton camera;
     ImageView img_back;
     EditText tengndung, matkhau, nhaplaimk;
     Button btn_luuthaydoi;
     String email;
+    private Uri mUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +71,13 @@ public class thaydoithongtin extends AppCompatActivity {
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(thaydoithongtin.this, mucluc.class);
+                /*Intent intent = new Intent(thaydoithongtin.this, mucluc.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                finish();
+                finish();*/
+                if (mUri!=null) {
+                    callApiImage();
+                }
             }
         });
 
@@ -113,28 +137,55 @@ public class thaydoithongtin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*private void backActivity() {
-        String str_tenngdungup = tengndung.getText().toString().trim();
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra("key_tenngdung", str_tenngdungup);
-        setResult(Activity.RESULT_OK, returnIntent);
-        finish();
-    }*/
-
     private void backActivity() {
         String trEmail_thaydoi = tengndung.getText().toString().trim();
         TruyenDuLieu.trTenTk_dnhap = trEmail_thaydoi;
         finish();
     }
 
+    private void callApiImage() {
+        email = TruyenDuLieu.trEmail_dnhap;
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/from-data"),email);
+        Log.e("api email", String.valueOf(requestBody));
+        String strRealPath = RealPathUtil.getRealPath(thaydoithongtin.this,mUri);
+        Log.e("api img", strRealPath);
+        File file = new File(strRealPath);
+        RequestBody requestBodyavt = RequestBody.create(MediaType.parse("multipart/from-data"),file);
+        Log.e("api thongtin", String.valueOf(requestBodyavt));
+        MultipartBody.Part multiAvt = MultipartBody.Part.createFormData(User_image.KEY_EMAIL,file.getName(),requestBodyavt);
+
+        retrofitInterface.changeAvatar(requestBody,multiAvt).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.code() == 200) {
+                    Log.e(TAG,"api img ok");
+
+                } else if (response.code() == 400) {
+                    Toast.makeText(thaydoithongtin.this,"Lỗi",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG,"api img lỗi gì đó");
+                Toast.makeText(thaydoithongtin.this, t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK){
-
             Uri imageUri = data.getData();
-            ava.setImageURI(imageUri);
+            mUri = imageUri;
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                ava.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
     }
@@ -145,7 +196,7 @@ public class thaydoithongtin extends AppCompatActivity {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //mở thư viện
                 Intent i = new Intent(
                         Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -155,4 +206,17 @@ public class thaydoithongtin extends AppCompatActivity {
         });
     }
 
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
 }
