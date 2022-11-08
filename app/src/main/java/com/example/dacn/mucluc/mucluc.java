@@ -25,7 +25,6 @@ public class mucluc extends AppCompatActivity {
     CircleImageView avamuluc;
     TextView txt_tenngdung, txt_email;
     String tenngdung,email;
-    Intent intent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +73,6 @@ public class mucluc extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), popup_dang_xuat.class);
                 startActivity(intent);
-
-                TruyenDuLieu.trEmail_dnhap="";
-                TruyenDuLieu.trTenTk_dnhap="";
             }
         });
 

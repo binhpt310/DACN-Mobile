@@ -64,8 +64,4 @@ public interface RetrofitInterface {
     Call<Void> changeAvatar(@Part("email") RequestBody email,
                             @Part MultipartBody.Part image);
 
-    @Multipart
-    @POST("/uploadimg")
-    Observable<ResponseBody> updateProfile(@Part("email") RequestBody email,
-                                           @Part MultipartBody.Part image);
 }
