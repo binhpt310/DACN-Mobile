@@ -23,12 +23,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.dacn.R;
-import com.example.dacn.RetrofitInterface;
+import com.example.dacn.RealPathUtil;
 import com.example.dacn.TruyenDuLieu;
-import com.example.dacn.quenmatkhau.quenmatkhau1;
-import com.example.dacn.quenmatkhau.quenmatkhau2;
-import com.example.dacn.quenmatkhau.quenmatkhau3;
-import com.google.android.gms.cast.framework.media.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
@@ -144,15 +140,32 @@ public class thaydoithongtin extends AppCompatActivity {
     }
 
     private void callApiImage() {
-        email = TruyenDuLieu.trEmail_dnhap;
+        //email = TruyenDuLieu.trEmail_dnhap;
+        email = "hoangoanh711@gmail.com";
+        Log.e("api email", email);
+
+
+        //pass it like this
+        /*String strRealPath = RealPathUtil.getRealPath(thaydoithongtin.this,mUri);
+        File file = new File(strRealPath);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+        // MultipartBody.Part is used to send also the actual file name
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+
+        // add another part within the multipart request
+        RequestBody fullName =
+                RequestBody.create(MediaType.parse("multipart/form-data"), email);
+
+        retrofitInterface.updateProfile(fullName, body);*/
+
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/from-data"),email);
-        Log.e("api email", String.valueOf(requestBody));
         String strRealPath = RealPathUtil.getRealPath(thaydoithongtin.this,mUri);
-        Log.e("api img", strRealPath);
+        Log.e("đacn", strRealPath);
         File file = new File(strRealPath);
         RequestBody requestBodyavt = RequestBody.create(MediaType.parse("multipart/from-data"),file);
-        Log.e("api thongtin", String.valueOf(requestBodyavt));
-        MultipartBody.Part multiAvt = MultipartBody.Part.createFormData(User_image.KEY_EMAIL,file.getName(),requestBodyavt);
+        MultipartBody.Part multiAvt = MultipartBody.Part.createFormData("image",file.getName(),requestBodyavt);
 
         retrofitInterface.changeAvatar(requestBody,multiAvt).enqueue(new Callback<Void>() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.dacn.mucluc;
+package com.example.dacn;
 
 import android.annotation.SuppressLint;
 import android.content.ContentUris;
