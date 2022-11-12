@@ -19,6 +19,7 @@ import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.hoanthanhbaithi;
 import com.example.dacn.trangchu2;
 
 import java.util.ArrayList;
@@ -68,6 +69,14 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ontap_tracnghiem.this, bo_de_thi.class);
+                startActivity(intent);
+            }
+        });
+
+        xemnhanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ontap_tracnghiem.this, hoanthanhbaithi.class);
                 startActivity(intent);
             }
         });
