@@ -13,6 +13,7 @@ import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
+import com.example.dacn.mucluc.Notification_Menu.NotificationMainActivity;
 import com.example.dacn.popup.popup_dang_xuat;
 import com.example.dacn.trangchu2;
 
@@ -89,7 +90,7 @@ public class mucluc extends AppCompatActivity {
         hengiohoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mucluc.this, menu_thong_bao.class);
+                Intent intent = new Intent(mucluc.this, NotificationMainActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();

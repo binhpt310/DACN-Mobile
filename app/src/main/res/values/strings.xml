@@ -38,4 +38,22 @@
     <string name="desc_two">Ôn tập thuận tiện và thi thử có giới hạn thời gian giúp bạn làm quen với áp lực phòng thi. </string>
     <string name="desc_three">Có kết hoạch học tập rõ ràng, nhớ luyện tập chăm chỉ để đạt được kết quả tốt nhất nhé!</string>
 
+    //Menu hẹn giờ học
+    <string name="title_activity_add_reminder">Thêm lời nhắc</string>
+    <string name="title_activity_edit_reminder">Chỉnh sửa lời nhắcr</string>
+    <string name="title_activity_licenses">Licenses</string>
+
+    <string name="add_reminder">Lời nhắc</string>
+    <string name="details">Chi tiết</string>
+    <string name="date">Ngày</string>
+    <string name="time">Giờ</string>
+    <string name="repeat">Lặp lại</string>
+    <string name="repeat_off">Tắt</string>
+    <string name="repeat_no">Số lần lặp lại</string>
+    <string name="repeat_type">Mức độ lặp lại</string>
+
+    <string name="action_discard_reminder">Xóa lời nhắc</string>
+    <string name="action_save_reminder">Lưu lời nhắc</string>
+
+    <string name="no_reminders">Nhấn nút bên dưới để tạo lịch hẹn giờ học đầu tiên!</string>
 </resources>
