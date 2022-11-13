@@ -5,6 +5,7 @@ import android.database.Observable;
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.dangnhap.DangNhapResult;
+import com.example.dacn.hoanthanhbai.NdungCardModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -29,8 +30,8 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.103:3000")
-            //.baseUrl("https://dacm.herokuapp.com")
+            //.baseUrl("http://192.168.1.103:3000")
+            .baseUrl("https://dacm.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);
@@ -63,5 +64,9 @@ public interface RetrofitInterface {
     @POST("/uploadimg")
     Call<Void> changeAvatar(@Part("email") RequestBody email,
                             @Part MultipartBody.Part image);
+
+    @POST("/ques")
+    Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);
+
 
 }

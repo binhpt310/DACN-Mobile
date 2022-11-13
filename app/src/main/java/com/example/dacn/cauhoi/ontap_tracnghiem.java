@@ -2,9 +2,7 @@ package com.example.dacn.cauhoi;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +17,7 @@ import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
-import com.example.dacn.hoanthanhbaithi;
-import com.example.dacn.trangchu2;
+import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 import java.util.ArrayList;
 import java.util.Collections;
