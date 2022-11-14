@@ -3,13 +3,17 @@ import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +22,8 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,18 +34,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ontap_tracnghiem extends AppCompatActivity implements GestureDetector.OnGestureListener{
+public class ontap_tracnghiem extends AppCompatActivity {
 
-    TextView xemnhanh, socau, txt_toolbar;
+    TextView xemnhanh, socau, txt_toolbar,txt_socaudung,txt_socausai,txt_socauchualam;
     TextView[] ar_textview = new TextView[5];
-    String[] ar_string = new String[6];
+    String[] ar_string = new String[7];
     ImageView btn_back, img_toi, img_lui;
     ImageView[] arr_img_progress = new ImageView[20];
-    public int Cauhoihientai = 0;
+    public int Cauhoihientai = 0,diem = 0,socauchualam=20,socaudung=0,socausai=0;
 
-    private float x1,x2,y1,y2;
-    private static int MIN_DISTANCE = 150;
-    private GestureDetector gestureDetector;
+    LinearLayout layoutBottom;
+    BottomSheetBehavior bottomSheetBehavior;
+    TextView[] ar_tv_bottom = new TextView[20];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +65,6 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         String text = "Ôn tập " + TruyenDuLieu.trTenMon + " - đề số " + MaBoDe;
         txt_toolbar.setText(text);
 
-        //initialize gesturedetector
-        gestureDetector = new GestureDetector(ontap_tracnghiem.this,this);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +77,15 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         xemnhanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ontap_tracnghiem.this, hoanthanhbaithi.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(ontap_tracnghiem.this, hoanthanhbaithi.class);
+                startActivity(intent);*/
+                //Log.e("diem", String.valueOf(diem));
+
+                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                } else {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
             }
         });
 
@@ -87,26 +98,20 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
             public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
                 List<CauHoiTracNghiem> adslist = response.body();
 
-                gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai]);
-
-                bamtracnghiem(ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                bamtracnghiem(ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                bamtracnghiem(ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                bamtracnghiem(ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                bamtracnghiem2();
 
                 img_toi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Cauhoihientai++;
                         if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai]);
+                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
                             if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
                             if (Cauhoihientai > 0) {img_lui.setVisibility(View.VISIBLE);}
                         }
-                        bamtracnghiem(ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem2();
+                        //Log.e("caudachon",ar_string[6]);
                     }
                 });
 
@@ -115,16 +120,12 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                     public void onClick(View view) {
                         Cauhoihientai--;
                         if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai]);
+                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
                             if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
                         }
-                        bamtracnghiem(ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem2();
                     }
                 });
-
 
             }
 
@@ -135,20 +136,35 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         });
     }
 
+    private void bamtracnghiem2() {
+        bamtracnghiem(ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+        bamtracnghiem(ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+        bamtracnghiem(ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+        bamtracnghiem(ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+    }
 
-    private void bamtracnghiem(TextView a, TextView tv[], String b, ImageView imageView) {
+    private void bamtracnghiem(TextView a, TextView tv[], String b, ImageView imageView, TextView textView) {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String cauchon = a.getText().toString();
+
                 boolean result = a.getText().toString().equals(b);
                 if (result) {
                     a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
                     imageView.setImageResource(R.drawable.bg_line_xanh);
+                    socaudung++;
+                    txt_socaudung.setText(String.valueOf(socaudung));
+                    textView.setBackgroundResource(R.drawable.bg_xemnhanh_xanh);
+
                 }
 
                 else {
                     a.setBackgroundResource(R.drawable.bg_otracnghiem_do);
                     imageView.setImageResource(R.drawable.bg_line_do);
+                    textView.setBackgroundResource(R.drawable.bg_xemnhanh_do);
+                    socausai++;
+                    txt_socausai.setText(String.valueOf(socausai));
                     for (int i=1;i<5;i++) {
                         if (tv[i].getText().toString().equals(b)) {
                             tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
@@ -156,15 +172,40 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
                         }
                     }
                 }
-                /*Log.e("String", b);
-                Log.e("Textview", a.getText().toString());
-                Log.e("Dung sai", String.valueOf(result));*/
                 for (int i=1;i<5;i++) {
                     tv[i].setOnClickListener(null);
                 }
-
+                socauchualam--;
+                txt_socauchualam.setText(String.valueOf(socauchualam));
             }
         });
+    }
+
+
+    private void gan_gia_tri(List<CauHoiTracNghiem> a, String arg[], TextView tv[], ImageView imageView, TextView xemnhanh) {
+        arg[0] = a.get(Cauhoihientai).getQuestion();
+        arg[1] = a.get(Cauhoihientai).getA();
+        arg[2] = a.get(Cauhoihientai).getB();
+        arg[3] = a.get(Cauhoihientai).getC();
+        arg[4] = a.get(Cauhoihientai).getD();
+        arg[5] = a.get(Cauhoihientai).getAnw();
+
+        tv[0].setText(arg[0]);
+        tv[1].setText(arg[1]);
+        tv[2].setText(arg[2]);
+        tv[3].setText(arg[3]);
+        tv[4].setText(arg[4]);
+
+        //hiển thị số câu
+        socau.setText(String.valueOf(Cauhoihientai+1));
+
+        //đang ở câu nào thì set trắng ngay img đó
+        imageView.setImageResource(R.drawable.bg_line_trang);
+
+        //xóa background ô đáp án khi đổi câu hỏi.
+        for (int i = 1; i < 5; i++) {
+            tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
+        }
 
     }
 
@@ -201,107 +242,35 @@ public class ontap_tracnghiem extends AppCompatActivity implements GestureDetect
         arr_img_progress[18] = findViewById(R.id.progress_19);
         arr_img_progress[19] = findViewById(R.id.progress_20);
 
+        ar_tv_bottom[0] = findViewById(R.id.tv_cau1_xemnhanhon);
+        ar_tv_bottom[1] = findViewById(R.id.tv_cau2_xemnhanhon);
+        ar_tv_bottom[2] = findViewById(R.id.tv_cau3_xemnhanhon);
+        ar_tv_bottom[3] = findViewById(R.id.tv_cau4_xemnhanhon);
+        ar_tv_bottom[4] = findViewById(R.id.tv_cau5_xemnhanhon);
+        ar_tv_bottom[5] = findViewById(R.id.tv_cau6_xemnhanhon);
+        ar_tv_bottom[6] = findViewById(R.id.tv_cau7_xemnhanhon);
+        ar_tv_bottom[7] = findViewById(R.id.tv_cau8_xemnhanhon);
+        ar_tv_bottom[8] = findViewById(R.id.tv_cau9_xemnhanhon);
+        ar_tv_bottom[9] = findViewById(R.id.tv_cau10_xemnhanhon);
+        ar_tv_bottom[10] = findViewById(R.id.tv_cau11_xemnhanhon);
+        ar_tv_bottom[11] = findViewById(R.id.tv_cau12_xemnhanhon);
+        ar_tv_bottom[12] = findViewById(R.id.tv_cau13_xemnhanhon);
+        ar_tv_bottom[13] = findViewById(R.id.tv_cau14_xemnhanhon);
+        ar_tv_bottom[14] = findViewById(R.id.tv_cau15_xemnhanhon);
+        ar_tv_bottom[15] = findViewById(R.id.tv_cau16_xemnhanhon);
+        ar_tv_bottom[16] = findViewById(R.id.tv_cau17_xemnhanhon);
+        ar_tv_bottom[17] = findViewById(R.id.tv_cau18_xemnhanhon);
+        ar_tv_bottom[18] = findViewById(R.id.tv_cau19_xemnhanhon);
+        ar_tv_bottom[19] = findViewById(R.id.tv_cau20_xemnhanhon);
+
         img_toi = findViewById(R.id.img_toi);
         img_lui = findViewById(R.id.img_lui);
-    }
 
-    private void gan_gia_tri(List<CauHoiTracNghiem> a, String arg[], TextView tv[], ImageView imageView) {
-        arg[0] = a.get(Cauhoihientai).getQuestion();
-        arg[1] = a.get(Cauhoihientai).getA();
-        arg[2] = a.get(Cauhoihientai).getB();
-        arg[3] = a.get(Cauhoihientai).getC();
-        arg[4] = a.get(Cauhoihientai).getD();
-        arg[5] = a.get(Cauhoihientai).getAnw();
+        layoutBottom = findViewById(R.id.bottom_sheet_layout_xemnhanhon);
+        bottomSheetBehavior = BottomSheetBehavior.from(layoutBottom);
 
-        tv[0].setText(arg[0]);
-        tv[1].setText(arg[1]);
-        tv[2].setText(arg[2]);
-        tv[3].setText(arg[3]);
-        tv[4].setText(arg[4]);
-
-        //random vị trí textview để mảng dữ liệu đưa vào
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<5; i++) list.add(i);
-
-        Collections.shuffle(list);
-        for (int i=0; i<4; i++) {
-            tv[i+1].setText(arg[(list.get(i))]);
-            Log.e("dd", String.valueOf((list.get(i))));
-        }
-
-        //hiển thị số câu
-        socau.setText(String.valueOf(Cauhoihientai+1));
-
-        //đang ở câu nào thì set trắng ngay img đó
-        imageView.setImageResource(R.drawable.bg_line_trang);
-
-        //xóa background ô đáp án khi đổi câu hỏi.
-        for (int i = 1; i < 5; i++) {
-            tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
-        }
-    }
-
-    //quẹt qua lại chuyển câu
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                y1 = event.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                y2 = event.getY();
-
-                float valueX = x2 - x1;
-
-                float valueY = y2 - y1;
-
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2>x1) {
-                        if (Cauhoihientai>0) {
-                            Cauhoihientai--;
-                            Log.e("e", "Right Swipe" + Cauhoihientai);
-                        }
-
-                    } else {
-                        Cauhoihientai++;
-                        Log.e("e", "Left Swipe" + Cauhoihientai);
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    @Override
-    public boolean onDown(MotionEvent motionEvent) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent motionEvent) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        return false;
+        txt_socaudung = findViewById(R.id.txt_on_xemnhanh_dung);
+        txt_socausai = findViewById(R.id.txt_on_xemnhanh_sai);
+        txt_socauchualam = findViewById(R.id.txt_on_xemnhanh_chualam);
     }
 }

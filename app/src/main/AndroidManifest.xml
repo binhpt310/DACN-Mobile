@@ -27,15 +27,9 @@
             android:name=".mucluc.Notification_Menu.Reminder.ReminderEditActivity"
             android:exported="false" />
         <activity
-            android:name=".mucluc.menu_thong_bao"
-            android:exported="false" />
-        <activity
             android:name=".popup.popup_dang_xuat"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
-        <activity
-            android:name=".hengio_1"
-            android:exported="false" />
         <activity
             android:name=".quenmatkhau.quenmatkhau4"
             android:exported="false" />
@@ -80,7 +74,7 @@
             android:name=".cauhoi.thi_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".hoanthanhbai.hoanthanhbaithi"
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
@@ -93,7 +87,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
