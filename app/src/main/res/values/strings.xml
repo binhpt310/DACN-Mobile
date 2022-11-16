@@ -39,4 +39,7 @@
     <string name="desc_two">ôn tập thuận tiện và thi thử có giới hạn thời gian giúp bạn làm quen với áp lực phòng thi </string>
     <string name="desc_three">Có kết hoạch học tập rõ ràng, nhớ luyện tập chăm chỉ để đạt được kết quả tốt nhất nhé!</string>
 
+    //context
+    <string name="context_one" >Click vào đây để kết nối với chúng tôi</string>
+    <string name="todo">TODO</string>
 </resources>

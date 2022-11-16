@@ -50,6 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".mucluc.veapp"
+
             android:exported="false" />
         <activity
             android:name=".mucluc.thaydoithongtin"
@@ -64,15 +65,21 @@
             android:name=".trangchu2"
             android:exported="false" />
         <activity
-            android:name=".onboarding.waiting"
 
+            android:name=".onboarding.waiting"
             android:exported="false" />
+        <activity
+
+            android:name=".dangnhap.Logo_screen"
+            android:exported="false" />
+
         <activity
             android:name=".dangnhap.dang_nhap"
             android:exported="false"/>
 
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".mucluc.trogiup"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

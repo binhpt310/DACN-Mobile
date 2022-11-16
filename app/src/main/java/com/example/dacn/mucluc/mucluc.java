@@ -24,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class mucluc extends AppCompatActivity {
 
-    ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat;
+    ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat, trogiup;
     ImageView img_close;
     CircleImageView avamuluc;
     TextView txt_tenngdung, txt_email;
@@ -52,7 +52,16 @@ public class mucluc extends AppCompatActivity {
                 finish();
             }
         });
-
+        View support;
+        trogiup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mucluc.this, trogiup.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
+            }
+        });
         veapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +112,7 @@ public class mucluc extends AppCompatActivity {
         veapp = findViewById(R.id.veapp);
         dangxuat = findViewById(R.id.dangxuat);
         img_close = findViewById(R.id.img_tat);
+        trogiup = findViewById(R.id.trogiup);
 
         avamuluc = findViewById(R.id.ava_mucluc);
         txt_email = findViewById(R.id.txt_email_mucluc);

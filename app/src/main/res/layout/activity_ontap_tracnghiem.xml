@@ -10,16 +10,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="419dp"
+        android:layout_height="48dp"
         android:background="@color/timxanh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="21dp"
+            android:layout_height="20dp"
             android:layout_marginStart="15dp"
             android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
