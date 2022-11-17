@@ -62,7 +62,7 @@
             android:name=".cauhoi.thi_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".mucluc.trogiup"
             android:exported="false" />
         <activity
 
@@ -78,7 +78,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".mucluc.trogiup"
+            android:name=".trangchu2"
 
             android:exported="true">
             <intent-filter>
