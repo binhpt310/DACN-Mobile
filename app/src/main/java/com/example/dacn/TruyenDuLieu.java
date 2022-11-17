@@ -15,5 +15,5 @@ public class TruyenDuLieu {
 
     public static String trTenTk_dnhap = "";
 
-    public static String trDungSai_ontap = "";
+    public static int trCauhoihientai = 0;
 }
