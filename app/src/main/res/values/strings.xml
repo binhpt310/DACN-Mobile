@@ -56,4 +56,7 @@
     <string name="action_save_reminder">Lưu lời nhắc</string>
 
     <string name="no_reminders">Nhấn nút bên dưới để tạo lịch hẹn giờ học đầu tiên!</string>
+    //context
+    <string name="context_one" >Click vào đây để kết nối với chúng tôi</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -1,10 +1,15 @@
 package com.example.dacn.mucluc;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,11 +26,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class mucluc extends AppCompatActivity {
 
-    ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat, hengiohoc;
+    ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat, trogiup, hengiohoc;
     ImageView img_close;
     CircleImageView avamuluc;
     TextView txt_tenngdung, txt_email;
     String tenngdung,email;
+    Intent intent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +54,16 @@ public class mucluc extends AppCompatActivity {
                 finish();
             }
         });
-
+        View support;
+        trogiup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mucluc.this, trogiup.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
+            }
+        });
         veapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +119,7 @@ public class mucluc extends AppCompatActivity {
         veapp = findViewById(R.id.veapp);
         dangxuat = findViewById(R.id.dangxuat);
         img_close = findViewById(R.id.img_tat);
+        trogiup = findViewById(R.id.trogiup);
         hengiohoc = findViewById(R.id.hengiohoc);
 
         avamuluc = findViewById(R.id.ava_mucluc);
@@ -131,3 +147,18 @@ public class mucluc extends AppCompatActivity {
         }
     }
 
+    /*private void nextActivity(){
+        Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
+        intent.putExtra("key_tenngdung", tenngdung);
+        startActivityForResult(intent, MY_REQUEST_CODE);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (MY_REQUEST_CODE == requestCode && resultCode == Activity.RESULT_OK) {
+            txt_tenngdung.setText(data.getStringExtra("key_key_tenngdung"));
+        }
+    }*/
