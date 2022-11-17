@@ -1,4 +1,4 @@
-package com.example.dacn.model;
+package com.example.dacn.Lich_su_lam_bai;
 
 public class Lich_su_lam_bai_model {
     String ten_mon_hoc;

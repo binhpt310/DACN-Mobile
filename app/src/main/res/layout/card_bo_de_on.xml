@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:background="@color/hong"
+    app:cardCornerRadius="5dp"
+    android:id="@+id/layout_card_deon">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/timhong"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/img_mon_on"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/img_book" />
+
+        <TextView
+            android:id="@+id/textview_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Đề số"
+            android:textColor="@color/den"
+            android:textSize="20sp"
+            android:layout_marginStart="30dp"/>
+
+        <TextView
+            android:id="@+id/so_thu_tu_bo_de_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="01"
+            android:textColor="@color/den"
+            android:textSize="20sp"
+            android:layout_marginStart="5dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

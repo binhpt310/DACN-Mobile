@@ -1,4 +1,4 @@
-package com.example.dacn;
+package com.example.dacn.Lich_su_lam_bai;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.dacn.adapter.Lich_su_lam_bai_adapter;
-import com.example.dacn.model.Lich_su_lam_bai_model;
+import com.example.dacn.R;
 
 import java.util.ArrayList;
 
