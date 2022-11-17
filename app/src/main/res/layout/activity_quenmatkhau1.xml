@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
+            android:layout_marginTop="10dp"
             android:hint="Email"
             android:inputType="text|textEmailAddress"
             android:maxLength="25"

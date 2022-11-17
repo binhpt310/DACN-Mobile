@@ -59,6 +59,9 @@
             android:name=".dangnhap.dang_ky"
             android:exported="false" />
         <activity
+            android:name=".mucluc.trogiup"
+            android:exported="false" />
+        <activity
             android:name=".mucluc.mucluc"
             android:exported="false" />
         <activity
@@ -77,13 +80,16 @@
             android:name=".hoanthanhbai.hoanthanhbaithi"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.dang_nhap"
+            android:exported="false" />
+        <activity
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

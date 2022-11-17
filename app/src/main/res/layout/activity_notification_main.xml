@@ -8,12 +8,11 @@
     android:layout_height="match_parent"
     tools:context=".mucluc.Notification_Menu.NotificationMainActivity">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reminder_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/purple_200"/>
+        android:background="@color/hong"/>
 
     <TextView
         android:id="@+id/no_reminder_text"
@@ -36,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:src="@drawable/ic_alarm_on_white_24dp"
         tools:ignore="SpeakableTextPresentCheck" />
