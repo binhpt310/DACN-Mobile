@@ -3,15 +3,17 @@ package com.example.dacn.cauhoi;
 import java.util.List;
 
 public class CauHoiTracNghiem {
-    private String Question,a,b,c,d,anw,cauhoidachon;
+    private String Question,a,b,c,d,anw,cauhoidachon,dungsai;
 
-    public CauHoiTracNghiem(String question, String a, String b, String c, String d, String anw) {
+    public CauHoiTracNghiem(String question, String a, String b, String c, String d, String anw, String cauhoidachon, String dungsai) {
         Question = question;
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
         this.anw = anw;
+        this.cauhoidachon = cauhoidachon;
+        this.dungsai = dungsai;
     }
 
     public CauHoiTracNghiem(String question, String anw, String cauhoidachon) {
@@ -74,5 +76,13 @@ public class CauHoiTracNghiem {
 
     public void setAnw(String anw) {
         this.anw = anw;
+    }
+
+    public String getDungsai() {
+        return dungsai;
+    }
+
+    public void setDungsai(String dungsai) {
+        this.dungsai = dungsai;
     }
 }

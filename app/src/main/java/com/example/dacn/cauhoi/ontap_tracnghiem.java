@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,16 +40,14 @@ import retrofit2.Response;
 
 public class ontap_tracnghiem extends AppCompatActivity {
 
-    TextView xemnhanh, socau, txt_toolbar,txt_socaudung,txt_socausai,txt_socauchualam;
+    TextView xemnhanh, socau, txt_toolbar;
     TextView[] ar_textview = new TextView[5];
-    String[] ar_string = new String[7]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
+    public String[] ar_string = new String[8]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
 
     ImageView btn_back, img_toi, img_lui;
     ImageView[] arr_img_progress = new ImageView[20];
     public int Cauhoihientai = 0,socauchualam=20,socaudung=0,socausai=0;
 
-    LinearLayout layoutBottom;
-    BottomSheetBehavior bottomSheetBehavior;
     TextView[] ar_tv_bottom = new TextView[20];
 
     @Override
@@ -78,16 +80,15 @@ public class ontap_tracnghiem extends AppCompatActivity {
         xemnhanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(ontap_tracnghiem.this, hoanthanhbaithi.class);
-                startActivity(intent);*/
                 //Log.e("diem", String.valueOf(diem));
 
                 //bật bottomsheet
-                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                /*if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 } else {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }
+                }*/
+                showDialog();
             }
         });
 
@@ -102,10 +103,12 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
                 gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
 
-                bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+
+                gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
 
                 img_toi.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -113,13 +116,15 @@ public class ontap_tracnghiem extends AppCompatActivity {
                         Cauhoihientai++;
                         if (Cauhoihientai < (adslist.size())){
                             gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                            img_toi.setVisibility(View.VISIBLE);
                             if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
                             if (Cauhoihientai > 0) {img_lui.setVisibility(View.VISIBLE);}
                         }
-                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
                     }
                 });
 
@@ -131,10 +136,11 @@ public class ontap_tracnghiem extends AppCompatActivity {
                             gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
                             if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
                         }
-                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                        gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
                     }
                 });
             }
@@ -146,7 +152,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
         });
     }
 
-    private void bamtracnghiem(List<CauHoiTracNghiem> list,TextView a, TextView tv[], String b, ImageView imageView, TextView textView) {
+    private void bamtracnghiem(List<CauHoiTracNghiem> list,TextView a, TextView tv[], String b, ImageView imageView) {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,17 +163,14 @@ public class ontap_tracnghiem extends AppCompatActivity {
                     a.setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
                     imageView.setImageResource(R.drawable.bg_line_xanh);
                     socaudung++;
-                    txt_socaudung.setText(String.valueOf(socaudung));
-                    textView.setBackgroundResource(R.drawable.bg_xemnhanh_xanh);
-
+                    list.get(Cauhoihientai).setDungsai("dung");
                 }
 
                 else {
                     a.setBackgroundResource(R.drawable.bg_otracnghiem_do);
                     imageView.setImageResource(R.drawable.bg_line_do);
-                    textView.setBackgroundResource(R.drawable.bg_xemnhanh_do);
                     socausai++;
-                    txt_socausai.setText(String.valueOf(socausai));
+                    list.get(Cauhoihientai).setDungsai("sai");
                     for (int i=1;i<5;i++) {
                         if (tv[i].getText().toString().equals(b)) {
                             tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
@@ -179,7 +182,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                     tv[i].setOnClickListener(null);
                 }
                 socauchualam--;
-                txt_socauchualam.setText(String.valueOf(socauchualam));
             }
         });
     }
@@ -193,8 +195,9 @@ public class ontap_tracnghiem extends AppCompatActivity {
         arg[4] = a.get(Cauhoihientai).getD();
         arg[5] = a.get(Cauhoihientai).getAnw();
 
-        if (a.get(Cauhoihientai).getCauhoidachon() == null) {
+        if (a.get(Cauhoihientai).getDungsai()==null && a.get(Cauhoihientai).getCauhoidachon() == null) {
             arg[6] = "";
+            arg[7] = "";
             //đang ở câu nào thì set trắng ngay img đó
             imageView.setImageResource(R.drawable.bg_line_trang);
 
@@ -204,6 +207,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
             }
         } else {
             arg[6] = a.get(Cauhoihientai).getCauhoidachon();
+            arg[7] = a.get(Cauhoihientai).getDungsai();
             for (int i = 1; i < 5; i++) {
                 tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
                 if (arg[i].equals(arg[6])) {
@@ -267,35 +271,64 @@ public class ontap_tracnghiem extends AppCompatActivity {
         arr_img_progress[18] = findViewById(R.id.progress_19);
         arr_img_progress[19] = findViewById(R.id.progress_20);
 
-        ar_tv_bottom[0] = findViewById(R.id.tv_cau1_xemnhanhon);
-        ar_tv_bottom[1] = findViewById(R.id.tv_cau2_xemnhanhon);
-        ar_tv_bottom[2] = findViewById(R.id.tv_cau3_xemnhanhon);
-        ar_tv_bottom[3] = findViewById(R.id.tv_cau4_xemnhanhon);
-        ar_tv_bottom[4] = findViewById(R.id.tv_cau5_xemnhanhon);
-        ar_tv_bottom[5] = findViewById(R.id.tv_cau6_xemnhanhon);
-        ar_tv_bottom[6] = findViewById(R.id.tv_cau7_xemnhanhon);
-        ar_tv_bottom[7] = findViewById(R.id.tv_cau8_xemnhanhon);
-        ar_tv_bottom[8] = findViewById(R.id.tv_cau9_xemnhanhon);
-        ar_tv_bottom[9] = findViewById(R.id.tv_cau10_xemnhanhon);
-        ar_tv_bottom[10] = findViewById(R.id.tv_cau11_xemnhanhon);
-        ar_tv_bottom[11] = findViewById(R.id.tv_cau12_xemnhanhon);
-        ar_tv_bottom[12] = findViewById(R.id.tv_cau13_xemnhanhon);
-        ar_tv_bottom[13] = findViewById(R.id.tv_cau14_xemnhanhon);
-        ar_tv_bottom[14] = findViewById(R.id.tv_cau15_xemnhanhon);
-        ar_tv_bottom[15] = findViewById(R.id.tv_cau16_xemnhanhon);
-        ar_tv_bottom[16] = findViewById(R.id.tv_cau17_xemnhanhon);
-        ar_tv_bottom[17] = findViewById(R.id.tv_cau18_xemnhanhon);
-        ar_tv_bottom[18] = findViewById(R.id.tv_cau19_xemnhanhon);
-        ar_tv_bottom[19] = findViewById(R.id.tv_cau20_xemnhanhon);
-
         img_toi = findViewById(R.id.img_toi);
         img_lui = findViewById(R.id.img_lui);
 
-        layoutBottom = findViewById(R.id.bottom_sheet_layout_xemnhanhon);
-        bottomSheetBehavior = BottomSheetBehavior.from(layoutBottom);
+    }
 
-        txt_socaudung = findViewById(R.id.txt_on_xemnhanh_dung);
-        txt_socausai = findViewById(R.id.txt_on_xemnhanh_sai);
-        txt_socauchualam = findViewById(R.id.txt_on_xemnhanh_chualam);
+    private void showDialog() {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_bottomsheet_xemnhanh_on);
+
+        ar_tv_bottom[0] = dialog.findViewById(R.id.tv_cau1_xemnhanhon);
+        ar_tv_bottom[1] = dialog.findViewById(R.id.tv_cau2_xemnhanhon);
+        ar_tv_bottom[2] = dialog.findViewById(R.id.tv_cau3_xemnhanhon);
+        ar_tv_bottom[3] = dialog.findViewById(R.id.tv_cau4_xemnhanhon);
+        ar_tv_bottom[4] = dialog.findViewById(R.id.tv_cau5_xemnhanhon);
+        ar_tv_bottom[5] = dialog.findViewById(R.id.tv_cau6_xemnhanhon);
+        ar_tv_bottom[6] = dialog.findViewById(R.id.tv_cau7_xemnhanhon);
+        ar_tv_bottom[7] = dialog.findViewById(R.id.tv_cau8_xemnhanhon);
+        ar_tv_bottom[8] = dialog.findViewById(R.id.tv_cau9_xemnhanhon);
+        ar_tv_bottom[9] = dialog.findViewById(R.id.tv_cau10_xemnhanhon);
+        ar_tv_bottom[10] = dialog.findViewById(R.id.tv_cau11_xemnhanhon);
+        ar_tv_bottom[11] = dialog.findViewById(R.id.tv_cau12_xemnhanhon);
+        ar_tv_bottom[12] = dialog.findViewById(R.id.tv_cau13_xemnhanhon);
+        ar_tv_bottom[13] = dialog.findViewById(R.id.tv_cau14_xemnhanhon);
+        ar_tv_bottom[14] = dialog.findViewById(R.id.tv_cau15_xemnhanhon);
+        ar_tv_bottom[15] = dialog.findViewById(R.id.tv_cau16_xemnhanhon);
+        ar_tv_bottom[16] = dialog.findViewById(R.id.tv_cau17_xemnhanhon);
+        ar_tv_bottom[17] = dialog.findViewById(R.id.tv_cau18_xemnhanhon);
+        ar_tv_bottom[18] = dialog.findViewById(R.id.tv_cau19_xemnhanhon);
+        ar_tv_bottom[19] = dialog.findViewById(R.id.tv_cau20_xemnhanhon);
+
+        TextView txt_socaudung = dialog.findViewById(R.id.txt_on_xemnhanh_dung);
+        TextView txt_socausai = dialog.findViewById(R.id.txt_on_xemnhanh_sai);
+        TextView txt_socauchualam = dialog.findViewById(R.id.txt_on_xemnhanh_chualam);
+
+        txt_socauchualam.setText(String.valueOf(socauchualam));
+        txt_socaudung.setText(String.valueOf(socaudung));
+        txt_socausai.setText(String.valueOf(socausai));
+
+        Log.e("dungsai1",ar_string[7]);
+        /*boolean result = arr_img_progress[Cauhoihientai].getResources().getDrawable(R.drawable.bg_line_xanh).equals(arr_img_progress[Cauhoihientai].getBackground());
+        if (result) {
+            ar_tv_bottom[Cauhoihientai].setBackgroundResource(R.drawable.bg_xemnhanh_xanh);
+        } else  {
+            ar_tv_bottom[Cauhoihientai].setBackgroundResource(R.drawable.bg_xemnhanh_do);
+        }*/
+        if (ar_string[7] == "dung") {
+            ar_tv_bottom[Cauhoihientai].setBackgroundResource(R.drawable.bg_xemnhanh_xanh);
+        } else if (ar_string[7] == "sai"){
+            ar_tv_bottom[Cauhoihientai].setBackgroundResource(R.drawable.bg_xemnhanh_do);
+        }
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+
     }
 }

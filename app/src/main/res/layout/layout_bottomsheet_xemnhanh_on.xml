@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/timhong"
     android:orientation="vertical"
     android:padding="10dp"
-    android:id="@+id/bottom_sheet_layout_xemnhanhon"
-
-    app:behavior_hideable="true"
-    app:behavior_peekHeight="0dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    android:id="@+id/bottom_sheet_layout_xemnhanhon">
 
     <LinearLayout
         android:layout_width="match_parent"
