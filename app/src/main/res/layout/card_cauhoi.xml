@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:id="@+id/layout_card_cauhoi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_card_hoanthanhbaithi"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/txt_cauhoi_cardcauhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Câu 01: Căn cứ vào Atlat Địa lí Việt Nam trang 13, hãy cho biết Đèo Ngang nằm giữa hai tỉnh nào:"
+            android:textColor="@color/den"
+            android:textSize="20sp"
+            android:justificationMode="inter_word"/>
+
+        <TextView
+            android:id="@+id/txt_caudachon_cardcauhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Câu đã chọn: Hà Tĩnh và Quảng Bình."
+            android:textColor="@color/den"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:justificationMode="inter_word"/>
+
+        <TextView
+            android:id="@+id/txt_dapan_cardcauhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Đáp án: Hà Tĩnh và Quảng Bình."
+            android:textColor="@color/den"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:justificationMode="inter_word"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

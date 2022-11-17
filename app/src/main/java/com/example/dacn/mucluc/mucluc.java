@@ -1,10 +1,15 @@
 package com.example.dacn.mucluc;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +18,7 @@ import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
+import com.example.dacn.mucluc.Notification_Menu.NotificationMainActivity;
 import com.example.dacn.popup.popup_dang_xuat;
 import com.example.dacn.trangchu2;
 
@@ -20,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class mucluc extends AppCompatActivity {
 
-    ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat;
+    ConstraintLayout chinhsuathongtin, ketquahoctap, veapp, dangxuat, trogiup, hengiohoc;
     ImageView img_close;
     CircleImageView avamuluc;
     TextView txt_tenngdung, txt_email;
@@ -48,7 +54,16 @@ public class mucluc extends AppCompatActivity {
                 finish();
             }
         });
-
+        View support;
+        trogiup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mucluc.this, trogiup.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
+            }
+        });
         veapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,9 +89,6 @@ public class mucluc extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), popup_dang_xuat.class);
                 startActivity(intent);
-
-                TruyenDuLieu.trEmail_dnhap="";
-                TruyenDuLieu.trTenTk_dnhap="";
             }
         });
 
@@ -84,6 +96,16 @@ public class mucluc extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mucluc.this, lich_su_lam_bai.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
+            }
+        });
+
+        hengiohoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mucluc.this, NotificationMainActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
@@ -97,6 +119,8 @@ public class mucluc extends AppCompatActivity {
         veapp = findViewById(R.id.veapp);
         dangxuat = findViewById(R.id.dangxuat);
         img_close = findViewById(R.id.img_tat);
+        trogiup = findViewById(R.id.trogiup);
+        hengiohoc = findViewById(R.id.hengiohoc);
 
         avamuluc = findViewById(R.id.ava_mucluc);
         txt_email = findViewById(R.id.txt_email_mucluc);
