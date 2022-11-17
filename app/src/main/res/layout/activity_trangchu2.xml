@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Anh Văn"
+            android:text="Anh văn"
             android:textColor="@color/trang"
             android:textSize="30sp" />
     </LinearLayout>

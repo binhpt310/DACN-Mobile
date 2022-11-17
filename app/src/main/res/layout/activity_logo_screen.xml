@@ -14,6 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp"
+        android:visibility="visible"
         app:srcCompat="@drawable/img_knowledge" />
 
     <TextView

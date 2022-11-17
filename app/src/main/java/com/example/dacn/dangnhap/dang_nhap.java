@@ -1,16 +1,22 @@
 package com.example.dacn.dangnhap;
 
+import static com.example.dacn.RetrofitInterface.retrofitInterface;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dacn.Api.RetrofitInterface;
 import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.mucluc.mucluc;
+import com.example.dacn.quenmatkhau.quenmatkhau1;
+import com.example.dacn.quenmatkhau.quenmatkhau2;
 import com.example.dacn.trangchu2;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -19,36 +25,20 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class dang_nhap extends AppCompatActivity {
 
     Button btn_dangnhap;
-    TextView txt_dangky;
-
+    TextView txt_dangky, txt_quenmk;
     TextInputEditText email, matkhau;
-
-    private Retrofit retrofit;
-    private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.1.5:3000";
+    String s_email,s_tenngdung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
 
-        btn_dangnhap = findViewById(R.id.btn_dangnhap);
-        txt_dangky = findViewById(R.id.btn_dangkyotrangdangnhap);
-
-        email = findViewById(R.id.txtdn_email);
-        matkhau = findViewById(R.id.txtdn_matkhau);
-
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofitInterface = retrofit.create(RetrofitInterface.class);
+        khaibao();
 
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +52,12 @@ public class dang_nhap extends AppCompatActivity {
                 call.enqueue(new Callback<DangNhapResult>() {
                     @Override
                     public void onResponse(Call<DangNhapResult> call, Response<DangNhapResult> response) {
+                        DangNhapResult dangNhap = response.body();
+
                         if (response.code() == 200) {
+                            TruyenDuLieu.trEmail_dnhap = dangNhap.getEmail();;
+                            TruyenDuLieu.trTenTk_dnhap = dangNhap.getTenngdung();
+
                             Intent intent = new Intent(dang_nhap.this, trangchu2.class);
                             startActivity(intent);
                             finish();
@@ -92,5 +87,26 @@ public class dang_nhap extends AppCompatActivity {
                 finish();
             }
         });
+
+        txt_quenmk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(dang_nhap.this, quenmatkhau1.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
+    private void khaibao() {
+
+        btn_dangnhap = findViewById(R.id.btn_dangnhap);
+        txt_dangky = findViewById(R.id.btn_dangkyotrangdangnhap);
+
+        email = findViewById(R.id.txtdn_email);
+        matkhau = findViewById(R.id.txtdn_matkhau);
+
+        txt_quenmk = findViewById(R.id.txt_quenmk);
+    }
+
 }

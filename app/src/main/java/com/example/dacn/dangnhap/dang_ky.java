@@ -1,5 +1,7 @@
 package com.example.dacn.dangnhap;
 
+import static com.example.dacn.RetrofitInterface.retrofitInterface;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dacn.Api.RetrofitInterface;
+import com.example.dacn.RetrofitInterface;
 import com.example.dacn.R;
 import com.example.dacn.trangchu2;
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,36 +27,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class dang_ky extends AppCompatActivity{
 
-    boolean temp = false;
-    /*String chckppw ="i";
-    String passwrd ="i";*/
-
     Button btn_dangky;
     TextView txt_dangnhap;
     TextInputEditText email, tenngdung, matkhau, nhaplaimk;
-
-    private Retrofit retrofit;
-    private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.1.5:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
 
-        btn_dangky = findViewById(R.id.btn_dangky);
-        txt_dangnhap = findViewById(R.id.dangnhapotrangdangky);
-
-        email = findViewById(R.id.txtdki_email);
-        tenngdung = findViewById(R.id.txtdki_tenngdung);
-        matkhau = findViewById(R.id.txtdki_matkhau);
-        nhaplaimk = findViewById(R.id.txtdki_nhaplaimk);
-
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofitInterface = retrofit.create(RetrofitInterface.class);
+        khaibao();
 
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +53,7 @@ public class dang_ky extends AppCompatActivity{
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
-                            Intent intent = new Intent(dang_ky.this, trangchu2.class);
+                            Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                             startActivity(intent);
                             finish();
                         } else if (response.code() == 201) {
@@ -98,31 +80,16 @@ public class dang_ky extends AppCompatActivity{
                 finish();
             }
         });
-//        nhapmk.addTextChangedListener(new TextWatcher() {
-//            public void afterTextChanged(Editable s) {
-//            }
-//
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                //get the String from CharSequence with s.toString() and process it to validation
-//                passwrd = s.toString();
-//            }
-//        });
-//
-//        nhaplaimk.addTextChangedListener(new TextWatcher() {
-//            public void afterTextChanged(Editable s) {
-//            }
-//
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                //get the String from CharSequence with s.toString() and process it to validation
-//                chckppw = s.toString();
-//            }
-//        });
+    }
+
+    private void khaibao() {
+        btn_dangky = findViewById(R.id.btn_dangky);
+        txt_dangnhap = findViewById(R.id.dangnhapotrangdangky);
+
+        email = findViewById(R.id.txtdki_email);
+        tenngdung = findViewById(R.id.txtdki_tenngdung);
+        matkhau = findViewById(R.id.txtdki_matkhau);
+        nhaplaimk = findViewById(R.id.txtdki_nhaplaimk);
     }
 
     private boolean validateEmail() {
@@ -141,7 +108,7 @@ public class dang_ky extends AppCompatActivity{
 
     private boolean validatePassword() {
         String nhap_mk = matkhau.getText().toString().trim();
-        String  nhap_lai_mk = nhaplaimk.getText().toString().trim();
+        String nhap_lai_mk = nhaplaimk.getText().toString().trim();
         if (nhap_mk.isEmpty()) {
             Toast.makeText(this, "Mật khẩu đang để trống", Toast.LENGTH_SHORT).show();
             return false;

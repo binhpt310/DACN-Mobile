@@ -4,20 +4,49 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/img_knowledge"
         android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/img_knowledge"
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".FirstInstall.OnBoardingScreen"
+            android:name=".mucluc.Notification_Menu.Reminder.ReminderAddActivity"
             android:exported="false" />
         <activity
-            android:name=".lich_su_lam_bai"
+            android:name=".mucluc.Notification_Menu.NotificationMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.Notification_Menu.Reminder.ReminderEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".popup.popup_dang_xuat"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".quenmatkhau.quenmatkhau4"
+            android:exported="false" />
+        <activity
+            android:name=".quenmatkhau.quenmatkhau3"
+            android:exported="false" />
+        <activity
+            android:name=".quenmatkhau.quenmatkhau2"
+            android:exported="false" />
+        <activity
+            android:name=".Bo_de_thi.bo_de_thi"
+            android:exported="false" />
+        <activity
+            android:name=".cauhoi.ontap_tracnghiem"
+            android:exported="false" />
+        <activity
+            android:name=".Lich_su_lam_bai.lich_su_lam_bai"
             android:exported="false" />
         <activity
             android:name=".popup.popup_ket_thuc_thi_thu"
@@ -27,7 +56,10 @@
             android:name=".popup.popup_hoan_thanh_thi_thu"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.dang_ky"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.trogiup"
             android:exported="false" />
         <activity
             android:name=".mucluc.mucluc"
@@ -39,26 +71,39 @@
             android:name=".mucluc.thaydoithongtin"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_ky"
+            android:name=".quenmatkhau.quenmatkhau1"
             android:exported="false" />
         <activity
             android:name=".cauhoi.thi_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_nhap"
+            android:name=".hoanthanhbai.hoanthanhbaithi"
             android:exported="false" />
         <activity
-            android:name=".cauhoi.ontap_tracnghiem"
+            android:name=".trangchu2"
+            android:exported="false" />
+        <activity
+            android:name=".FirstInstall.waiting"
+            android:exported="false" />
+        <activity
+            android:name=".dangnhap.dang_nhap"
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".mucluc.Notification_Menu.AlarmReceiver"/>
+        <receiver android:name=".mucluc.Notification_Menu.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
