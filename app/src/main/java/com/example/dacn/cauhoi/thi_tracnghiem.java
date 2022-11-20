@@ -12,6 +12,7 @@ import com.example.dacn.popup.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +43,9 @@ public class thi_tracnghiem extends AppCompatActivity {
         setContentView(R.layout.activity_thi_tracnghiem);
         TextView time = findViewById(R.id.txt_time);
 
+        LoadingDialog loadingDialog = new LoadingDialog(this);
+        callDialog(loadingDialog);
+
         //truyền dữ liệu recyclerview ở trang trước qua
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
@@ -56,7 +60,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         txt_toolbar.setText(text);
 
         //Call the timer
-        reverseTimer(1, time);
+        reverseTimer(20, time);
 
         //Stop the timer
         cancelTimer();
@@ -201,6 +205,17 @@ public class thi_tracnghiem extends AppCompatActivity {
         for (int i = 1; i < 5; i++) {
             tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
         }
+    }
+
+    private void callDialog(LoadingDialog loadingDialog){
+        loadingDialog.ShowDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.DismissDialog();
+            }
+        },8000);
     }
 
 }

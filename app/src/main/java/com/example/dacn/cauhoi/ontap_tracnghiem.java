@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -26,6 +27,7 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
+import com.example.dacn.popup.LoadingDialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -56,6 +58,9 @@ public class ontap_tracnghiem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ontap_tracnghiem);
+
+        LoadingDialog loadingDialog = new LoadingDialog(this);
+        callDialog(loadingDialog);
 
         //truyền dữ liệu recyclerview ở trang trước qua
         Bundle bundle = getIntent().getExtras();
@@ -364,5 +369,16 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 callApi();
             }
         });
+    }
+
+    private void callDialog(LoadingDialog loadingDialog){
+        loadingDialog.ShowDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.DismissDialog();
+            }
+        },8000);
     }
 }
