@@ -9,6 +9,8 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.popup.*;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -203,4 +205,6 @@ public class thi_tracnghiem extends AppCompatActivity {
         }
     }
 
+    public static class search_question extends Activity {
+    }
 }

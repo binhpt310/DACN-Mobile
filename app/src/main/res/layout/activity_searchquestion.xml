@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/hong"
     android:orientation="vertical"
-    tools:context=".search_question">
+    tools:context=".cauhoi.search_question">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -45,26 +45,18 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <ImageButton
-            android:id="@+id/search_bt"
-            android:layout_width="46dp"
-            android:layout_height="match_parent"
-
-            android:background="@color/timxanh"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/hinh_tron2"
-            android:visibility="invisible"
-             />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <TextView
+        android:id="@+id/search_nulltext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="gone">
+
+    </TextView>
 </LinearLayout>

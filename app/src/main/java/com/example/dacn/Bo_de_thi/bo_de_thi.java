@@ -1,6 +1,5 @@
 package com.example.dacn.Bo_de_thi;
 
-import static android.content.ContentValues.TAG;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -105,8 +104,8 @@ public class bo_de_thi extends AppCompatActivity {
                             public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
                                 Bodethimodels = response.body();
                                 if (response.code() == 200) {
-                                    Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(bo_de_thi.this, Bodethimodels);
-                                    recyclerView.setAdapter(bo_de_thi_adapter);
+                                    Bo_de_thi_adapter searchAdapter = new Bo_de_thi_adapter(bo_de_thi.this, Bodethimodels);
+                                    recyclerView.setAdapter(searchAdapter);
                                 } else if (response.code() == 404) {
                                     Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
                                 }
