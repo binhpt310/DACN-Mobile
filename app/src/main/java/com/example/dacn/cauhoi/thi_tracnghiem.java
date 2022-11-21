@@ -9,6 +9,8 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.popup.*;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -37,14 +39,19 @@ public class thi_tracnghiem extends AppCompatActivity {
 
     public int Cauhoihientai = 0;
 
+    ProgressDialog progressdialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thi_tracnghiem);
         TextView time = findViewById(R.id.txt_time);
 
-        LoadingDialog loadingDialog = new LoadingDialog(this);
-        callDialog(loadingDialog);
+        /*LoadingDialog loadingDialog = new LoadingDialog(this);
+        callDialog(loadingDialog);*/
+
+        progressdialog = new ProgressDialog(thi_tracnghiem.this);
+        progressdialog.setMessage("Loadinggg");
 
         //truyền dữ liệu recyclerview ở trang trước qua
         Bundle bundle = getIntent().getExtras();
@@ -58,12 +65,14 @@ public class thi_tracnghiem extends AppCompatActivity {
 
         String text = "Đề thi " + TruyenDuLieu.trTenMon + " - đề số " + MaBoDe;
         txt_toolbar.setText(text);
+/*
 
         //Call the timer
         reverseTimer(20, time);
 
         //Stop the timer
         cancelTimer();
+*/
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +82,7 @@ public class thi_tracnghiem extends AppCompatActivity {
             }
         });
 
+        progressdialog.show();
         HashMap<String, String> map = new HashMap<>();
         map.put("sub", TruyenDuLieu.trMaDe);
         map.put("Code", MaBoDe);
@@ -83,6 +93,7 @@ public class thi_tracnghiem extends AppCompatActivity {
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
+                progressdialog.dismiss();
 
                 bamtracnghiem(ar_textview[1], ar_textview, ar_string[5]);
                 bamtracnghiem(ar_textview[2], ar_textview, ar_string[5]);
@@ -109,6 +120,7 @@ public class thi_tracnghiem extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<CauHoiTracNghiem>> call, Throwable t) {
+                progressdialog.dismiss();
                 Toast.makeText(thi_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
@@ -207,7 +219,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         }
     }
 
-    private void callDialog(LoadingDialog loadingDialog){
+    /*private void callDialog(LoadingDialog loadingDialog){
         loadingDialog.ShowDialog();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -216,6 +228,6 @@ public class thi_tracnghiem extends AppCompatActivity {
                 loadingDialog.DismissDialog();
             }
         },8000);
-    }
+    }*/
 
 }

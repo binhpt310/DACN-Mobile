@@ -4,6 +4,7 @@ import static com.example.dacn.RetrofitInterface.retrofitInterface;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -54,13 +55,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
     TextView[] ar_tv_bottom = new TextView[20];
     String MaBoDe;
 
+    ProgressDialog progressdialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ontap_tracnghiem);
 
-        LoadingDialog loadingDialog = new LoadingDialog(this);
-        callDialog(loadingDialog);
+        /*LoadingDialog loadingDialog = new LoadingDialog(this);
+        callDialog(loadingDialog);*/
+
+        progressdialog = new ProgressDialog(ontap_tracnghiem.this);
+        progressdialog.setMessage("Loadinggg");
 
         //truyền dữ liệu recyclerview ở trang trước qua
         Bundle bundle = getIntent().getExtras();
@@ -103,6 +109,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
     }
 
     public void callApi () {
+        progressdialog.show();
         Cauhoihientai = TruyenDuLieu.trCauhoihientai;
         Log.e("Cauhoihientai2", String.valueOf(Cauhoihientai));
         HashMap<String, String> map = new HashMap<>();
@@ -115,6 +122,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                progressdialog.dismiss();
 
                 bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
                 bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
@@ -164,6 +172,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<CauHoiTracNghiem>> call, Throwable t) {
+                progressdialog.dismiss();
                 Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });

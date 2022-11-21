@@ -52,4 +52,7 @@ dependencies {
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
     implementation 'com.github.aolivafaura:recyclerview-multiselect:master-SNAPSHOT'
     implementation 'com.github.ramseth001:TextDrawable:1.1.6'
+
+    //thư viện lottie
+    implementation 'com.airbnb.android:lottie:5.2.0'
 }

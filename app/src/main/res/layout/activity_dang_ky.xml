@@ -173,7 +173,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="@font/roboto_medium"
             android:text="Đăng Nhập"
-            android:textColor="@color/den80"
+            android:textColor="@color/timxanh"
             android:textSize="15sp"
             android:id="@+id/dangnhapotrangdangky"/>
 

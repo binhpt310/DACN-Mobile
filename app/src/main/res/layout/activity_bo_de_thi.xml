@@ -59,7 +59,8 @@
             android:fontFamily="@font/roboto_bold"
             android:text="Ôn tập"
             android:textColor="@color/den"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/radio_thi"

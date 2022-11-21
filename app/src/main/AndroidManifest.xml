@@ -80,16 +80,16 @@
             android:name=".hoanthanhbai.hoanthanhbaithi"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_nhap"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".dangnhap.dang_nhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
