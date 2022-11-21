@@ -106,6 +106,7 @@
         android:text="Nhấn vào câu bất kỳ để xem"
         android:textColor="@color/den80"
         android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
         android:gravity="center"
         android:layout_marginTop="20dp"/>
 
@@ -113,6 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:gravity="center">
 
         <TextView

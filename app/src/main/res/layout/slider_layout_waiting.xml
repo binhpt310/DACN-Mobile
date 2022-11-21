@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    app:flow_horizontalAlign="center">
+    app:flow_horizontalAlign="center"
+    android:background="@color/hong">
 
     <ImageView
         android:id="@+id/titleImage"
@@ -34,7 +35,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="@string/desc_one"
         android:textAlignment="center"
-        android:textColor="@color/den"
+        android:textColor="@color/timxanh"
         android:textSize="20sp" />
 
 
