@@ -6,6 +6,7 @@ import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.dangnhap.DangNhapResult;
 import com.example.dacn.hoanthanhbai.NdungCardModel;
+import com.example.dacn.mucluc.ThayDoiThongTin.dulieu_thaydoi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -64,6 +65,13 @@ public interface RetrofitInterface {
     @POST("/uploadimg")
     Call<Void> changeAvatar(@Part("email") RequestBody email,
                             @Part MultipartBody.Part image);
+
+    @Multipart
+    @POST("/changeinfo2")
+    Call<dulieu_thaydoi> changeInfo2(@Part("email") RequestBody email,
+                                     @Part MultipartBody.Part image,
+                                     @Part("tenngdung") RequestBody tenngdung,
+                                     @Part("matkhau") RequestBody matkhau);
 
     @POST("/ques")
     Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);

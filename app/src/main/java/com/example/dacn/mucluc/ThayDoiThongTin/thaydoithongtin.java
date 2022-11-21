@@ -1,4 +1,4 @@
-package com.example.dacn.mucluc;
+package com.example.dacn.mucluc.ThayDoiThongTin;
 
 import static android.content.ContentValues.TAG;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
@@ -8,12 +8,11 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -28,9 +27,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.dacn.R;
 import com.example.dacn.RealPathUtil;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.mucluc.mucluc;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
@@ -46,13 +47,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class thaydoithongtin extends AppCompatActivity {
-    private static int RESULT_LOAD_IMAGE = 1;
-
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
 
     public static final int MY_REQUEST_CODE = 10;
 
@@ -61,7 +55,6 @@ public class thaydoithongtin extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    Log.e(TAG,"onActivityResult");
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         if (data == null) {
@@ -85,8 +78,9 @@ public class thaydoithongtin extends AppCompatActivity {
     ImageView img_back;
     EditText tengndung, matkhau, nhaplaimk;
     Button btn_luuthaydoi;
-    String email;
+    String email,str_tenngdung,str_matkhaumoi,str_nhaplaimk;
     private Uri mUri;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +89,7 @@ public class thaydoithongtin extends AppCompatActivity {
 
         khaibao();
         tengndung.setText(TruyenDuLieu.trTenTk_dnhap);
+        Glide.with(thaydoithongtin.this).load(TruyenDuLieu.tr_linkanh).into(ava);
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,47 +98,23 @@ public class thaydoithongtin extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
-                /*if (mUri!=null) {
-                    callApiImage();
-                }*/
             }
         });
 
         btn_luuthaydoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                email = TruyenDuLieu.trEmail_dnhap;
-
+                //email = TruyenDuLieu.trEmail_dnhap;
+                progressDialog = new ProgressDialog(thaydoithongtin.this);
+                progressDialog.setMessage("Đợi tí....");
+                Log.e("uri", String.valueOf(mUri));
                 if (mUri!=null) {
                     callApiImage();
+                } else {
+                    mUri = Uri.parse(TruyenDuLieu.tr_linkanh);
+                    Log.e("uri2", String.valueOf(mUri));
+                    callApiImage();
                 }
-
-                HashMap<String, String> map = new HashMap<>();
-
-                map.put("email", email);
-                map.put("tenngdung", tengndung.getText().toString());
-                map.put("matkhau", matkhau.getText().toString());
-
-                Call<Void> call = retrofitInterface.changeInfo(map);
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.code() == 200) {
-                            backActivity();
-                            Intent intent = new Intent(thaydoithongtin.this, mucluc.class);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                            finish();
-                        } else if (response.code() == 400) {
-                            Toast.makeText(thaydoithongtin.this,"Lỗi",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(thaydoithongtin.this, t.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
             }
         });
 
@@ -174,20 +145,44 @@ public class thaydoithongtin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void backActivity() {
-        String trEmail_thaydoi = tengndung.getText().toString().trim();
-        TruyenDuLieu.trTenTk_dnhap = trEmail_thaydoi;
-        finish();
-    }
-
     private void callApiImage() {
+        progressDialog.show();
+
         email = TruyenDuLieu.trEmail_dnhap;
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/from-data"),email);
+        str_tenngdung = tengndung.getText().toString().trim();
+        str_matkhaumoi = matkhau.getText().toString().trim();
+        str_nhaplaimk = nhaplaimk.getText().toString().trim();
+
+        RequestBody requestBody_Email = RequestBody.create(MediaType.parse("multipart/from-data"),email);
+        RequestBody requestBody_Tenngdung = RequestBody.create(MediaType.parse("multipart/from-data"),str_tenngdung);
+        RequestBody requestBody_Matkhau = RequestBody.create(MediaType.parse("multipart/from-data"),str_matkhaumoi);
+
         String strRealPath = RealPathUtil.getRealPath(thaydoithongtin.this,mUri);
+        Log.e("strRealPath", strRealPath);
         File file = new File(strRealPath);
+
         RequestBody requestBodyavt = RequestBody.create(MediaType.parse("multipart/from-data"),file);
         MultipartBody.Part multiAvt = MultipartBody.Part.createFormData("image",file.getName(),requestBodyavt);
 
+        retrofitInterface.changeInfo2(requestBody_Email,multiAvt,requestBody_Tenngdung,requestBody_Matkhau).enqueue(new Callback<dulieu_thaydoi>() {
+            @Override
+            public void onResponse(Call<dulieu_thaydoi> call, Response<dulieu_thaydoi> response) {
+                dulieu_thaydoi dulieu_thaydoi1 = response.body();
+                if (response.code() == 200 || response.code() == 201 || response.code() == 202 || response.code() == 203) {
+                    progressDialog.dismiss();
+                    Toast.makeText(thaydoithongtin.this, "Cập nhật thông tin thành công",Toast.LENGTH_LONG).show();
+                }
+                TruyenDuLieu.trTenTk_dnhap = dulieu_thaydoi1.getTenngdung();
+                TruyenDuLieu.tr_linkanh = dulieu_thaydoi1.getAvatar();
+            }
+
+            @Override
+            public void onFailure(Call<dulieu_thaydoi> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(thaydoithongtin.this, t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+/*
         retrofitInterface.changeAvatar(requestBody,multiAvt).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -205,6 +200,7 @@ public class thaydoithongtin extends AppCompatActivity {
                 Toast.makeText(thaydoithongtin.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
+*/
     }
 
     private void onClickRequestPermission() {

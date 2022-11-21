@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/hong"
     android:orientation="vertical"
-    tools:context=".mucluc.thaydoithongtin">
+    tools:context=".mucluc.ThayDoiThongTin.thaydoithongtin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"

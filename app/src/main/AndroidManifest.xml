@@ -68,7 +68,7 @@
             android:name=".mucluc.veapp"
             android:exported="false" />
         <activity
-            android:name=".mucluc.thaydoithongtin"
+            android:name=".mucluc.ThayDoiThongTin.thaydoithongtin"
             android:exported="false" />
         <activity
             android:name=".quenmatkhau.quenmatkhau1"
