@@ -70,7 +70,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/roboto_bold"
             android:text="01"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
             app:layout_constraintTop_toTopOf="parent"

@@ -26,6 +26,6 @@
         android:fontFamily="@font/roboto_bold"
         android:gravity="center"
         android:text="ÔN THI THPT QUỐC GIA"
-        android:textColor="@color/trang"
+        android:textColor="#D12D4A"
         android:textSize="50sp" />
 </RelativeLayout>
