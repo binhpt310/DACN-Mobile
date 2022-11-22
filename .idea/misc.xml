@@ -18,8 +18,12 @@
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_line_xanh.xml" value="0.132" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_nen_profile.xml" value="0.188" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem_cam.xml" value="0.15" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_popup_thong_bao.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_cam.xml" value="0.15" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_do.xml" value="0.15" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_tim.xml" value="0.126" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_xanh.xml" value="0.188" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/hinh_tron.xml" value="0.188" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/ic_person.xml" value="0.188" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/ic_person_dk.xml" value="0.132" />
@@ -46,7 +50,7 @@
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_searchquestiom.xml" value="0.1796875" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_support.xml" value="0.1796875" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_thaydoithongtin.xml" value="0.1796875" />
-        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.16666666666666666" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_trangchu2.xml" value="0.3333333333333333" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_veapp.xml" value="0.22" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_waiting.xml" value="0.1796875" />
@@ -56,6 +60,7 @@
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_girditem_xemnhanh.xml" value="0.3333333333333333" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_lich_su_lam_bai.xml" value="0.1796875" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/layout_bottomsheet_xemnhanh_on.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/layout_bottomsheet_xemnhanh_thi.xml" value="0.22" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/layout_ontap_tracnghiem.xml" value="0.22" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/recycle_items.xml" value="0.1796875" />
         <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/slider_layout_waiting.xml" value="0.1796875" />

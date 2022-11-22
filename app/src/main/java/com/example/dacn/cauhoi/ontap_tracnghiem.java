@@ -87,9 +87,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
             listdungsai[i] = "";
         }
 
-        /*Cauhoihientai = TruyenDuLieu.trCauhoihientai;
-        Log.e("Cauhoihientai2", String.valueOf(Cauhoihientai));*/
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -220,19 +217,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
         arg[4] = a.get(Cauhoihientai).getD();
         arg[5] = a.get(Cauhoihientai).getAnw();
 
+        //xóa background ô đáp án khi đổi câu hỏi.
+        for (int i = 1; i < 5; i++) {
+            tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
+        }
+
         if (a.get(Cauhoihientai).getCauhoidachon() == null) {
             arg[6] = "";
             //đang ở câu nào thì set trắng ngay img đó
             imageView.setImageResource(R.drawable.bg_line_trang);
-
-            //xóa background ô đáp án khi đổi câu hỏi.
-            for (int i = 1; i < 5; i++) {
-                tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
-            }
         } else {
             arg[6] = a.get(Cauhoihientai).getCauhoidachon();
             for (int i = 1; i < 5; i++) {
-                tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
                 if (arg[i].equals(arg[6])) {
                     if (arg[i].equals(arg[5])) {
                         tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
@@ -244,8 +240,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                             }
                         }
                     }
-                } else if (arg[i].equals(arg[5])) {
-                    tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
                 }
             }
         }
