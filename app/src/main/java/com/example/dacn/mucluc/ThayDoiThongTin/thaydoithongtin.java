@@ -107,14 +107,18 @@ public class thaydoithongtin extends AppCompatActivity {
                 //email = TruyenDuLieu.trEmail_dnhap;
                 progressDialog = new ProgressDialog(thaydoithongtin.this);
                 progressDialog.setMessage("Đợi tí....");
-                Log.e("uri", String.valueOf(mUri));
+
+                email = TruyenDuLieu.trEmail_dnhap;
+                str_tenngdung = tengndung.getText().toString().trim();
+                str_matkhaumoi = matkhau.getText().toString().trim();
+                str_nhaplaimk = nhaplaimk.getText().toString().trim();
+
                 if (mUri!=null) {
                     callApiImage();
                 } else {
-                    mUri = Uri.parse(TruyenDuLieu.tr_linkanh);
-                    Log.e("uri2", String.valueOf(mUri));
-                    callApiImage();
+                    callApi();
                 }
+
             }
         });
 
@@ -148,17 +152,11 @@ public class thaydoithongtin extends AppCompatActivity {
     private void callApiImage() {
         progressDialog.show();
 
-        email = TruyenDuLieu.trEmail_dnhap;
-        str_tenngdung = tengndung.getText().toString().trim();
-        str_matkhaumoi = matkhau.getText().toString().trim();
-        str_nhaplaimk = nhaplaimk.getText().toString().trim();
-
         RequestBody requestBody_Email = RequestBody.create(MediaType.parse("multipart/from-data"),email);
         RequestBody requestBody_Tenngdung = RequestBody.create(MediaType.parse("multipart/from-data"),str_tenngdung);
         RequestBody requestBody_Matkhau = RequestBody.create(MediaType.parse("multipart/from-data"),str_matkhaumoi);
 
         String strRealPath = RealPathUtil.getRealPath(thaydoithongtin.this,mUri);
-        Log.e("strRealPath", strRealPath);
         File file = new File(strRealPath);
 
         RequestBody requestBodyavt = RequestBody.create(MediaType.parse("multipart/from-data"),file);
@@ -182,25 +180,35 @@ public class thaydoithongtin extends AppCompatActivity {
                 Toast.makeText(thaydoithongtin.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
-/*
-        retrofitInterface.changeAvatar(requestBody,multiAvt).enqueue(new Callback<Void>() {
+    }
+
+    private void callApi() {
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put("email", email);
+        map.put("tenngdung", str_tenngdung);
+        map.put("matkhau", str_matkhaumoi);
+
+        Call<Void> call = retrofitInterface.changeInfo(map);
+        call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.code() == 200) {
-                    Log.e(TAG,"api img ok");
-
+                    progressDialog.dismiss();
+                    Toast.makeText(thaydoithongtin.this, "Cập nhật thông tin thành công",Toast.LENGTH_LONG).show();
+                    TruyenDuLieu.trTenTk_dnhap = str_tenngdung;
                 } else if (response.code() == 400) {
-                    Toast.makeText(thaydoithongtin.this,"Lỗi",Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                    Toast.makeText(thaydoithongtin.this, "Tài khoản mail không tồn tại",Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e(TAG,"api img lỗi gì đó");
-                Toast.makeText(thaydoithongtin.this, t.getMessage(),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+                Toast.makeText(thaydoithongtin.this, "Lỗi kết nối",Toast.LENGTH_LONG).show();
             }
         });
-*/
     }
 
     private void onClickRequestPermission() {

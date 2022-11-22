@@ -31,8 +31,8 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            //.baseUrl("http://192.168.1.103:3000")
-            .baseUrl("https://dacm.herokuapp.com")
+            .baseUrl("http://192.168.1.139:3000")
+            //.baseUrl("https://dacm.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);
@@ -60,11 +60,6 @@ public interface RetrofitInterface {
 
     @POST("/list")
     Call<List<BoDe>> getBoDe (@Body HashMap<String, String> map);
-
-    @Multipart
-    @POST("/uploadimg")
-    Call<Void> changeAvatar(@Part("email") RequestBody email,
-                            @Part MultipartBody.Part image);
 
     @Multipart
     @POST("/changeinfo2")
