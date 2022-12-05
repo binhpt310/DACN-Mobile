@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/hong"
     android:orientation="vertical"
-    tools:context=".cauhoi.search_question">
+    tools:context=".search.search_question">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView6"
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/txtsearch_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -21,8 +22,9 @@
             android:layout_marginEnd="15dp"
             android:background="@drawable/searchview_backgound"
             android:padding="10dp"
-            android:text="Nhập từ khóa"
+            android:hint="Nhập từ khóa"
             android:textSize="20sp"
+            android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,29 +36,39 @@
             android:layout_marginEnd="-10dp"
             android:background="@drawable/hinh_tron2"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
-            app:layout_constraintEnd_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toTopOf="@+id/textView6">
+            app:layout_constraintBottom_toBottomOf="@+id/txtsearch_key"
+            app:layout_constraintEnd_toEndOf="@+id/txtsearch_key"
+            app:layout_constraintTop_toTopOf="@+id/txtsearch_key">
 
             <ImageView
+                android:id="@+id/search_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:clickable="true"
                 android:src="@drawable/ic_baseline_search" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchList"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/search_nulltext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:visibility="gone">
+        <TextView
+            android:id="@+id/search_nulltext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"></TextView>
 
-    </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchList"
+            android:layout_width="match_parent"
+            android:layout_height="603dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

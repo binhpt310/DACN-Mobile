@@ -91,7 +91,7 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="true"/>
         <activity
-            android:name=".cauhoi.search_question"
+            android:name=".search.search_question"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

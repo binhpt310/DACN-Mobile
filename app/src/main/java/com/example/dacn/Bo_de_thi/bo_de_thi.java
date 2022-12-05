@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.search.search_question;
+import com.example.dacn.mucluc.trogiup;
 import com.example.dacn.trangchu2;
 
 import java.util.ArrayList;
@@ -39,7 +42,7 @@ public class bo_de_thi extends AppCompatActivity {
     RadioButton radioon, radiothi;
     RecyclerView recyclerView;
     TextView txt_toolbar;
-
+    Button floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +90,17 @@ public class bo_de_thi extends AppCompatActivity {
                     Toast.makeText(bo_de_thi.this,"Fail",Toast.LENGTH_SHORT).show();
                 }
             });
+            View search_question;
+            trogiup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(bo_de_thi.this, search_question.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                    finish();
+                }
+            });
+
         }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -144,7 +158,13 @@ public class bo_de_thi extends AppCompatActivity {
                 }
             }
         });
-
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(bo_de_thi.this, search_question.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void khaibao() {
@@ -154,6 +174,7 @@ public class bo_de_thi extends AppCompatActivity {
         radioGroup = findViewById(R.id.radio_gr);
         radioon = findViewById(R.id.radio_on);
         radiothi = findViewById(R.id.radio_thi);
+        floatingActionButton = findViewById(R.id.floatingActionButton);
     }
 
 }

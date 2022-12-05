@@ -1,7 +1,8 @@
-package com.example.dacn.cauhoi;
+package com.example.dacn.search;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,18 +15,34 @@ import java.util.ArrayList;
 
 public class search_question extends AppCompatActivity {
 
+    private ArrayList<CardModelDataSearch> searchModelArrayList = new ArrayList<CardModelDataSearch>();
+    String tenmon, keyword;
+    ImageView btn_search;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchquestion);
+
+        loadListData();
+
+        btn_search = findViewById(R.id.search_button);
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: change list data for call api
+
+                // Load data to search list again
+                loadListData();
+            }
+        });
+    }
+
+    public void loadListData(){
         RecyclerView recyclerView = findViewById(R.id.searchList);
         TextView nullText = findViewById(R.id.search_nulltext);
-
-        ///// Can be modified by call api to get list data
-        ArrayList<CardModelDataSearch> searchModelArrayList = new ArrayList<CardModelDataSearch>();
-        searchModelArrayList.add(new CardModelDataSearch("Who is Nguyen", "She's a Stupid Cat"));
-        ////
-
         // we are initializing our adapter class and passing our arraylist to it.
         SearchAdapter courseAdapter = new SearchAdapter(this, searchModelArrayList);
 
@@ -37,7 +54,7 @@ public class search_question extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(courseAdapter);
 
-        if(searchModelArrayList.size() == 0){
+        if(searchModelArrayList.size() == 0) {
             nullText.setVisibility(View.VISIBLE);
             nullText.setText("Khong co ket qua");
             recyclerView.setVisibility(View.GONE);

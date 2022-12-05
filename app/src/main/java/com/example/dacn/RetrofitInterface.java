@@ -1,7 +1,5 @@
 package com.example.dacn;
 
-import android.database.Observable;
-
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.dangnhap.DangNhapResult;
@@ -14,7 +12,6 @@ import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -67,6 +64,5 @@ public interface RetrofitInterface {
 
     @POST("/ques")
     Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);
-
 
 }

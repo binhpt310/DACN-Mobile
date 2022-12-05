@@ -9,10 +9,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/timmongmo"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:background="@color/timmongmo"
         android:padding="15dp">
 
         <TextView
@@ -40,11 +40,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/listcode_search_1"
