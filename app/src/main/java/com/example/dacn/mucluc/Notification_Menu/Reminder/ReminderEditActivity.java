@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +54,7 @@ public class ReminderEditActivity extends AppCompatActivity implements
     private Reminder mReceivedReminder;
     private ReminderDatabase rb;
     private AlarmReceiver mAlarmReceiver;
-
+    private ImageView mSave, mDiscard;
     // Constant Intent String
     public static final String EXTRA_REMINDER_ID = "Reminder_ID";
 
@@ -89,10 +90,12 @@ public class ReminderEditActivity extends AppCompatActivity implements
         mFAB1 = (FloatingActionButton) findViewById(R.id.starred1);
         mFAB2 = (FloatingActionButton) findViewById(R.id.starred2);
         mRepeatSwitch = (Switch) findViewById(R.id.repeat_switch);
+        mSave = findViewById(R.id.save_reminder);
+        mDiscard = findViewById(R.id.discard_reminder);
 
         // Setup Toolbar
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        this.getSupportActionBar().setHomeButtonEnabled(true);
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        this.getSupportActionBar().setHomeButtonEnabled(true);
 
         // Setup Reminder Title EditText
         mTitleText.addTextChangedListener(new TextWatcher() {
@@ -193,6 +196,29 @@ public class ReminderEditActivity extends AppCompatActivity implements
         mYear = Integer.parseInt(mDateSplit[2]);
         mHour = Integer.parseInt(mTimeSplit[0]);
         mMinute = Integer.parseInt(mTimeSplit[1]);
+
+        mSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTitleText.setText(mTitle);
+                if (mTitleText.getText().toString().length() == 0){
+                    mTitleText.setTextColor(Color.WHITE);
+                    mTitleText.setError("Reminder Title cannot be blank!");
+                }
+                else {
+                    updateReminder();
+                }
+            }
+        });
+
+        mDiscard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Đã xoá",
+                        Toast.LENGTH_SHORT).show();
+                onBackPressed();
+            }
+        });
     }
 
 
@@ -411,53 +437,6 @@ public class ReminderEditActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    }
-
-    // Creating the menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_reminder, menu);
-        return true;
-    }
-
-    // On clicking menu buttons
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            // On clicking the back arrow
-            // Discard any changes
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            // On clicking save reminder button
-            // Update reminder
-            case R.id.save_reminder:
-                mTitleText.setText(mTitle);
-
-                if (mTitleText.getText().toString().length() == 0){
-                    mTitleText.setTextColor(Color.WHITE);
-                    mTitleText.setError("Reminder Title cannot be blank!");
-                }
-
-                else {
-                    updateReminder();
-                }
-                return true;
-
-            // On clicking discard reminder button
-            // Discard any changes
-            case R.id.discard_reminder:
-                Toast.makeText(getApplicationContext(), "Đã xoá thay đổi",
-                        Toast.LENGTH_SHORT).show();
-
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
 }

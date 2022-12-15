@@ -122,7 +122,7 @@ public class NotificationMainActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
 
                 // On clicking discard reminders
-                case R.id.discard_reminder:
+                case R.id.discard_reminder1:
                     // Close the context menu
                     actionMode.finish();
 
@@ -166,7 +166,7 @@ public class NotificationMainActivity extends AppCompatActivity {
                     return true;
 
                 // On clicking save reminders
-                case R.id.save_reminder:
+                case R.id.save_reminder1:
                     // Close the context menu
                     actionMode.finish();
                     // Clear selected items in recycler view

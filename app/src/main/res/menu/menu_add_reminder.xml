@@ -18,14 +18,14 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/discard_reminder"
+        android:id="@+id/discard_reminder1"
         android:icon="@drawable/ic_delete_white_24dp"
         app:iconTint="#000000"
         app:iconTintMode="src_in"
         android:title="@string/action_discard_reminder"
         app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/save_reminder"
+    <item android:id="@+id/save_reminder1"
           android:icon="@drawable/ic_check_white_24dp"
             app:iconTint="#000000"
         app:iconTintMode="src_in"
