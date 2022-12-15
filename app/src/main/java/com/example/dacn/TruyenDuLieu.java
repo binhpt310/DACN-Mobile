@@ -14,4 +14,8 @@ public class TruyenDuLieu {
     public static String trEmail_dnhap = "";
 
     public static String trTenTk_dnhap = "";
+
+    public static String tr_linkanh = "";
+
+    public static int trCauhoihientai = 0;
 }

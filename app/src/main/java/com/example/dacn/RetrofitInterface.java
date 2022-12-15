@@ -3,7 +3,10 @@ package com.example.dacn;
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.dangnhap.DangNhapResult;
-import com.example.dacn.mucluc.User_image;
+import com.example.dacn.hoanthanhbai.NdungCardModel;
+import com.example.dacn.mucluc.ThayDoiThongTin.dulieu_thaydoi;
+import com.example.dacn.search.CardModelDataSearch;
+import com.example.dacn.search.SearchAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -28,7 +31,8 @@ public interface RetrofitInterface {
             .create();
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:3000")
+            //.baseUrl("http://192.168.1.139:3000")
+            .baseUrl("http://10.45.66.148:3000")
             //.baseUrl("https://dacm.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
@@ -59,7 +63,15 @@ public interface RetrofitInterface {
     Call<List<BoDe>> getBoDe (@Body HashMap<String, String> map);
 
     @Multipart
-    @POST("/uploadimg")
-    Call<Void> changeAvatar(@Part(User_image.KEY_EMAIL) RequestBody email,
-                            @Part MultipartBody.Part avt);
+    @POST("/changeinfo2")
+    Call<dulieu_thaydoi> changeInfo2(@Part("email") RequestBody email,
+                                     @Part MultipartBody.Part image,
+                                     @Part("tenngdung") RequestBody tenngdung,
+                                     @Part("matkhau") RequestBody matkhau);
+
+    @POST("/ques")
+    Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);
+
+    @GET("/search")
+    Call<List<CardModelDataSearch>> getSearch (@Body HashMap<String, String> map);
 }

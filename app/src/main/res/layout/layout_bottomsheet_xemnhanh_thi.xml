@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/timhong"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:id="@+id/bottom_sheet_layout_xemnhanhthi">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_thi_xemnhanh_dalam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_xemnhanh_cam"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="0"
+                android:textColor="@color/den"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Đã làm"
+                android:textColor="@color/den"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_thi_xemnhanh_chualam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_xemnhanh_tim"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="20"
+                android:textColor="@color/den"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Chưa làm"
+                android:textColor="@color/den"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhấn vào câu bất kỳ để xem"
+        android:textColor="@color/den80"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau1_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 01"
+                    android:textSize="20sp"
+                    android:textColor="@color/den"
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_cau2_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 02"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau3_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 03"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau4_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 04"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau5_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 05"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau6_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 06"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau7_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 07"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau8_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 08"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau9_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 09"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau10_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 10"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau11_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 11"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau12_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 12"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau13_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 13"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau14_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 14"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau15_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 15"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau16_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 16"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau17_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 17"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau18_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 18"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau19_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 19"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau20_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 20"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau21_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 21"
+                    android:textSize="20sp"
+                    android:textColor="@color/den"
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_cau22_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 22"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau23_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 23"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau24_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 24"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau25_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 25"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau26_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 26"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau27_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 27"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau28_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 28"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau29_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 29"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau30_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 30"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau31_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 31"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau32_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 32"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau33_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 33"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau34_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 34"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau35_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 35"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau36_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 36"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_cau37_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 37"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau38_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 38"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau39_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 39"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau40_xemnhanhthi"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_xemnhanh_tim"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Câu 40"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

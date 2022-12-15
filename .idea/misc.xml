@@ -3,58 +3,70 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon.xml" value="0.1435" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_khung_otp.xml" value="0.1" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_line_trang.xml" value="0.106" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem.xml" value="0.171" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem_xanh.xml" value="0.171" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_popup_thong_bao.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_do.xml" value="0.171" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_tim.xml" value="0.171" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_xanh.xml" value="0.171" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.106" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_back.xml" value="0.106" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_diversity.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_info.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_label.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_lock.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_logout.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/drawable/ic_person.xml" value="0.144" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_bo_de_thi.xml" value="0.16666666666666666" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_dang_ky.xml" value="0.3333333333333333" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_dang_nhap.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_hengio1.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_lich_su_lam_bai.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_logo_screen.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_mucluc.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_ontap_tracnghiem.xml" value="0.16666666666666666" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_popup_dang_xuat.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_popup_hoan_thanh_thi_thu.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_popup_ket_thuc_thi_thu.xml" value="0.14666666666666667" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau1.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau2.xml" value="0.3333333333333333" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau3.xml" value="0.165625" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau4.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thaydoithongtin.xml" value="0.16666666666666666" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_trangchu2.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/activity_veapp.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/card_bo_de_thi.xml" value="0.3333333333333333" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/card_lich_su_lam_bai.xml" value="0.1796875" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/layout_bottomsheet_xemnhanh_on.xml" value="0.22" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/layout_header.xml" value="0.16666666666666666" />
-        <entry key="..\:/APP/OnThiTHPG_app/DACN-Mobile/app/src/main/res/layout/layout_header_ontap.xml" value="0.1796875" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/drawable/bg_popup_thong_bao.xml" value="0.122" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_dang_ky.xml" value="0.10987601539119282" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_lich_su_lam_bai.xml" value="0.10987601539119282" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_logo_screen.xml" value="0.10987601539119282" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_ontap_tracnghiem.xml" value="0.10987601539119282" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_popup_hoan_thanh_thi_thu.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_popup_ket_thuc_thi_thu.xml" value="0.13333333333333333" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_thaydoithongtin.xml" value="0.10987601539119282" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.10987601539119282" />
-        <entry key="..\:/Users/7490/Desktop/DACN/app/src/main/res/layout/activity_trangchu2.xml" value="0.10987601539119282" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_card_hoanthanhbaithi.xml" value="0.124" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_card_hoanthanhbaithi_do.xml" value="0.124" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_chon_mon_lich_su_lam_bai.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon2.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon3.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon4.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_gradient_btn_chonmon5.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_khung_otp.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_line_do.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_line_trang.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_line_xam.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_line_xanh.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_nen_profile.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_otracnghiem_cam.xml" value="0.15" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_popup_thong_bao.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_cam.xml" value="0.15" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_do.xml" value="0.15" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_tim.xml" value="0.126" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/bg_xemnhanh_xanh.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/hinh_tron.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/ic_person.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/ic_person_dk.xml" value="0.132" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/drawable/toolbar_dropshadow.xml" value="0.188" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_bo_de_thi.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_dang_ky.xml" value="0.3333333333333333" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_dang_nhap.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_hoanthanhbaithi.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_lich_su_lam_bai.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_logo_screen.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_menu_thong_bao.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_mucluc.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_notification_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_ontap_tracnghiem.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_popup_dang_xuat.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_popup_hoan_thanh_thi_thu.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_popup_ket_thuc_thi_thu.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_popup_search.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau1.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau2.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau3.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_quenmatkhau4.xml" value="0.25" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_reminder_add.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_searchcode.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_searchquestiom.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_searchquestion.xml" value="0.3333333333333333" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_support.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_thaydoithongtin.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_thi_tracnghiem.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_trangchu2.xml" value="0.3333333333333333" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_veapp.xml" value="0.22" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/activity_waiting.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_bo_de_on.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_bo_de_thi.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_cauhoi.xml" value="0.2594752186588921" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_girditem_xemnhanh.xml" value="0.3333333333333333" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/card_lich_su_lam_bai.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/cardview_datasearch.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/layout_bottomsheet_xemnhanh_on.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/layout_bottomsheet_xemnhanh_thi.xml" value="0.22" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/layout_ontap_tracnghiem.xml" value="0.22" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/recycle_items.xml" value="0.1796875" />
+        <entry key="..\:/APP/DACN-Mobile/app/src/main/res/layout/slider_layout_waiting.xml" value="0.1796875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1895" />
         <entry key="..\:/Users/user/AndroidStudioProjects/DACN/app/src/main/res/layout/activity_home.xml" value="0.264" />
@@ -68,12 +80,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.14666666666666667" />
-      </ProjectState>
-    </option>
   </component>
 </project>

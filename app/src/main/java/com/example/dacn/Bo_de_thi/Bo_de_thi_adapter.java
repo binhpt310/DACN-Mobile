@@ -15,10 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
-import com.example.dacn.cauhoi.ontap_tracnghiem;
 import com.example.dacn.cauhoi.thi_tracnghiem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Bo_de_thi_adapter extends RecyclerView.Adapter<Bo_de_thi_adapter.MyViewHolder> {

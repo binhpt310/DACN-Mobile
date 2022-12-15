@@ -14,6 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp"
+        android:visibility="visible"
         app:srcCompat="@drawable/img_knowledge" />
 
     <TextView
@@ -25,6 +26,6 @@
         android:fontFamily="@font/roboto_bold"
         android:gravity="center"
         android:text="ÔN THI THPT QUỐC GIA"
-        android:textColor="@color/trang"
+        android:textColor="#D12D4A"
         android:textSize="50sp" />
 </RelativeLayout>

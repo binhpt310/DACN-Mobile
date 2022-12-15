@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hong"
-    android:orientation="vertical"
-    tools:context=".cauhoi.ontap_tracnghiem"
-    android:id="@+id/layout_ontap_tracnghiem">
+    tools:context=".cauhoi.ontap_tracnghiem">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -71,7 +69,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="13dp"
             android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
             app:layout_constraintTop_toTopOf="parent" />
@@ -371,11 +369,11 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_arrow_back"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/den80"
-            android:visibility="invisible"/>
+            app:tint="@color/den80" />
 
         <TextView
             android:id="@+id/btn_on_xemnhanh"
@@ -401,5 +399,6 @@
             app:tint="@color/den80" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,11 +25,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.example.dacn'
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.gms:play-services-cast-framework:21.2.0'
     testImplementation 'junit:junit:4.13.2'
@@ -45,6 +46,18 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //Glide để load image từ Url
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    //Hen gio hoc
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+    implementation 'com.github.aolivafaura:recyclerview-multiselect:master-SNAPSHOT'
+    implementation 'com.github.ramseth001:TextDrawable:1.1.6'
+
+    //thư viện lottie
+    implementation 'com.airbnb.android:lottie:5.2.0'
+
+    //hỗ trợ ảnh và gif
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 }

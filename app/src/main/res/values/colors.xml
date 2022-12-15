@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="timxanh">#937DC2</color>
-    <color name="timnhat">#C689C6</color>
-    <color name="timhong">#E8A0BF</color>
-    <color name="hong">#FCC5C0</color>
-    <color name="xanhla">#72FF42</color>
-    <color name="maudo">#FD7C7C</color>
+    <color name="timxanh">#F36B2B</color>
+    <color name="timnhat">#FFC490</color>
+    <color name="timhong">#F4C9B4</color>
+    <color name="hong">#F4E1C3</color>
+    <color name="xanhla">#AEE269</color>
+    <color name="maudo">#F06880</color>
+    <color name="cam">#F9B77D</color>
     <color name="trang">#FFFFFFFF</color>
     <color name="den">#000000</color>
-    <color name="den80">#333333</color>
+    <color name="den80">#883D13</color>
     <color name="mauchu">#453F38</color>
     <color name="xam">#7F8487</color>
-
-    <color name="purple_200">#50C2C9</color>
-    <color name="purple_500">#50C2C9</color>
-    <color name="purple_700">#50C2C9</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
-    //onboarding colors
-    <color name="background">#F0F4F3</color>
-    <color name="buttontext">#50C2C9</color>
-
-    //indicator color
-    <color name="inactive">#C4C4C4</color>
-    <color name="active">#50C2C9</color>
+    <color name="timmongmo">#ECE6F8</color>
 </resources>
