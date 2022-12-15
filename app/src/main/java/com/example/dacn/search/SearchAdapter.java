@@ -33,8 +33,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
         CardModelDataSearch model = searchModelArrayList.get(position);
-        holder.question.setText(model.getQuestion_search());
-        holder.answer.setText("Đáp án: " + model.getAnswer_search());
+        /*holder.question.setText(model.getQuestion_search());
+        holder.answer.setText("Đáp án: " + model.getAnswer_search());*/
     }
 
     @Override
