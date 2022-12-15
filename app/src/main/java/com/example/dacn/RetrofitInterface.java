@@ -23,6 +23,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.QueryMap;
 
 public interface RetrofitInterface {
 
@@ -72,6 +73,6 @@ public interface RetrofitInterface {
     @POST("/ques")
     Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);
 
-    @GET("/search")
+    @POST("/search")
     Call<List<CardModelDataSearch>> getSearch (@Body HashMap<String, String> map);
 }

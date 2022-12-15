@@ -22,7 +22,9 @@ import android.widget.Toast;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.popup.LoadingDialog;
+import com.example.dacn.search.search_question;
 import com.example.dacn.trangchu2;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +45,7 @@ public class bo_de_thi extends AppCompatActivity {
     RadioButton radioon, radiothi;
     RecyclerView recyclerView;
     TextView txt_toolbar;
+    FloatingActionButton search;
 
     ProgressDialog progressdialog;
 
@@ -58,6 +61,13 @@ public class bo_de_thi extends AppCompatActivity {
         tenmon = TruyenDuLieu.trMon;
         txt_toolbar.setText(TruyenDuLieu.trTenMon);
 
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(bo_de_thi.this, search_question.class);
+                startActivity(intent);
+            }
+        });
         progressdialog = new ProgressDialog(bo_de_thi.this);
         progressdialog.setMessage("Loadinggg");
 
@@ -68,9 +78,6 @@ public class bo_de_thi extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //LoadingDialog loadingDialog = new LoadingDialog(this);
-
 
         if(radioon.isChecked())
         {
@@ -177,6 +184,7 @@ public class bo_de_thi extends AppCompatActivity {
         radioGroup = findViewById(R.id.radio_gr);
         radioon = findViewById(R.id.radio_on);
         radiothi = findViewById(R.id.radio_thi);
+        search = findViewById(R.id.floatingActionButton);
     }
 
     private void callDialog(LoadingDialog loadingDialog){
