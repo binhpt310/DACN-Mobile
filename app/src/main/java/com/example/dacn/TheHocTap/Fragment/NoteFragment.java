@@ -52,7 +52,7 @@ public class NoteFragment extends Fragment {
         View view = inflater.inflate(R.layout.note_recycler_layout, container, false);
         UTIL = new GeneralUtil(requireActivity());
         if (isAdded()) context = getActivity();
-        ((AppCompatActivity) context).getSupportActionBar().setTitle("");
+        ((AppCompatActivity) context).getSupportActionBar().setTitle("Thẻ học tập");
 
         fam = requireActivity().findViewById(R.id.fam);
         fam.setVisibility(View.VISIBLE);

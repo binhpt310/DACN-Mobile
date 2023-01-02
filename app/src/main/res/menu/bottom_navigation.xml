@@ -4,21 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/nav_notes"
         android:icon="@drawable/nav_item_edit_selector"
-        tools:ignore="PrivateResource"
-
-        android:enabled="true"
         android:title="@string/nav_item_notes" />
 
     <item android:id="@+id/nav_fav"
         android:icon="@drawable/nav_item_fav_selector"
-        android:enabled="true"
-
-        app:labelVisibilityMode="labeled"
         android:title="@string/nav_item_fav" />
 
     <item android:id="@+id/nav_trash"
         android:icon="@drawable/nav_item_trash_selector"
-        android:enabled="true"
         android:title="@string/nav_item_trash" />
     
 </menu>
