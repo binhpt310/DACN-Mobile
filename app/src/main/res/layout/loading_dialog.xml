@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:padding="50dp"
     android:background="@color/timhong">
+
     <ProgressBar
         android:id="@+id/progessBar"
         android:layout_width="wrap_content"
@@ -21,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Đang tải..."
+        android:textColor="@color/timxanh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progessBar"
         android:fontFamily="@font/roboto_bold"
-        android:textSize="20sp"
-         />
+        android:textSize="20sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,34 +2,37 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/timhong">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/reminder_add_menu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="@color/den80">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/timxanh">
 
         <ImageView
             android:id="@+id/discard_reminder"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/ic_delete_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ImageView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/save_reminder"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="75dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/ic_check_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ImageView>
+            app:layout_constraintEnd_toStartOf="@+id/discard_reminder"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -37,25 +40,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/reminder_add_menu"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:background="@color/hong"
-        android:orientation="vertical"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/reminder_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:backgroundTint="@color/den"
+            android:backgroundTint="@color/den80"
             android:hint="@string/add_reminder"
             android:inputType="textCapWords|textMultiLine"
             android:maxLines="4"
             android:scrollHorizontally="false"
-            android:textColor="@color/den"
-            android:textColorHint="@color/den"
+            android:textColor="@color/den80"
+            android:textColorHint="@color/den80"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -65,16 +63,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/add_reminder_layout_top"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="@color/timhong">
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -356,12 +349,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@+id/add_reminder_layout_top"
-        android:background="@drawable/toolbar_dropshadow" />
 
 
 </RelativeLayout>

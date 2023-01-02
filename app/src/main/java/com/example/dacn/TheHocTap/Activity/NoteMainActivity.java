@@ -45,7 +45,7 @@ public class NoteMainActivity extends AppCompatActivity {
         createNotificationChannel();
 
         Toolbar myToolbar = findViewById(R.id.toolbar);
-        myToolbar.setTitle("Thẻ học tập");
+        myToolbar.setTitle("");
         setSupportActionBar(myToolbar);
 
         Window window = getWindow();

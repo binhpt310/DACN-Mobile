@@ -12,7 +12,7 @@
         android:id="@+id/reminder_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/hong"/>
+        android:background="@color/hong" />
 
     <TextView
         android:id="@+id/no_reminder_text"
