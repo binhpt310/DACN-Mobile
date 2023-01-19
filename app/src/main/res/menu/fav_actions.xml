@@ -5,11 +5,13 @@
         android:title="@string/action_search"
         android:icon="@drawable/search_icon"
         app:showAsAction="always|collapseActionView"
+        android:iconTint="@color/trang"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <!-- Sort -->
     <item android:id="@+id/action_sort"
         android:title="@string/action_sort"
+        android:iconTint="@color/trang"
         app:showAsAction="never" />
 
 </menu>

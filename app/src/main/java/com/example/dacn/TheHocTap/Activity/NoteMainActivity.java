@@ -9,8 +9,11 @@ import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -47,9 +50,10 @@ public class NoteMainActivity extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.toolbar);
         myToolbar.setTitle("Thẻ học tập");
         setSupportActionBar(myToolbar);
+        myToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
-        Window window = getWindow();
-        window.setStatusBarColor(getResources().getColor(R.color.colorAccent));
+        /*Window window = getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.timxanh));*/
 
         BottomNavigationView navView = findViewById(R.id.bottom_nav);
         navView.setItemIconTintList(null);
@@ -137,4 +141,6 @@ public class NoteMainActivity extends AppCompatActivity {
             Toast.makeText(this, "Nhấn lần nữa để thoát", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

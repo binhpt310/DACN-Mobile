@@ -22,6 +22,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,6 +63,7 @@ public class NoteFragment extends Fragment {
                 requireActivity().getSharedPreferences("NOTES", Context.MODE_PRIVATE);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_notes);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         notes = PrefsUtil.getNotes("notes", context);
 
         int sortValue = sharedPreferences.getInt("sort_index", 0);
@@ -77,7 +79,7 @@ public class NoteFragment extends Fragment {
 
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(listener);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         setHasOptionsMenu(true);
         return view;

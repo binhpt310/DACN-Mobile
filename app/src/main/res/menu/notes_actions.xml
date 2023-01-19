@@ -7,6 +7,7 @@
         <item android:id="@+id/action_search"
             android:title="@string/action_search"
             android:icon="@drawable/search_icon"
+            app:iconTint="@color/trang"
             app:showAsAction="always|collapseActionView"
             app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
@@ -14,11 +15,13 @@
         <item android:id="@+id/action_sort"
             android:title="@string/action_sort"
             android:icon="@drawable/sort_icon"
+            app:iconTint="@color/trang"
             app:showAsAction="never" />
 
         <!-- Clear -->
         <item android:id="@+id/action_clear"
             android:title="@string/action_clear"
             android:icon="@drawable/more_vert_icon"
+            app:iconTint="@color/trang"
             app:showAsAction="never" />
 </menu>

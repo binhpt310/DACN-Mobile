@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,14 +28,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public TextView content;
-        public View img, img2;
+        public LinearLayout img;
 
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.note_title);
             content = itemView.findViewById(R.id.note_content);
-            img = itemView.findViewById(R.id.colorview);
-            img2 = itemView.findViewById(R.id.colorview2);
+            img = itemView.findViewById(R.id.linear);
         }
     }
 
@@ -76,17 +76,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
         content_tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 
-        View view = holder.img;
-        View view2 = holder.img2;
+        LinearLayout view = holder.img;
         view.setBackgroundColor(note.getColor());
-        view2.setBackgroundColor(note.getColor());
 
     }
 
     private int determineLines(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String font = prefs.getString("font_size", null);
-        return 4;
+        return 10;
     }
 
     @Override
