@@ -2,6 +2,7 @@ package com.example.dacn.search;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class search_question extends AppCompatActivity {
 
     private ArrayList<CardModelDataSearch> searchModelArrayList = new ArrayList<CardModelDataSearch>();
     String tenmon, keyword;
-    ImageView btn_search;
+    ImageButton btn_search;
 
 
     @Override
@@ -27,7 +28,7 @@ public class search_question extends AppCompatActivity {
 
         loadListData();
 
-        btn_search = findViewById(R.id.search_button);
+        btn_search = findViewById(R.id.btn_search);
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override

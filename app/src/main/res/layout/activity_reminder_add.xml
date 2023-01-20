@@ -8,25 +8,23 @@
     <LinearLayout
         android:id="@+id/add_reminder_layout_top"
         android:layout_width="match_parent"
-        android:layout_height="148dp"
-        android:background="@color/timxanh"
+        android:layout_height="wrap_content"
+        android:background="@color/hong"
         android:orientation="vertical"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <EditText
             android:id="@+id/reminder_title"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginLeft="72dp"
-            android:layout_marginRight="16dp"
-            android:gravity="top|left"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/den"
             android:hint="@string/add_reminder"
             android:inputType="textCapWords|textMultiLine"
-            android:lines="4"
-            android:minLines="4"
+            android:maxLines="4"
             android:scrollHorizontally="false"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/primary_text_disabled_material_dark"
+            android:textColor="@color/den"
+            android:textColorHint="@color/den"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -40,20 +38,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
 
-            <TextView
-                android:id="@+id/details"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
-                android:layout_marginLeft="110dp"
+                android:background="?android:attr/selectableItemBackground">
 
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center_vertical"
-                android:text="@string/details"
-                android:textColor="@color/abc_secondary_text_material_dark"
-                android:textSize="20dp" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/starred1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/timnhat"
+                    android:clickable="true"
+                    android:onClick="selectFab1"
+                    android:src="@drawable/ic_notifications_off_grey600_24dp"
+                    app:fabSize="normal" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/starred2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/timnhat"
+                    android:clickable="true"
+                    android:onClick="selectFab2"
+                    android:src="@drawable/ic_notifications_on_white_24dp"
+                    app:fabSize="normal" />
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="72dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="230dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_vertical"
+                    android:text="@string/details"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/date"
@@ -85,15 +117,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/set_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -129,15 +161,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/time"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/set_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -171,15 +203,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/repeat"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/set_repeat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -228,15 +260,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/repeat_no"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/set_repeat_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -272,15 +304,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/repeat_type"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/set_repeat_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        android:textColor="@color/den"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -296,32 +328,5 @@
         android:layout_below="@+id/add_reminder_layout_top"
         android:background="@drawable/toolbar_dropshadow" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/starred1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="168dp"
-        android:background="@color/timnhat"
-        android:clickable="true"
-        android:onClick="selectFab1"
-        android:src="@drawable/ic_notifications_off_grey600_24dp"
-        app:fabSize="normal" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/starred2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="168dp"
-        android:background="@color/timnhat"
-        android:clickable="true"
-        android:onClick="selectFab2"
-        android:src="@drawable/ic_notifications_on_white_24dp"
-        app:fabSize="normal" />
 
 </RelativeLayout>

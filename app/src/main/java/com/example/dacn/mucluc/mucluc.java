@@ -1,24 +1,20 @@
 package com.example.dacn.mucluc;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
-import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
 import com.example.dacn.mucluc.Notification_Menu.NotificationMainActivity;
+import com.example.dacn.mucluc.ThayDoiThongTin.thaydoithongtin;
 import com.example.dacn.popup.popup_dang_xuat;
 import com.example.dacn.trangchu2;
 
@@ -41,9 +37,11 @@ public class mucluc extends AppCompatActivity {
 
         tenngdung = TruyenDuLieu.trTenTk_dnhap;
         email = TruyenDuLieu.trEmail_dnhap;
+        Glide.with(mucluc.this).load(TruyenDuLieu.tr_linkanh).into(avamuluc);
 
         txt_email.setText(email);
         txt_tenngdung.setText(tenngdung);
+
 
         chinhsuathongtin.setOnClickListener(new View.OnClickListener() {
             @Override

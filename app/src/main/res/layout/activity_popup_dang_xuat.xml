@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@color/trang" />
+        app:tint="@color/den" />
 
     <TextView
         android:id="@+id/textView"
@@ -23,7 +23,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="Bạn muốn đăng xuất?"
         android:textAlignment="center"
-        android:textColor="@color/trang"
+        android:textColor="@color/den"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         android:layout_width="155dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/maudo"
+        android:backgroundTint="@color/timxanh"
         android:fontFamily="@font/roboto_bold"
         android:text="Đăng xuất"
         android:textSize="18sp"

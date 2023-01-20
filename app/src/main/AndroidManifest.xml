@@ -67,7 +67,7 @@
             android:name=".mucluc.veapp"
             android:exported="false" />
         <activity
-            android:name=".mucluc.thaydoithongtin"
+            android:name=".mucluc.ThayDoiThongTin.thaydoithongtin"
             android:exported="false" />
         <activity
             android:name=".quenmatkhau.quenmatkhau1"
@@ -79,19 +79,20 @@
             android:name=".hoanthanhbai.hoanthanhbaithi"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.dang_nhap"
             android:exported="false" />
         <activity
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.dang_nhap"
+            android:name=".search.search_question"
             android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
             android:exported="true"/>
         <activity
-            android:name=".search.search_question"
+            android:name=".trangchu2"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

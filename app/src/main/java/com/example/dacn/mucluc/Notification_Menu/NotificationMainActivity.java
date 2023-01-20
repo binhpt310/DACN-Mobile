@@ -150,7 +150,7 @@ public class NotificationMainActivity extends AppCompatActivity {
 
                     // Display toast to confirm delete
                     Toast.makeText(getApplicationContext(),
-                            "Deleted",
+                            "Đã xoá",
                             Toast.LENGTH_SHORT).show();
 
                     // To check is there are saved reminders
@@ -384,9 +384,9 @@ public class NotificationMainActivity extends AppCompatActivity {
             // Set repeat views
             public void setReminderRepeatInfo(String repeat, String repeatNo, String repeatType) {
                 if(repeat.equals("true")){
-                    mRepeatInfoText.setText("Every " + repeatNo + " " + repeatType + "(s)");
+                    mRepeatInfoText.setText("Mỗi " + repeatNo + " " + repeatType + "(s)");
                 }else if (repeat.equals("false")) {
-                    mRepeatInfoText.setText("Repeat Off");
+                    mRepeatInfoText.setText("Tắt lặp lại");
                 }
             }
 
