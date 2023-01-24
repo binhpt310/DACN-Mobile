@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-
+        <TextView
             android:id="@+id/txtsearch_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,33 +28,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/btn_search"
+        <LinearLayout
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="-10dp"
             android:background="@drawable/hinh_tron2"
-            android:src="@drawable/ic_search"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="350dp"
-            tools:ignore="MissingConstraints" />
-        <!--        <LinearLayout-->
-<!--            android:layout_width="55dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:layout_marginEnd="-10dp"-->
-<!--            android:background="@drawable/hinh_tron2"-->
-<!--            android:gravity="center"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/txtsearch_key"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/txtsearch_key"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/txtsearch_key">-->
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/txtsearch_key"
+            app:layout_constraintEnd_toEndOf="@+id/txtsearch_key"
+            app:layout_constraintTop_toTopOf="@+id/txtsearch_key">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/search_button"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:clickable="true"-->
-<!--                android:src="@drawable/ic_baseline_search" />-->
-<!--        </LinearLayout>-->
+            <ImageView
+                android:id="@+id/search_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:clickable="true"
+                android:src="@drawable/ic_baseline_search" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,9 +64,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchList"
             android:layout_width="match_parent"
-            android:layout_height="603dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            android:layout_margin="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

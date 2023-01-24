@@ -1,5 +1,8 @@
 package com.example.dacn.search;
 
+import static com.example.dacn.RetrofitInterface.retrofitInterface;
+
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -10,9 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dacn.Bo_de_thi.BoDe;
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
 
 public class search_question extends AppCompatActivity {
 
@@ -20,6 +30,8 @@ public class search_question extends AppCompatActivity {
     String tenmon, keyword;
     ImageButton btn_search;
 
+    ProgressDialog progressdialog;
+    TextView nhaptu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +41,21 @@ public class search_question extends AppCompatActivity {
         loadListData();
 
         btn_search = findViewById(R.id.btn_search);
+        progressdialog = new ProgressDialog(search_question.this);
+        progressdialog.setMessage("Loadinggg");
+
+        //btn_search = findViewById(R.id.search_button);
+        nhaptu = findViewById(R.id.txtsearch_key);
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressdialog.show();
+                HashMap<String, String> maps = new HashMap<>();
+                maps.put("search", nhaptu.toString());
+                maps.put("sub", TruyenDuLieu.trMaDe);
+
+                Call<List<CardModelDataSearch>> calls = retrofitInterface.getSearch(maps);
                 // TODO: change list data for call api
 
                 // Load data to search list again

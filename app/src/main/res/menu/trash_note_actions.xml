@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Save Note -->
+    <item android:id="@+id/action_save"
+        android:title="@string/action_save"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_fav"
+        android:title="@string/action_fav"
+        android:icon="@drawable/star_icon"
+        app:showAsAction="ifRoom" />
+
+
+    <!-- Delete Current Note -->
+    <item android:id="@+id/action_delete"
+        android:title="@string/action_delete"
+        app:showAsAction="never" />
+
+
+    <!-- Restore note -->
+    <item android:id="@+id/action_restore"
+        android:title="@string/action_restore"
+        android:icon="@drawable/more_vert_icon"
+        app:showAsAction="never" />
+
+
+
+    <!-- Pin current note -->
+    <item android:id="@+id/action_pin"
+        android:title="@string/action_pin"
+        android:icon="@drawable/more_vert_icon"
+        app:showAsAction="never" />
+
+
+</menu>

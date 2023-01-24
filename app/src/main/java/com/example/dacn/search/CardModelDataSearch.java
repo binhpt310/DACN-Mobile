@@ -1,13 +1,48 @@
 package com.example.dacn.search;
 
 public class CardModelDataSearch {
-    private String question_search;
-    private String answer_search;
-    private String[] review;
-    private String[] exam;
+    private String Question;
+    private String anw;
+    private String Code;
+    private String Sub;
+
+    public String getQuestion() {
+        return Question;
+    }
+
+    public void setQuestion(String question) {
+        Question = question;
+    }
+
+    public String getAnw() {
+        return anw;
+    }
+
+    public void setAnw(String anw) {
+        this.anw = anw;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
+    }
+
+    public String getSub() {
+        return Sub;
+    }
+
+    public void setSub(String sub) {
+        Sub = sub;
+    }
+
+    /*private String[] review;
+    private String[] exam;*/
 
 
-    public CardModelDataSearch(String question_search, String answer_search, String[] review, String[] exam) {
+    /*public CardModelDataSearch(String question_search, String answer_search, String[] review, String[] exam) {
         this.question_search = question_search;
         this.answer_search = answer_search;
         this.review = review;
@@ -43,6 +78,6 @@ public class CardModelDataSearch {
 
     public void setExamList(String[] exam) {
         this.exam = exam;
-    }
+    }*/
 }
 

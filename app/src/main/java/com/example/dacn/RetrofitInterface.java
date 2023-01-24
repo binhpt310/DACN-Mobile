@@ -5,6 +5,8 @@ import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.dangnhap.DangNhapResult;
 import com.example.dacn.hoanthanhbai.NdungCardModel;
 import com.example.dacn.mucluc.ThayDoiThongTin.dulieu_thaydoi;
+import com.example.dacn.search.CardModelDataSearch;
+import com.example.dacn.search.SearchAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -17,6 +19,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -29,7 +32,8 @@ public interface RetrofitInterface {
 
     RetrofitInterface retrofitInterface = new Retrofit.Builder()
             //.baseUrl("http://192.168.1.139:3000")
-            .baseUrl("https://dacm.herokuapp.com")
+            //.baseUrl("http://10.45.66.148:3000")
+            .baseUrl("https://newdacn.onrender.com/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(RetrofitInterface.class);
@@ -68,4 +72,6 @@ public interface RetrofitInterface {
     @POST("/ques")
     Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);
 
+    @GET("/search")
+    Call<List<CardModelDataSearch>> getSearch (@Body HashMap<String, String> map);
 }

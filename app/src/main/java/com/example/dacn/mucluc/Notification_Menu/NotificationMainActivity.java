@@ -122,7 +122,7 @@ public class NotificationMainActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
 
                 // On clicking discard reminders
-                case R.id.discard_reminder:
+                case R.id.discard_reminder1:
                     // Close the context menu
                     actionMode.finish();
 
@@ -166,7 +166,7 @@ public class NotificationMainActivity extends AppCompatActivity {
                     return true;
 
                 // On clicking save reminders
-                case R.id.save_reminder:
+                case R.id.save_reminder1:
                     // Close the context menu
                     actionMode.finish();
                     // Clear selected items in recycler view
@@ -384,7 +384,7 @@ public class NotificationMainActivity extends AppCompatActivity {
             // Set repeat views
             public void setReminderRepeatInfo(String repeat, String repeatNo, String repeatType) {
                 if(repeat.equals("true")){
-                    mRepeatInfoText.setText("Mỗi " + repeatNo + " " + repeatType + "(s)");
+                    mRepeatInfoText.setText("Mỗi " + repeatNo + " " + repeatType);
                 }else if (repeat.equals("false")) {
                     mRepeatInfoText.setText("Tắt lặp lại");
                 }
@@ -393,9 +393,9 @@ public class NotificationMainActivity extends AppCompatActivity {
             // Set active image as on or off
             public void setActiveImage(String active){
                 if(active.equals("true")){
-                    mActiveImage.setImageResource(R.drawable.ic_notifications_on_white_24dp);
+                    mActiveImage.setImageResource(R.drawable.ic_notifications_active);
                 }else if (active.equals("false")) {
-                    mActiveImage.setImageResource(R.drawable.ic_notifications_off_grey600_24dp);
+                    mActiveImage.setImageResource(R.drawable.ic_notifications_off);
                 }
             }
         }
