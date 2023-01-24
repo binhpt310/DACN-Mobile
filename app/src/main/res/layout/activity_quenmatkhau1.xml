@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:text="Nhập email của bạn để tiếp tục nhé!"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
             android:text="Mã xác nhận sẽ được gửi qua email này."
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="18sp" />
 
         <EditText
@@ -53,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
+            android:layout_marginTop="10dp"
             android:hint="Email"
             android:inputType="text|textEmailAddress"
             android:maxLength="25"
@@ -101,7 +102,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="@font/roboto_bold"
             android:text="tại đây"
-            android:textColor="@color/den80"
+            android:textColor="@color/timxanh"
             android:textSize="15sp" />
     </LinearLayout>
 

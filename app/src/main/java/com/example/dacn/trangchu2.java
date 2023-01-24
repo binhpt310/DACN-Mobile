@@ -9,12 +9,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.dacn.Bo_de_thi.bo_de_thi;
+import com.example.dacn.TheHocTap.Activity.NoteMainActivity;
 import com.example.dacn.mucluc.mucluc;
 
 public class trangchu2 extends AppCompatActivity {
 
     ImageView img_mucluc;
     LinearLayout lsu,dia,gdcd,anhvan;
+    LinearLayout img_thehoctap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +36,6 @@ public class trangchu2 extends AppCompatActivity {
                 finish();
             }
         });
-
-        /*thi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), bo_de_thi.class);
-                startActivity(intent);
-            }
-        });*/
 
         lsu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,11 +77,19 @@ public class trangchu2 extends AppCompatActivity {
             }
         });
 
+       img_thehoctap.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(trangchu2.this, NoteMainActivity.class);
+               startActivity(intent);
+           }
+       });
+
     }
 
     private void khaibao() {
         img_mucluc = findViewById(R.id.img_mucluc);
-
+        img_thehoctap = findViewById(R.id.thehoc);
         lsu = findViewById(R.id.lichsu);
         dia = findViewById(R.id.dia);
         gdcd = findViewById(R.id.gdcd);

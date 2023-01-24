@@ -56,11 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_weight="1"
-            android:checked="true"
             android:fontFamily="@font/roboto_bold"
             android:text="Ôn tập"
             android:textColor="@color/den"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/radio_thi"
@@ -83,5 +83,18 @@
         app:layout_constraintTop_toBottomOf="@+id/radio_gr">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94"
+        app:srcCompat="@drawable/ic_baseline_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

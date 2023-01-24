@@ -4,10 +4,12 @@ import static com.example.dacn.RetrofitInterface.retrofitInterface;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -26,6 +28,7 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
+import com.example.dacn.popup.LoadingDialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -52,10 +55,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
     TextView[] ar_tv_bottom = new TextView[20];
     String MaBoDe;
 
+    ProgressDialog progressdialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ontap_tracnghiem);
+
+        /*LoadingDialog loadingDialog = new LoadingDialog(this);
+        callDialog(loadingDialog);*/
+
+        progressdialog = new ProgressDialog(ontap_tracnghiem.this);
+        progressdialog.setMessage("Loadinggg");
 
         //truyền dữ liệu recyclerview ở trang trước qua
         Bundle bundle = getIntent().getExtras();
@@ -76,9 +87,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
             listdungsai[i] = "";
         }
 
-        /*Cauhoihientai = TruyenDuLieu.trCauhoihientai;
-        Log.e("Cauhoihientai2", String.valueOf(Cauhoihientai));*/
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,86 +98,15 @@ public class ontap_tracnghiem extends AppCompatActivity {
         xemnhanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Log.e("diem", String.valueOf(diem));
-
-                //bật bottomsheet
-                /*if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                } else {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }*/
                 showDialog();
             }
         });
 
-
-        /*//call api
-        HashMap<String, String> map = new HashMap<>();
-        map.put("sub", TruyenDuLieu.trMaDe);
-        map.put("Code", MaBoDe);
-        Call<List<CauHoiTracNghiem>> call = retrofitInterface.getCauHoiTracNghiem(map);
-        call.enqueue(new Callback<List<CauHoiTracNghiem>>() {
-            @Override
-            public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
-                List<CauHoiTracNghiem> adslist = response.body();
-
-                gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-
-                bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-
-                gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-
-                img_toi.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cauhoihientai++;
-                        if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                            img_toi.setVisibility(View.VISIBLE);
-                            img_lui.setVisibility(View.VISIBLE);
-                            if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
-                            else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
-                        }
-                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                    }
-                });
-
-                img_lui.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cauhoihientai--;
-                        if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                            img_toi.setVisibility(View.VISIBLE);
-                            img_lui.setVisibility(View.VISIBLE);
-                            if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
-                            else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
-                        }
-                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<List<CauHoiTracNghiem>> call, Throwable t) {
-                Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
-            }
-        });*/
         callApi();
     }
 
     public void callApi () {
+        progressdialog.show();
         Cauhoihientai = TruyenDuLieu.trCauhoihientai;
         Log.e("Cauhoihientai2", String.valueOf(Cauhoihientai));
         HashMap<String, String> map = new HashMap<>();
@@ -182,6 +119,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 List<CauHoiTracNghiem> adslist = response.body();
 
                 gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                progressdialog.dismiss();
 
                 bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
                 bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
@@ -231,10 +169,12 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<CauHoiTracNghiem>> call, Throwable t) {
+                progressdialog.dismiss();
                 Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
+
     private void bamtracnghiem(List<CauHoiTracNghiem> list,TextView a, TextView tv[], String b, ImageView imageView) {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -277,19 +217,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
         arg[4] = a.get(Cauhoihientai).getD();
         arg[5] = a.get(Cauhoihientai).getAnw();
 
+        //xóa background ô đáp án khi đổi câu hỏi.
+        for (int i = 1; i < 5; i++) {
+            tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
+        }
+
         if (a.get(Cauhoihientai).getCauhoidachon() == null) {
             arg[6] = "";
             //đang ở câu nào thì set trắng ngay img đó
             imageView.setImageResource(R.drawable.bg_line_trang);
-
-            //xóa background ô đáp án khi đổi câu hỏi.
-            for (int i = 1; i < 5; i++) {
-                tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
-            }
         } else {
             arg[6] = a.get(Cauhoihientai).getCauhoidachon();
             for (int i = 1; i < 5; i++) {
-                tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
                 if (arg[i].equals(arg[6])) {
                     if (arg[i].equals(arg[5])) {
                         tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
@@ -301,8 +240,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                             }
                         }
                     }
-                } else if (arg[i].equals(arg[5])) {
-                    tv[i].setBackgroundResource(R.drawable.bg_otracnghiem_xanh);
                 }
             }
         }
@@ -397,16 +334,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
             }
         }
 
-        /*ar_tv_bottom[19].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                TruyenDuLieu.trCauhoihientai = 19;
-                Log.e("Cauhoihientai1", String.valueOf(TruyenDuLieu.trCauhoihientai));
-                callApi();
-
-            }
-        });*/
         bamtextview(ar_tv_bottom[0],0,dialog);
         bamtextview(ar_tv_bottom[1],1,dialog);
         bamtextview(ar_tv_bottom[2],2,dialog);
@@ -445,5 +372,16 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 callApi();
             }
         });
+    }
+
+    private void callDialog(LoadingDialog loadingDialog){
+        loadingDialog.ShowDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.DismissDialog();
+            }
+        },8000);
     }
 }

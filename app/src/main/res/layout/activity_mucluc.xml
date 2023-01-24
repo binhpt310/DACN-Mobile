@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mucluc.mucluc"
-    android:background="@color/timxanh">
+    android:background="@color/hong">
 
     <ImageView
         android:id="@+id/img_tat"
@@ -16,13 +16,12 @@
         android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/trang" />
+        app:tint="@color/den" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_nen_profile"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
@@ -34,9 +33,7 @@
             android:id="@+id/ava_mucluc"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:src="@drawable/img_reader"
-            app:civ_border_color="@color/trang"
-            app:civ_border_width="2dp" />
+            android:src="@drawable/img_reader" />
 
         <TextView
             android:id="@+id/txt_tenngdung_mucluc"
@@ -63,7 +60,7 @@
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/timhong"
+        android:background="@drawable/bg_nen_profile"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"

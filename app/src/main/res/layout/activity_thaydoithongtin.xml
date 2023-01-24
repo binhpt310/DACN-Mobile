@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/hong"
     android:orientation="vertical"
-    tools:context=".mucluc.thaydoithongtin">
+    tools:context=".mucluc.ThayDoiThongTin.thaydoithongtin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
@@ -57,11 +57,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        app:backgroundTint="@color/timnhat"
+        app:backgroundTint="@color/timxanh"
         app:layout_constraintBottom_toBottomOf="@+id/img_ava"
         app:layout_constraintEnd_toEndOf="@+id/img_ava"
         app:rippleColor="@color/timxanh"
-        app:srcCompat="@drawable/ic_photo_camera" />
+        app:srcCompat="@drawable/ic_photo_camera"
+        app:tint="@color/trang" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:text="Tên người dùng"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <EditText
@@ -87,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/den80"
+            android:textColor="@color/den"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -106,7 +107,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:text="Mật khẩu mới"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <EditText
@@ -115,7 +116,7 @@
             android:layout_height="48dp"
             android:fontFamily="@font/roboto_regular"
             android:inputType="textPassword"
-            android:textColor="@color/den80"
+            android:textColor="@color/den"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -134,7 +135,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:text="Nhập lại mật khẩu"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <EditText
@@ -143,7 +144,7 @@
             android:layout_height="48dp"
             android:fontFamily="@font/roboto_regular"
             android:inputType="textPassword"
-            android:textColor="@color/den80"
+            android:textColor="@color/den"
             android:textSize="18sp" />
     </LinearLayout>
 

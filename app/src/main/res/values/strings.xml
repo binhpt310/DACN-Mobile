@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Ôn Thi THPT</string>
-
     <string name="nav_trangchu">Trang Chủ</string>
     <string name="nav_taothehoctap">Thẻ học tập</string>
 
@@ -56,4 +55,73 @@
     <string name="action_save_reminder">Lưu lời nhắc</string>
 
     <string name="no_reminders">Nhấn nút bên dưới để tạo lịch hẹn giờ học đầu tiên!</string>
+
+    //context
+    <string name="context_one">Click vào đây để kết nối với chúng tôi</string>
+    <string name="todo">TODO</string>
+
+    //Thẻ học tập
+    <string name="button_text">Thêm thẻ</string>
+    <string name="enter_your_note">Nhập tên thẻ…</string>
+    <string name="search_hint">Tìm kiếm thẻ…</string>
+    <string name="search_hint_fav">Tìm kiếm thẻ yêu thích…</string>
+
+    <string name="save">Lưu</string>
+    <string name="clear">Xoá</string>
+
+    <!-- Main Activity -->
+    <string name="clear_notes_title">Xoá tất cả thẻ</string>
+    <string name="clear_notes_text">Xoá hết tất cả thẻ?</string>
+    <string name="clear_notes_toast">Xoá thành công</string>
+
+    <!-- Trash Fragment -->
+    <string name="trash_empty">Không có gì ở đây…</string>
+    <string name="trash_clear_confirm">Bạn có chắc chắn xoá tất cả thẻ trong thùng rác?</string>
+    <string name="clear_error_title">Không có thẻ nào ở trong thùng rác</string>
+    <string name="trash_error">Thùng rác không còn thẻ nào để xoá lần nữa</string>
+
+    <!-- Note Edit Activity -->
+    <string name="enter_your_title">Tiêu đề</string>
+    <string name="date_created">Ngày tạo: %1$s</string>
+    <string name="delete_title">Xoá thẻ</string>
+    <string name="delete_confirm">Bạn có chắc chắn muốn xoá thẻ này không?</string>
+    <string name="discard_title">Bỏ những thay đổi</string>
+    <string name="discard_confirm">Bạn có chắc chắn muốn bỏ những thay đổi trước đó?</string>
+    <string name="warning_title">Có lỗi xảy ra</string>
+    <string name="warning_confirm">Thẻ của bạn đang trống, hãy nhập trước khi lưu</string>
+    <string name="restore_toast">Thẻ đã được khôi phục</string>
+    <string name="delete_toast">Thẻ đã bị xoá</string>
+    <string name="nav_item_notes">Thẻ</string>
+    <string name="nav_item_trash">Thùng rác</string>
+    <string name="nav_item_fav">Yêu thích</string>
+    <string name="notes_empty">Không có thẻ nào</string>
+
+    <!-- Menu Actions -->
+    <string name="action_settings">Cài đặt</string>
+    <string name="action_add">Thêm thẻ</string>
+    <string name="action_remove">Thùng rác</string>
+    <string name="action_save">Lưu</string>
+    <string name="action_delete">Xoá thẻ</string>
+    <string name="action_pin">Ghim thẻ</string>
+    <string name="action_restore">Khôi phục thẻ</string>
+    <string name="action_home">Trang chủ</string>
+    <string name="action_empty">Làm sạch thùng rác</string>
+    <string name="action_clear">Xoá tất cả thẻ</string>
+    <string name="action_color">Cài đặt màu thẻ</string>
+    <string name="action_sort">Sắp xếp thẻ</string>
+    <string name="action_fav">Thêm thẻ yêu thích</string>
+    <string name="action_unfav">Bỏ yêu thích thẻ</string>
+    <string name="action_search">Tìm kiếm thẻ</string>
+    <string name="checkbox_msg">Không hiện thông báo này nữa</string>
+    <!-- Notification Channel -->
+    <string name="channel_name">Thông báo</string>
+    <string name="channel_description">Các thẻ được ghim</string>
+
+    <!-- Favorites -->
+    <string name="favs_empty">Thẻ yêu thích sẽ hiển thị tại đây!</string>
+    <string name="delete_favorite_title">Không thề xoá thẻ yêu thích</string>
+    <string name="delete_favorite_message">Hãy bỏ yêu thích thẻ để chuyển vào thùng rác</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
