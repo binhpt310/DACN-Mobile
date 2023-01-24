@@ -17,6 +17,12 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TheHocTap.Activity.EditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TheHocTap.Activity.NoteMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".mucluc.Notification_Menu.Reminder.ReminderAddActivity"
             android:exported="false" />
         <activity

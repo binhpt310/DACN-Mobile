@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +51,7 @@ public class ReminderAddActivity extends AppCompatActivity  implements
     private String mRepeatNo;
     private String mRepeatType;
     private String mActive;
+    private ImageView mSave, mDiscard;
 
     // Values for orientation change
     private static final String KEY_TITLE = "title_key";
@@ -80,16 +83,17 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         mRepeatTypeText = (TextView) findViewById(R.id.set_repeat_type);
         mFAB1 = (FloatingActionButton) findViewById(R.id.starred1);
         mFAB2 = (FloatingActionButton) findViewById(R.id.starred2);
-
+        mSave = findViewById(R.id.save_reminder);
+        mDiscard = findViewById(R.id.discard_reminder);
          //Setup Toolbar
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        this.getSupportActionBar().setHomeButtonEnabled(true);
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        this.getSupportActionBar().setHomeButtonEnabled(true);
 
         // Initialize default values
         mActive = "true";
         mRepeat = "true";
         mRepeatNo = Integer.toString(1);
-        mRepeatType = "Hour";
+        mRepeatType = "Giờ";
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
@@ -162,7 +166,31 @@ public class ReminderAddActivity extends AppCompatActivity  implements
             mFAB1.setVisibility(View.GONE);
             mFAB2.setVisibility(View.VISIBLE);
         }
+
+        mSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTitleText.setText(mTitle);
+                if (mTitleText.getText().toString().length() == 0){
+                    mTitleText.setTextColor(Color.WHITE);
+                    mTitleText.setError("Reminder Title cannot be blank!");
+                }
+                else {
+                    saveReminder();
+                }
+            }
+        });
+
+        mDiscard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Đã xoá",
+                        Toast.LENGTH_SHORT).show();
+                onBackPressed();
+            }
+        });
     }
+
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {
@@ -365,47 +393,5 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         super.onBackPressed();
     }
 
-    // Creating the menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_reminder, menu);
-        return true;
-    }
-
-    // On clicking menu buttons
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            case R.id.save_reminder:
-                mTitleText.setText(mTitle);
-
-                if (mTitleText.getText().toString().length() == 0){
-                    mTitleText.setTextColor(Color.WHITE);
-                    mTitleText.setError("Reminder Title cannot be blank!");
-
-                }
-
-                else {
-                    saveReminder();
-                }
-                return true;
-
-            case R.id.discard_reminder:
-                Toast.makeText(getApplicationContext(), "Đã xoá",
-                        Toast.LENGTH_SHORT).show();
-
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
 }
