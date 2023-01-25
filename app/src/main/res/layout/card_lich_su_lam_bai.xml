@@ -25,57 +25,10 @@
             android:background="#FFFFFF">
 
             <View
-                android:id="@+id/view3"
-                android:layout_width="104dp"
-                android:layout_height="61dp"
-
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
-                android:background="#A0ABB1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_view_ten_de_thi" />
-
-            <EditText
-                android:id="@+id/edittxt_so_cau_sai2"
-                android:layout_width="28dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@null"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="10"
-                android:textAlignment="center"
-                android:textColor="#731711"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/view3"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonName6"
-                android:layout_width="62dp"
-                android:layout_height="40dp"
-                android:background="@null"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Còn lại"
-                android:textAlignment="center"
-                android:textColor="#020202"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toTopOf="@+id/view3"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <View
                 android:id="@+id/view1"
                 android:layout_width="104dp"
                 android:layout_height="61dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="68dp"
                 android:layout_marginTop="15dp"
 
                 android:layout_marginBottom="15dp"
@@ -83,7 +36,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_view_ten_de_thi"
-                app:layout_constraintVertical_bias="0.636" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
                 android:id="@+id/edittxt_so_cau_dung"
@@ -169,8 +122,8 @@
                 android:layout_marginBottom="15dp"
                 android:background="@color/maudo"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/view3"
-                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.448"
                 app:layout_constraintStart_toEndOf="@+id/view1"
                 app:layout_constraintTop_toBottomOf="@+id/txt_view_ten_de_thi"
                 app:layout_constraintVertical_bias="0.0" />

@@ -51,7 +51,7 @@
             android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".Lich_su_lam_bai.lich_su_lam_bai"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
             android:name=".popup.popup_ket_thuc_thi_thu"
@@ -97,7 +97,8 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="true"/>
         <activity
-            android:name=".trangchu2"
+            android:name=".Lich_su_lam_bai.lich_su_lam_bai"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

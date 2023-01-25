@@ -28,7 +28,7 @@ public class search_question extends AppCompatActivity {
 
     private ArrayList<CardModelDataSearch> searchModelArrayList = new ArrayList<CardModelDataSearch>();
     String tenmon, keyword;
-    ImageButton btn_search;
+    ImageView btn_search;
 
     ProgressDialog progressdialog;
     TextView nhaptu;
@@ -40,11 +40,11 @@ public class search_question extends AppCompatActivity {
 
         loadListData();
 
-        btn_search = findViewById(R.id.btn_search);
+
         progressdialog = new ProgressDialog(search_question.this);
         progressdialog.setMessage("Loadinggg");
 
-        //btn_search = findViewById(R.id.search_button);
+        btn_search = findViewById(R.id.search_button);
         nhaptu = findViewById(R.id.txtsearch_key);
 
         btn_search.setOnClickListener(new View.OnClickListener() {
