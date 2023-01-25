@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
+import com.example.dacn.mucluc.Notification.NotificationsActivity;
 import com.example.dacn.mucluc.Notification_Menu.NotificationMainActivity;
 import com.example.dacn.mucluc.ThayDoiThongTin.thaydoithongtin;
 import com.example.dacn.popup.popup_dang_xuat;
@@ -103,7 +104,7 @@ public class mucluc extends AppCompatActivity {
         hengiohoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mucluc.this, NotificationMainActivity.class);
+                Intent intent = new Intent(mucluc.this, NotificationsActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
