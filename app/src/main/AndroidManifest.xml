@@ -17,6 +17,9 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Lich_su_lam_bai.subjectHistory"
+            android:exported="false" />
+        <activity
             android:name=".TheHocTap.Activity.EditActivity"
             android:exported="false" />
         <activity
