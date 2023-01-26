@@ -25,6 +25,7 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
         this.mlistNoti = list;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public NotiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

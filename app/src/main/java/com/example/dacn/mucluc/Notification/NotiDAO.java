@@ -1,6 +1,7 @@
 package com.example.dacn.mucluc.Notification;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -13,4 +14,7 @@ public interface NotiDAO {
 
     @Query("SELECT * FROM noti")
     List<Notification> getListNoti();
+
+    @Delete
+    void deleteNoti(Notification notification);
 }

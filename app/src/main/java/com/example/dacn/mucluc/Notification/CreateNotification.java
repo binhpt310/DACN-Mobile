@@ -58,7 +58,6 @@ public class CreateNotification extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.e("abc",arrayList.get(i));
                 switch (arrayList.get(i)) {
                     case "1":
                         llTime1.setVisibility(View.VISIBLE);
@@ -94,8 +93,6 @@ public class CreateNotification extends AppCompatActivity {
             }
         });
 
-
-
         clicktime(time1);
         clicktime(time2);
         clicktime(time3);
@@ -119,7 +116,6 @@ public class CreateNotification extends AppCompatActivity {
                 String strTime3 = time3.getText().toString().trim();
                 Notification notification = new Notification(strTitle,strTime1,strTime2,strTime3,"cn","2","2","2","2","2","2");
                 NotiDatabase.getInstance(CreateNotification.this).notiDAO().insertNoti(notification);
-                Log.e("CreateNoti", "ok");
 
                 startActivity(new Intent(CreateNotification.this,NotificationsActivity.class));
             }
