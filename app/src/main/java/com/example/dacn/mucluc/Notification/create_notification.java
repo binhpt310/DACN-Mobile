@@ -106,6 +106,15 @@ public class create_notification extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.e("click", String.valueOf(clickDay));
+
+                String strTitle = edTitle.getText().toString().trim();
+                Log.e("strTitle", strTitle);
+                String strTime1 = time1.getText().toString().trim();
+                String strTime2 = time2.getText().toString().trim();
+                String strTime3 = time3.getText().toString().trim();
+
+                Notification notification = new Notification(strTitle,strTime1,strTime2,strTime3,"cn","2","2","2","2","2","2");
+                NotiDatabase.getInstance(create_notification.this).notiDAO().insertNoti(notification);
             }
         });
     }

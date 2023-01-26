@@ -81,7 +81,7 @@
             android:layout_marginTop="15dp">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:fontFamily="@font/roboto_medium"
@@ -91,7 +91,7 @@
 
             <Spinner
                 android:id="@+id/spiner_create"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:spinnerMode="dropdown"
