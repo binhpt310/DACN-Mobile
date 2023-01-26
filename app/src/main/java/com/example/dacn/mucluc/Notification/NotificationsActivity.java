@@ -21,8 +21,8 @@ public class NotificationsActivity extends AppCompatActivity {
     FloatingActionButton btnAdd;
     RecyclerView rcvNotis;
 
-    private NotiAdapter notiAdapter;
-    private List<Notification> mListNoti;
+    private NotiAdapter notiAdapter = new NotiAdapter();
+    private List<Notification> mListNoti = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +31,16 @@ public class NotificationsActivity extends AppCompatActivity {
 
         khaibao();
 
-        notiAdapter = new NotiAdapter();
-        mListNoti = new ArrayList<>();
-        notiAdapter.setMlistNoti(mListNoti);
         rcvNotis.setLayoutManager(new LinearLayoutManager(this));
         rcvNotis.setAdapter(notiAdapter);
+
+        mListNoti = NotiDatabase.getInstance(NotificationsActivity.this).notiDAO().getListNoti();
+        notiAdapter.setMlistNoti(mListNoti);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NotificationsActivity.this,create_notification.class);
+                Intent intent = new Intent(NotificationsActivity.this, CreateNotification.class);
                 startActivity(intent);
             }
         });

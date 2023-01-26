@@ -17,7 +17,7 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".mucluc.Notification.create_notification"
+            android:name=".mucluc.Notification.CreateNotification"
             android:exported="false" />
         <activity
             android:name=".mucluc.Notification.NotificationsActivity"

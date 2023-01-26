@@ -1,9 +1,14 @@
 package com.example.dacn.mucluc.Notification;
 
+import static android.view.View.GONE;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
@@ -38,6 +43,11 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
         holder.tvTime1.setText(notification.getTime1());
         holder.tvTime2.setText(notification.getTime2());
         holder.tvTime3.setText(notification.getTime3());
+        if (notification.getTime2()==null) {
+            holder.tvTime2.setVisibility(GONE);
+        } else if (notification.getTime3()==null) {
+            holder.tvTime3.setVisibility(GONE);
+        }
 
         holder.daycn.setText(notification.getDaycn());
         holder.day2.setText(notification.getDay2());
@@ -46,6 +56,17 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
         holder.day5.setText(notification.getDay5());
         holder.day6.setText(notification.getDay6());
         holder.day7.setText(notification.getDay7());
+
+        holder.switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (holder.switchCompat.isChecked()) {
+                    Log.e("switch","ok");
+                } else {
+                    Log.e("switch","ko");
+                }
+            }
+        });
     }
 
     @Override
@@ -79,6 +100,7 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
             day7 = itemView.findViewById(R.id.cardnoti_7);
 
             switchCompat = itemView.findViewById(R.id.switch_cardnoti);
+
 
         }
     }

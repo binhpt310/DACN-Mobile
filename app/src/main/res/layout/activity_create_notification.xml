@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/hong"
-    tools:context=".mucluc.Notification.create_notification">
+    tools:context=".mucluc.Notification.CreateNotification">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar_create"
@@ -65,12 +65,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/den80"
             android:fontFamily="@font/roboto_medium"
-            android:hint="Học bài"
             android:inputType="text"
             android:lines="1"
             android:maxLines="1"
-            android:textColor="@color/den"
-            android:textColorHint="@color/den80"
+            android:text="Học bài"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <LinearLayout

@@ -15,14 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.example.dacn.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class create_notification extends AppCompatActivity {
+public class CreateNotification extends AppCompatActivity {
 
     ImageView imgClose,imgDone;
     EditText edTitle;
@@ -42,6 +41,12 @@ public class create_notification extends AppCompatActivity {
 
         khaibao();
 
+        //time
+        myCalender = Calendar.getInstance();
+        hour = myCalender.get(Calendar.HOUR_OF_DAY);
+        minute = myCalender.get(Calendar.MINUTE);
+        String time = hour+":"+minute;
+
         //spinner
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("1");
@@ -59,16 +64,25 @@ public class create_notification extends AppCompatActivity {
                         llTime1.setVisibility(View.VISIBLE);
                         llTime2.setVisibility(View.GONE);
                         llTime3.setVisibility(View.GONE);
+                        time1.setText(time);
+                        time2.setText(null);
+                        time3.setText(null);
                         break;
                     case "2":
                         llTime1.setVisibility(View.VISIBLE);
                         llTime2.setVisibility(View.VISIBLE);
                         llTime3.setVisibility(View.GONE);
+                        time1.setText(time);
+                        time2.setText(time);
+                        time3.setText(null);
                         break;
                     case "3":
                         llTime1.setVisibility(View.VISIBLE);
                         llTime2.setVisibility(View.VISIBLE);
                         llTime3.setVisibility(View.VISIBLE);
+                        time1.setText(time);
+                        time2.setText(time);
+                        time3.setText(time);
                         break;
                 }
 
@@ -80,14 +94,6 @@ public class create_notification extends AppCompatActivity {
             }
         });
 
-        //time
-        myCalender = Calendar.getInstance();
-        hour = myCalender.get(Calendar.HOUR_OF_DAY);
-        minute = myCalender.get(Calendar.MINUTE);
-        String time = hour+":"+minute;
-        time1.setText(time);
-        time2.setText(time);
-        time3.setText(time);
 
 
         clicktime(time1);
@@ -105,16 +111,24 @@ public class create_notification extends AppCompatActivity {
         imgDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("click", String.valueOf(clickDay));
 
                 String strTitle = edTitle.getText().toString().trim();
-                Log.e("strTitle", strTitle);
+
                 String strTime1 = time1.getText().toString().trim();
                 String strTime2 = time2.getText().toString().trim();
                 String strTime3 = time3.getText().toString().trim();
-
                 Notification notification = new Notification(strTitle,strTime1,strTime2,strTime3,"cn","2","2","2","2","2","2");
-                NotiDatabase.getInstance(create_notification.this).notiDAO().insertNoti(notification);
+                NotiDatabase.getInstance(CreateNotification.this).notiDAO().insertNoti(notification);
+                Log.e("CreateNoti", "ok");
+
+                startActivity(new Intent(CreateNotification.this,NotificationsActivity.class));
+            }
+        });
+
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CreateNotification.this,NotificationsActivity.class));
             }
         });
     }
@@ -151,7 +165,7 @@ public class create_notification extends AppCompatActivity {
                 textView.setText(time);
             }
         };
-        TimePickerDialog timePickerDialog = new TimePickerDialog(create_notification.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, myTimeListener, hour, minute, true);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(CreateNotification.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, myTimeListener, hour, minute, true);
         timePickerDialog.setTitle("Chọn giờ");
         timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         timePickerDialog.show();
