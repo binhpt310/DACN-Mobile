@@ -3,6 +3,7 @@ package com.example.dacn.TheHocTap.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
@@ -52,8 +53,12 @@ public class NoteMainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         myToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
-        /*Window window = getWindow();
-        window.setStatusBarColor(getResources().getColor(R.color.timxanh));*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Drawable newdrawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_back);
+        getSupportActionBar().setHomeAsUpIndicator(newdrawable);
+
+        Drawable d = ContextCompat.getDrawable(getApplicationContext(), R.drawable.sort_icon);
+        myToolbar.setOverflowIcon(d);
 
         BottomNavigationView navView = findViewById(R.id.bottom_nav);
         navView.setItemIconTintList(null);
@@ -99,6 +104,7 @@ public class NoteMainActivity extends AppCompatActivity {
                         case R.id.nav_trash:
                             selectedFrag = new TrashFragment();
                             break;
+
                     }
 
                     if (selectedFrag == null) selectedFrag = new NoteFragment();
@@ -142,5 +148,17 @@ public class NoteMainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
