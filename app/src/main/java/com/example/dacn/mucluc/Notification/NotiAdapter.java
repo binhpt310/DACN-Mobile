@@ -2,6 +2,10 @@ package com.example.dacn.mucluc.Notification;
 
 import static android.view.View.GONE;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +16,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder> {
@@ -50,19 +57,20 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
             holder.tvTime3.setVisibility(GONE);
         }
 
-        holder.daycn.setText(notification.getDaycn());
-        holder.day2.setText(notification.getDay2());
-        holder.day3.setText(notification.getDay3());
-        holder.day4.setText(notification.getDay4());
-        holder.day5.setText(notification.getDay5());
-        holder.day6.setText(notification.getDay6());
-        holder.day7.setText(notification.getDay7());
+        checkClickDay(holder.daycn,notification.getDaycn());
+        checkClickDay(holder.day2,notification.getDay2());
+        checkClickDay(holder.day3,notification.getDay3());
+        checkClickDay(holder.day4,notification.getDay4());
+        checkClickDay(holder.day5,notification.getDay5());
+        checkClickDay(holder.day6,notification.getDay6());
+        checkClickDay(holder.day7,notification.getDay7());
 
         holder.switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (holder.switchCompat.isChecked()) {
                     Log.e("switch","ok");
+
                 } else {
                     Log.e("switch","ko");
                 }
@@ -105,4 +113,11 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
 
         }
     }
+
+    private void checkClickDay(TextView textView, Boolean click) {
+        if (click) {
+            textView.setVisibility(View.VISIBLE);
+        }
+    }
+
 }

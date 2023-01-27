@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bao thuc"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textColor="@color/den"
             android:fontFamily="@font/roboto_regular"/>
 
@@ -86,7 +86,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="CN"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/cardnoti_2"
@@ -96,7 +97,8 @@
                 android:layout_margin="3dp"
                 android:text="2"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_3"
@@ -106,7 +108,8 @@
                 android:layout_margin="3dp"
                 android:text="3"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_4"
@@ -116,7 +119,8 @@
                 android:layout_margin="3dp"
                 android:text="4"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_5"
@@ -126,7 +130,8 @@
                 android:layout_margin="3dp"
                 android:text="5"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_6"
@@ -136,7 +141,8 @@
                 android:layout_margin="3dp"
                 android:text="6"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/cardnoti_7"
@@ -146,7 +152,8 @@
                 android:layout_margin="3dp"
                 android:text="7"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>

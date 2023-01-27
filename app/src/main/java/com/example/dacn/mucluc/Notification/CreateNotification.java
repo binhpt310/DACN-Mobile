@@ -26,13 +26,14 @@ public class CreateNotification extends AppCompatActivity {
     ImageView imgClose,imgDone;
     EditText edTitle;
     Spinner spinner;
-    TextView time1,time2,time3,daycn,day2,day3,day4,day5,day6,day7;
+    TextView[] day = new TextView[7];
+    TextView time1,time2,time3;
     LinearLayout llTime1,llTime2,llTime3;
 
     Calendar myCalender;
     int hour,minute;
 
-    Boolean clickDay = false;
+    Boolean[] click = {false,false,false,false,false,false,false};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,18 +94,6 @@ public class CreateNotification extends AppCompatActivity {
             }
         });
 
-        clicktime(time1);
-        clicktime(time2);
-        clicktime(time3);
-
-        clickday(daycn);
-        clickday(day2);
-        clickday(day3);
-        clickday(day4);
-        clickday(day5);
-        clickday(day6);
-        clickday(day7);
-
         imgDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +103,8 @@ public class CreateNotification extends AppCompatActivity {
                 String strTime1 = time1.getText().toString().trim();
                 String strTime2 = time2.getText().toString().trim();
                 String strTime3 = time3.getText().toString().trim();
-                Notification notification = new Notification(strTitle,strTime1,strTime2,strTime3,"cn","2","2","2","2","2","2");
+
+                Notification notification = new Notification(strTitle,strTime1,strTime2,strTime3,click[0],click[1],click[2],click[3],click[4],click[5],click[6]);
                 NotiDatabase.getInstance(CreateNotification.this).notiDAO().insertNoti(notification);
 
                 startActivity(new Intent(CreateNotification.this,NotificationsActivity.class));
@@ -127,6 +117,7 @@ public class CreateNotification extends AppCompatActivity {
                 startActivity(new Intent(CreateNotification.this,NotificationsActivity.class));
             }
         });
+
     }
 
     private void khaibao() {
@@ -140,13 +131,13 @@ public class CreateNotification extends AppCompatActivity {
         time2 = findViewById(R.id.txt_time2_create);
         time3 = findViewById(R.id.txt_time3_create);
 
-        daycn = findViewById(R.id.tv_cn);
-        day2 = findViewById(R.id.tv_2);
-        day3 = findViewById(R.id.tv_3);
-        day4 = findViewById(R.id.tv_4);
-        day5 = findViewById(R.id.tv_5);
-        day6 = findViewById(R.id.tv_6);
-        day7 = findViewById(R.id.tv_7);
+        day[0] = findViewById(R.id.tv_cn);
+        day[1] = findViewById(R.id.tv_2);
+        day[2] = findViewById(R.id.tv_3);
+        day[3] = findViewById(R.id.tv_4);
+        day[4] = findViewById(R.id.tv_5);
+        day[5] = findViewById(R.id.tv_6);
+        day[6] = findViewById(R.id.tv_7);
 
         llTime1 = findViewById(R.id.layout1_create);
         llTime2 = findViewById(R.id.layout2_create);
@@ -176,23 +167,103 @@ public class CreateNotification extends AppCompatActivity {
         });
     }
 
-    private void clickday(TextView textView) {
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickDay == false) {
-                    textView.setBackgroundResource(R.drawable.bg_khung_xam);
-                    textView.setTextColor(getResources().getColor(R.color.trang));
-                    Log.e("click","ok");
-                    clickDay = true;
-                } else if (clickDay == true) {
-                    textView.setBackgroundResource(R.drawable.bg_khung_otp);
-                    textView.setTextColor(getResources().getColor(R.color.den80));
-                    Log.e("click","ko ok");
-                    clickDay = false;
-                }
-            }
-        });
+    public void clickCn(View v) {
+        if (click[0]) {
+            day[0].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[0].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[0] = false;
+        } else {
+            day[0].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[0].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[0] = true;
+        }
+    }
+
+    public void click2(View v) {
+        if (click[1]) {
+            day[1].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[1].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[1] = false;
+        } else {
+            day[1].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[1].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[1] = true;
+        }
+    }
+
+    public void click3(View v) {
+        if (click[2]) {
+            day[2].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[2].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[2] = false;
+        } else {
+            day[2].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[2].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[2] = true;
+        }
+    }
+
+    public void click4(View v) {
+        if (click[3]) {
+            day[3].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[3].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[3] = false;
+        } else {
+            day[3].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[3].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[3] = true;
+        }
+    }
+
+    public void click5(View v) {
+        if (click[4]) {
+            day[4].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[4].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[4] = false;
+        } else {
+            day[4].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[4].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[4] = true;
+            Log.e("false", String.valueOf(click[4]));
+        }
+    }
+
+    public void click6(View v) {
+        if (click[5]) {
+            day[5].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[5].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[5] = false;
+        } else {
+            day[5].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[5].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[5] = true;
+        }
+    }
+
+    public void click7(View v) {
+        if (click[6]) {
+            day[6].setBackgroundResource(R.drawable.bg_khung_otp);
+            day[6].setTextColor(getResources().getColor(R.color.den80));
+            Log.e("click","ok");
+            click[6] = false;
+        } else {
+            day[6].setBackgroundResource(R.drawable.bg_khung_xam);
+            day[6].setTextColor(getResources().getColor(R.color.trang));
+            Log.e("click","ko");
+            click[6] = true;
+        }
     }
 
 }
