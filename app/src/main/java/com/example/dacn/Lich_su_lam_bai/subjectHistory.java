@@ -3,8 +3,12 @@ package com.example.dacn.Lich_su_lam_bai;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.dacn.Lich_su_lam_bai.Fragment.GeoFragment;
 import com.example.dacn.Lich_su_lam_bai.Fragment.ViewPaperSubjectHisAdapter;
 import com.example.dacn.R;
 import com.google.android.material.tabs.TabLayout;
@@ -49,5 +53,14 @@ public class subjectHistory extends AppCompatActivity
             tabLayout.getTabAt(position).select();
         }
     });
+    replacFrament(new GeoFragment());
+    }
+
+    private void replacFrament(Fragment fragment) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.relative_layout,fragment);
+        fragmentTransaction.commit();
     }
 }

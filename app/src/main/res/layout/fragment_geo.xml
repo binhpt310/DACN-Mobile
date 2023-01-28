@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Lich_su_lam_bai.Fragment.GeoFragment">
@@ -9,8 +10,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geo Fragment"
         android:layout_centerInParent="true"
-        android:textSize="32dp"/>
+        android:text="Geo Fragment"
+        android:textSize="32dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gdcdResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/card_lich_su_lam_bai" />
+
 
 </RelativeLayout>
