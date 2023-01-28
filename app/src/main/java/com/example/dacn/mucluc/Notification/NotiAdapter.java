@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,10 +28,20 @@ import java.util.List;
 
 public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder> {
     private List<Notification> mlistNoti;
+    private ClickItem clickItem;
 
     public void setMlistNoti (List<Notification> list) {
         this.mlistNoti = list;
         notifyDataSetChanged();
+    }
+
+    public NotiAdapter(List<Notification> list, ClickItem clickItem) {
+        this.mlistNoti = list;
+        this.clickItem = clickItem;
+    }
+
+    public interface ClickItem {
+        void onClickItem(int id);
     }
 
     @NonNull
@@ -51,9 +62,9 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
         holder.tvTime1.setText(notification.getTime1());
         holder.tvTime2.setText(notification.getTime2());
         holder.tvTime3.setText(notification.getTime3());
-        if (notification.getTime2()==null) {
+        if (notification.getTime2()=="") {
             holder.tvTime2.setVisibility(GONE);
-        } else if (notification.getTime3()==null) {
+        } else if (notification.getTime3()=="") {
             holder.tvTime3.setVisibility(GONE);
         }
 
@@ -76,6 +87,13 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
                 }
             }
         });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickItem.onClickItem(notification.getId());
+            }
+        });
     }
 
     @Override
@@ -90,6 +108,7 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
 
         private TextView tvTitle,tvTime1,tvTime2,tvTime3,daycn,day2,day3,day4,day5,day6,day7;
         private SwitchCompat switchCompat;
+        private CardView cardView;
 
         public NotiViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -110,7 +129,7 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
 
             switchCompat = itemView.findViewById(R.id.switch_cardnoti);
 
-
+            cardView = itemView.findViewById(R.id.layout_card_hengio);
         }
     }
 

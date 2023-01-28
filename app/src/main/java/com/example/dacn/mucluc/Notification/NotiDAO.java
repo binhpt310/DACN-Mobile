@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,4 +18,10 @@ public interface NotiDAO {
 
     @Delete
     void deleteNoti(Notification notification);
+
+    @Update
+    void updateNoti(Notification notification);
+
+    @Query("SELECT * FROM noti WHERE id =:id")
+    Notification getSpecificNote(int id);
 }

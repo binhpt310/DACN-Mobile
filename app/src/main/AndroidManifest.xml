@@ -20,7 +20,7 @@
             android:name=".mucluc.Notification.CreateNotification"
             android:exported="false" />
         <activity
-            android:name=".mucluc.Notification.NotificationsActivity"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
             android:name=".TheHocTap.Activity.EditActivity"
@@ -103,7 +103,7 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="true" />
         <activity
-            android:name=".trangchu2"
+            android:name=".mucluc.Notification.NotificationsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -29,7 +29,7 @@ public class NotificationsActivity extends AppCompatActivity {
     FloatingActionButton btnAdd;
     RecyclerView rcvNotis;
 
-    private NotiAdapter notiAdapter = new NotiAdapter();
+    private NotiAdapter notiAdapter;
     private List<Notification> mListNoti = new ArrayList<>();
 
     @Override
@@ -38,6 +38,17 @@ public class NotificationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notifications);
 
         khaibao();
+
+        notiAdapter = new NotiAdapter(mListNoti, new NotiAdapter.ClickItem() {
+            @Override
+            public void onClickItem(int id) {
+                Intent intent = new Intent(NotificationsActivity.this,CreateNotification.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("id_noti",id);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
         rcvNotis.setLayoutManager(new LinearLayoutManager(this));
         rcvNotis.setAdapter(notiAdapter);
