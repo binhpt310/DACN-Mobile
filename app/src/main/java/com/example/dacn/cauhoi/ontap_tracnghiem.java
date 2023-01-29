@@ -322,9 +322,9 @@ public class ontap_tracnghiem extends AppCompatActivity {
         TextView txt_socausai = dialog.findViewById(R.id.txt_on_xemnhanh_sai);
         TextView txt_socauchualam = dialog.findViewById(R.id.txt_on_xemnhanh_chualam);
 
-        txt_socauchualam.setText(String.valueOf(socauchualam));
-        txt_socaudung.setText(String.valueOf(socaudung));
-        txt_socausai.setText(String.valueOf(socausai));
+        txt_socauchualam.setText(String.format("%02d",socauchualam));
+        txt_socaudung.setText(String.format("%02d",socaudung));
+        txt_socausai.setText(String.format("%02d",socauchualam));
 
         for (int i = 0; i < listdungsai.length; i++) {
             if (listdungsai[i] == "dung") {

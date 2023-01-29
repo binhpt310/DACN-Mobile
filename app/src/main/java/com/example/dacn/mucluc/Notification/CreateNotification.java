@@ -1,7 +1,5 @@
 package com.example.dacn.mucluc.Notification;
 
-import static android.view.View.GONE;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
@@ -20,8 +18,10 @@ import android.widget.TimePicker;
 
 import com.example.dacn.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CreateNotification extends AppCompatActivity {
 
@@ -33,8 +33,9 @@ public class CreateNotification extends AppCompatActivity {
     LinearLayout llTime1,llTime2,llTime3;
 
     Calendar myCalender;
+    SimpleDateFormat simpleDateFormat;
     int hour,minute;
-    String time,time1,time2,time3;
+    String time,time1,time2,time3,timeTamp;
     ArrayList<String> arrayListSpinner = new ArrayList<>();
 
     Boolean[] click = {false,false,false,false,false,false,false};
@@ -58,9 +59,12 @@ public class CreateNotification extends AppCompatActivity {
 
         //time
         myCalender = Calendar.getInstance();
+        simpleDateFormat = new SimpleDateFormat("HH:mm");
         hour = myCalender.get(Calendar.HOUR_OF_DAY);
         minute = myCalender.get(Calendar.MINUTE);
-        time = hour+":"+minute;
+
+        time = String.format("%02d",hour) + ":" + String.format("%02d",minute);
+
 
         //spinner
         arrayListSpinner.add("1");
@@ -216,8 +220,8 @@ public class CreateNotification extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String time = hourOfDay +":"+ minute;
-                textView.setText(time);
+                timeTamp = String.format("%02d",hourOfDay) + ":" + String.format("%02d",minute);
+                textView.setText(timeTamp);
             }
         };
         TimePickerDialog timePickerDialog = new TimePickerDialog(CreateNotification.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, myTimeListener, hour, minute, true);
