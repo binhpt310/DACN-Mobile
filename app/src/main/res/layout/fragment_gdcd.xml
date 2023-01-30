@@ -12,6 +12,11 @@
         android:layout_centerInParent="true"
         android:text="GDCD Fragment"
         android:textSize="32dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/card_lich_su_lam_bai" />
 
 
 </FrameLayout>

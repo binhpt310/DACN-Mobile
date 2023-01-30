@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.dacn.Lich_su_lam_bai.Fragment.GeoFragment;
 import com.example.dacn.Lich_su_lam_bai.Fragment.ViewPaperSubjectHisAdapter;
 import com.example.dacn.R;
 import com.google.android.material.tabs.TabLayout;
@@ -25,7 +24,9 @@ public class subjectHistory extends AppCompatActivity
         setContentView(R.layout.activity_subject_history);
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.view_page1);
+
         viewPaperSubjectHisAdapter = new ViewPaperSubjectHisAdapter(this);
+
         viewPager2.setAdapter(viewPaperSubjectHisAdapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()

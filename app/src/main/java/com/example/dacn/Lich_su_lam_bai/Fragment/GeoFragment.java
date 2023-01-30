@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,12 +51,15 @@ public class GeoFragment extends Fragment {
         HistoryAdapter historyAdapter = new HistoryAdapter(getContext(),newsArrayList);
         recyclerView.setAdapter(historyAdapter);
         historyAdapter.notifyDataSetChanged();
+        Log.d("Success", "recycle view");
 
     }
 
     private void dataInitialize() {
 
         newsArrayList = new ArrayList<history>();
+
+        // Write a code to get data from api and change data in 3 arrays below
         newsHeading = new String[]{
                 getString(R.string.heading_one),
                 getString(R.string.heading_two),
@@ -69,7 +73,6 @@ public class GeoFragment extends Fragment {
             history h = new history(newsHeading[i],caudung[i], causai[i]);
             newsArrayList.add(h);
         }
-    //test
 
     }
 }

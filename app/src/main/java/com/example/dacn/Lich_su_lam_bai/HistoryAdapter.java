@@ -37,8 +37,9 @@ import java.util.ArrayList;
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
          history news = newsArrayList.get(position);
-         holder.txt_title_cardlsu.setText(news.heading);
-         holder.txt_caudung_cardlsu.setText(news.Rtrue);
+         holder.txt_title_cardlsu.setText(news.getHeading());
+         holder.txt_caudung_cardlsu.setText(String.valueOf(news.getTrue()));
+         holder.txt_causai_cardlsu.setText(String.valueOf(news.getFalse()));
      }
 
      @Override
