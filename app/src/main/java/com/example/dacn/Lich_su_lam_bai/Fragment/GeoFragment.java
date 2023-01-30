@@ -26,6 +26,12 @@ public class GeoFragment extends Fragment {
     private int[] causai;
     private RecyclerView recyclerView;
 
+    public GeoFragment(){}
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,12 +44,13 @@ public class GeoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dataInitialize();
-        recyclerView = view.findViewById(R.id.gdcdResult);
+        recyclerView = view.findViewById(R.id.result);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         HistoryAdapter historyAdapter = new HistoryAdapter(getContext(),newsArrayList);
         recyclerView.setAdapter(historyAdapter);
         historyAdapter.notifyDataSetChanged();
+
     }
 
     private void dataInitialize() {
@@ -62,7 +69,7 @@ public class GeoFragment extends Fragment {
             history h = new history(newsHeading[i],caudung[i], causai[i]);
             newsArrayList.add(h);
         }
-
+    //test
 
     }
 }

@@ -53,10 +53,10 @@ public class subjectHistory extends AppCompatActivity
             tabLayout.getTabAt(position).select();
         }
     });
-    replacFrament(new GeoFragment());
+    //replaceFragment(new GeoFragment());
     }
 
-    private void replacFrament(Fragment fragment) {
+    private void replaceFragment(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
