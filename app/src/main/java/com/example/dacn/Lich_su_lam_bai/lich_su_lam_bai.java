@@ -1,6 +1,7 @@
 package com.example.dacn.Lich_su_lam_bai;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.example.dacn.mucluc.mucluc;
 public class lich_su_lam_bai extends AppCompatActivity {
 
     LinearLayout llFolderOn, llFolderThi;
+    ConstraintLayout toolbar_lichsulambai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,8 @@ public class lich_su_lam_bai extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        View toolbar_lichsulambai = findViewById(R.id.toolbar_lichsulambai);
 
+        toolbar_lichsulambai = findViewById(R.id.toolbar_lichsulambai);
         toolbar_lichsulambai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

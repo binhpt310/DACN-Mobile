@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.Lich_su_lam_bai.Fragment.IClickItemHistory;
@@ -28,7 +29,6 @@ import java.util.ArrayList;
      @NonNull
      @Override
      public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
          View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_lich_su_lam_bai,parent,false);
          return new MyViewHolder(v);
      }
@@ -41,18 +41,12 @@ import java.util.ArrayList;
          holder.txt_caudung_cardlsu.setText(String.valueOf(history.getTrue()));
          holder.txt_causai_cardlsu.setText(String.valueOf(history.getFalse()));
 
-         holder.trueLayout.setOnClickListener(new View.OnClickListener() {
+         holder.cardview.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                 iClickItemHistory.onClickItemHistory(history);
              }
 
-         });
-         holder.falseLayout.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 iClickItemHistory.onClickItemHistory(history);
-             }
          });
      }
 
@@ -63,8 +57,7 @@ import java.util.ArrayList;
 
      public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-         LinearLayout trueLayout;
-         LinearLayout falseLayout;
+         CardView cardview;
          TextView txt_title_cardlsu;
          TextView txt_caudung_cardlsu,txt_causai_cardlsu;
 
@@ -74,8 +67,7 @@ import java.util.ArrayList;
              txt_title_cardlsu = itemView.findViewById(R.id.txt_title_cardlsu);
              txt_caudung_cardlsu = itemView.findViewById(R.id.txt_caudung_cardlsu);
              txt_causai_cardlsu = itemView.findViewById(R.id.txt_causai_cardlsu);
-             trueLayout = itemView.findViewById(R.id.trueLayout);
-             falseLayout = itemView.findViewById(R.id.falseLayout);
+             cardview = itemView.findViewById(R.id.layout_item);
          }
      }
 
