@@ -76,6 +76,7 @@ public class bo_de_thi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(bo_de_thi.this, trangchu2.class);
                 startActivity(intent);
+
             }
         });
 

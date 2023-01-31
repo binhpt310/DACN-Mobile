@@ -29,6 +29,8 @@ public class lich_su_lam_bai extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -37,6 +39,8 @@ public class lich_su_lam_bai extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+                finish();
             }
         });
 

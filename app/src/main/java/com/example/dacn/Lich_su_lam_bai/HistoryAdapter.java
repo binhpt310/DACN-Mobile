@@ -45,8 +45,8 @@ import java.util.ArrayList;
              @Override
              public void onClick(View view) {
                 iClickItemHistory.onClickItemHistory(history);
-             }
 
+             }
          });
      }
 

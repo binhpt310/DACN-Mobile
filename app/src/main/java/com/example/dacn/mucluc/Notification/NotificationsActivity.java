@@ -121,6 +121,8 @@ public class NotificationsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(NotificationsActivity.this, mucluc.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_right);
+                finish();
             }
         });
 
