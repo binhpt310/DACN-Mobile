@@ -29,19 +29,31 @@ import java.util.List;
 public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder> {
     private List<Notification> mlistNoti;
     private ClickItem clickItem;
+    private ClickItemSwitchOn clickItemSwitchOn;
+    private ClickItemSwitchOff clickItemSwitchOff;
 
     public void setMlistNoti (List<Notification> list) {
         this.mlistNoti = list;
         notifyDataSetChanged();
     }
 
-    public NotiAdapter(List<Notification> list, ClickItem clickItem) {
+    public NotiAdapter(List<Notification> list, ClickItem clickItem, ClickItemSwitchOn clickItemSwitchOn, ClickItemSwitchOff clickItemSwitchOff) {
         this.mlistNoti = list;
         this.clickItem = clickItem;
+        this.clickItemSwitchOn = clickItemSwitchOn;
+        this.clickItemSwitchOff = clickItemSwitchOff;
     }
 
     public interface ClickItem {
         void onClickItem(int id);
+    }
+
+    public interface ClickItemSwitchOn {
+        void onClickItemSwitchOn (int id, Boolean b);
+    }
+
+    public interface ClickItemSwitchOff {
+        void onClickItemSwitchOff (int id, Boolean b);
     }
 
     @NonNull
@@ -57,8 +69,10 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
         if (notification == null) {
             return;
         }
+        //title
         holder.tvTitle.setText(notification.getTitle());
 
+        //time
         holder.tvTime1.setText(notification.getTime1());
         holder.tvTime2.setText(notification.getTime2());
         holder.tvTime3.setText(notification.getTime3());
@@ -68,6 +82,7 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
             holder.tvTime3.setVisibility(GONE);
         }
 
+        //day
         checkClickDay(holder.daycn,notification.getDaycn());
         checkClickDay(holder.day2,notification.getDay2());
         checkClickDay(holder.day3,notification.getDay3());
@@ -76,18 +91,24 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.NotiViewHolder
         checkClickDay(holder.day6,notification.getDay6());
         checkClickDay(holder.day7,notification.getDay7());
 
+        //switch
+        if (notification.getCheckswitch()) {
+            holder.switchCompat.setChecked(true);
+        }
         holder.switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (holder.switchCompat.isChecked()) {
-                    Log.e("switch","ok");
+                    clickItemSwitchOn.onClickItemSwitchOn(notification.getId(),b);
 
                 } else {
-                    Log.e("switch","ko");
+                    clickItemSwitchOff.onClickItemSwitchOff(notification.getId(),b);
                 }
+
             }
         });
 
+        //cardview
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

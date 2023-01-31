@@ -1,5 +1,7 @@
 package com.example.dacn.mucluc.Notification;
 
+import static com.example.dacn.mucluc.Notification.NotificationsActivity.NOTIFICATION_CHANNEL_ID;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,7 +15,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static String NOTIFICATION = "notification" ;
     @Override
     public void onReceive(Context context, Intent intent) {
-        /*Log.e("Receiver","hello");
+        Log.e("Receiver","hello");
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context. NOTIFICATION_SERVICE ) ;
         Notification notification = intent.getParcelableExtra( NOTIFICATION ) ;
@@ -25,7 +27,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
         int id = intent.getIntExtra( NOTIFICATION_ID , 0 ) ;
         assert notificationManager != null;
-        notificationManager.notify(id , notification) ;*/
+        notificationManager.notify(id , notification) ;
     }
 
 }

@@ -332,8 +332,8 @@ public class thi_tracnghiem extends AppCompatActivity {
         TextView txt_socaudalam = dialog.findViewById(R.id.txt_thi_xemnhanh_dalam);
         TextView txt_socauchualam = dialog.findViewById(R.id.txt_thi_xemnhanh_chualam);
 
-        txt_socauchualam.setText(String.valueOf(socauchualam));
-        txt_socaudalam.setText(String.valueOf(socaudalam));
+        txt_socauchualam.setText(String.format("%02d",socauchualam));
+        txt_socaudalam.setText(String.format("%02d",socaudalam));
 
         for (int i = 0; i < chondapan.length; i++) {
             if (chondapan[i] == "dachon") {

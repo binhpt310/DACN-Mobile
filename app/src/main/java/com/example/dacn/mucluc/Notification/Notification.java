@@ -9,9 +9,9 @@ public class Notification {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title,time1,time2,time3;
-    private Boolean daycn,day2,day3,day4,day5,day6,day7;
+    private Boolean daycn,day2,day3,day4,day5,day6,day7,checkswitch;
 
-    public Notification(String title, String time1, String time2, String time3, Boolean daycn, Boolean day2, Boolean day3, Boolean day4, Boolean day5, Boolean day6, Boolean day7) {
+    public Notification(String title, String time1, String time2, String time3, Boolean daycn, Boolean day2, Boolean day3, Boolean day4, Boolean day5, Boolean day6, Boolean day7, Boolean checkswitch) {
         this.title = title;
         this.time1 = time1;
         this.time2 = time2;
@@ -23,6 +23,7 @@ public class Notification {
         this.day5 = day5;
         this.day6 = day6;
         this.day7 = day7;
+        this.checkswitch = checkswitch;
     }
 
     public int getId() {
@@ -119,5 +120,13 @@ public class Notification {
 
     public void setDay7(Boolean day7) {
         this.day7 = day7;
+    }
+
+    public Boolean getCheckswitch() {
+        return checkswitch;
+    }
+
+    public void setCheckswitch(Boolean checkswitch) {
+        this.checkswitch = checkswitch;
     }
 }

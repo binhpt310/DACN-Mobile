@@ -324,7 +324,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
         txt_socauchualam.setText(String.format("%02d",socauchualam));
         txt_socaudung.setText(String.format("%02d",socaudung));
-        txt_socausai.setText(String.format("%02d",socauchualam));
+        txt_socausai.setText(String.format("%02d",socausai));
 
         for (int i = 0; i < listdungsai.length; i++) {
             if (listdungsai[i] == "dung") {

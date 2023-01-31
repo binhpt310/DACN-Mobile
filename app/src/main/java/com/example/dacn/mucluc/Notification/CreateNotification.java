@@ -33,7 +33,6 @@ public class CreateNotification extends AppCompatActivity {
     LinearLayout llTime1,llTime2,llTime3;
 
     Calendar myCalender;
-    SimpleDateFormat simpleDateFormat;
     int hour,minute;
     String time,time1,time2,time3,timeTamp;
     ArrayList<String> arrayListSpinner = new ArrayList<>();
@@ -59,10 +58,8 @@ public class CreateNotification extends AppCompatActivity {
 
         //time
         myCalender = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("HH:mm");
         hour = myCalender.get(Calendar.HOUR_OF_DAY);
         minute = myCalender.get(Calendar.MINUTE);
-
         time = String.format("%02d",hour) + ":" + String.format("%02d",minute);
 
 
@@ -154,7 +151,7 @@ public class CreateNotification extends AppCompatActivity {
                     time2 = tvTime2.getText().toString().trim();
                     time3 = tvTime3.getText().toString().trim();
 
-                    Notification notification = new Notification(strTitle,time1,time2,time3,click[0],click[1],click[2],click[3],click[4],click[5],click[6]);
+                    Notification notification = new Notification(strTitle,time1,time2,time3,click[0],click[1],click[2],click[3],click[4],click[5],click[6],true);
                     NotiDatabase.getInstance(CreateNotification.this).notiDAO().insertNoti(notification);
                 }
                 startActivity(new Intent(CreateNotification.this,NotificationsActivity.class));
