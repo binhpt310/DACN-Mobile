@@ -1,5 +1,6 @@
 package com.example.dacn.Lich_su_lam_bai.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,15 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dacn.Lich_su_lam_bai.HistoryAdapter;
-import com.example.dacn.Lich_su_lam_bai.history;
+import com.example.dacn.Lich_su_lam_bai.History;
 import com.example.dacn.R;
+import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 import java.util.ArrayList;
 
 public class HistoryFragment extends Fragment {
 
     private String[] newsHeading;
-    private ArrayList<history> newsArrayList;
+    private ArrayList<History> newsArrayList;
     private int[] caudung;
     private int[] causai;
     private RecyclerView recyclerView;
@@ -48,7 +50,12 @@ public class HistoryFragment extends Fragment {
         recyclerView = view.findViewById(R.id.result);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        HistoryAdapter historyAdapter = new HistoryAdapter(getContext(),newsArrayList);
+        HistoryAdapter historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
+            @Override
+            public void onClickItemHistory(History history) {
+                onClickGoToDeTail(history);
+            }
+        });
         recyclerView.setAdapter(historyAdapter);
         historyAdapter.notifyDataSetChanged();
         Log.d("Success", "recycle view");
@@ -57,7 +64,7 @@ public class HistoryFragment extends Fragment {
 
     private void dataInitialize() {
 
-        newsArrayList = new ArrayList<history>();
+        newsArrayList = new ArrayList<History>();
 
         // Write a code to get data from api and change data in 3 arrays below
         newsHeading = new String[]{
@@ -68,12 +75,19 @@ public class HistoryFragment extends Fragment {
         };
         caudung = new int[]{30,10,2};
         causai = new int[]{10,30,38};
-        //
 
         for(int i = 0; i< newsHeading.length; i++){
-            history h = new history(newsHeading[i],caudung[i], causai[i]);
+            History h = new History(newsHeading[i],caudung[i], causai[i]);
             newsArrayList.add(h);
         }
 
     }
+    private void onClickGoToDeTail(History history){
+        Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_history", history);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
+

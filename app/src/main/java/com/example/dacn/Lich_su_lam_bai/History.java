@@ -1,11 +1,13 @@
 package com.example.dacn.Lich_su_lam_bai;
 
-public class history {
+import java.io.Serializable;
+
+public class History implements Serializable {
 
     private String heading;
     private int Rtrue;
     private int Rfalse;
-    public history(String heading, int Rtrue, int Rfalse) {
+    public History(String heading, int Rtrue, int Rfalse) {
         this.heading = heading;
         this.Rtrue = Rtrue;
         this.Rfalse = Rfalse;

@@ -6,9 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@color/trang"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    android:id="@+id/layout_item">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -29,14 +31,14 @@
             android:layout_marginTop="10dp">
 
             <LinearLayout
-                android:id="@+id/linearLayout7"
+                android:id="@+id/trueLayout"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:background="@color/xanhla"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout8"
+                app:layout_constraintEnd_toStartOf="@+id/falseLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -61,7 +63,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout8"
+                android:id="@+id/falseLayout"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
                 android:background="@color/maudo"
@@ -69,7 +71,7 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout7"
+                app:layout_constraintStart_toEndOf="@+id/trueLayout"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView

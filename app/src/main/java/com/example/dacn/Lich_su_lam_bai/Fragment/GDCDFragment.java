@@ -1,10 +1,7 @@
 package com.example.dacn.Lich_su_lam_bai.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,16 +9,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.dacn.Lich_su_lam_bai.HistoryAdapter;
-import com.example.dacn.Lich_su_lam_bai.history;
+import com.example.dacn.Lich_su_lam_bai.History;
 import com.example.dacn.R;
+import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 import java.util.ArrayList;
 
 public class GDCDFragment extends Fragment {
 
     private String[] newsHeading;
-    private ArrayList<history> newsArrayList;
+    private ArrayList<History> newsArrayList;
     private int[] caudung;
     private int[] causai;
     private RecyclerView recyclerView;
@@ -47,7 +50,12 @@ public class GDCDFragment extends Fragment {
         recyclerView = view.findViewById(R.id.result);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        HistoryAdapter historyAdapter = new HistoryAdapter(getContext(),newsArrayList);
+        HistoryAdapter historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
+            @Override
+            public void onClickItemHistory(History history) {
+                onClickGoToDeTail(history);
+            }
+        });
         recyclerView.setAdapter(historyAdapter);
         historyAdapter.notifyDataSetChanged();
         Log.d("Success", "recycle view");
@@ -56,7 +64,7 @@ public class GDCDFragment extends Fragment {
 
     private void dataInitialize() {
 
-        newsArrayList = new ArrayList<history>();
+        newsArrayList = new ArrayList<History>();
 
         // Write a code to get data from api and change data in 3 arrays below
         newsHeading = new String[]{
@@ -69,9 +77,17 @@ public class GDCDFragment extends Fragment {
         causai = new int[]{10,30,38};
 
         for(int i = 0; i< newsHeading.length; i++){
-            history h = new history(newsHeading[i],caudung[i], causai[i]);
+            History h = new History(newsHeading[i],caudung[i], causai[i]);
             newsArrayList.add(h);
         }
 
     }
+    private void onClickGoToDeTail(History history){
+        Intent intent = new Intent(getContext(), hoanthanhbaithi.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_history", history);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
+
