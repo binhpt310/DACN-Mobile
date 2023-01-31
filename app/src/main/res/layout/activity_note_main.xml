@@ -7,22 +7,54 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.dacn.TheHocTap.Activity.NoteMainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+
+    <LinearLayout
+        android:id="@+id/note_linear_layout"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragment_layout">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+<!--        <ImageView-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/ic_back"-->
+<!--            app:tint="@color/trang"-->
+<!--            android:background="@color/timxanh">-->
+<!--        </ImageView>-->
+
+
+<!--        <ImageView-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="start"-->
+<!--            android:background="@color/timxanh"-->
+
+<!--            android:src="@drawable/ic_back"-->
+<!--            app:tint="@color/trang"></ImageView>-->
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/timxanh"
-            android:gravity="start"
-            android:theme="?attr/actionBarTheme"
-            app:layout_scrollFlags="scroll|enterAlways|snap" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/timxanh"
+                android:gravity="end"
+                android:theme="?attr/actionBarTheme"
+                app:layout_scrollFlags="scroll|enterAlways|snap" />
+        </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_layout"
@@ -30,7 +62,7 @@
         android:layout_height="0dp"
         android:background="@color/hong"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/note_linear_layout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

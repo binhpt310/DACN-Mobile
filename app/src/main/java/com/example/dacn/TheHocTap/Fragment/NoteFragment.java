@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -33,6 +34,8 @@ import com.example.dacn.TheHocTap.Model.Note;
 import com.example.dacn.TheHocTap.Model.NotesAdapter;
 import com.example.dacn.TheHocTap.Util.GeneralUtil;
 import com.example.dacn.TheHocTap.Util.PrefsUtil;
+import com.example.dacn.mucluc.mucluc;
+import com.example.dacn.trangchu2;
 import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
@@ -182,10 +185,12 @@ public class NoteFragment extends Fragment {
         Toast.makeText(getActivity(), getString(R.string.clear_notes_toast), Toast.LENGTH_LONG).show();
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onCreateOptionsMenu(final Menu menu, @NonNull final MenuInflater inflater) {
         inflater.inflate(R.menu.notes_actions, menu);
-
+        if (menu instanceof MenuBuilder)
+            ((MenuBuilder) menu).setOptionalIconsVisible(true);
         // Initialize the searchview in the toolbar
         final MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView)myActionMenuItem.getActionView();
@@ -228,6 +233,20 @@ public class NoteFragment extends Fragment {
                 return true;
             }
         });
+
+        //Back button
+//        final MenuItem backButton = menu.findItem(R.id.action_back);
+//        backButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Intent myIntent = new Intent();
+//                myIntent.setClassName("com.example.dacn", "com.example.dacn.trangchu2");
+//                // for ex: your package name can be "com.example"
+//                // your activity name will be "com.example.Contact_Developer"
+//                startActivity(myIntent);
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -241,8 +260,14 @@ public class NoteFragment extends Fragment {
                 sortDialog();
                 return true;
 
+            case R.id.action_back:
+                Intent myIntent = new Intent();
+                myIntent.setClassName("com.example.dacn", "com.example.dacn.trangchu2");
+                startActivity(myIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

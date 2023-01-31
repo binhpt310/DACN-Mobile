@@ -42,7 +42,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/layout_folder_thi"
+        android:id="@+id/layout_folder_on"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@drawable/folder_02"
@@ -90,7 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_folder_de"
+        android:id="@+id/layout_folder_thi"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@drawable/folder_03"

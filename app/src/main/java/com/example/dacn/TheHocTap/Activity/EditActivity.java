@@ -243,49 +243,14 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
-//    // Dialog Functions
-//    private void showColorDialog(){
-//        ColorPickerDialog colorPickerDialog = new ColorPickerDialog(EditActivity.this);
-//        colorPickerDialog.setOnChooseColorListener(new ColorPickerDialog.OnChooseColorListener() {
-//                    @Override
-//                    public void onChooseColor(int position, int color) {
-//                        if (color != 0) {
-//                            colorPicked = color;
-//                            CardView cv = findViewById(R.id.card);
-//                            cv.setCardBackgroundColor(color);
-//
-//                            // Change the color of the text to make it easier to see for the user
-//                            if (GeneralUtil.isDarkColor(color, mContext)) {
-//                                contentView.setTextColor(getResources().getColor(R.color.white));
-//                                titleView.setTextColor(getResources().getColor(R.color.white));
-//                            } else {
-//                                contentView.setTextColor(getResources().getColor(R.color.textColor));
-//                                titleView.setTextColor(getResources().getColor(R.color.textColor));
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancel(){
-//                        colorPickerDialog.dismissDialog();
-//                    }
-//                })
-//                .disableDefaultButtons(false)
-//                .setColors(getResources().getIntArray(R.array.color_array))
-//                .setDefaultColorButton(colorPicked)
-//                .setColumns(4)
-//                .setRoundColorButton(true)
-//                .setTitle("Chọn màu")
-//                .show();
-//    }
-
     private void showColorDialog(){
 
         new MaterialColorPickerDialog
                 .Builder(mContext)
                 .setTitle("Chọn màu")
-                .setColorSwatch(ColorSwatch._500)
-                .setDefaultColor(mMaterialColorCircle)
+                //.setColorSwatch(ColorSwatch._500)
+                //.setDefaultColor(mMaterialColorCircle)
+                .setColorRes(getResources().getIntArray(R.array.color_array))
                 .setColorListener(new ColorListener() {
                     @Override
                     public void onColorSelected(int color, @NotNull String colorHex) {
