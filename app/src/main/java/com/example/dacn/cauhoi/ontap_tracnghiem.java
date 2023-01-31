@@ -139,11 +139,18 @@ public class ontap_tracnghiem extends AppCompatActivity {
                             if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
                             else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
                         }
-                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                        if (adslist.get(Cauhoihientai).getCauhoidachon()!=null) {
+                            for (int i=1;i<5;i++) {
+                                ar_textview[i].setOnClickListener(null);
+                            }
+                        } else {
+                            bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                        }
+
                     }
                 });
 
@@ -158,11 +165,17 @@ public class ontap_tracnghiem extends AppCompatActivity {
                             if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
                             else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
                         }
-                        bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
-                        gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                        if (adslist.get(Cauhoihientai).getCauhoidachon()!=null) {
+                            for (int i=1;i<5;i++) {
+                                ar_textview[i].setOnClickListener(null);
+                            }
+                        } else {
+                            bamtracnghiem(adslist,ar_textview[1], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5],arr_img_progress[Cauhoihientai]);
+                            gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                        }
                     }
                 });
             }

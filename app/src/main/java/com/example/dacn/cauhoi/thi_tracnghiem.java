@@ -168,7 +168,6 @@ public class thi_tracnghiem extends AppCompatActivity {
                 bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5]);
                 bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5]);
 
-
                 img_toi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -184,7 +183,8 @@ public class thi_tracnghiem extends AppCompatActivity {
                         bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5]);
                         bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5]);
                         bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5]);
-                        gan_gia_tri(adslist,ar_string,ar_textview);                    }
+                        gan_gia_tri(adslist,ar_string,ar_textview);
+                    }
                 });
 
                 img_lui.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +192,8 @@ public class thi_tracnghiem extends AppCompatActivity {
                     public void onClick(View view) {
                         Cauhoihientai--;
                         if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview);                            img_toi.setVisibility(View.VISIBLE);
+                            gan_gia_tri(adslist,ar_string,ar_textview);
+                            img_toi.setVisibility(View.VISIBLE);
                             img_lui.setVisibility(View.VISIBLE);
                             if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
                             else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
@@ -201,7 +202,8 @@ public class thi_tracnghiem extends AppCompatActivity {
                         bamtracnghiem(adslist,ar_textview[2], ar_textview, ar_string[5]);
                         bamtracnghiem(adslist,ar_textview[3], ar_textview, ar_string[5]);
                         bamtracnghiem(adslist,ar_textview[4], ar_textview, ar_string[5]);
-                        gan_gia_tri(adslist,ar_string,ar_textview);                    }
+                        gan_gia_tri(adslist,ar_string,ar_textview);
+                    }
                 });
 
             }
@@ -218,6 +220,11 @@ public class thi_tracnghiem extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (list.get(Cauhoihientai).getCauhoidachon()!=null) {
+                    for (int i=1;i<5;i++) {
+                        tv[i].setBackgroundResource(R.drawable.bg_otracnghiem);
+                    }
+                }
                 ar_string[6] = a.getText().toString();
                 list.get(Cauhoihientai).setCauhoidachon(ar_string[6]);
 
@@ -228,10 +235,6 @@ public class thi_tracnghiem extends AppCompatActivity {
 
                 if (a.getText().toString().equals(b)) {
                     Diem++;
-                }
-
-                for (int i=1;i<5;i++) {
-                    tv[i].setOnClickListener(null);
                 }
             }
         });
