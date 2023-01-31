@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+        android:name=".mucluc.Notification.BuildVersion"
         android:allowBackup="true"
         android:icon="@drawable/img_knowledge"
         android:label="@string/app_name"
@@ -16,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".mucluc.Notification.CreateNotification"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.Notification.NotificationsActivity"
+            android:exported="false" />
         <activity
             android:name=".TheHocTap.Activity.EditActivity"
             android:exported="false" />
@@ -94,22 +101,24 @@
             android:name=".search.search_question"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
-            android:exported="true"/>
-        <activity
             android:name=".trangchu2"
+            android:exported="true" />
+        <activity
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <receiver android:name=".mucluc.Notification_Menu.AlarmReceiver"/>
-        <receiver android:name=".mucluc.Notification_Menu.BootReceiver"
+        <receiver android:name=".mucluc.Notification_Menu.AlarmReceiver" />
+        <receiver
+            android:name=".mucluc.Notification_Menu.BootReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
     </application>

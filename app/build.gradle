@@ -64,4 +64,11 @@ dependencies {
 
     implementation 'com.github.clans:fab:1.6.4'
     implementation 'com.github.Dhaval2404:ColorPicker:2.3'
+
+    //room
+    def room_version = "2.4.0"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
 }
