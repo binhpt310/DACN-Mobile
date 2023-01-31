@@ -55,7 +55,6 @@ public class search_question extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressdialog.show();
-                // TODO: change list data for call api
                 HashMap<String, String> maps = new HashMap<>();
                 maps.put("search", nhaptu.getText().toString());
                 maps.put("sub", TruyenDuLieu.trMaDe);
