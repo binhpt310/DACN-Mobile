@@ -107,6 +107,7 @@
     <string name="action_home">Trang chủ</string>
     <string name="action_empty">Làm sạch thùng rác</string>
     <string name="action_clear">Xoá tất cả thẻ</string>
+    <string name="action_back">Trở về trang chủ</string>
     <string name="action_color">Cài đặt màu thẻ</string>
     <string name="action_sort">Sắp xếp thẻ</string>
     <string name="action_fav">Thêm thẻ yêu thích</string>

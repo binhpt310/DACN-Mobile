@@ -11,7 +11,14 @@
     <!-- Sort -->
     <item android:id="@+id/action_sort"
         android:title="@string/action_sort"
-        android:iconTint="@color/trang"
+        app:iconTint="@color/black"
+        android:icon="@drawable/sort_icon"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_back"
+        android:title="@string/action_back"
+        android:icon="@drawable/ic_back"
+        app:iconTint="@color/black"
         app:showAsAction="never" />
 
 </menu>

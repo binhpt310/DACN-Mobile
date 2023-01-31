@@ -250,6 +250,15 @@ public class TrashFragment extends Fragment {
             sortDialog();
             return true;
         }
+
+        else if (item.getItemId() == R.id.action_back ){
+            Intent myIntent = new Intent();
+            myIntent.setClassName("com.example.dacn", "com.example.dacn.trangchu2");
+            // for ex: your package name can be "com.example"
+            // your activity name will be "com.example.Contact_Developer"
+            startActivity(myIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
