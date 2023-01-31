@@ -50,33 +50,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đồ Án Chuyên Ngành"
+            android:textColor="@color/timxanh"
             android:textSize="38sp"
             android:fontFamily="@font/roboto_bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="App Ôn Thi THPT"
+            android:textColor="@color/timxanh"
             android:textSize="35sp"
             android:fontFamily="@font/roboto_bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/timxanh"
             android:text="Bùi Xuân Hoàng Oanh - 19521981"
             android:textSize="23sp"
             android:layout_marginTop="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/timxanh"
             android:text="Nguyễn Văn Thanh - 19522242"
             android:textSize="23sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/timxanh"
             android:text="Phạm Thanh Bình - 19520415"
             android:textSize="23sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/timxanh"
             android:text="Nguyễn Lê Thảo Nguyên - 19521916"
             android:textSize="23sp"/>
     </LinearLayout>

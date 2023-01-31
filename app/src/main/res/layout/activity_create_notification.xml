@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/hong"
+    tools:context=".mucluc.Notification.CreateNotification">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_create"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/timxanh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_close_create"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_close"
+            app:tint="@color/trang"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="15dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Nhắc nhở"
+            android:textColor="@color/trang"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_done_create"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/trang" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <EditText
+            android:id="@+id/ed_tieude_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/den80"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="Học bài"
+            android:textColor="@color/den80"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Số lần nhắc nhở một ngày"
+                android:textColor="@color/den"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spiner_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:spinnerMode="dropdown"
+                android:fontFamily="@font/roboto_regular"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:justificationMode="inter_word"
+            android:text="Nếu bạn cần nhắc nhở nhiều lần trong một ngày, ứng dụng sẽ gửi bạn một nhắc nhở cho từng khung giờ đã chọn."
+            android:textColor="@color/mauchu"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Giờ nhắc nhở:"
+            android:textColor="@color/den"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/layout1_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhắc nhở 1"
+                android:textColor="@color/den"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_time1_create"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:text="12:00"
+                android:textColor="@color/den"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhắc nhở 2"
+                android:textColor="@color/den"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_time2_create"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:text="12:00"
+                android:textColor="@color/den"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout3_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhắc nhở 3"
+                android:textColor="@color/den"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_time3_create"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:text="12:00"
+                android:textColor="@color/den"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Lặp lại:"
+            android:textColor="@color/den"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cn"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="CN"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="clickCn"/>
+
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="click2" />
+
+            <TextView
+                android:id="@+id/tv_3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="click3" />
+
+            <TextView
+                android:id="@+id/tv_4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="4"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="click4" />
+
+            <TextView
+                android:id="@+id/tv_5"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="click5"/>
+
+            <TextView
+                android:id="@+id/tv_6"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="click6"/>
+
+            <TextView
+                android:id="@+id/tv_7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_khung_otp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/den80"
+                android:textSize="18sp"
+                android:onClick="click7" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

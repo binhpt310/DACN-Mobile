@@ -1,44 +1,55 @@
 package com.example.dacn.Lich_su_lam_bai;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.dacn.R;
-
-import java.util.ArrayList;
+import com.example.dacn.mucluc.mucluc;
 
 public class lich_su_lam_bai extends AppCompatActivity {
 
-    ArrayList<Lich_su_lam_bai_model> LichSuLamBaiModels = new ArrayList<Lich_su_lam_bai_model>();
+    LinearLayout llFolderOn, llFolderThi;
+    ConstraintLayout toolbar_lichsulambai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lich_su_lam_bai);
-        setup_lichsulambai_model();
-        RecyclerView recyclerView = findViewById(R.id.recyclerview_lich_su_lam_bai);
-        Lich_su_lam_bai_adapter adapter = new Lich_su_lam_bai_adapter(this,LichSuLamBaiModels);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        llFolderOn = findViewById(R.id.layout_folder_on);
+        llFolderThi = findViewById(R.id.layout_folder_thi);
+
+        llFolderOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
+                startActivity(intent);
+            }
+        });
+
+        llFolderThi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
+                startActivity(intent);
+            }
+        });
+
+        toolbar_lichsulambai = findViewById(R.id.toolbar_lichsulambai);
+        toolbar_lichsulambai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(lich_su_lam_bai.this, mucluc.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+            }
+        });
     }
 
-//    private void setup_lichsulambai_model() {
-//        String[] tenmonhoc = getResources().getStringArray(R.array.ten_mon_hoc);
-//        String[] tendethi = getResources().getStringArray(R.array.ten_de_thi);
-//
-//        while (tenmonhoc != null || tendethi != null)
-//        {
-//            int i = 0;
-//            LichSuLamBaiModels.add(new Lich_su_lam_bai_model(tenmonhoc[i], tendethi[i]));
-//            i++;
-//        }
-//    }
-
-    private void setup_lichsulambai_model(){
-        LichSuLamBaiModels.add(new Lich_su_lam_bai_model("Địa", "Đề thi"));
-        LichSuLamBaiModels.add(new Lich_su_lam_bai_model("toán", "Đề thi 2"));
-    }
 }

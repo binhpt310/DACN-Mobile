@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_notes1"
+            android:icon="@drawable/edit_icon"
+            tools:ignore="PrivateResource"
+            android:title="@string/nav_item_notes" />
+
+        <item android:id="@+id/nav_trash1"
+            android:icon="@drawable/trash_icon"
+            android:title="@string/nav_item_trash" />
+
+        <item android:id="@+id/nav_fav1"
+            android:icon="@drawable/favorite_icon_menu_selected"
+            android:title="@string/nav_item_fav" />
+
+    </group>
+
+</menu>

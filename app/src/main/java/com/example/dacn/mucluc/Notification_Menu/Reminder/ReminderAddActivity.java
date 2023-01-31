@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +51,7 @@ public class ReminderAddActivity extends AppCompatActivity  implements
     private String mRepeatNo;
     private String mRepeatType;
     private String mActive;
+    private ImageView mSave, mDiscard;
 
     // Values for orientation change
     private static final String KEY_TITLE = "title_key";
@@ -79,16 +83,17 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         mRepeatTypeText = (TextView) findViewById(R.id.set_repeat_type);
         mFAB1 = (FloatingActionButton) findViewById(R.id.starred1);
         mFAB2 = (FloatingActionButton) findViewById(R.id.starred2);
-
+        mSave = findViewById(R.id.save_reminder);
+        mDiscard = findViewById(R.id.discard_reminder);
          //Setup Toolbar
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        this.getSupportActionBar().setHomeButtonEnabled(true);
+//        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        this.getSupportActionBar().setHomeButtonEnabled(true);
 
         // Initialize default values
         mActive = "true";
         mRepeat = "true";
         mRepeatNo = Integer.toString(1);
-        mRepeatType = "Hour";
+        mRepeatType = "Giờ";
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
@@ -121,7 +126,7 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         mTimeText.setText(mTime);
         mRepeatNoText.setText(mRepeatNo);
         mRepeatTypeText.setText(mRepeatType);
-        mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+        mRepeatText.setText("Mỗi " + mRepeatNo + " " + mRepeatType + "(s)");
 
         // To save state on device rotation
         if (savedInstanceState != null) {
@@ -161,7 +166,31 @@ public class ReminderAddActivity extends AppCompatActivity  implements
             mFAB1.setVisibility(View.GONE);
             mFAB2.setVisibility(View.VISIBLE);
         }
+
+        mSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTitleText.setText(mTitle);
+                if (mTitleText.getText().toString().length() == 0){
+                    mTitleText.setTextColor(Color.WHITE);
+                    mTitleText.setError("Reminder Title cannot be blank!");
+                }
+                else {
+                    saveReminder();
+                }
+            }
+        });
+
+        mDiscard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Đã xoá",
+                        Toast.LENGTH_SHORT).show();
+                onBackPressed();
+            }
+        });
     }
+
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {
@@ -248,7 +277,7 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         boolean on = ((Switch) view).isChecked();
         if (on) {
             mRepeat = "true";
-            mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+            mRepeatText.setText("Mỗi " + mRepeatNo + " " + mRepeatType + "(s)");
         } else {
             mRepeat = "false";
             mRepeatText.setText(R.string.repeat_off);
@@ -259,22 +288,22 @@ public class ReminderAddActivity extends AppCompatActivity  implements
     public void selectRepeatType(View v){
         final String[] items = new String[5];
 
-        items[0] = "Minute";
-        items[1] = "Hour";
-        items[2] = "Day";
-        items[3] = "Week";
-        items[4] = "Month";
+        items[0] = "Phút";
+        items[1] = "Giờ";
+        items[2] = "Ngày";
+        items[3] = "Tuần";
+        items[4] = "Tháng";
 
         // Create List Dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Type");
+        builder.setTitle("Chọn kiểu lặp lại");
         builder.setItems(items, new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int item) {
 
                 mRepeatType = items[item];
                 mRepeatTypeText.setText(mRepeatType);
-                mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+                mRepeatText.setText("Mỗi " + mRepeatNo + " " + mRepeatType + "(s)");
             }
         });
         AlertDialog alert = builder.create();
@@ -284,7 +313,7 @@ public class ReminderAddActivity extends AppCompatActivity  implements
     // On clicking repeat interval button
     public void setRepeatNo(View v){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Enter Number");
+        alert.setTitle("Nhập số lần lặp lại");
 
         // Create EditText box to input repeat number
         final EditText input = new EditText(this);
@@ -297,12 +326,12 @@ public class ReminderAddActivity extends AppCompatActivity  implements
                         if (input.getText().toString().length() == 0) {
                             mRepeatNo = Integer.toString(1);
                             mRepeatNoText.setText(mRepeatNo);
-                            mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+                            mRepeatText.setText("Mỗi " + mRepeatNo + " " + mRepeatType + "(s)");
                         }
                         else {
                             mRepeatNo = input.getText().toString().trim();
                             mRepeatNoText.setText(mRepeatNo);
-                            mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+                            mRepeatText.setText("Mỗi " + mRepeatNo + " " + mRepeatType + "(s)");
                         }
                     }
                 });
@@ -330,15 +359,15 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         mCalendar.set(Calendar.SECOND, 0);
 
         // Check repeat type
-        if (mRepeatType.equals("Minute")) {
+        if (mRepeatType.equals("Phút")) {
             mRepeatTime = Integer.parseInt(mRepeatNo) * milMinute;
-        } else if (mRepeatType.equals("Hour")) {
+        } else if (mRepeatType.equals("Giờ")) {
             mRepeatTime = Integer.parseInt(mRepeatNo) * milHour;
-        } else if (mRepeatType.equals("Day")) {
+        } else if (mRepeatType.equals("Ngày")) {
             mRepeatTime = Integer.parseInt(mRepeatNo) * milDay;
-        } else if (mRepeatType.equals("Week")) {
+        } else if (mRepeatType.equals("Tuần")) {
             mRepeatTime = Integer.parseInt(mRepeatNo) * milWeek;
-        } else if (mRepeatType.equals("Month")) {
+        } else if (mRepeatType.equals("Tháng")) {
             mRepeatTime = Integer.parseInt(mRepeatNo) * milMonth;
         }
 
@@ -352,7 +381,7 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         }
 
         // Create toast to confirm new reminder
-        Toast.makeText(getApplicationContext(), "Saved",
+        Toast.makeText(getApplicationContext(), "Đã lưu",
                 Toast.LENGTH_SHORT).show();
 
         onBackPressed();
@@ -364,49 +393,5 @@ public class ReminderAddActivity extends AppCompatActivity  implements
         super.onBackPressed();
     }
 
-    // Creating the menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_reminder, menu);
-        return true;
-    }
-
-    // On clicking menu buttons
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            // On clicking the back arrow
-            // Discard any changes
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            // On clicking save reminder button
-            // Update reminder
-            case R.id.save_reminder:
-                mTitleText.setText(mTitle);
-
-                if (mTitleText.getText().toString().length() == 0)
-                    mTitleText.setError("Reminder Title cannot be blank!");
-
-                else {
-                    saveReminder();
-                }
-                return true;
-
-            // On clicking discard reminder button
-            // Discard any changes
-            case R.id.discard_reminder:
-                Toast.makeText(getApplicationContext(), "Discarded",
-                        Toast.LENGTH_SHORT).show();
-
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
 }

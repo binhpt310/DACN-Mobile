@@ -37,16 +37,17 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:text="Mã OTP xác nhận"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/txt_qmk2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Hãy điền OTP gồm 4 số vừa được gửi đến email "
-            android:textColor="@color/den"
+            android:text="Hãy điền OTP gồm 4 số vừa được gửi đến email"
+            android:textColor="@color/den80"
             android:textSize="18sp" />
 
     </LinearLayout>
@@ -162,7 +163,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Gửi lại"
-            android:textColor="@color/den80"
+            android:textColor="@color/timxanh"
             android:textSize="15sp" />
     </LinearLayout>
 

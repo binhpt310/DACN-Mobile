@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Sort Dialog -->
+    <string-array name="sort_values">
+        <item>Tiêu đề (Tăng dần)</item>
+        <item>Tiêu đề (Giảm dần)</item>
+        <item>Ngày tạo (Tăng dần)</item>
+        <item>Ngày tạo (Giảm dần)</item>
+        <item>Tuỳ chọn</item>
+    </string-array>
+
+</resources>

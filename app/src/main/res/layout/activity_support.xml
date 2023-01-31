@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/hong"
-    tools:context=".onboarding.waiting">
+    tools:context=".mucluc.trogiup">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="419dp"
@@ -18,13 +18,26 @@
         <ImageView
             android:id="@+id/img_back_trogiup"
             android:layout_width="27dp"
-            android:layout_height="76dp"
+            android:layout_height="27dp"
             android:layout_marginStart="15dp"
             android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/trang" />
+
+        <TextView
+            android:id="@+id/text_toolbar_trogiup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Trợ giúp"
+            android:textColor="@color/trang"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

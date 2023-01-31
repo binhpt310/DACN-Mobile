@@ -4,6 +4,7 @@ import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_nhap;
@@ -27,6 +29,7 @@ public class quenmatkhau1 extends AppCompatActivity {
     EditText ed_email;
     Button btn_guiotp;
     TextView taiday;
+    ProgressDialog progressdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,14 @@ public class quenmatkhau1 extends AppCompatActivity {
         btn_guiotp = findViewById(R.id.btn_guiotp);
         taiday = findViewById(R.id.btn_taiday_quenmk);
 
+        progressdialog = new ProgressDialog(quenmatkhau1.this);
+        progressdialog.setMessage("Loadinggg");
+
         btn_guiotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressdialog.show();
                 HashMap<String, String> map = new HashMap<>();
-
                 map.put("email", ed_email.getText().toString());
 
                 Call<Void> call = retrofitInterface.checkemail(map);
@@ -49,8 +55,10 @@ public class quenmatkhau1 extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.code() == 200) {
+                            progressdialog.dismiss();
                             nextActivity();
                         } else if (response.code() == 400) {
+                            progressdialog.dismiss();
                             Toast.makeText(quenmatkhau1.this,"Email không tồn tại",Toast.LENGTH_SHORT).show();
                         }
                     }

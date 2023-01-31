@@ -61,7 +61,7 @@
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/txt_cauhoi"/>
+            android:id="@+id/txt_cauhoi_thi"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,9 +70,9 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/roboto_bold"
             android:text="01"
-            android:textColor="@color/den"
+            android:textColor="@color/den80"
             android:textSize="22sp"
-            app:layout_constraintStart_toEndOf="@+id/txt_cauhoi"
+            app:layout_constraintStart_toEndOf="@+id/txt_cauhoi_thi"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/txt_thi_socauhoi"/>
 
@@ -120,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_on_xemnhanh"
+        app:layout_constraintBottom_toTopOf="@+id/layout_bottom_thi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -209,19 +209,50 @@
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/btn_thi_xemnhanh"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_bottom_thi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/roboto_medium"
-        android:padding="10dp"
-        android:text="Xem nhanh"
-        android:textAlignment="center"
-        android:textColor="@color/den80"
-        android:textSize="20sp"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/img_lui_thi"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_arrow_back"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/den80" />
+
+        <TextView
+            android:id="@+id/btn_thi_xemnhanh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Xem nhanh"
+            android:textColor="@color/den80"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_toi_thi"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/den80" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

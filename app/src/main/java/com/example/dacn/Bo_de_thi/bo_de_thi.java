@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,7 +21,10 @@ import android.widget.Toast;
 
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.popup.LoadingDialog;
+import com.example.dacn.search.search_question;
 import com.example.dacn.trangchu2;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +45,9 @@ public class bo_de_thi extends AppCompatActivity {
     RadioButton radioon, radiothi;
     RecyclerView recyclerView;
     TextView txt_toolbar;
+    FloatingActionButton search;
+
+    ProgressDialog progressdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,16 @@ public class bo_de_thi extends AppCompatActivity {
 
         tenmon = TruyenDuLieu.trMon;
         txt_toolbar.setText(TruyenDuLieu.trTenMon);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(bo_de_thi.this, search_question.class);
+                startActivity(intent);
+            }
+        });
+        progressdialog = new ProgressDialog(bo_de_thi.this);
+        progressdialog.setMessage("Loadinggg");
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +84,7 @@ public class bo_de_thi extends AppCompatActivity {
             loaide = "_review";
             TruyenDuLieu.trMaDe = tenmon+loaide;
             Log.e("made", TruyenDuLieu.trMaDe);
-
+            progressdialog.show();
             HashMap<String, String> maps = new HashMap<>();
             maps.put("sub", TruyenDuLieu.trMaDe);
 
@@ -76,6 +94,7 @@ public class bo_de_thi extends AppCompatActivity {
                 public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
                     Bodeonmodels = response.body();
                     if (response.code() == 200) {
+                        progressdialog.dismiss();
                         Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(bo_de_thi.this,Bodeonmodels);
                         recyclerView.setAdapter(bo_de_on_adapter);
                     } else if (response.code() == 404) {
@@ -95,6 +114,8 @@ public class bo_de_thi extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.radio_thi:
+                        progressdialog.show();
+                        //callDialog(loadingDialog);
                         loaide = "_exam";
                         TruyenDuLieu.trMaDe = tenmon + loaide;
                         HashMap<String, String> map = new HashMap<>();
@@ -105,20 +126,27 @@ public class bo_de_thi extends AppCompatActivity {
                             public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
                                 Bodethimodels = response.body();
                                 if (response.code() == 200) {
+                                    progressdialog.dismiss();
                                     Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(bo_de_thi.this, Bodethimodels);
                                     recyclerView.setAdapter(bo_de_thi_adapter);
                                 } else if (response.code() == 404) {
+                                    progressdialog.dismiss();
                                     Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<List<BoDe>> call, Throwable t) {
+                                progressdialog.dismiss();
                                 Toast.makeText(bo_de_thi.this, "Fail", Toast.LENGTH_SHORT).show();
                             }
                         });
                         break;
+
+
                     case R.id.radio_on:
+                        progressdialog.show();
+                        //callDialog(loadingDialog);
                         loaide = "_review";
                         TruyenDuLieu.trMaDe = tenmon + loaide;
                         HashMap<String, String> maps = new HashMap<>();
@@ -129,6 +157,7 @@ public class bo_de_thi extends AppCompatActivity {
                             public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
                                 Bodeonmodels = response.body();
                                 if (response.code() == 200) {
+                                    progressdialog.dismiss();
                                     Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(bo_de_thi.this, Bodeonmodels);
                                     recyclerView.setAdapter(bo_de_on_adapter);
                                 } else if (response.code() == 404) {
@@ -155,6 +184,18 @@ public class bo_de_thi extends AppCompatActivity {
         radioGroup = findViewById(R.id.radio_gr);
         radioon = findViewById(R.id.radio_on);
         radiothi = findViewById(R.id.radio_thi);
+        search = findViewById(R.id.floatingActionButton);
+    }
+
+    private void callDialog(LoadingDialog loadingDialog){
+        loadingDialog.ShowDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.DismissDialog();
+            }
+        },2000);
     }
 
 }
