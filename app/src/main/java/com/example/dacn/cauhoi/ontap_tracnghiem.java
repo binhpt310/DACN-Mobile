@@ -31,6 +31,7 @@ import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.dangnhap.dang_ky;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 import com.example.dacn.popup.LoadingDialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -52,7 +53,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
     String[] ar_string = new String[7]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
     public String[] listdungsai = new String[20];
 
-    ImageView btn_back, img_toi, img_lui, btn_out;
+    ImageView btn_back, img_toi, img_lui, btn_done;
     ImageView[] arr_img_progress = new ImageView[20];
     public int Cauhoihientai,socauchualam=20,socaudung=0,socausai=0;
 
@@ -107,12 +108,10 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
         callApi();
 
-        btn_out.setOnClickListener(new View.OnClickListener() {
+        btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("cau hoi",adslist.get(Cauhoihientai).getQuestion());
-                Log.e("cau chon",adslist.get(Cauhoihientai).getCauhoidachon());
-                Log.e("dung sai",adslist.get(Cauhoihientai).getDungsai());
+                sendResult();
             }
         });
 
@@ -179,6 +178,23 @@ public class ontap_tracnghiem extends AppCompatActivity {
         });
     }
 
+    private void sendResult() {
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMaDe,"review","",MaBoDe,adslist);
+        Call<Result> call = retrofitInterface.saveResult(result);
+        call.enqueue(new Callback<Result>() {
+            @Override
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                Log.e("send result","ok");
+            }
+
+            @Override
+            public void onFailure(Call<Result> call, Throwable t) {
+                Log.e("send result","fail");
+                Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     public void callApi () {
         progressdialog.show();
         Cauhoihientai = TruyenDuLieu.trCauhoihientai;
@@ -195,8 +211,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
                 gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
                 bamTracNghiem(adslist);
-
-
             }
 
             @Override
@@ -305,7 +319,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
         xemnhanh = findViewById(R.id.btn_on_xemnhanh);
         socau = findViewById(R.id.txt_on_socauhoi);
         btn_back = findViewById(R.id.img_back_ontap);
-        btn_out = findViewById(R.id.img_out_ontap);
+        btn_done = findViewById(R.id.img_out_ontap);
         txt_toolbar = findViewById(R.id.text_toolbar_ontap);
 
         arr_img_progress[0] = findViewById(R.id.progress_1);
