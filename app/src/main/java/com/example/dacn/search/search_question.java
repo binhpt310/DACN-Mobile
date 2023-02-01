@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.Bo_de_thi.BoDe;
+import com.example.dacn.Bo_de_thi.Bo_de_on_adapter;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 
 public class search_question extends AppCompatActivity {
 
-    private ArrayList<CardModelDataSearch> searchModelArrayList = new ArrayList<CardModelDataSearch>();
+    List<CardModelDataSearch> searchModelArrayList = new ArrayList<>();
     String tenmon, keyword;
     ImageView btn_search;
     ProgressDialog progressdialog;
@@ -46,10 +47,11 @@ public class search_question extends AppCompatActivity {
         setContentView(R.layout.activity_searchquestion);
 
         khaibao();
-        loadListData();
 
         progressdialog = new ProgressDialog(search_question.this);
         progressdialog.setMessage("Loadinggg");
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(search_question.this, LinearLayoutManager.VERTICAL, false));
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,29 +59,36 @@ public class search_question extends AppCompatActivity {
                 progressdialog.show();
                 HashMap<String, String> maps = new HashMap<>();
                 maps.put("search", nhaptu.getText().toString());
-                maps.put("sub", TruyenDuLieu.trMaDe);
+                maps.put("sub", TruyenDuLieu.trMon);
                 Log.e("search", nhaptu.getText().toString());
-                Log.e("sub", TruyenDuLieu.trMaDe);
+                Log.e("sub", TruyenDuLieu.trMon);
 
                 Call<List<CardModelDataSearch>> calls = retrofitInterface.getSearch(maps);
                 calls.enqueue(new Callback<List<CardModelDataSearch>>() {
                     @Override
                     public void onResponse(Call<List<CardModelDataSearch>> call, Response<List<CardModelDataSearch>> response) {
                         progressdialog.dismiss();
-                        Toast.makeText(search_question.this, "OK", Toast.LENGTH_SHORT).show();
+                        if (response.code() == 200) {
+                            Toast.makeText(search_question.this, "OK", Toast.LENGTH_SHORT).show();
+                            searchModelArrayList = response.body();
+                            SearchAdapter courseAdapter = new SearchAdapter(search_question.this, searchModelArrayList);
+                            recyclerView.setAdapter(courseAdapter);
+                        } else if (response.code() == 401) {
+                            Toast.makeText(search_question.this, "Không tìm thấy từ khóa", Toast.LENGTH_SHORT).show();
+                        } else if (response.code() == 404) {
+                            Toast.makeText(search_question.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
 
                     @Override
                     public void onFailure(Call<List<CardModelDataSearch>> call, Throwable t) {
                         progressdialog.dismiss();
                         nullText.setVisibility(View.VISIBLE);
-                        nullText.setText("Khong co ket qua");
-                        recyclerView.setVisibility(View.GONE);
+                        nullText.setText("Không có kết quả");
                         Toast.makeText(search_question.this, t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
-                // Load data to search list again
-                loadListData();
             }
         });
     }
@@ -91,17 +100,5 @@ public class search_question extends AppCompatActivity {
         nullText = findViewById(R.id.search_nulltext);
     }
 
-    public void loadListData(){
-        // we are initializing our adapter class and passing our arraylist to it.
-        SearchAdapter courseAdapter = new SearchAdapter(this, searchModelArrayList);
-
-        // below line is for setting a layout manager for our recycler view.
-        // here we are creating vertical list so we will provide orientation as vertical
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-        // in below two lines we are setting layoutmanager and adapter to our recycler view.
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(courseAdapter);
-    }
 }
 
