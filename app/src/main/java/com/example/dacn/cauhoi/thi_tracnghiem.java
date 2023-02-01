@@ -42,10 +42,10 @@ import retrofit2.Response;
 
 public class thi_tracnghiem extends AppCompatActivity {
 
-    TextView xemnhanh, socau, txt_toolbar;
+    TextView xemnhanh, socau, txt_toolbar, time;
     TextView[] ar_textview = new TextView[5];
     String[] ar_string = new String[7]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
-    ImageView btn_back, img_toi, img_lui;
+    ImageView btn_back, img_toi, img_lui, btn_out;
 
     public int Cauhoihientai = 0, Diem = 0, socauchualam = 40, socaudalam = 0;
 
@@ -55,12 +55,12 @@ public class thi_tracnghiem extends AppCompatActivity {
     ProgressDialog progressdialog;
 
     public String[] chondapan = new String[40];
+    List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thi_tracnghiem);
-        TextView time = findViewById(R.id.txt_time);
 
         /*LoadingDialog loadingDialog = new LoadingDialog(this);
         callDialog(loadingDialog);*/
@@ -112,6 +112,50 @@ public class thi_tracnghiem extends AppCompatActivity {
 
         callApi();
 
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("Trắc nghiệm thi");
+        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals("Trắc nghiệm thi")) {
+                    Cauhoihientai = intent.getIntExtra("id",-1);
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    bamTracNghiem(adslist);
+                }
+            }
+        };
+        LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
+
+        img_toi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cauhoihientai++;
+                if (Cauhoihientai < (adslist.size())){
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    img_toi.setVisibility(View.VISIBLE);
+                    img_lui.setVisibility(View.VISIBLE);
+                    if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
+                    else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
+                }
+                bamTracNghiem(adslist);
+            }
+        });
+
+        img_lui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cauhoihientai--;
+                if (Cauhoihientai < (adslist.size())){
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    img_toi.setVisibility(View.VISIBLE);
+                    img_lui.setVisibility(View.VISIBLE);
+                    if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
+                    else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
+                }
+                bamTracNghiem(adslist);
+            }
+        });
+
     }
 
     private void khaibao() {
@@ -126,8 +170,11 @@ public class thi_tracnghiem extends AppCompatActivity {
         txt_toolbar = findViewById(R.id.txt_toolbar_thi);
 
         btn_back = findViewById(R.id.img_back_thi);
+        btn_out = findViewById(R.id.img_out_thi);
         img_toi = findViewById(R.id.img_toi_thi);
         img_lui = findViewById(R.id.img_lui_thi);
+
+        time = findViewById(R.id.txt_time);
     }
 
     CountDownTimer cTimer = null;
@@ -162,57 +209,12 @@ public class thi_tracnghiem extends AppCompatActivity {
         call.enqueue(new Callback<List<CauHoiTracNghiem>>() {
             @Override
             public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
-                List<CauHoiTracNghiem> adslist = response.body();
+                adslist = response.body();
 
                 progressdialog.dismiss();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
                 bamTracNghiem(adslist);
-
-                IntentFilter filter = new IntentFilter();
-                filter.addAction("Trắc nghiệm thi");
-                BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        if (intent.getAction().equals("Trắc nghiệm thi")) {
-                            Cauhoihientai = intent.getIntExtra("id",-1);
-                            gan_gia_tri(adslist,ar_string,ar_textview);
-                            bamTracNghiem(adslist);
-                        }
-                    }
-                };
-                LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
-
-                img_toi.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cauhoihientai++;
-                        if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview);
-                            img_toi.setVisibility(View.VISIBLE);
-                            img_lui.setVisibility(View.VISIBLE);
-                            if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
-                            else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
-                        }
-                        bamTracNghiem(adslist);
-                    }
-                });
-
-                img_lui.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cauhoihientai--;
-                        if (Cauhoihientai < (adslist.size())){
-                            gan_gia_tri(adslist,ar_string,ar_textview);
-                            img_toi.setVisibility(View.VISIBLE);
-                            img_lui.setVisibility(View.VISIBLE);
-                            if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
-                            else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
-                        }
-                        bamTracNghiem(adslist);
-                    }
-                });
-
             }
 
             @Override
