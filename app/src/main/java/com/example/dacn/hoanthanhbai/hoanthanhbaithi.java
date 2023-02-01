@@ -6,13 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Bo_de_thi.Bo_de_on_adapter;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
+import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
+import com.example.dacn.Lich_su_lam_bai.subjectHistory;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
@@ -61,7 +65,16 @@ public class hoanthanhbaithi extends AppCompatActivity {
                 Toast.makeText(hoanthanhbaithi.this,"Fail",Toast.LENGTH_SHORT).show();
             }
         });
+        View img_back_hoanthanhbaithi = findViewById(R.id.img_back_hoanthanhbaithi);
 
-
+        img_back_hoanthanhbaithi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(hoanthanhbaithi.this, subjectHistory.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+            }
+        });
     }
 }

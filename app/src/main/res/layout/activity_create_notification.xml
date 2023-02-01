@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/hong"
-    tools:context=".mucluc.Notification.create_notification">
+    tools:context=".mucluc.Notification.CreateNotification">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar_create"
@@ -65,12 +65,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/den80"
             android:fontFamily="@font/roboto_medium"
-            android:hint="Học bài"
             android:inputType="text"
             android:lines="1"
             android:maxLines="1"
-            android:textColor="@color/den"
-            android:textColorHint="@color/den80"
+            android:text="Học bài"
+            android:textColor="@color/den80"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -81,7 +80,7 @@
             android:layout_marginTop="15dp">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:fontFamily="@font/roboto_medium"
@@ -91,7 +90,7 @@
 
             <Spinner
                 android:id="@+id/spiner_create"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:spinnerMode="dropdown"
@@ -230,7 +229,8 @@
                 android:gravity="center"
                 android:text="CN"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="clickCn"/>
 
             <TextView
                 android:id="@+id/tv_2"
@@ -242,7 +242,8 @@
                 android:gravity="center"
                 android:text="2"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="click2" />
 
             <TextView
                 android:id="@+id/tv_3"
@@ -254,7 +255,8 @@
                 android:gravity="center"
                 android:text="3"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="click3" />
 
             <TextView
                 android:id="@+id/tv_4"
@@ -266,7 +268,8 @@
                 android:gravity="center"
                 android:text="4"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="click4" />
 
             <TextView
                 android:id="@+id/tv_5"
@@ -278,7 +281,8 @@
                 android:gravity="center"
                 android:text="5"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="click5"/>
 
             <TextView
                 android:id="@+id/tv_6"
@@ -290,7 +294,8 @@
                 android:gravity="center"
                 android:text="6"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="click6"/>
 
             <TextView
                 android:id="@+id/tv_7"
@@ -302,7 +307,8 @@
                 android:gravity="center"
                 android:text="7"
                 android:textColor="@color/den80"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="click7" />
 
         </LinearLayout>
     </LinearLayout>

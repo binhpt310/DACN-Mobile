@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:id="@+id/layout_card_hengio">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bao thuc"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textColor="@color/den"
             android:fontFamily="@font/roboto_regular"/>
 
@@ -27,15 +28,43 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <TextView
-                android:id="@+id/time_cardnoti"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:text="00:00"
-                android:textSize="26sp"
-                android:textColor="@color/den"
-                android:fontFamily="@font/roboto_medium"/>
+                android:layout_weight="3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/time1_cardnoti"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textSize="25sp"
+                    android:textColor="@color/den"
+                    android:fontFamily="@font/roboto_medium"/>
+
+                <TextView
+                    android:id="@+id/time2_cardnoti"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textSize="20sp"
+                    android:textColor="@color/den"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <TextView
+                    android:id="@+id/time3_cardnoti"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textSize="20sp"
+                    android:textColor="@color/den"
+                    android:fontFamily="@font/roboto_regular"/>
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_cardnoti"
@@ -58,7 +87,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="CN"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/cardnoti_2"
@@ -68,7 +98,8 @@
                 android:layout_margin="3dp"
                 android:text="2"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_3"
@@ -78,7 +109,8 @@
                 android:layout_margin="3dp"
                 android:text="3"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_4"
@@ -88,7 +120,8 @@
                 android:layout_margin="3dp"
                 android:text="4"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_5"
@@ -98,7 +131,8 @@
                 android:layout_margin="3dp"
                 android:text="5"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cardnoti_6"
@@ -108,7 +142,8 @@
                 android:layout_margin="3dp"
                 android:text="6"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/cardnoti_7"
@@ -118,7 +153,8 @@
                 android:layout_margin="3dp"
                 android:text="7"
                 android:textColor="@color/den"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
         </LinearLayout>
     </LinearLayout>
