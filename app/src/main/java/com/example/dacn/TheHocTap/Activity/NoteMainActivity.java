@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -21,11 +22,13 @@ import android.view.Window;
 import android.widget.Toast;
 import android.os.Bundle;
 
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TheHocTap.Fragment.FavoritesFragment;
 import com.example.dacn.TheHocTap.Fragment.NoteFragment;
 import com.example.dacn.TheHocTap.Fragment.TrashFragment;
 import com.example.dacn.TheHocTap.Util.GeneralUtil;
+import com.example.dacn.trangchu2;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -141,7 +144,10 @@ public class NoteMainActivity extends AppCompatActivity {
         }
 
         if (ctr > 0) {
-            super.onBackPressed();
+            Intent intent = new Intent(NoteMainActivity.this, trangchu2.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_right);
+            finish();
         } else {
             ctr++;
             Toast.makeText(this, "Nhấn lần nữa để thoát", Toast.LENGTH_SHORT).show();
