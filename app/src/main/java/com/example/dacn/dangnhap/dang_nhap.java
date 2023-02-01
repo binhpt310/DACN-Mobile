@@ -85,6 +85,8 @@ public class dang_nhap extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(dang_nhap.this, dang_ky.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
                 finish();
             }
         });
@@ -94,6 +96,7 @@ public class dang_nhap extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(dang_nhap.this, quenmatkhau1.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.duoi_len, R.anim.duoi_len);
                 finish();
             }
         });

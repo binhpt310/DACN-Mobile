@@ -55,7 +55,7 @@
             android:name=".quenmatkhau.quenmatkhau2"
             android:exported="false" />
         <activity
-            android:name=".Bo_de_thi.bo_de_thi"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
             android:name=".cauhoi.ontap_tracnghiem"
@@ -107,8 +107,8 @@
             android:name=".dangnhap.Logo_screen"
             android:exported="true"/>
         <activity
-            android:name=".trangchu2"
 
+            android:name=".Bo_de_thi.bo_de_thi"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

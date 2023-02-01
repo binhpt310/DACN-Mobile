@@ -77,6 +77,7 @@ public class dang_ky extends AppCompatActivity{
             public void onClick(View view) {
                 Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
             }
         });

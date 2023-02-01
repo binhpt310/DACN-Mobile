@@ -100,6 +100,8 @@ public class thi_tracnghiem extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(thi_tracnghiem.this, bo_de_thi.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
             }
         });
 
@@ -149,6 +151,8 @@ public class thi_tracnghiem extends AppCompatActivity {
                 tv.setText("00:00");
                 Intent intent = new Intent(getApplicationContext(), popup_ket_thuc_thi_thu.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.duoi_len, R.anim.duoi_len);
+                finish();
             }
         }.start();
     }

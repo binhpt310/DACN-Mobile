@@ -47,6 +47,8 @@ public class popup_dang_xuat extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(popup_dang_xuat.this, dang_nhap.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
             }
         });
 
