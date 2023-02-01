@@ -34,6 +34,8 @@ import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_ky;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 import com.example.dacn.popup.LoadingDialog;
+import com.example.dacn.popup.popup_hoan_thanh_thi_thu;
+import com.example.dacn.popup.popup_tro_ve;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -94,7 +96,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ontap_tracnghiem.this, bo_de_thi.class);
+                Intent intent = new Intent(ontap_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
             }
         });
@@ -112,6 +114,8 @@ public class ontap_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendResult();
+                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                startActivity(intent);
             }
         });
 

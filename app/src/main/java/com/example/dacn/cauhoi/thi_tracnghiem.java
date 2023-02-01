@@ -96,7 +96,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(thi_tracnghiem.this, bo_de_thi.class);
+                Intent intent = new Intent(thi_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
             }
         });
@@ -158,6 +158,8 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendResult(); //chưa xử lý time
+                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                startActivity(intent);
             }
         });
 

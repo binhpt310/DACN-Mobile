@@ -134,18 +134,19 @@ public class NoteMainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         FloatingActionMenu fam = findViewById(R.id.fam);
-        if (fam.isOpened()) {
-            fam.close(true);
-            ctr = 0;
-            return;
-        }
-
-        if (ctr > 0) {
-            super.onBackPressed();
-        } else {
-            ctr++;
-            Toast.makeText(this, "Nhấn lần nữa để thoát", Toast.LENGTH_SHORT).show();
-        }
+//        if (fam.isOpened()) {
+//            fam.close(true);
+//            ctr = 0;
+//            return;
+//        }
+//
+//        if (ctr > 0) {
+//            super.onBackPressed();
+//        } else {
+//            ctr++;
+//            Toast.makeText(this, "Nhấn lần nữa để thoát", Toast.LENGTH_SHORT).show();
+//        }
+        super.onBackPressed();
     }
 
     @Override
