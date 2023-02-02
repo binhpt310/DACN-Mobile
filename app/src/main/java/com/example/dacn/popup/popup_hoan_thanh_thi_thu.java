@@ -52,7 +52,9 @@ public class popup_hoan_thanh_thi_thu extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(popup_hoan_thanh_thi_thu.this, hoanthanhbaithi.class);
-                startActivity(intent);
+                startActivity(intent);;
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
     }

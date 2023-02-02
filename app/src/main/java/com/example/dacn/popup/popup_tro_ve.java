@@ -55,7 +55,9 @@ public class popup_tro_ve extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(popup_tro_ve.this, bo_de_thi.class);
-                startActivity(intent);
+                startActivity(intent);;
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
             }
         });
     }

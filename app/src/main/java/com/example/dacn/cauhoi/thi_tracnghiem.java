@@ -98,8 +98,6 @@ public class thi_tracnghiem extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(thi_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                finish();
             }
         });
 
