@@ -17,11 +17,13 @@ import com.example.dacn.R;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
- public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
+public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
      private IClickItemHistory iClickItemHistory;
-     ArrayList<History> newsArrayList;
-     public HistoryAdapter( ArrayList<History> newsArrayList, IClickItemHistory listener) {
+     private List<History> newsArrayList;
+
+     public HistoryAdapter(List<History> newsArrayList, IClickItemHistory listener) {
          this.iClickItemHistory = listener;
          this.newsArrayList = newsArrayList;
      }
@@ -36,15 +38,16 @@ import java.util.ArrayList;
      @Override
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-         History history = newsArrayList.get(position);
-         holder.txt_title_cardlsu.setText(history.getHeading());
-         holder.txt_caudung_cardlsu.setText(String.valueOf(history.getTrue()));
-         holder.txt_causai_cardlsu.setText(String.valueOf(history.getFalse()));
+         History hPosition = newsArrayList.get(position);
+
+         holder.txt_title_cardlsu.setText(hPosition.getHeading());
+         holder.txt_caudung_cardlsu.setText(String.valueOf(hPosition.getTrue()));
+         holder.txt_causai_cardlsu.setText(String.valueOf(hPosition.getFalse()));
 
          holder.cardview.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                iClickItemHistory.onClickItemHistory(history);
+                iClickItemHistory.onClickItemHistory(newsArrayList.get(position));
              }
 
          });
@@ -52,7 +55,10 @@ import java.util.ArrayList;
 
      @Override
      public int getItemCount() {
-         return newsArrayList.size();
+         if (newsArrayList != null) {
+             return newsArrayList.size();
+         }
+         return 0;
      }
 
      public static class MyViewHolder extends RecyclerView.ViewHolder{

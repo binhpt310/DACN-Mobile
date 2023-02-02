@@ -74,9 +74,6 @@ public interface RetrofitInterface {
                                      @Part("tenngdung") RequestBody tenngdung,
                                      @Part("matkhau") RequestBody matkhau);
 
-    @POST("/ques")
-    Call<List<NdungCardModel>> getNdung(@Body HashMap<String, String> map);
-
     @POST("/search")
     Call<List<CardModelDataSearch>> getSearch(@Body HashMap<String, String> map);
 

@@ -157,7 +157,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendResult(); //chưa xử lý time
+                sendResultApi(); //chưa xử lý time
             }
         });
 
@@ -214,7 +214,6 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
                 adslist = response.body();
-
                 progressdialog.dismiss();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
@@ -229,9 +228,9 @@ public class thi_tracnghiem extends AppCompatActivity {
         });
     }
 
-    private void sendResult() {
+    private void sendResultApi() {
         //chưa xử lý và truyền time
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMaDe,"exam","",MaBoDe,adslist);
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override

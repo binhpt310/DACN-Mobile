@@ -22,11 +22,8 @@ import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 import java.util.ArrayList;
 
 public class GeoFragment extends Fragment {
-    
-    private String[] newsHeading;
+
     private ArrayList<History> newsArrayList;
-    private int[] caudung;
-    private int[] causai;
     private RecyclerView recyclerView;
 
     public GeoFragment(){}
@@ -46,10 +43,10 @@ public class GeoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dataInitialize();
+
         recyclerView = view.findViewById(R.id.result);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
         HistoryAdapter historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
             @Override
             public void onClickItemHistory(History history) {
@@ -57,36 +54,15 @@ public class GeoFragment extends Fragment {
             }
         });
         recyclerView.setAdapter(historyAdapter);
-        historyAdapter.notifyDataSetChanged();
-        Log.d("Success", "recycle view");
 
     }
 
-    private void dataInitialize() {
-
-        newsArrayList = new ArrayList<History>();
-
-        // Write a code to get data from api and change data in 3 arrays below
-        newsHeading = new String[]{
-                getString(R.string.heading_one),
-                getString(R.string.heading_two),
-                getString(R.string.heading_three),
-
-        };
-        caudung = new int[]{30,10,2};
-        causai = new int[]{10,30,38};
-
-        for(int i = 0; i< newsHeading.length; i++){
-            History h = new History(newsHeading[i],caudung[i], causai[i]);
-            newsArrayList.add(h);
-        }
-
-    }
     private void onClickGoToDeTail(History history){
-        Intent intent = new Intent(getContext(), hoanthanhbaithi.class);
+        Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_history", history);
         intent.putExtras(bundle);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
         startActivity(intent);
     }
 }

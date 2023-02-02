@@ -24,7 +24,7 @@
             android:name=".mucluc.Notification.NotificationsActivity"
             android:exported="false" />
         <activity
-            android:name=".Lich_su_lam_bai.subjectHistory"
+            android:name=".dangnhap.Logo_screen"
             android:exported="false" />
         <activity
             android:name=".TheHocTap.Activity.EditActivity"
@@ -107,7 +107,7 @@
             android:name=".trangchu2"
             android:exported="true"/>
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".Lich_su_lam_bai.subjectHistory"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

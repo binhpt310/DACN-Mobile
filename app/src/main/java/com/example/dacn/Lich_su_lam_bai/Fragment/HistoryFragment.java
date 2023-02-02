@@ -13,23 +13,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.dacn.Lich_su_lam_bai.HistoryAdapter;
 import com.example.dacn.Lich_su_lam_bai.History;
 import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryFragment extends Fragment {
 
-    private String[] newsHeading;
-    private ArrayList<History> newsArrayList;
-    private int[] caudung;
-    private int[] causai;
+    private List<History> newsArrayList = new ArrayList<>();
+    private HistoryAdapter historyAdapter;
     private RecyclerView recyclerView;
-
-    public HistoryFragment(){}
+    String tenmon;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -46,47 +56,79 @@ public class HistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dataInitialize();
+        tenmon = "History";
         recyclerView = view.findViewById(R.id.result);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        HistoryAdapter historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
             @Override
             public void onClickItemHistory(History history) {
                 onClickGoToDeTail(history);
             }
         });
         recyclerView.setAdapter(historyAdapter);
-        historyAdapter.notifyDataSetChanged();
-        Log.d("Success", "recycle view");
+
+        callApi();
 
     }
 
-    private void dataInitialize() {
+    private void callApi() {
+        String url = "https://newdacn.onrender.com/getresult?email=a@gm.com&type=exam&sub=Gdcd";
+        //String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        Log.e("url",url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    JSONObject exam = object.getJSONObject("exam");
+                    JSONArray gdcd = exam.getJSONArray("Gdcd");
+                    Log.e("length", String.valueOf(gdcd.length()));
 
-        newsArrayList = new ArrayList<History>();
+                    for (int i=0;i<gdcd.length();i++) {
+                        JSONObject arrGdcd = gdcd.getJSONObject(i);
+                        String code = arrGdcd.getString("code");
+                        String time = arrGdcd.getString("time");
+                        JSONArray done = arrGdcd.getJSONArray("done");
+                        Log.e("code", code);
+                        Log.e("time", time);
+                        Log.e("done_length", String.valueOf(done.length()));
 
-        // Write a code to get data from api and change data in 3 arrays below
-        newsHeading = new String[]{
-                getString(R.string.heading_one),
-                getString(R.string.heading_two),
-                getString(R.string.heading_three),
-
-        };
-        caudung = new int[]{30,10,2};
-        causai = new int[]{10,30,38};
-
-        for(int i = 0; i< newsHeading.length; i++){
-            History h = new History(newsHeading[i],caudung[i], causai[i]);
-            newsArrayList.add(h);
-        }
+                        /*for (int j=0;j<done.length();j++) {
+                            JSONObject arrDone = done.getJSONObject(i);
+                            String Questions = arrDone.getString("Questions");
+                            String Selected = arrDone.getString("Selected");
+                            String aws = arrDone.getString("aws");
+                            String check = arrDone.getString("check");
+                            Log.e("Questions", Questions);
+                            Log.e("Selected", Selected);
+                            Log.e("aws", aws);
+                            Log.e("check", check);
+                        }*/
+                        newsArrayList.add(new History(code));
+                        historyAdapter.notifyDataSetChanged();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(stringRequest);
 
     }
+
     private void onClickGoToDeTail(History history){
         Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("object_history", history);
+        bundle.putSerializable("object_history", history.getHeading());
+        Log.e("history", history.getHeading());
         intent.putExtras(bundle);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
         startActivity(intent);
     }
 }

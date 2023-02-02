@@ -9,6 +9,10 @@ public class History implements Serializable {
     private int Rfalse;
     private int Rnull;
 
+    public History(String heading) {
+        this.heading = heading;
+    }
+
     public History(String heading, int Rtrue, int Rfalse) {
         this.heading = heading;
         this.Rtrue = Rtrue;

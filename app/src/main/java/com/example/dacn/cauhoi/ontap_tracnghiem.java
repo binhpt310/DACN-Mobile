@@ -55,7 +55,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
     ImageView btn_back, img_toi, img_lui, btn_done;
     ImageView[] arr_img_progress = new ImageView[20];
-    public int Cauhoihientai,socauchualam=20,socaudung=0,socausai=0;
+    public int Cauhoihientai = 0, socauchualam = 20, socaudung = 0, socausai = 0;
 
     TextView[] ar_tv_bottom = new TextView[20];
     String MaBoDe;
@@ -111,7 +111,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendResult();
+                sendResultApi();
             }
         });
 
@@ -178,8 +178,8 @@ public class ontap_tracnghiem extends AppCompatActivity {
         });
     }
 
-    private void sendResult() {
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMaDe,"review","",MaBoDe,adslist);
+    private void sendResultApi() {
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"review","",MaBoDe,adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override
@@ -197,7 +197,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
     public void callApi () {
         progressdialog.show();
-        Cauhoihientai = TruyenDuLieu.trCauhoihientai;
 
         HashMap<String, String> map = new HashMap<>();
         map.put("sub", TruyenDuLieu.trMaDe);
