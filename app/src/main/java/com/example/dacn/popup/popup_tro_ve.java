@@ -2,7 +2,6 @@ package com.example.dacn.popup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,15 +12,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
-public class popup_hoan_thanh_thi_thu extends Activity {
+public class popup_tro_ve extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popup_hoan_thanh_thi_thu);
+        setContentView(R.layout.activity_popup_tro_ve);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -38,20 +38,23 @@ public class popup_hoan_thanh_thi_thu extends Activity {
         params.y = 0;
         getWindow().setAttributes(params);
 
-        Button btn_lam_tiep = findViewById(R.id.button_lam_tiep);
-        Button btn_hoan_thanh = findViewById(R.id.button_hoan_thanh);
+        Button btn_luu = findViewById(R.id.button_luu);
+        Button btn_thoat = findViewById(R.id.button_thoat);
 
-        btn_lam_tiep.setOnClickListener(new View.OnClickListener() {
+        btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // CHỗ này lưu lại bài làm
+                //
+
                 finish();
             }
         });
 
-        btn_hoan_thanh.setOnClickListener(new View.OnClickListener() {
+        btn_thoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(popup_hoan_thanh_thi_thu.this, hoanthanhbaithi.class);
+                Intent intent = new Intent(popup_tro_ve.this, bo_de_thi.class);
                 startActivity(intent);
             }
         });
