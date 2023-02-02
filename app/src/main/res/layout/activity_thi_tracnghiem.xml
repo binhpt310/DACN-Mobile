@@ -133,6 +133,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:text="TG làm bài"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout7"
             app:layout_constraintStart_toEndOf="@+id/txt_50"

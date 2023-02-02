@@ -58,16 +58,13 @@ public class thi_tracnghiem extends AppCompatActivity {
     List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
 
     long usedTime = 0;
-    int examTime = 20;
+    int examTime = 21;
     TextView usedtime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thi_tracnghiem);
-
-        /*LoadingDialog loadingDialog = new LoadingDialog(this);
-        callDialog(loadingDialog);*/
 
         progressdialog = new ProgressDialog(thi_tracnghiem.this);
         progressdialog.setMessage("Loadinggg");
@@ -88,7 +85,6 @@ public class thi_tracnghiem extends AppCompatActivity {
 
         //Call the timer
         reverseTimer(examTime, time);
-
 
         //20 giá trị rỗng cho mảng chọn đáp án
         for (int i = 0; i < chondapan.length; i++) {
@@ -240,7 +236,7 @@ public class thi_tracnghiem extends AppCompatActivity {
 
     private void sendResultApi() {
         //chưa xử lý và truyền time
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam", String.valueOf(usedTime),MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override
@@ -450,7 +446,5 @@ public class thi_tracnghiem extends AppCompatActivity {
         int minutes = seconds / 60;
         seconds = seconds % 60;
         tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
-
     }
-
 }

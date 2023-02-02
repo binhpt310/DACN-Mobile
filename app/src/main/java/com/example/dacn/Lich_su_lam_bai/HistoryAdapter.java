@@ -57,7 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
          if (hPosition.getTime().equals("")) {
              holder.txt_time_cardlsu.setVisibility(View.GONE);
-         } holder.txt_time_cardlsu.setText(hPosition.getTime());
+         } else setTime(Long.parseLong(hPosition.getTime()),holder.txt_time_cardlsu);
 
          holder.cardview.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -97,4 +97,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
          }
      }
 
+    private void setTime (long millisUntilFinished, TextView tv){
+        int seconds = (int) (millisUntilFinished / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+    }
  }
