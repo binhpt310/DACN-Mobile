@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.dacn.R;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 public class popup_hoan_thanh_thi_thu extends Activity {

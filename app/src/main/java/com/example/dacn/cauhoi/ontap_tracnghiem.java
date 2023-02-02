@@ -114,8 +114,8 @@ public class ontap_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendResultApi();
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                startActivity(intent);*/
             }
         });
 
@@ -183,7 +183,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
     }
 
     private void sendResultApi() {
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"review","",MaBoDe,adslist);
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"review","",MaBoDe,Integer.toString(socauchualam),Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override

@@ -47,7 +47,7 @@ public class thi_tracnghiem extends AppCompatActivity {
     String[] ar_string = new String[7]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
     ImageView btn_back, img_toi, img_lui, btn_done;
 
-    public int Cauhoihientai = 0, Diem = 0, socauchualam = 40, socaudalam = 0;
+    public int Cauhoihientai = 0, socauchualam = 40, socaudung = 0, socausai = 40;
 
     TextView[] ar_tv_bottom = new TextView[40];
     String MaBoDe;
@@ -83,7 +83,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         txt_toolbar.setText(text);
 
         //Call the timer
-        reverseTimer(20, time);
+        reverseTimer(2400, time);
 
         //Stop the timer
         cancelTimer();
@@ -158,8 +158,8 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendResultApi(); //chưa xử lý time
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                startActivity(intent);*/
             }
         });
 
@@ -232,7 +232,7 @@ public class thi_tracnghiem extends AppCompatActivity {
 
     private void sendResultApi() {
         //chưa xử lý và truyền time
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,adslist);
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,Integer.toString(socauchualam),Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override
@@ -268,16 +268,19 @@ public class thi_tracnghiem extends AppCompatActivity {
                 list.get(Cauhoihientai).setCauhoidachon(ar_string[6]);
 
                 a.setBackgroundResource(R.drawable.bg_otracnghiem_cam);
-                socaudalam++;
                 socauchualam--;
                 chondapan[Cauhoihientai] = "dachon";
 
                 if (a.getText().toString().equals(b)) {
-                    Diem++;
+                    socaudung++;
+                    socausai--;
                 }
+
+                Log.e("socaudung", String.valueOf(socaudung));
+                Log.e("socausai", String.valueOf(socausai));
             }
         });
-        Log.e("Diem", String.valueOf(Diem));
+
     }
 
     private void gan_gia_tri(List<CauHoiTracNghiem> a, String arg[], TextView tv[]) {
@@ -363,7 +366,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         TextView txt_socauchualam = dialog.findViewById(R.id.txt_thi_xemnhanh_chualam);
 
         txt_socauchualam.setText(String.format("%02d",socauchualam));
-        txt_socaudalam.setText(String.format("%02d",socaudalam));
+        txt_socaudalam.setText(String.format("%02d",40-socauchualam));
 
         for (int i = 0; i < chondapan.length; i++) {
             if (chondapan[i] == "dachon") {
