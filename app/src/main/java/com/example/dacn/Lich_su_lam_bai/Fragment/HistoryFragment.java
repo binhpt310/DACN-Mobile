@@ -62,7 +62,7 @@ public class HistoryFragment extends Fragment {
         historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
             @Override
             public void onClickItemHistory(History history) {
-                onClickGoToDeTail(history);
+                onClickGoToDeTail();
             }
         });
         recyclerView.setAdapter(historyAdapter);
@@ -72,8 +72,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private void callApi() {
-        String url = "https://newdacn.onrender.com/getresult?email=a@gm.com&type=exam&sub=Gdcd";
-        //String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
         Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -81,20 +80,20 @@ public class HistoryFragment extends Fragment {
             public void onResponse(String response) {
                 try {
                     JSONObject object = new JSONObject(response);
-                    JSONObject exam = object.getJSONObject("exam");
-                    JSONArray gdcd = exam.getJSONArray("Gdcd");
+                    JSONObject exam = object.getJSONObject(TruyenDuLieu.trDangBai);
+                    JSONArray gdcd = exam.getJSONArray(tenmon);
                     Log.e("length", String.valueOf(gdcd.length()));
 
                     for (int i=0;i<gdcd.length();i++) {
                         JSONObject arrGdcd = gdcd.getJSONObject(i);
                         String code = arrGdcd.getString("code");
                         String time = arrGdcd.getString("time");
-                        JSONArray done = arrGdcd.getJSONArray("done");
-                        Log.e("code", code);
-                        Log.e("time", time);
+                        String socauchualam = arrGdcd.getString("socauchualam");
+                        String socaudung = arrGdcd.getString("socaudung");
+                        String socausai = arrGdcd.getString("socausai");
+                        /*JSONArray done = arrGdcd.getJSONArray("done");
                         Log.e("done_length", String.valueOf(done.length()));
-
-                        /*for (int j=0;j<done.length();j++) {
+                        for (int j=0;j<done.length();j++) {
                             JSONObject arrDone = done.getJSONObject(i);
                             String Questions = arrDone.getString("Questions");
                             String Selected = arrDone.getString("Selected");
@@ -105,9 +104,9 @@ public class HistoryFragment extends Fragment {
                             Log.e("aws", aws);
                             Log.e("check", check);
                         }*/
-                        newsArrayList.add(new History(code));
-                        historyAdapter.notifyDataSetChanged();
+                        newsArrayList.add(new History(code,socauchualam,socaudung,socausai,time));
                     }
+                    historyAdapter.setList(newsArrayList);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -122,12 +121,8 @@ public class HistoryFragment extends Fragment {
 
     }
 
-    private void onClickGoToDeTail(History history){
+    private void onClickGoToDeTail(){
         Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("object_history", history.getHeading());
-        Log.e("history", history.getHeading());
-        intent.putExtras(bundle);
         getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
         startActivity(intent);
     }

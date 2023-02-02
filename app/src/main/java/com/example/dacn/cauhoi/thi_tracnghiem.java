@@ -232,7 +232,7 @@ public class thi_tracnghiem extends AppCompatActivity {
 
     private void sendResultApi() {
         //chưa xử lý và truyền time
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,Integer.toString(socauchualam),Integer.toString(socaudung),Integer.toString(socausai),adslist);
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override

@@ -4,54 +4,53 @@ import java.io.Serializable;
 
 public class History implements Serializable {
 
-    private String heading;
-    private int Rtrue;
-    private int Rfalse;
-    private int Rnull;
+    private String code,socauchualam,socaudung,socausai,time;
 
-    public History(String heading) {
-        this.heading = heading;
-    }
-
-    public History(String heading, int Rtrue, int Rfalse) {
-        this.heading = heading;
-        this.Rtrue = Rtrue;
-        this.Rfalse = Rfalse;
+    public History(String code, String socauchualam, String socaudung, String socausai, String time) {
+        this.code = code;
+        this.socauchualam = socauchualam;
+        this.socaudung = socaudung;
+        this.socausai = socausai;
+        this.time = time;
     }
 
-    public History(String heading, int rtrue, int rfalse, int rnull) {
-        this.heading = heading;
-        Rtrue = rtrue;
-        Rfalse = rfalse;
-        Rnull = rnull;
+    public String getCode() {
+        return code;
     }
 
-    public String getHeading(){
-        return heading;
-    }
-    public void setHeading(String heading){
-        this.heading = heading;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public int getTrue(){
-        return Rtrue;
-    }
-    public void setTrue(int Rtrue){
-        this.Rtrue = Rtrue;
+    public String getSocauchualam() {
+        return socauchualam;
     }
 
-    public int getFalse(){
-        return Rfalse;
-    }
-    public void setFalse(int Rfalse){
-        this.Rfalse = Rfalse;
+    public void setSocauchualam(String socauchualam) {
+        this.socauchualam = socauchualam;
     }
 
-    public int getRnull() {
-        return Rnull;
+    public String getSocaudung() {
+        return socaudung;
     }
 
-    public void setRnull(int rnull) {
-        Rnull = rnull;
+    public void setSocaudung(String socaudung) {
+        this.socaudung = socaudung;
+    }
+
+    public String getSocausai() {
+        return socausai;
+    }
+
+    public void setSocausai(String socausai) {
+        this.socausai = socausai;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

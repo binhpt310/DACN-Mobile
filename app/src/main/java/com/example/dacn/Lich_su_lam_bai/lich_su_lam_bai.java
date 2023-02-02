@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 public class lich_su_lam_bai extends AppCompatActivity {
 
     LinearLayout llFolderOn, llFolderThi;
+    TextView tv_on,tv_thi;
     ConstraintLayout toolbar_lichsulambai;
 
     @Override
@@ -36,6 +38,8 @@ public class lich_su_lam_bai extends AppCompatActivity {
 
         llFolderOn = findViewById(R.id.layout_folder_on);
         llFolderThi = findViewById(R.id.layout_folder_thi);
+        tv_on = findViewById(R.id.txt_sodeondalam_lichsulambai);
+        tv_thi = findViewById(R.id.txt_sodethidalam_lichsulambai);
 
         llFolderOn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +58,7 @@ public class lich_su_lam_bai extends AppCompatActivity {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
                 TruyenDuLieu.trDangBai = "exam";
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -69,11 +73,12 @@ public class lich_su_lam_bai extends AppCompatActivity {
                 finish();
             }
         });
+
+        callApi();
     }
 
     private void callApi() {
-        String url = "https://newdacn.onrender.com/getresult?email=a@gm.com&type=exam&sub=Gdcd";
-        //String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub=";
         Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -81,7 +86,7 @@ public class lich_su_lam_bai extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject object = new JSONObject(response);
-                    JSONObject sobai = object.getJSONObject("creview");
+                    int sobai = object.getInt("cexam");
                     Log.e("length", String.valueOf(sobai));
 
                 } catch (JSONException e) {
