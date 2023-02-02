@@ -21,4 +21,10 @@
         android:title="@string/action_clear"
         android:icon="@drawable/more_vert_icon"
         app:showAsAction="never" />
+
+    <!-- Back -->
+    <item android:id="@+id/action_back"
+        android:title="@string/action_back"
+        android:icon="@drawable/more_vert_icon"
+        app:showAsAction="never" />
 </menu>

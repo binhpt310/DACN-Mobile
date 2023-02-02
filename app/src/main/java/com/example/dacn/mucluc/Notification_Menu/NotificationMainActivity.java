@@ -89,6 +89,8 @@ public class NotificationMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ReminderAddActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.duoi_len, R.anim.duoi_len);
+                finish();
             }
         });
 
@@ -105,7 +107,7 @@ public class NotificationMainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
         Intent intent = new Intent(this, mucluc.class);
         startActivity(intent);
     }

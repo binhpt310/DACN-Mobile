@@ -12,18 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <EditText
             android:id="@+id/txtsearch_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/searchview_backgound"
-            android:padding="10dp"
             android:hint="Nhập từ khóa"
+            android:padding="10dp"
+            android:paddingEnd="30dp"
+            android:singleLine="true"
             android:textSize="20sp"
-            android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,11 +32,11 @@
         <LinearLayout
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginEnd="-10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/hinh_tron2"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/txtsearch_key"
-            app:layout_constraintEnd_toEndOf="@+id/txtsearch_key"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtsearch_key">
 
             <ImageView
@@ -54,12 +55,14 @@
         <TextView
             android:id="@+id/search_nulltext"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/den80"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"></TextView>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchList"

@@ -13,12 +13,21 @@
         <!-- Sort -->
         <item android:id="@+id/action_sort"
             android:title="@string/action_sort"
+            app:iconTint="@color/black"
+            android:icon="@drawable/sort_icon"
             app:showAsAction="never" />
 
         <!-- Empty trash can -->
         <item android:id="@+id/action_empty"
             android:title="@string/action_empty"
             android:icon="@drawable/delete_icon"
+            app:iconTint="@color/black"
+            app:showAsAction="never" />
+
+        <item android:id="@+id/action_back"
+            android:title="@string/action_back"
+            android:icon="@drawable/ic_back"
+            app:iconTint="@color/black"
             app:showAsAction="never" />
 
 

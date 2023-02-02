@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.mucluc.mucluc;
 
 public class lich_su_lam_bai extends AppCompatActivity {
@@ -28,7 +29,10 @@ public class lich_su_lam_bai extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
+                TruyenDuLieu.trDangBai = "review";
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -36,7 +40,10 @@ public class lich_su_lam_bai extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
+                TruyenDuLieu.trDangBai = "exam";
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+                finish();
             }
         });
 

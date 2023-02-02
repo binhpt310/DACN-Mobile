@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+        android:name=".mucluc.Notification.BuildVersion"
         android:allowBackup="true"
         android:icon="@drawable/img_knowledge"
         android:label="@string/app_name"
@@ -16,6 +17,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".popup.popup_tro_ve"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.Notification.CreateNotification"
+            android:exported="false" />
+        <activity
+            android:name=".mucluc.Notification.NotificationsActivity"
+            android:exported="false" />
         <activity
             android:name=".Lich_su_lam_bai.subjectHistory"
             android:exported="false" />
@@ -54,7 +65,7 @@
             android:name=".cauhoi.ontap_tracnghiem"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".Lich_su_lam_bai.lich_su_lam_bai"
             android:exported="false" />
         <activity
             android:name=".popup.popup_ket_thuc_thi_thu"
@@ -62,7 +73,8 @@
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".popup.popup_hoan_thanh_thi_thu"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".dangnhap.dang_ky"
             android:exported="false" />
@@ -97,11 +109,10 @@
             android:name=".search.search_question"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
-            android:exported="true"/>
+            android:name=".trangchu2"
+            android:exported="false"/>
         <activity
-            android:name=".Lich_su_lam_bai.lich_su_lam_bai"
-
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -109,11 +120,12 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".mucluc.Notification_Menu.AlarmReceiver"/>
-        <receiver android:name=".mucluc.Notification_Menu.BootReceiver"
+        <receiver android:name=".mucluc.Notification_Menu.AlarmReceiver" />
+        <receiver
+            android:name=".mucluc.Notification_Menu.BootReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
     </application>

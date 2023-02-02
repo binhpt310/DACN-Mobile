@@ -22,14 +22,15 @@ import com.example.dacn.popup.popup_dang_xuat;
 import com.example.dacn.popupCodeSearch.popup_code;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
 
     private final Context context;
-    private final ArrayList<CardModelDataSearch> searchModelArrayList;
+    private final List<CardModelDataSearch> searchModelArrayList;
 
     // Constructor
-    public SearchAdapter(Context context, ArrayList<CardModelDataSearch> courseModelArrayList) {
+    public SearchAdapter(Context context, List<CardModelDataSearch> courseModelArrayList) {
         this.context = context;
         this.searchModelArrayList = courseModelArrayList;
     }
@@ -73,8 +74,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
         CardModelDataSearch model = searchModelArrayList.get(position);
-        /*holder.question.setText(model.getQuestion_search());
-        holder.answer.setText("Đáp án: " + model.getAnswer_search());*/
+        holder.question.setText(model.getQuestion());
+        holder.answer.setText(model.getAnw());
     }
 
     @Override

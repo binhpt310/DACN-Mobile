@@ -3,12 +3,14 @@ package com.example.dacn.TheHocTap.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -20,11 +22,13 @@ import android.view.Window;
 import android.widget.Toast;
 import android.os.Bundle;
 
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TheHocTap.Fragment.FavoritesFragment;
 import com.example.dacn.TheHocTap.Fragment.NoteFragment;
 import com.example.dacn.TheHocTap.Fragment.TrashFragment;
 import com.example.dacn.TheHocTap.Util.GeneralUtil;
+import com.example.dacn.trangchu2;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -52,8 +56,12 @@ public class NoteMainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         myToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
-        /*Window window = getWindow();
-        window.setStatusBarColor(getResources().getColor(R.color.timxanh));*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Drawable newdrawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_back);
+        getSupportActionBar().setHomeAsUpIndicator(newdrawable);
+
+        Drawable d = ContextCompat.getDrawable(getApplicationContext(), R.drawable.sort_icon);
+        myToolbar.setOverflowIcon(d);
 
         BottomNavigationView navView = findViewById(R.id.bottom_nav);
         navView.setItemIconTintList(null);
@@ -99,6 +107,7 @@ public class NoteMainActivity extends AppCompatActivity {
                         case R.id.nav_trash:
                             selectedFrag = new TrashFragment();
                             break;
+
                     }
 
                     if (selectedFrag == null) selectedFrag = new NoteFragment();
@@ -134,13 +143,26 @@ public class NoteMainActivity extends AppCompatActivity {
             return;
         }
 
-        if (ctr > 0) {
+        if (ctr == 0) {
             super.onBackPressed();
-        } else {
-            ctr++;
-            Toast.makeText(this, "Nhấn lần nữa để thoát", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(NoteMainActivity.this, trangchu2.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+            finish();
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
