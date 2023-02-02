@@ -57,6 +57,10 @@ public class thi_tracnghiem extends AppCompatActivity {
     public String[] chondapan = new String[40];
     List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
 
+    long usedTime = 0;
+    int examTime = 20;
+    TextView usedtime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +87,8 @@ public class thi_tracnghiem extends AppCompatActivity {
         txt_toolbar.setText(text);
 
         //Call the timer
-        reverseTimer(20, time);
+        reverseTimer(examTime, time);
 
-        //Stop the timer
-        cancelTimer();
 
         //20 giá trị rỗng cho mảng chọn đáp án
         for (int i = 0; i < chondapan.length; i++) {
@@ -96,8 +98,10 @@ public class thi_tracnghiem extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cancelTimer();
                 Intent intent = new Intent(thi_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
+                setTime(usedTime, usedtime);
             }
         });
 
@@ -157,9 +161,11 @@ public class thi_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cancelTimer();
                 sendResult(); //chưa xử lý time
                 Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
                 startActivity(intent);
+                setTime(usedTime, usedtime);
             }
         });
 
@@ -182,21 +188,23 @@ public class thi_tracnghiem extends AppCompatActivity {
         img_lui = findViewById(R.id.img_lui_thi);
 
         time = findViewById(R.id.txt_time);
+        usedtime = findViewById(R.id.used_time_txt);
     }
 
     CountDownTimer cTimer = null;
+
     void cancelTimer() {
-        if(cTimer!=null)
+        if(cTimer!=null) {
             cTimer.cancel();
+            cTimer = null;
+        }
     }
 
     public void reverseTimer(int Seconds,final TextView tv){
-        new CountDownTimer(Seconds* 1000, 1000) {
+        cTimer = new CountDownTimer(Seconds* 1000, 1000) {
             public void onTick(long millisUntilFinished) {
-                int seconds = (int) (millisUntilFinished / 1000);
-                int minutes = seconds / 60;
-                seconds = seconds % 60;
-                tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+                setTime(millisUntilFinished,tv);
+                usedTime = Seconds*1000 - millisUntilFinished;
             }
             public void onFinish() {
                 tv.setText("00:00");
@@ -433,6 +441,14 @@ public class thi_tracnghiem extends AppCompatActivity {
                 LocalBroadcastManager.getInstance(thi_tracnghiem.this).sendBroadcast(intent);
             }
         });
+    }
+
+    private void setTime (long millisUntilFinished, TextView tv){
+        int seconds = (int) (millisUntilFinished / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+
     }
 
 }
