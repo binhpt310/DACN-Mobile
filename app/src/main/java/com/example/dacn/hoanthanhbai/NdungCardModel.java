@@ -1,67 +1,45 @@
 package com.example.dacn.hoanthanhbai;
 
 public class NdungCardModel {
-    /*String cauhoi,cauchon,dapan;
 
-    public NdungCardModel(String cauhoi, String cauchon, String dapan) {
-        this.cauhoi = cauhoi;
-        this.cauchon = cauchon;
-        this.dapan = dapan;
+    String Questions,Selected,aws,check;
+
+    public NdungCardModel(String questions, String selected, String aws, String check) {
+        Questions = questions;
+        Selected = selected;
+        this.aws = aws;
+        this.check = check;
     }
 
-    public String getCauhoi() {
-        return cauhoi;
+    public String getQuestions() {
+        return Questions;
     }
 
-    public void setCauhoi(String cauhoi) {
-        this.cauhoi = cauhoi;
+    public void setQuestions(String questions) {
+        Questions = questions;
     }
 
-    public String getCauchon() {
-        return cauchon;
+    public String getSelected() {
+        return Selected;
     }
 
-    public void setCauchon(String cauchon) {
-        this.cauchon = cauchon;
+    public void setSelected(String selected) {
+        Selected = selected;
     }
 
-    public String getDapan() {
-        return dapan;
+    public String getAws() {
+        return aws;
     }
 
-    public void setDapan(String dapan) {
-        this.dapan = dapan;
-    }*/
-
-    String Question,a,anw;
-
-    public NdungCardModel(String question, String a, String anw) {
-        Question = question;
-        this.a = a;
-        this.anw = anw;
+    public void setAws(String aws) {
+        this.aws = aws;
     }
 
-    public String getQuestion() {
-        return Question;
+    public String getCheck() {
+        return check;
     }
 
-    public void setQuestion(String question) {
-        Question = question;
-    }
-
-    public String getA() {
-        return a;
-    }
-
-    public void setA(String a) {
-        this.a = a;
-    }
-
-    public String getAnw() {
-        return anw;
-    }
-
-    public void setAnw(String anw) {
-        this.anw = anw;
+    public void setCheck(String check) {
+        this.check = check;
     }
 }

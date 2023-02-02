@@ -16,12 +16,6 @@ public class CauHoiTracNghiem {
         this.dungsai = dungsai;
     }
 
-    public CauHoiTracNghiem(String question, String anw, String cauhoidachon) {
-        Question = question;
-        this.anw = anw;
-        this.cauhoidachon = cauhoidachon;
-    }
-
     public String getCauhoidachon() {
         return cauhoidachon;
     }
