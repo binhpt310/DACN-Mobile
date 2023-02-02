@@ -88,8 +88,6 @@ public class mucluc extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), popup_dang_xuat.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_left);
-                finish();
             }
         });
 

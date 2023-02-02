@@ -66,7 +66,7 @@ public class bo_de_thi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(bo_de_thi.this, search_question.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.duoi_len, R.anim.duoi_len);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -78,7 +78,7 @@ public class bo_de_thi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(bo_de_thi.this, trangchu2.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_right);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
 
             }

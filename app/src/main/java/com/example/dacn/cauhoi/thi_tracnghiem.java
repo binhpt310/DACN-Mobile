@@ -151,8 +151,6 @@ public class thi_tracnghiem extends AppCompatActivity {
                 tv.setText("00:00");
                 Intent intent = new Intent(getApplicationContext(), popup_ket_thuc_thi_thu.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.duoi_len, R.anim.duoi_len);
-                finish();
             }
         }.start();
     }

@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="Hãy điền OTP gồm 4 số vừa được gửi đến email"
+            android:text="Hãy điền OTP gồm 4 số vừa được gửi đến email "
             android:textColor="@color/den80"
             android:textSize="18sp" />
 

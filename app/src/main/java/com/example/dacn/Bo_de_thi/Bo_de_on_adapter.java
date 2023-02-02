@@ -88,6 +88,5 @@ public class Bo_de_on_adapter extends RecyclerView.Adapter<Bo_de_on_adapter.MyVi
         bundle.putSerializable("Truyền mã bộ đề", boDe);
         intent.putExtras(bundle);
         mcontext.startActivity(intent);
-
     }
 }

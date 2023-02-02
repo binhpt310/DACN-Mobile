@@ -104,11 +104,10 @@
             android:name=".search.search_question"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".Bo_de_thi.bo_de_thi"
             android:exported="true"/>
         <activity
-
-            android:name=".Bo_de_thi.bo_de_thi"
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

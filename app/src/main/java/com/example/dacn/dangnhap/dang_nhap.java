@@ -61,6 +61,7 @@ public class dang_nhap extends AppCompatActivity {
 
                             Intent intent = new Intent(dang_nhap.this, trangchu2.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                             finish();
                         } else if (response.code() == 401) {
                             Toast.makeText(dang_nhap.this, "Email không tồn tại", Toast.LENGTH_LONG).show();
@@ -87,7 +88,6 @@ public class dang_nhap extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
-                finish();
             }
         });
 
@@ -96,7 +96,7 @@ public class dang_nhap extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(dang_nhap.this, quenmatkhau1.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.duoi_len, R.anim.duoi_len);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
             }
         });
