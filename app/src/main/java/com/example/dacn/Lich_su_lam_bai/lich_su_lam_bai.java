@@ -31,6 +31,8 @@ public class lich_su_lam_bai extends AppCompatActivity {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
                 TruyenDuLieu.trDangBai = "review";
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -40,6 +42,8 @@ public class lich_su_lam_bai extends AppCompatActivity {
                 Intent intent = new Intent(lich_su_lam_bai.this, subjectHistory.class);
                 TruyenDuLieu.trDangBai = "exam";
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+                finish();
             }
         });
 

@@ -55,11 +55,14 @@ public class Logo_screen extends AppCompatActivity {
                     if (mySharedPreferences.getBooleanVal(key_first_install)) {
                         Intent intent = new Intent(Logo_screen.this, dang_nhap.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                         finish();
                     } else {
                         Intent intent = new Intent(Logo_screen.this, waiting.class);
                         mySharedPreferences.putBooleanVal(key_first_install, true);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                        finish();
                     }
                 }
             }, SPLASH_SCREEN);

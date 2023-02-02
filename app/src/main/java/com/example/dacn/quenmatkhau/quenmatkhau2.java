@@ -29,7 +29,7 @@ public class quenmatkhau2 extends AppCompatActivity {
     EditText ed_otp1,ed_otp2,ed_otp3,ed_otp4;
     Button btn_xacnhan;
     String otp,otp1,otp2,otp3,otp4, email;
-    TextView guilai,diensdt;
+    TextView guilai,dienemail;
     ProgressDialog progressdialog;
 
     @Override
@@ -39,7 +39,7 @@ public class quenmatkhau2 extends AppCompatActivity {
 
         khaibao();
 
-        diensdt.append(TruyenDuLieu.trEmail_quenmk);
+        dienemail.append(TruyenDuLieu.trEmail_quenmk);
 
         ed_otp1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -118,6 +118,7 @@ public class quenmatkhau2 extends AppCompatActivity {
                             progressdialog.dismiss();
                             Intent intent = new Intent(quenmatkhau2.this, quenmatkhau3.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                             finish();
                         } else if (response.code() == 201) {
                             progressdialog.dismiss();
@@ -196,6 +197,6 @@ public class quenmatkhau2 extends AppCompatActivity {
         ed_otp4 = findViewById(R.id.ed_otp4);
         guilai = findViewById(R.id.btn_guilai_quenmk);
         btn_xacnhan = findViewById(R.id.btn_xacnhan);
-        diensdt = findViewById(R.id.txt_qmk2);
+        dienemail = findViewById(R.id.txt_qmk2);
     }
 }
