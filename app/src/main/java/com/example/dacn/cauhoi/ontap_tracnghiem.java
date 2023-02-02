@@ -98,13 +98,17 @@ public class ontap_tracnghiem extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ontap_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
             }
         });
 
         xemnhanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
+                showDialog();{
+
+                }
             }
         });
 

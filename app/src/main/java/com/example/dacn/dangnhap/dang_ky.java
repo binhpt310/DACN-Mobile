@@ -55,6 +55,7 @@ public class dang_ky extends AppCompatActivity{
                         if (response.code() == 200) {
                             Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                             finish();
                         } else if (response.code() == 201) {
                             Toast.makeText(dang_ky.this, "Email đã tồn tại", Toast.LENGTH_LONG).show();
@@ -77,6 +78,7 @@ public class dang_ky extends AppCompatActivity{
             public void onClick(View view) {
                 Intent intent = new Intent(dang_ky.this, dang_nhap.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
             }
         });
