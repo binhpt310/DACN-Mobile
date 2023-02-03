@@ -18,6 +18,9 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".hoanthanhbai.HienDiem"
+            android:exported="false" />
+        <activity
             android:name=".popup.popup_tro_ve"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
@@ -110,12 +113,13 @@
             android:exported="false" />
         <activity
             android:name=".trangchu2"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
