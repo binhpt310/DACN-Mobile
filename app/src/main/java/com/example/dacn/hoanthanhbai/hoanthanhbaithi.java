@@ -94,70 +94,73 @@ public class hoanthanhbaithi extends AppCompatActivity {
                     if (object.has("exam")) {
                         exam = object.getJSONObject("exam");
 
-                        if (exam.has("History")) {
-                            mon = exam.getJSONArray("History");
+                        if (exam.has("History")) { mon = exam.getJSONArray("History");}
+                        else if (exam.has("English")) {mon = exam.getJSONArray("English");}
+                        else if (exam.has("Gdcd")) {mon = exam.getJSONArray("Gdcd");}
+                        else if (exam.has("Geography")) {mon = exam.getJSONArray("Geography");}
 
-                        } else if (exam.has("English")) {
-                            mon = exam.getJSONArray("English");
-
-                        } else if (exam.has("Gdcd")) {
-                            mon = exam.getJSONArray("Gdcd");
-
-                        } else if (exam.has("Geography")) {
-                            mon = exam.getJSONArray("Geography");
+                        for (int i=0;i<mon.length();i++) {
+                            JSONObject arrMon = mon.getJSONObject(i);
+                            String idCheck = arrMon.getString("_id");
+                            if (idCheck.equals(id)) {
+                                tamp = i;
+                            }
                         }
+                        jsArr = mon.getJSONObject(tamp);
+                        JSONArray done = jsArr.getJSONArray("done");
 
-                    } else if (object.has("review")) {
+                        for (int j=0;j<done.length();j++) {
+                            JSONObject arrDone = done.getJSONObject(j);
+
+                            Question = arrDone.getString("Question");
+                            anw = arrDone.getString("anw");
+
+                            if (arrDone.has("cauhoidachon")) {cauhoidachon = arrDone.getString("cauhoidachon");}
+                            else cauhoidachon = "";
+
+                            if (arrDone.has("dungsai")){dungsai = arrDone.getString("dungsai");}
+                            else dungsai = "sai";
+
+                            ndungCardModels.add(new NdungCardModel(Question,cauhoidachon,anw,dungsai));
+                            hoanThanh_adapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    else if (object.has("review")) {
                         exam = object.getJSONObject("review");
 
-                        if (exam.has("History")) {
-                            mon = exam.getJSONArray("History");
+                        if (exam.has("History")) {mon = exam.getJSONArray("History");}
+                        else if (exam.has("English")) {mon = exam.getJSONArray("English");}
+                        else if (exam.has("Gdcd")) {mon = exam.getJSONArray("Gdcd");}
+                        else if (exam.has("Geography")) {mon = exam.getJSONArray("Geography");}
 
-                        } else if (exam.has("English")) {
-                            mon = exam.getJSONArray("English");
+                        for (int i=0;i<mon.length();i++) {
+                            JSONObject arrMon = mon.getJSONObject(i);
+                            String idCheck = arrMon.getString("_id");
+                            if (idCheck.equals(id)) {
+                                tamp = i;
+                            }
+                        }
+                        jsArr = mon.getJSONObject(tamp);
+                        JSONArray done = jsArr.getJSONArray("done");
 
-                        } else if (exam.has("Gdcd")) {
-                            mon = exam.getJSONArray("Gdcd");
+                        for (int j=0;j<done.length();j++) {
+                            JSONObject arrDone = done.getJSONObject(j);
 
-                        } else if (exam.has("Geography")) {
-                            mon = exam.getJSONArray("Geography");
+                            Question = arrDone.getString("Question");
+                            anw = arrDone.getString("anw");
+
+                            if (arrDone.has("cauhoidachon")) {cauhoidachon = arrDone.getString("cauhoidachon");}
+                            else cauhoidachon = "";
+
+                            if (arrDone.has("dungsai")){dungsai = arrDone.getString("dungsai");}
+                            else dungsai = "";
+
+                            ndungCardModels.add(new NdungCardModel(Question,cauhoidachon,anw,dungsai));
+                            hoanThanh_adapter.notifyDataSetChanged();
                         }
                     }
 
-
-                    for (int i=0;i<mon.length();i++) {
-                        JSONObject arrMon = mon.getJSONObject(i);
-                        String idCheck = arrMon.getString("_id");
-                        if (idCheck.equals(id)) {
-                            tamp = i;
-                        }
-                    }
-                    jsArr = mon.getJSONObject(tamp);
-                    JSONArray done = jsArr.getJSONArray("done");
-                    Log.e("length", String.valueOf(done.length()));
-
-                    for (int j=0;j<done.length();j++) {
-                        JSONObject arrDone = done.getJSONObject(j);
-
-                        Question = arrDone.getString("Question");
-                        anw = arrDone.getString("anw");
-
-                        if (arrDone.has("cauhoidachon")) {
-                            cauhoidachon = arrDone.getString("cauhoidachon");
-                        } else if (!arrDone.has("cauhoidachon")) {
-                            cauhoidachon = "";
-                        }
-
-                        if (arrDone.has("dungsai")){
-                            Log.e("dungsai",arrDone.getString("dungsai"));
-                            dungsai = arrDone.getString("dungsai");
-                        } else if (!arrDone.has("dungsai")) {
-                            dungsai = "";
-                        }
-
-                        ndungCardModels.add(new NdungCardModel(Question,cauhoidachon,anw,dungsai));
-                        hoanThanh_adapter.notifyDataSetChanged();
-                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -158,7 +158,7 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 cancelTimer();
-                sendResultApi(); //chưa xử lý time
+                sendResultApi();
                 Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
                 startActivity(intent);
                 setTime(usedTime, usedtime);
@@ -235,7 +235,6 @@ public class thi_tracnghiem extends AppCompatActivity {
     }
 
     private void sendResultApi() {
-        //chưa xử lý và truyền time
         Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam", String.valueOf(usedTime),MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
@@ -278,7 +277,8 @@ public class thi_tracnghiem extends AppCompatActivity {
                 if (a.getText().toString().equals(b)) {
                     socaudung++;
                     socausai--;
-                }
+                    list.get(Cauhoihientai).setDungsai("dung");
+                } else list.get(Cauhoihientai).setDungsai("sai");
 
                 Log.e("socaudung", String.valueOf(socaudung));
                 Log.e("socausai", String.valueOf(socausai));
