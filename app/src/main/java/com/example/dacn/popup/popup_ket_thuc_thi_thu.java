@@ -2,6 +2,7 @@ package com.example.dacn.popup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -18,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.dacn.R;
+import com.example.dacn.cauhoi.thi_tracnghiem;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 import com.example.dacn.trangchu2;
 
@@ -27,7 +29,7 @@ public class popup_ket_thuc_thi_thu extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_ket_thuc_thi_thu);
-
+        setFinishOnTouchOutside(false);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -50,6 +52,8 @@ public class popup_ket_thuc_thi_thu extends Activity  {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(popup_ket_thuc_thi_thu.this, hoanthanhbaithi.class);
+                intent.setAction("Lưu kết quả");
+                LocalBroadcastManager.getInstance(popup_ket_thuc_thi_thu.this).sendBroadcast(intent);
                 startActivity(intent);
             }
         });
@@ -58,10 +62,24 @@ public class popup_ket_thuc_thi_thu extends Activity  {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(popup_ket_thuc_thi_thu.this, trangchu2.class);
+                Intent intent2 = new Intent(popup_ket_thuc_thi_thu.this, hoanthanhbaithi.class);
+                intent2.setAction("Lưu kết quả");
+                LocalBroadcastManager.getInstance(popup_ket_thuc_thi_thu.this).sendBroadcast(intent);
                 startActivity(intent);
             }
         });
     }
 
+    private void bamButton(Button btn, int i) {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction("Lưu kết quả");
+                intent.putExtra("id",i);
+                LocalBroadcastManager.getInstance(popup_ket_thuc_thi_thu.this).sendBroadcast(intent);
+            }
+        });
+    }
 
 }
