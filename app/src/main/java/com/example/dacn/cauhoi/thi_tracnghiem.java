@@ -307,8 +307,8 @@ public class thi_tracnghiem extends AppCompatActivity {
                 if (a.getText().toString().equals(b)) {
                     socaudung++;
                     socausai--;
-                }
-
+                    list.get(Cauhoihientai).setDungsai("dung");
+                } else list.get(Cauhoihientai).setDungsai("sai");
                 Log.e("socaudung", String.valueOf(socaudung));
                 Log.e("socausai", String.valueOf(socausai));
             }
