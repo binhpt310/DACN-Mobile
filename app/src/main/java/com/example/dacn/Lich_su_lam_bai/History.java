@@ -4,14 +4,23 @@ import java.io.Serializable;
 
 public class History implements Serializable {
 
-    private String code,socauchualam,socaudung,socausai,time;
+    private String id,code,socauchualam,socaudung,socausai,time;
 
-    public History(String code, String socauchualam, String socaudung, String socausai, String time) {
+    public History(String id, String code, String socauchualam, String socaudung, String socausai, String time) {
+        this.id = id;
         this.code = code;
         this.socauchualam = socauchualam;
         this.socaudung = socaudung;
         this.socausai = socausai;
         this.time = time;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCode() {

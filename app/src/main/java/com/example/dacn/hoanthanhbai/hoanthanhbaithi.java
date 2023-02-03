@@ -45,11 +45,19 @@ public class hoanthanhbaithi extends AppCompatActivity {
     RecyclerView rcv_hoanthanhbaithi;
     ImageView img_quaylai;
     HoanThanh_Adapter hoanThanh_adapter;
+    String id,url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoanthanhbaithi);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            id = (String) bundle.get("object_history_id");
+            url = (String) bundle.get("object_history_url");
+        }
+
 
         img_quaylai = findViewById(R.id.img_back_hoanthanhbaithi);
         rcv_hoanthanhbaithi = findViewById(R.id.rcv_hoanthanhbaithi);
@@ -69,7 +77,7 @@ public class hoanthanhbaithi extends AppCompatActivity {
             }
         });
 
-        callApi();
+        //callApi();
 
     }
 
@@ -120,6 +128,5 @@ public class hoanthanhbaithi extends AppCompatActivity {
             }
         });
         requestQueue.add(stringRequest);
-
     }
 }

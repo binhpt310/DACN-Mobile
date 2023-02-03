@@ -13,8 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -39,7 +41,8 @@ public class GDCDFragment extends Fragment {
     private List<History> newsArrayList = new ArrayList<>();
     private HistoryAdapter historyAdapter;
     private RecyclerView recyclerView;
-    String tenmon;
+    String tenmon,id,url;
+    TextView tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -57,22 +60,23 @@ public class GDCDFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tenmon = "Gdcd";
+        callApi();
 
+        tv = view.findViewById(R.id.tv_gdcd);
         recyclerView = view.findViewById(R.id.result);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
             @Override
-            public void onClickItemHistory(History history) {
-                onClickGoToDeTail(history);
+            public void onClickItemHistory(String id) {
+                onClickGoToDeTail(id);
             }
         });
         recyclerView.setAdapter(historyAdapter);
 
-        callApi();
     }
 
     private void callApi() {
-        String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
         Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -82,9 +86,10 @@ public class GDCDFragment extends Fragment {
                     JSONObject object = new JSONObject(response);
                     JSONObject exam = object.getJSONObject(TruyenDuLieu.trDangBai);
                     JSONArray gdcd = exam.getJSONArray(tenmon);
-                    Log.e("length", String.valueOf(gdcd.length()));
+
                     for (int i=0;i<gdcd.length();i++) {
                         JSONObject arrGdcd = gdcd.getJSONObject(i);
+                        id = arrGdcd.getString("_id");
                         String code = arrGdcd.getString("code");
                         String time = arrGdcd.getString("time");
                         String socauchualam = arrGdcd.getString("socauchualam");
@@ -103,9 +108,9 @@ public class GDCDFragment extends Fragment {
                             Log.e("aws", aws);
                             Log.e("check", check);
                         }*/
-                        newsArrayList.add(new History(code,socauchualam,socaudung,socausai,time));
+                        newsArrayList.add(new History(id,code,socauchualam,socaudung,socausai,time));
                     }
-                    historyAdapter.setList(newsArrayList);
+                    historyAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -113,20 +118,29 @@ public class GDCDFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                tv.setVisibility(View.VISIBLE);
             }
-        });
+        }) {
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                int mStatusCode = response.statusCode;
+                return super.parseNetworkResponse(response);
+            }
+        };
         requestQueue.add(stringRequest);
 
     }
 
-    private void onClickGoToDeTail(History history){
+    private void onClickGoToDeTail(String id){
         Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("object_history", history);
+        bundle.putSerializable("object_history_id", id);
+        Log.e("id",id);
+        bundle.putSerializable("object_history_url", url);
+        Log.e("url",url);
         intent.putExtras(bundle);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
     }
 }
 

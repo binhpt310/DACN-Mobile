@@ -24,11 +24,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
      private IClickItemHistory iClickItemHistory;
      private List<History> newsArrayList;
 
-    public void setList (List<History> list) {
-        this.newsArrayList = list;
-        notifyDataSetChanged();
-    }
-
      public HistoryAdapter(List<History> newsArrayList, IClickItemHistory listener) {
          this.iClickItemHistory = listener;
          this.newsArrayList = newsArrayList;
@@ -62,7 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
          holder.cardview.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                iClickItemHistory.onClickItemHistory(hPosition);
+                iClickItemHistory.onClickItemHistory(hPosition.getId());
              }
 
          });
