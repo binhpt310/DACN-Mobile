@@ -117,7 +117,7 @@
                 android:id="@+id/nullLayout"
                 android:layout_width="100dp"
                 android:layout_height="70dp"
-                android:background="@color/hong"
+                android:background="@color/timnhat"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -95,19 +95,7 @@ public class GDCDFragment extends Fragment {
                         String socauchualam = arrGdcd.getString("socauchualam");
                         String socaudung = arrGdcd.getString("socaudung");
                         String socausai = arrGdcd.getString("socausai");
-                        /*JSONArray done = arrGdcd.getJSONArray("done");
-                        Log.e("done_length", String.valueOf(done.length()));
-                        for (int j=0;j<done.length();j++) {
-                            JSONObject arrDone = done.getJSONObject(i);
-                            String Questions = arrDone.getString("Questions");
-                            String Selected = arrDone.getString("Selected");
-                            String aws = arrDone.getString("aws");
-                            String check = arrDone.getString("check");
-                            Log.e("Questions", Questions);
-                            Log.e("Selected", Selected);
-                            Log.e("aws", aws);
-                            Log.e("check", check);
-                        }*/
+
                         newsArrayList.add(new History(id,code,socauchualam,socaudung,socausai,time));
                     }
                     historyAdapter.notifyDataSetChanged();
@@ -140,7 +128,7 @@ public class GDCDFragment extends Fragment {
         Log.e("url",url);
         intent.putExtras(bundle);
         startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 }
 
