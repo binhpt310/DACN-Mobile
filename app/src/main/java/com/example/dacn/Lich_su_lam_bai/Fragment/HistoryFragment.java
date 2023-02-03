@@ -41,7 +41,7 @@ public class HistoryFragment extends Fragment {
     private List<History> newsArrayList = new ArrayList<>();
     private HistoryAdapter historyAdapter;
     private RecyclerView recyclerView;
-    String tenmon,id;
+    String tenmon,id,url;
     TextView tv;
 
     @Override
@@ -75,7 +75,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private void callApi() {
-        String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
         Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -120,11 +120,13 @@ public class HistoryFragment extends Fragment {
     private void onClickGoToDeTail(String id){
         Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("object_history", id);
+        bundle.putSerializable("object_history_id", id);
         Log.e("id",id);
+        bundle.putSerializable("object_history_url", url);
+        Log.e("url",url);
         intent.putExtras(bundle);
         startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 }
 

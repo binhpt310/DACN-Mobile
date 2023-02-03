@@ -125,7 +125,7 @@ public class EngFragment extends Fragment {
         Log.e("url",url);
         intent.putExtras(bundle);
         startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 }
 
