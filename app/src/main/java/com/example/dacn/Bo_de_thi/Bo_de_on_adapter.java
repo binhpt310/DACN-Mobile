@@ -35,7 +35,6 @@ public class Bo_de_on_adapter extends RecyclerView.Adapter<Bo_de_on_adapter.MyVi
         return new MyViewHolder(view);
     }
 
-
     @Override
     public int getItemCount() {
         if (Bodeonmodels != null) {

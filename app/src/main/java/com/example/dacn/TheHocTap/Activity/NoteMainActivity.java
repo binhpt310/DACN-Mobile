@@ -143,14 +143,12 @@ public class NoteMainActivity extends AppCompatActivity {
             return;
         }
 
-        if (ctr > 0) {
+        if (ctr == 0) {
+            super.onBackPressed();
             Intent intent = new Intent(NoteMainActivity.this, trangchu2.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_right);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
             finish();
-        } else {
-            ctr++;
-            Toast.makeText(this, "Nhấn lần nữa để thoát", Toast.LENGTH_SHORT).show();
         }
     }
 

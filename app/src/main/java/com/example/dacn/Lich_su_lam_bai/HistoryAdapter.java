@@ -14,14 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.Lich_su_lam_bai.Fragment.IClickItemHistory;
 import com.example.dacn.R;
+import com.example.dacn.mucluc.Notification.Notification;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
- public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
+public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
      private IClickItemHistory iClickItemHistory;
-     ArrayList<History> newsArrayList;
-     public HistoryAdapter( ArrayList<History> newsArrayList, IClickItemHistory listener) {
+     private List<History> newsArrayList;
+
+     public HistoryAdapter(List<History> newsArrayList, IClickItemHistory listener) {
          this.iClickItemHistory = listener;
          this.newsArrayList = newsArrayList;
      }
@@ -36,39 +39,63 @@ import java.util.ArrayList;
      @Override
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-         History history = newsArrayList.get(position);
-         holder.txt_title_cardlsu.setText(history.getHeading());
-         holder.txt_caudung_cardlsu.setText(String.valueOf(history.getTrue()));
-         holder.txt_causai_cardlsu.setText(String.valueOf(history.getFalse()));
+         History hPosition = newsArrayList.get(position);
+
+         holder.txt_title_cardlsu.setText("Đề số " + hPosition.getCode());
+
+         if (hPosition.getSocauchualam().equals("")) {
+             holder.nullLayout.setVisibility(View.GONE);
+         } else holder.txt_caukhong_cardlsu.setText(hPosition.getSocauchualam());
+
+         holder.txt_causai_cardlsu.setText(hPosition.getSocausai());
+         holder.txt_caudung_cardlsu.setText(hPosition.getSocaudung());
+
+         if (hPosition.getTime().equals("")) {
+             holder.txt_time_cardlsu.setVisibility(View.GONE);
+         } else setTime(Long.parseLong(hPosition.getTime()),holder.txt_time_cardlsu);
 
          holder.cardview.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                iClickItemHistory.onClickItemHistory(history);
-
+                iClickItemHistory.onClickItemHistory(hPosition.getId());
              }
+
          });
      }
 
      @Override
      public int getItemCount() {
-         return newsArrayList.size();
+         if (newsArrayList != null) {
+             return newsArrayList.size();
+         }
+         return 0;
      }
 
      public static class MyViewHolder extends RecyclerView.ViewHolder{
 
          CardView cardview;
-         TextView txt_title_cardlsu;
-         TextView txt_caudung_cardlsu,txt_causai_cardlsu;
+         TextView txt_title_cardlsu,txt_time_cardlsu,txt_caudung_cardlsu,txt_causai_cardlsu,txt_caukhong_cardlsu;
+         LinearLayout nullLayout;
 
          public MyViewHolder(@NonNull View itemView) {
 
              super(itemView);
              txt_title_cardlsu = itemView.findViewById(R.id.txt_title_cardlsu);
+             txt_time_cardlsu = itemView.findViewById(R.id.txt_time_cardlsu);
+             txt_caukhong_cardlsu = itemView.findViewById(R.id.txt_caukhong_cardlsu);
              txt_caudung_cardlsu = itemView.findViewById(R.id.txt_caudung_cardlsu);
              txt_causai_cardlsu = itemView.findViewById(R.id.txt_causai_cardlsu);
+
              cardview = itemView.findViewById(R.id.layout_item);
+
+             nullLayout = itemView.findViewById(R.id.nullLayout);
          }
      }
 
+    private void setTime (long millisUntilFinished, TextView tv){
+        int seconds = (int) (millisUntilFinished / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+    }
  }
