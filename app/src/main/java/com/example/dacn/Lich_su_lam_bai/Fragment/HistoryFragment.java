@@ -1,11 +1,13 @@
 package com.example.dacn.Lich_su_lam_bai.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +45,7 @@ public class HistoryFragment extends Fragment {
     private RecyclerView recyclerView;
     String tenmon,id,url;
     TextView tv;
+    ProgressDialog progressdialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -60,6 +63,11 @@ public class HistoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tenmon = "History";
+
+        progressdialog = new ProgressDialog(getContext());
+        progressdialog.setMessage("Loadinggg");
+        progressdialog.show();
+
         callApi();
 
         tv = view.findViewById(R.id.tv_his);
@@ -81,6 +89,7 @@ public class HistoryFragment extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressdialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
                     JSONObject exam = object.getJSONObject(TruyenDuLieu.trDangBai);
@@ -104,6 +113,7 @@ public class HistoryFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressdialog.dismiss();
                 tv.setVisibility(View.VISIBLE);
             }
         }) {

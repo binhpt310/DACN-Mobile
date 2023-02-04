@@ -3,6 +3,7 @@ package com.example.dacn.hoanthanhbai;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import com.example.dacn.Bo_de_thi.Bo_de_on_adapter;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
 import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.trangchu2;
 
@@ -39,6 +41,8 @@ public class HienDiem extends AppCompatActivity {
 
     ProgressDialog progressdialog;
 
+    String tenmon,url;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +60,20 @@ public class HienDiem extends AppCompatActivity {
 
         callApi();
 
+        if (TruyenDuLieu.trMon.equals("His")) tenmon = "History";
+        else if (TruyenDuLieu.trMon.equals("Eng")) tenmon = "English";
+        else if (TruyenDuLieu.trMon.equals("Geo")) tenmon = "Geography";
+        else if (TruyenDuLieu.trMon.equals("Gdcd")) tenmon = "Gdcd";
+        url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+
         tvXem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HienDiem.this, hoanthanhbaithi.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_history_url", url);
+                Log.e("url",url);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();

@@ -3,10 +3,15 @@ package com.example.dacn.hoanthanhbai;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +33,8 @@ import com.example.dacn.Lich_su_lam_bai.subjectHistory;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
+import com.example.dacn.trangchu2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,16 +52,21 @@ public class hoanthanhbaithi extends AppCompatActivity {
     RecyclerView rcv_hoanthanhbaithi;
     ImageView img_quaylai;
     HoanThanh_Adapter hoanThanh_adapter;
-    String id,url,Question,cauhoidachon,anw,dungsai;
+    String id,url,Question,cauhoidachon,anw,dungsai,tenmon;
     int tamp;
 
     JSONObject exam,jsArr;
     JSONArray mon;
 
+    ProgressDialog progressdialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoanthanhbaithi);
+
+        progressdialog = new ProgressDialog(hoanthanhbaithi.this);
+        progressdialog.setMessage("Loadinggg");
 
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
@@ -72,22 +84,22 @@ public class hoanthanhbaithi extends AppCompatActivity {
         img_quaylai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(hoanthanhbaithi.this, subjectHistory.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                finish();
+                if (id==null) goTrangchu();
+                else goToHistory();
             }
         });
 
         callApi();
-
     }
 
     private void callApi() {
+        progressdialog.show();
+        Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressdialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
 
@@ -102,8 +114,9 @@ public class hoanthanhbaithi extends AppCompatActivity {
                         for (int i=0;i<mon.length();i++) {
                             JSONObject arrMon = mon.getJSONObject(i);
                             String idCheck = arrMon.getString("_id");
-                            if (idCheck.equals(id)) {
-                                tamp = i;
+                            if (id==null) tamp = mon.length()-1;
+                            else {
+                                if (idCheck.equals(id)) tamp = i;
                             }
                         }
                         jsArr = mon.getJSONObject(tamp);
@@ -137,8 +150,9 @@ public class hoanthanhbaithi extends AppCompatActivity {
                         for (int i=0;i<mon.length();i++) {
                             JSONObject arrMon = mon.getJSONObject(i);
                             String idCheck = arrMon.getString("_id");
-                            if (idCheck.equals(id)) {
-                                tamp = i;
+                            if (id==null) tamp = mon.length()-1;
+                            else {
+                                if (idCheck.equals(id)) tamp = i;
                             }
                         }
                         jsArr = mon.getJSONObject(tamp);
@@ -168,9 +182,24 @@ public class hoanthanhbaithi extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressdialog.dismiss();
                 Toast.makeText(hoanthanhbaithi.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    private void goToHistory() {
+        Intent intent = new Intent(hoanthanhbaithi.this, subjectHistory.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        finish();
+    }
+
+    private void goTrangchu() {
+        Intent intent = new Intent(hoanthanhbaithi.this, trangchu2.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        finish();
     }
 }

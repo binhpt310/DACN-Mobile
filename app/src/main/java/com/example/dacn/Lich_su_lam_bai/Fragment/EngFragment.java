@@ -1,11 +1,13 @@
 package com.example.dacn.Lich_su_lam_bai.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,10 +25,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.Lich_su_lam_bai.HistoryAdapter;
 import com.example.dacn.Lich_su_lam_bai.History;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 import org.json.JSONArray;
@@ -43,6 +47,7 @@ public class EngFragment extends Fragment {
     private RecyclerView recyclerView;
     String tenmon,id,url;
     TextView tv;
+    ProgressDialog progressdialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -60,6 +65,11 @@ public class EngFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tenmon = "English";
+
+        progressdialog = new ProgressDialog(getContext());
+        progressdialog.setMessage("Loadinggg");
+        progressdialog.show();
+
         callApi();
 
         tv = view.findViewById(R.id.tv_eng);
@@ -81,6 +91,7 @@ public class EngFragment extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressdialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
                     JSONObject exam = object.getJSONObject(TruyenDuLieu.trDangBai);
@@ -104,6 +115,7 @@ public class EngFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressdialog.dismiss();
                 tv.setVisibility(View.VISIBLE);
             }
         }) {
