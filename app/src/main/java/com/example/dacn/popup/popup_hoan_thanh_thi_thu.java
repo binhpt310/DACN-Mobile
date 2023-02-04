@@ -61,7 +61,6 @@ public class popup_hoan_thanh_thi_thu extends Activity {
             public void onClick(View v) {
                 //callsendResultAPI();
                 Intent intent = new Intent(popup_hoan_thanh_thi_thu.this, hoanthanhbaithi.class);
-
                 intent.setAction("Lưu kết quả");
                 LocalBroadcastManager.getInstance(popup_hoan_thanh_thi_thu.this).sendBroadcast(intent);
 

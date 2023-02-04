@@ -163,6 +163,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("Trắc nghiệm ôn");
+        filter.addAction("Lưu kết quả");
         BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -176,6 +177,11 @@ public class ontap_tracnghiem extends AppCompatActivity {
                     } else {
                         bamTracNghiem(adslist);
                     }
+                }
+
+                //Gọi hàm sendResult
+                else if (intent.getAction().equals("Lưu kết quả")){
+                    sendResultApi();
                 }
             }
         };
