@@ -166,12 +166,14 @@ public class bo_de_thi extends AppCompatActivity {
                                     Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(bo_de_thi.this, Bodeonmodels);
                                     recyclerView.setAdapter(bo_de_on_adapter);
                                 } else if (response.code() == 404) {
+                                    progressdialog.dismiss();
                                     Toast.makeText(bo_de_thi.this, "Lỗi", Toast.LENGTH_LONG).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<List<BoDe>> call, Throwable t) {
+                                progressdialog.dismiss();
                                 Toast.makeText(bo_de_thi.this, "Fail", Toast.LENGTH_SHORT).show();
                             }
                         });

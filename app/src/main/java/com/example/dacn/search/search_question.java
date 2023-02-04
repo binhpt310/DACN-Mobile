@@ -3,6 +3,7 @@ package com.example.dacn.search;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,9 +23,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dacn.Bo_de_thi.bo_de_thi;
+import com.example.dacn.Lich_su_lam_bai.History;
+import com.example.dacn.Lich_su_lam_bai.HistoryAdapter;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
+import com.example.dacn.trangchu2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,12 +46,13 @@ import retrofit2.Callback;
 public class search_question extends AppCompatActivity {
 
     List<DataSearch> searchModelArrayList = new ArrayList<>();
-    String tenmon, keyword;
-    ImageView btn_search;
+    private SearchAdapter searchAdapter;
+    String Question,anw,exam,review;
+    ImageView btn_search, btn_back;
     ProgressDialog progressdialog;
     EditText nhaptu;
     RecyclerView recyclerView;
-    TextView nullText;
+    TextView nullText,tv_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +61,14 @@ public class search_question extends AppCompatActivity {
 
         khaibao();
 
-        //if (TruyenDuLieu.trMon )
-
         progressdialog = new ProgressDialog(search_question.this);
         progressdialog.setMessage("Loadinggg");
 
+        tv_toolbar.setText(TruyenDuLieu.trTenMon);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(search_question.this, LinearLayoutManager.VERTICAL, false));
+        searchAdapter = new SearchAdapter(search_question.this,searchModelArrayList);
+        recyclerView.setAdapter(searchAdapter);
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,13 +78,27 @@ public class search_question extends AppCompatActivity {
                 callApi();
             }
         });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(search_question.this, trangchu2.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+            }
+        });
     }
 
     private void khaibao() {
         btn_search = findViewById(R.id.search_button);
+        btn_back = findViewById(R.id.img_back_search);
+
         nhaptu = findViewById(R.id.txtsearch_key);
         recyclerView = findViewById(R.id.searchList);
+
         nullText = findViewById(R.id.search_nulltext);
+        tv_toolbar = findViewById(R.id.text_toolbar_search);
     }
 
     private void callApi() {
@@ -88,37 +110,44 @@ public class search_question extends AppCompatActivity {
             public void onResponse(String response) {
                 progressdialog.dismiss();
                 Log.e("search","ok");
-                /*try {
+                try {
                     JSONArray arr = new JSONArray(response);
                     Log.e("arr length", String.valueOf(arr.length()));
                     for (int i=0;i<arr.length();i++) {
                         JSONObject obj = arr.getJSONObject(i);
-                        String Question = obj.getString("Question");
-                        Log.e("Question",Question);
+                        Question = obj.getString("Question");
+                        anw = obj.getString("anw");
+                        JSONArray arrReview = obj.getJSONArray("review");
+
+                        List<String> listreview = new ArrayList<>();
+                        if (arrReview.length()!=0) {
+                            review = "review";
+                            for (int h=0;h<arrReview.length();h++) {
+                                listreview.add(arrReview.getString(h));
+                            }
+                        } else review = "";
+
+                        List<String> listexam = new ArrayList<>();
+                        JSONArray arrExam = obj.getJSONArray("exam");
+                        if (arrExam.length()!=0) {
+                            exam = "exam";
+                            for (int h=0;h<arrExam.length();h++) {
+                                listexam.add(arrExam.getString(h));
+                            }
+                        } else exam = "";
+
+                        //Hội nghị Pốtxđam
+                        searchModelArrayList.add(new DataSearch(Question,anw,exam,review,listexam,listreview));
                     }
+                    searchAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (error == null || error.networkResponse == null) {
-                    return;
-                }
-
-                /*String body;
-                //get status code here
-                final String statusCode = String.valueOf(error.networkResponse.statusCode);
-                //get response body and parse with appropriate encoding
-                try {
-                    body = new String(error.networkResponse.data,"UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    // exception
-                }*/
-
-                //do stuff with the body..
                 progressdialog.dismiss();
                 Log.e("search","fail");
                 Toast.makeText(search_question.this,error.getMessage(),Toast.LENGTH_SHORT).show();
