@@ -39,18 +39,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Điểm"
+                android:text="Số câu đúng"
                 android:textColor="@color/den"
                 android:textSize="23sp" />
 
-            <TextView
-                android:id="@+id/tv_diem_hiendiem"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:text="30"
-                android:textColor="@color/den"
-                android:textSize="50sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_diem_hiendiem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="30"
+                    android:textColor="@color/den"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="/"
+                    android:textColor="@color/den"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_cau_hiendiem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="20"
+                    android:textColor="@color/den"
+                    android:textSize="30sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_xemlai_hiendiem"

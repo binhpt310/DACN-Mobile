@@ -16,4 +16,8 @@ public class TruyenDuLieu {
     public static String tr_linkanh = "";
 
     public static String trDangBai = "";
+
+    public static String trDiem = "";
+
+    public static String trCau = "";
 }

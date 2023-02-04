@@ -43,6 +43,8 @@ public class search_question extends AppCompatActivity {
 
         khaibao();
 
+        //if (TruyenDuLieu.trMon )
+
         progressdialog = new ProgressDialog(search_question.this);
         progressdialog.setMessage("Loadinggg");
 
@@ -54,7 +56,7 @@ public class search_question extends AppCompatActivity {
                 progressdialog.show();
 
                 Log.e("search", nhaptu.getText().toString());
-                Log.e("sub", TruyenDuLieu.trMon);
+                //Log.e("sub", );
             }
         });
     }

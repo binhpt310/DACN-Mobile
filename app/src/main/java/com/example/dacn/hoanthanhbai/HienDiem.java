@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,8 @@ import com.example.dacn.Bo_de_thi.Bo_de_on_adapter;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.dangnhap.dang_nhap;
+import com.example.dacn.trangchu2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +33,7 @@ import retrofit2.Response;
 
 public class HienDiem extends AppCompatActivity {
     ImageView back;
-    TextView tvDiem,tvXem;
+    TextView tvDiem,tvXem,tvCau;
     RecyclerView rcv;
     private List<BoDe> Bodeonmodels = new ArrayList<>();
 
@@ -47,13 +51,39 @@ public class HienDiem extends AppCompatActivity {
 
         rcv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        tvDiem.setText(TruyenDuLieu.trDiem);
+        tvCau.setText(TruyenDuLieu.trCau);
+
         callApi();
+
+        tvXem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HienDiem.this, hoanthanhbaithi.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HienDiem.this, trangchu2.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+            }
+        });
     }
 
     private void khaibao() {
         back = findViewById(R.id.img_back_hiendiem);
+
         tvDiem = findViewById(R.id.tv_diem_hiendiem);
         tvXem = findViewById(R.id.tv_xemlai_hiendiem);
+        tvCau = findViewById(R.id.tv_cau_hiendiem);
+
         rcv = findViewById(R.id.rcv_hiendiem);
     }
 

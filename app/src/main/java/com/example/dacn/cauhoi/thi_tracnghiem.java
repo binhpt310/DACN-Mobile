@@ -152,7 +152,6 @@ public class thi_tracnghiem extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction("Trắc nghiệm thi");
         filter.addAction("Lưu kết quả");
-        filter.addAction("Làm tiếp");
         BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -167,15 +166,10 @@ public class thi_tracnghiem extends AppCompatActivity {
                     cancelTimer();
                     Log.i("dacn_usedtime:", String.valueOf(usedTime));
                     sendResultApi();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                    TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                    TruyenDuLieu.trCau = "40";
                 }
-
-//                //Gọi hàm reversetimer
-//                else if (intent.getAction().equals("Làm tiếp")){
-//                    int sec = (int) usedTime/1000;
-//                    reverseTimer(examTime - sec, time);
-//                    Log.i("dacn_usedtime:", String.valueOf(sec));
-//                    Log.i("dacn_remaining", String.valueOf(examTime-sec));
-//                }
             }
         };
         LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
@@ -213,20 +207,6 @@ public class thi_tracnghiem extends AppCompatActivity {
     }
 
     public void reverseTimer(int Seconds,final TextView tv){
-        cTimer = new CountDownTimer(Seconds* 1000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                setTime(millisUntilFinished,tv);
-                usedTime = Seconds*1000 - millisUntilFinished;
-            }
-            public void onFinish() {
-                tv.setText("00:00");
-                Intent intent = new Intent(getApplicationContext(), popup_ket_thuc_thi_thu.class);
-                startActivity(intent);
-            }
-        }.start();
-    }
-
-    public void ClonereverseTimer(int Seconds,final TextView tv){
         cTimer = new CountDownTimer(Seconds* 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 setTime(millisUntilFinished,tv);
@@ -309,8 +289,6 @@ public class thi_tracnghiem extends AppCompatActivity {
                     socausai--;
                     list.get(Cauhoihientai).setDungsai("dung");
                 } else list.get(Cauhoihientai).setDungsai("sai");
-                Log.e("socaudung", String.valueOf(socaudung));
-                Log.e("socausai", String.valueOf(socausai));
             }
         });
 

@@ -46,9 +46,6 @@ public class popup_tro_ve extends Activity {
         btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(popup_tro_ve.this, hoanthanhbaithi.class);
-                intent.setAction("Làm tiếp");
-                LocalBroadcastManager.getInstance(popup_tro_ve.this).sendBroadcast(intent);
                 finish();
             }
         });
@@ -60,18 +57,6 @@ public class popup_tro_ve extends Activity {
                 startActivity(intent);;
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
-            }
-        });
-    }
-
-    private void bamButton(Button btn, int i) {
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction("Lưu kết quả");
-                intent.putExtra("id",i);
-                LocalBroadcastManager.getInstance(popup_tro_ve.this).sendBroadcast(intent);
             }
         });
     }

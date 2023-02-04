@@ -181,6 +181,10 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 //Gọi hàm sendResult
                 else if (intent.getAction().equals("Lưu kết quả")){
                     sendResultApi();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                    TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                    TruyenDuLieu.trCau = "20";
+
                 }
             }
         };
