@@ -57,14 +57,14 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
     ImageView btn_back, img_toi, img_lui, btn_done;
     ImageView[] arr_img_progress = new ImageView[20];
-    public int Cauhoihientai,socauchualam=20,socaudung=0,socausai=0;
+    public int Cauhoihientai = 0, socauchualam = 20, socaudung = 0, socausai = 0;
 
     TextView[] ar_tv_bottom = new TextView[20];
     String MaBoDe;
 
     ProgressDialog progressdialog;
 
-    List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
+    List<CauHoiTracNghiem> adslist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,31 +113,10 @@ public class ontap_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendResult();
                 Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
                 startActivity(intent);
             }
         });
-
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("Trắc nghiệm ôn");
-        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equals("Trắc nghiệm ôn")) {
-                    Cauhoihientai = intent.getIntExtra("id",-1);
-                    gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
-                    if (adslist.get(Cauhoihientai).getCauhoidachon()!=null) {
-                        for (int i=1;i<5;i++) {
-                            ar_textview[i].setOnClickListener(null);
-                        }
-                    } else {
-                        bamTracNghiem(adslist);
-                    }
-                }
-            }
-        };
-        LocalBroadcastManager.getInstance(ontap_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
 
         img_toi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,10 +159,41 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 }
             }
         });
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("Trắc nghiệm ôn");
+        filter.addAction("Lưu kết quả");
+        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals("Trắc nghiệm ôn")) {
+                    Cauhoihientai = intent.getIntExtra("id",-1);
+                    gan_gia_tri(adslist,ar_string,ar_textview,arr_img_progress[Cauhoihientai],ar_tv_bottom[Cauhoihientai]);
+                    if (adslist.get(Cauhoihientai).getCauhoidachon()!=null) {
+                        for (int i=1;i<5;i++) {
+                            ar_textview[i].setOnClickListener(null);
+                        }
+                    } else {
+                        bamTracNghiem(adslist);
+                    }
+                }
+
+                //Gọi hàm sendResult
+                else if (intent.getAction().equals("Lưu kết quả")){
+                    sendResultApi();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                    TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                    TruyenDuLieu.trCau = "20";
+                    TruyenDuLieu.trDangBai = "review";
+
+                }
+            }
+        };
+        LocalBroadcastManager.getInstance(ontap_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
     }
 
-    private void sendResult() {
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMaDe,"review","",MaBoDe,adslist);
+    private void sendResultApi() {
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"review","",MaBoDe,Integer.toString(socauchualam),Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override
@@ -201,7 +211,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
     public void callApi () {
         progressdialog.show();
-        Cauhoihientai = TruyenDuLieu.trCauhoihientai;
 
         HashMap<String, String> map = new HashMap<>();
         map.put("sub", TruyenDuLieu.trMaDe);

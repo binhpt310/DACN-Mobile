@@ -47,7 +47,7 @@ public class thi_tracnghiem extends AppCompatActivity {
     String[] ar_string = new String[7]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
     ImageView btn_back, img_toi, img_lui, btn_done;
 
-    public int Cauhoihientai = 0, Diem = 0, socauchualam = 40, socaudalam = 0;
+    public int Cauhoihientai = 0, socauchualam = 40, socaudung = 0, socausai = 40;
 
     TextView[] ar_tv_bottom = new TextView[40];
     String MaBoDe;
@@ -55,19 +55,17 @@ public class thi_tracnghiem extends AppCompatActivity {
     ProgressDialog progressdialog;
 
     public String[] chondapan = new String[40];
-    List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
+    List<CauHoiTracNghiem> adslist = new ArrayList<>();
 
     long usedTime = 0;
-    int examTime = 20;
+    int examTime = 21;
     TextView usedtime;
+    int remainingTime ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thi_tracnghiem);
-
-        /*LoadingDialog loadingDialog = new LoadingDialog(this);
-        callDialog(loadingDialog);*/
 
         progressdialog = new ProgressDialog(thi_tracnghiem.this);
         progressdialog.setMessage("Loadinggg");
@@ -89,7 +87,6 @@ public class thi_tracnghiem extends AppCompatActivity {
         //Call the timer
         reverseTimer(examTime, time);
 
-
         //20 giá trị rỗng cho mảng chọn đáp án
         for (int i = 0; i < chondapan.length; i++) {
             chondapan[i] = "";
@@ -98,8 +95,16 @@ public class thi_tracnghiem extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cancelTimer();
                 Intent intent = new Intent(thi_tracnghiem.this, popup_tro_ve.class);
+                startActivity(intent);
+                setTime(usedTime, usedtime);
+            }
+        });
+
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
                 startActivity(intent);
                 setTime(usedTime, usedtime);
             }
@@ -111,22 +116,6 @@ public class thi_tracnghiem extends AppCompatActivity {
                 showDialog();
             }
         });
-
-        callApi();
-
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("Trắc nghiệm thi");
-        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equals("Trắc nghiệm thi")) {
-                    Cauhoihientai = intent.getIntExtra("id",-1);
-                    gan_gia_tri(adslist,ar_string,ar_textview);
-                    bamTracNghiem(adslist);
-                }
-            }
-        };
-        LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
 
         img_toi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,16 +147,34 @@ public class thi_tracnghiem extends AppCompatActivity {
             }
         });
 
-        btn_done.setOnClickListener(new View.OnClickListener() {
+        callApi();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("Trắc nghiệm thi");
+        filter.addAction("Lưu kết quả");
+        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
-            public void onClick(View view) {
-                cancelTimer();
-                sendResult(); //chưa xử lý time
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
-                setTime(usedTime, usedtime);
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals("Trắc nghiệm thi")) {
+                    Cauhoihientai = intent.getIntExtra("id",-1);
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    bamTracNghiem(adslist);
+                }
+
+                //Gọi hàm sendResult
+                else if (intent.getAction().equals("Lưu kết quả")){
+                    cancelTimer();
+                    Log.i("dacn_usedtime:", String.valueOf(usedTime));
+                    sendResultApi();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                    TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                    TruyenDuLieu.trCau = "40";
+                    TruyenDuLieu.trDangBai = "exam";
+                }
             }
-        });
+        };
+        LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
+
 
     }
 
@@ -196,7 +203,7 @@ public class thi_tracnghiem extends AppCompatActivity {
     void cancelTimer() {
         if(cTimer!=null) {
             cTimer.cancel();
-            cTimer = null;
+            //cTimer = null;
         }
     }
 
@@ -224,7 +231,6 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CauHoiTracNghiem>> call, Response<List<CauHoiTracNghiem>> response) {
                 adslist = response.body();
-
                 progressdialog.dismiss();
 
                 gan_gia_tri(adslist,ar_string,ar_textview);
@@ -239,9 +245,8 @@ public class thi_tracnghiem extends AppCompatActivity {
         });
     }
 
-    private void sendResult() {
-        //chưa xử lý và truyền time
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMaDe,"exam","",MaBoDe,adslist);
+    public void sendResultApi() {
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam", String.valueOf(usedTime),MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override
@@ -277,16 +282,17 @@ public class thi_tracnghiem extends AppCompatActivity {
                 list.get(Cauhoihientai).setCauhoidachon(ar_string[6]);
 
                 a.setBackgroundResource(R.drawable.bg_otracnghiem_cam);
-                socaudalam++;
                 socauchualam--;
                 chondapan[Cauhoihientai] = "dachon";
 
                 if (a.getText().toString().equals(b)) {
-                    Diem++;
-                }
+                    socaudung++;
+                    socausai--;
+                    list.get(Cauhoihientai).setDungsai("dung");
+                } else list.get(Cauhoihientai).setDungsai("sai");
             }
         });
-        Log.e("Diem", String.valueOf(Diem));
+
     }
 
     private void gan_gia_tri(List<CauHoiTracNghiem> a, String arg[], TextView tv[]) {
@@ -372,7 +378,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         TextView txt_socauchualam = dialog.findViewById(R.id.txt_thi_xemnhanh_chualam);
 
         txt_socauchualam.setText(String.format("%02d",socauchualam));
-        txt_socaudalam.setText(String.format("%02d",socaudalam));
+        txt_socaudalam.setText(String.format("%02d",40-socauchualam));
 
         for (int i = 0; i < chondapan.length; i++) {
             if (chondapan[i] == "dachon") {
@@ -434,7 +440,6 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-
                 Intent intent = new Intent();
                 intent.setAction("Trắc nghiệm thi");
                 intent.putExtra("id",i);
@@ -448,7 +453,5 @@ public class thi_tracnghiem extends AppCompatActivity {
         int minutes = seconds / 60;
         seconds = seconds % 60;
         tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
-
     }
-
 }

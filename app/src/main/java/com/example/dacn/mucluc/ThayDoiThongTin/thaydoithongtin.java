@@ -147,6 +147,7 @@ public class thaydoithongtin extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         Intent intent = new Intent(this, mucluc.class);
         startActivity(intent);
+        finish();
     }
 
     private void callApiImage() {

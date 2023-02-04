@@ -1,8 +1,10 @@
 package com.example.dacn.popup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,8 +14,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.dacn.R;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
+import com.example.dacn.cauhoi.thi_tracnghiem;
+import com.example.dacn.hoanthanhbai.HienDiem;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 public class popup_hoan_thanh_thi_thu extends Activity {
@@ -22,7 +28,7 @@ public class popup_hoan_thanh_thi_thu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_hoan_thanh_thi_thu);
-
+        setFinishOnTouchOutside(false);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -51,8 +57,11 @@ public class popup_hoan_thanh_thi_thu extends Activity {
         btn_hoan_thanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(popup_hoan_thanh_thi_thu.this, hoanthanhbaithi.class);
+                Intent intent = new Intent(popup_hoan_thanh_thi_thu.this, HienDiem.class);
+                intent.setAction("Lưu kết quả");
+                LocalBroadcastManager.getInstance(popup_hoan_thanh_thi_thu.this).sendBroadcast(intent);
                 startActivity(intent);
+                finish();
             }
         });
     }

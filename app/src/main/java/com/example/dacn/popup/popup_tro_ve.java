@@ -1,6 +1,7 @@
 package com.example.dacn.popup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,7 +24,7 @@ public class popup_tro_ve extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_tro_ve);
-
+        setFinishOnTouchOutside(false);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -45,9 +46,6 @@ public class popup_tro_ve extends Activity {
         btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // CHỗ này lưu lại bài làm
-                //
-
                 finish();
             }
         });
@@ -56,7 +54,9 @@ public class popup_tro_ve extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(popup_tro_ve.this, bo_de_thi.class);
-                startActivity(intent);
+                startActivity(intent);;
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
             }
         });
     }

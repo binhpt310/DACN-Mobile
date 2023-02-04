@@ -34,6 +34,7 @@ public class waiting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(waiting.this, dang_nhap.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();
             }
         });

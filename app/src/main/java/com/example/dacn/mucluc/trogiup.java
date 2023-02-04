@@ -37,6 +37,8 @@ public class trogiup extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("https://www.facebook.com/messages/t/103458255886633"));
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
         View img_back = findViewById(R.id.img_back_trogiup);

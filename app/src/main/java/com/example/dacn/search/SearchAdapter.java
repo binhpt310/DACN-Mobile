@@ -1,35 +1,25 @@
 package com.example.dacn.search;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
 import android.content.Context;
-import android.content.Intent;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
-import com.example.dacn.dangnhap.dang_nhap;
-import com.example.dacn.popup.popup_dang_xuat;
-import com.example.dacn.popupCodeSearch.popup_code;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
 
     private final Context context;
-    private final ArrayList<CardModelDataSearch> searchModelArrayList;
+    private final List<DataSearch> searchModelArrayList;
 
     // Constructor
-    public SearchAdapter(Context context, ArrayList<CardModelDataSearch> courseModelArrayList) {
+    public SearchAdapter(Context context, List<DataSearch> courseModelArrayList) {
         this.context = context;
         this.searchModelArrayList = courseModelArrayList;
     }
@@ -72,9 +62,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
-        CardModelDataSearch model = searchModelArrayList.get(position);
-        /*holder.question.setText(model.getQuestion_search());
-        holder.answer.setText("Đáp án: " + model.getAnswer_search());*/
+        DataSearch model = searchModelArrayList.get(position);
+        holder.question.setText(model.getQuestion());
+        holder.answer.setText(model.getAnw());
     }
 
     @Override

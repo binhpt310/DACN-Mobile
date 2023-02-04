@@ -56,7 +56,7 @@ public class bo_de_thi extends AppCompatActivity {
 
         khaibao();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         tenmon = TruyenDuLieu.trMon;
         txt_toolbar.setText(TruyenDuLieu.trTenMon);
@@ -66,6 +66,8 @@ public class bo_de_thi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(bo_de_thi.this, search_question.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
         progressdialog = new ProgressDialog(bo_de_thi.this);
@@ -76,6 +78,9 @@ public class bo_de_thi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(bo_de_thi.this, trangchu2.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+
             }
         });
 
@@ -92,9 +97,9 @@ public class bo_de_thi extends AppCompatActivity {
             calls.enqueue(new Callback<List<BoDe>>() {
                 @Override
                 public void onResponse(Call<List<BoDe>> call, Response<List<BoDe>> response) {
-                    Bodeonmodels = response.body();
+                    progressdialog.dismiss();
                     if (response.code() == 200) {
-                        progressdialog.dismiss();
+                        Bodeonmodels = response.body();
                         Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(bo_de_thi.this,Bodeonmodels);
                         recyclerView.setAdapter(bo_de_on_adapter);
                     } else if (response.code() == 404) {

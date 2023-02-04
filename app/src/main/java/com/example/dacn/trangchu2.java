@@ -44,6 +44,8 @@ public class trangchu2 extends AppCompatActivity {
                 TruyenDuLieu.trTenMon = "Lịch sử";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -54,6 +56,8 @@ public class trangchu2 extends AppCompatActivity {
                 TruyenDuLieu.trTenMon = "Địa lý";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -64,6 +68,9 @@ public class trangchu2 extends AppCompatActivity {
                 TruyenDuLieu.trTenMon = "Anh văn";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
+
             }
         });
 
@@ -74,6 +81,8 @@ public class trangchu2 extends AppCompatActivity {
                 TruyenDuLieu.trTenMon = "GDCD";
                 Intent intent = new Intent(trangchu2.this, bo_de_thi.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -82,6 +91,8 @@ public class trangchu2 extends AppCompatActivity {
            public void onClick(View v) {
                Intent intent = new Intent(trangchu2.this, NoteMainActivity.class);
                startActivity(intent);
+               overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+               finish();
            }
        });
 
