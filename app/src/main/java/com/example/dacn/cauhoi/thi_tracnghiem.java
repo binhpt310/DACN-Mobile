@@ -55,7 +55,7 @@ public class thi_tracnghiem extends AppCompatActivity {
     ProgressDialog progressdialog;
 
     public String[] chondapan = new String[40];
-    List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
+    List<CauHoiTracNghiem> adslist = new ArrayList<>();
 
     long usedTime = 0;
     int examTime = 21;
@@ -101,10 +101,49 @@ public class thi_tracnghiem extends AppCompatActivity {
             }
         });
 
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                startActivity(intent);
+                setTime(usedTime, usedtime);
+            }
+        });
+
         xemnhanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog();
+            }
+        });
+
+        img_toi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cauhoihientai++;
+                if (Cauhoihientai < (adslist.size())){
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    img_toi.setVisibility(View.VISIBLE);
+                    img_lui.setVisibility(View.VISIBLE);
+                    if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
+                    else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
+                }
+                bamTracNghiem(adslist);
+            }
+        });
+
+        img_lui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cauhoihientai--;
+                if (Cauhoihientai < (adslist.size())){
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    img_toi.setVisibility(View.VISIBLE);
+                    img_lui.setVisibility(View.VISIBLE);
+                    if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
+                    else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
+                }
+                bamTracNghiem(adslist);
             }
         });
 
@@ -141,45 +180,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         };
         LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
 
-        img_toi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cauhoihientai++;
-                if (Cauhoihientai < (adslist.size())){
-                    gan_gia_tri(adslist,ar_string,ar_textview);
-                    img_toi.setVisibility(View.VISIBLE);
-                    img_lui.setVisibility(View.VISIBLE);
-                    if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
-                    else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
-                }
-                bamTracNghiem(adslist);
-            }
-        });
 
-        img_lui.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cauhoihientai--;
-                if (Cauhoihientai < (adslist.size())){
-                    gan_gia_tri(adslist,ar_string,ar_textview);
-                    img_toi.setVisibility(View.VISIBLE);
-                    img_lui.setVisibility(View.VISIBLE);
-                    if (Cauhoihientai == (adslist.size()-1)) {img_toi.setVisibility(View.INVISIBLE);}
-                    else if (Cauhoihientai == 0) {img_lui.setVisibility(View.INVISIBLE);}
-                }
-                bamTracNghiem(adslist);
-            }
-        });
-
-        btn_done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //sendResultApi(); //chưa xử lý time
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
-                setTime(usedTime, usedtime);
-            }
-        });
     }
 
     private void khaibao() {
@@ -264,7 +265,6 @@ public class thi_tracnghiem extends AppCompatActivity {
     }
 
     public void sendResultApi() {
-        //chưa xử lý và truyền time
         Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam", String.valueOf(usedTime),MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
