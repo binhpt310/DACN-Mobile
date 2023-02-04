@@ -113,7 +113,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //sendResultApi();
                 Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
                 startActivity(intent);
             }

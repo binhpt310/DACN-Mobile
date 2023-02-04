@@ -3,7 +3,7 @@ package com.example.dacn.search;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardModelDataSearch {
+public class DataSearch {
     private String Question,anw;
     private List<String> exam,review;
 

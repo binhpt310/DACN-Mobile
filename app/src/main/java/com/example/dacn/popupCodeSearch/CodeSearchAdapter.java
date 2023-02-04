@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
-import com.example.dacn.search.CardModelDataSearch;
+import com.example.dacn.search.DataSearch;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 public class CodeSearchAdapter extends RecyclerView.Adapter<CodeSearchAdapter.MyViewHolder> {
 
     private final Context context;
-    private final ArrayList<CardModelDataSearch> searchModelArrayList;
+    private final ArrayList<DataSearch> searchModelArrayList;
 
     // Constructor
-    public CodeSearchAdapter(Context context, ArrayList<CardModelDataSearch> courseModelArrayList) {
+    public CodeSearchAdapter(Context context, ArrayList<DataSearch> courseModelArrayList) {
         this.context = context;
         this.searchModelArrayList = courseModelArrayList;
     }
@@ -36,7 +36,7 @@ public class CodeSearchAdapter extends RecyclerView.Adapter<CodeSearchAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull CodeSearchAdapter.MyViewHolder holder, int position) {
-        CardModelDataSearch model = searchModelArrayList.get(position);
+        DataSearch model = searchModelArrayList.get(position);
         holder.question.setText(model.getQuestion());
         holder.answer.setText("Đáp án: " + model.getAnw());
     }
