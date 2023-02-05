@@ -285,15 +285,16 @@ public class thi_tracnghiem extends AppCompatActivity {
     public void sendResultApi() {
         Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam", String.valueOf(usedTime),MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
+        Log.i("result_thi: " ,result.getCode());
         call.enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
-                Log.e("send result","ok");
+                Log.e("send result2","ok");
             }
 
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
-                Log.e("send result","fail");
+                Log.e("send result2","fail");
                 Toast.makeText(thi_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
