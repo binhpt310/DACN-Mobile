@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dacn.R;
 import com.example.dacn.dangnhap.dang_nhap;
 import com.example.dacn.popup.popup_dang_xuat;
+import com.example.dacn.popup.popup_search;
 import com.example.dacn.popupCodeSearch.popup_code;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         if (model.getReview().equals("")) holder.deon.setVisibility(View.GONE);
         if (model.getExam().equals("")) holder.dethi.setVisibility(View.GONE);
 
-        de_on.setOnClickListener(new View.OnClickListener()
+        holder.deon.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -62,14 +63,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
 
             }
         });
-        de_on.setOnClickListener(new View.OnClickListener()
+
+        holder.dethi.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 Intent intent = new Intent(context, popup_search.class);
                 context.startActivity(intent);;
-
             }
         });
     }
@@ -82,7 +83,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         return 0;
     }
 
-    // View holder class for initializing of your views such as TextView and Imageview
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView question,answer,deon,dethi;
 

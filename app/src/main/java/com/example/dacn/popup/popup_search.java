@@ -1,5 +1,6 @@
 package com.example.dacn.popup;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -25,7 +26,7 @@ import com.example.dacn.search.search_question;
 
 import java.util.ArrayList;
 
-public class popup_search extends AppCompatActivity {
+public class popup_search extends Activity {
 
     ArrayList<BoDe> boDeArrayList = new ArrayList<>();
     RecyclerView recyclerView;
