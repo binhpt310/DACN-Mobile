@@ -63,24 +63,33 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
         DataSearch model = searchModelArrayList.get(position);
+        if (model == null) {
+            return;
+        }
         holder.question.setText(model.getQuestion());
         holder.answer.setText(model.getAnw());
+        if (model.getReview().equals("")) holder.deon.setVisibility(View.GONE);
+        if (model.getExam().equals("")) holder.dethi.setVisibility(View.GONE);
     }
 
     @Override
     public int getItemCount() {
-        return searchModelArrayList.size();
+        if (searchModelArrayList != null) {
+            return searchModelArrayList.size();
+        }
+        return 0;
     }
 
     // View holder class for initializing of your views such as TextView and Imageview
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        private final TextView question;
-        private final TextView answer;
+        private TextView question,answer,deon,dethi;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             question = itemView.findViewById(R.id.question_search);
             answer = itemView.findViewById(R.id.ans_search);
+            deon = itemView.findViewById(R.id.listcode_search_1);
+            dethi = itemView.findViewById(R.id.listcode_search_2);
         }
     }
 }
