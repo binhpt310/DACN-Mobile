@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.popup.popup_search;
+import com.example.dacn.popup.popup_tro_ve;
 
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
                 @Override
                 public void onClick(View v)
                 {
-                    Intent intent = new Intent(context, popup_search.class);
+                    Intent intent = new Intent(context, popup_tro_ve.class);
                     context.startActivity(intent);;
 
                 }
