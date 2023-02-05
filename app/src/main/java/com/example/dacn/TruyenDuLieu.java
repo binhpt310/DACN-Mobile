@@ -20,4 +20,6 @@ public class TruyenDuLieu {
     public static String trDiem = "";
 
     public static String trCau = "";
+
+    public static String trLoaiDe = "";
 }

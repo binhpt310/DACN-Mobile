@@ -9,6 +9,7 @@
     app:cardElevation="0dp">
 
     <LinearLayout
+        android:id="@+id/ll_cardsearch"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@drawable/hinhtron3"

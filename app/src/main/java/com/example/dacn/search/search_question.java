@@ -1,7 +1,5 @@
 package com.example.dacn.search;
 
-import static com.example.dacn.RetrofitInterface.retrofitInterface;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,29 +22,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
-import com.example.dacn.Lich_su_lam_bai.History;
-import com.example.dacn.Lich_su_lam_bai.HistoryAdapter;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
-import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
+import com.example.dacn.mucluc.Notification.CreateNotification;
+import com.example.dacn.mucluc.Notification.NotificationsActivity;
 import com.example.dacn.trangchu2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class search_question extends AppCompatActivity {
 
     List<DataSearch> searchModelArrayList = new ArrayList<>();
-    private SearchAdapter searchAdapter;
+    private DataSearchAdapter dataSearchAdapter;
     String Question,anw,exam,review;
     ImageView btn_search, btn_back;
     ProgressDialog progressdialog;
@@ -67,8 +60,30 @@ public class search_question extends AppCompatActivity {
         tv_toolbar.setText(TruyenDuLieu.trTenMon);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(search_question.this, LinearLayoutManager.VERTICAL, false));
-        searchAdapter = new SearchAdapter(search_question.this,searchModelArrayList);
-        recyclerView.setAdapter(searchAdapter);
+        dataSearchAdapter = new DataSearchAdapter(search_question.this, searchModelArrayList, new DataSearchAdapter.ClickCardReview() {
+            @Override
+            public void onClickCardReview(List<String> listReview) {
+                Intent intent = new Intent(search_question.this, popup_search.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("list", (Serializable) listReview);
+                TruyenDuLieu.trLoaiDe = "_review";
+                intent.putExtras(bundle);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+            }
+        }, new DataSearchAdapter.ClickCardExam() {
+            @Override
+            public void onClickCardExam(List<String> listExam) {
+                Intent intent = new Intent(search_question.this, popup_search.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("list", (Serializable) listExam);
+                TruyenDuLieu.trLoaiDe = "_exam";
+                intent.putExtras(bundle);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+            }
+        });
+        recyclerView.setAdapter(dataSearchAdapter);
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,13 +91,14 @@ public class search_question extends AppCompatActivity {
                 progressdialog.show();
                 Log.e("search", nhaptu.getText().toString());
                 callApi();
+                searchModelArrayList.clear();
             }
         });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(search_question.this, trangchu2.class);
+                Intent intent = new Intent(search_question.this, bo_de_thi.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
@@ -139,7 +155,7 @@ public class search_question extends AppCompatActivity {
                         //Hội nghị Pốtxđam
                         searchModelArrayList.add(new DataSearch(Question,anw,exam,review,listexam,listreview));
                     }
-                    searchAdapter.notifyDataSetChanged();
+                    dataSearchAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

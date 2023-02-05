@@ -112,14 +112,14 @@
             android:name=".search.search_question"
             android:exported="false" />
         <activity
-            android:name=".popup.popup_search"
+            android:name=".search.popup_search"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".trangchu2"
             android:exported="false"/>
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

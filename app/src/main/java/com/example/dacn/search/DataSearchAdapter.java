@@ -1,49 +1,51 @@
 package com.example.dacn.search;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
 import android.content.Context;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.R;
-import com.example.dacn.dangnhap.dang_nhap;
-import com.example.dacn.popup.popup_dang_xuat;
-import com.example.dacn.popup.popup_search;
-import com.example.dacn.popupCodeSearch.popup_code;
+
 
 import java.util.List;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
+public class DataSearchAdapter extends RecyclerView.Adapter<DataSearchAdapter.MyViewHolder> {
 
     private final Context context;
     private final List<DataSearch> searchModelArrayList;
+    private ClickCardReview clickCardReview;
+    private ClickCardExam clickCardExam;
 
-    // Constructor
-    public SearchAdapter(Context context, List<DataSearch> courseModelArrayList) {
+    public DataSearchAdapter(Context context, List<DataSearch> searchModelArrayList, ClickCardReview clickCardReview, ClickCardExam clickCardExam) {
         this.context = context;
-        this.searchModelArrayList = courseModelArrayList;
+        this.searchModelArrayList = searchModelArrayList;
+        this.clickCardReview = clickCardReview;
+        this.clickCardExam = clickCardExam;
+    }
+
+    public interface ClickCardReview {
+        void onClickCardReview (List<String> listReview);
+    }
+
+    public interface ClickCardExam {
+        void onClickCardExam (List<String> listExam);
     }
 
     @NonNull
     @Override
-    public SearchAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DataSearchAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_datasearch, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DataSearchAdapter.MyViewHolder holder, int position) {
         DataSearch model = searchModelArrayList.get(position);
         if (model == null) {
             return;
@@ -53,24 +55,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         if (model.getReview().equals("")) holder.deon.setVisibility(View.GONE);
         if (model.getExam().equals("")) holder.dethi.setVisibility(View.GONE);
 
-        holder.deon.setOnClickListener(new View.OnClickListener()
-        {
+        holder.deon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(context, popup_search.class);
-                context.startActivity(intent);;
+            public void onClick(View v) {
+                clickCardReview.onClickCardReview(model.getListreview());
 
             }
         });
 
-        holder.dethi.setOnClickListener(new View.OnClickListener()
-        {
+        holder.dethi.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(context, popup_search.class);
-                context.startActivity(intent);;
+            public void onClick(View v) {
+                clickCardExam.onClickCardExam(model.getListexam());
             }
         });
     }

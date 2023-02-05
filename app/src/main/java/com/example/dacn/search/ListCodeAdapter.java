@@ -2,9 +2,11 @@ package com.example.dacn.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,13 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
 import com.example.dacn.R;
-import com.example.dacn.popup.popup_search;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
 
 import java.util.List;
 
 public class ListCodeAdapter extends RecyclerView.Adapter<ListCodeAdapter.MyViewHolder> {
 
-    private static Context context;
+    private Context context;
     private final List<BoDe> boDeArrayList;
 
     // Constructor
@@ -39,29 +41,40 @@ public class ListCodeAdapter extends RecyclerView.Adapter<ListCodeAdapter.MyView
     public void onBindViewHolder(@NonNull ListCodeAdapter.MyViewHolder holder, int position) {
         BoDe bode = boDeArrayList.get(position);
         holder.txtCode.setText(bode.getCode());
+        holder.ll_cardsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextActivity(bode);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return boDeArrayList.size();
+        if (boDeArrayList != null) {
+            return boDeArrayList.size();
+        }
+        return 0;
     }
 
     // View holder class for initializing of your views such as TextView and Imageview
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        private final TextView txtCode;
+        private TextView txtCode;
+        private LinearLayout ll_cardsearch;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             txtCode = itemView.findViewById(R.id.tvCode);
-            txtCode.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    Intent intent = new Intent(context, lich_su_lam_bai.class);
-                    context.startActivity(intent);;
-                }
-            });
+            ll_cardsearch = itemView.findViewById(R.id.ll_cardsearch);
         }
+    }
+
+    private void nextActivity(BoDe boDe) {
+        Intent intent = new Intent(context, ontap_tracnghiem.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Truyền mã bộ đề", boDe);
+        bundle.putSerializable("Truyền từ search", "ok");
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 }
