@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_popup_thong_bao">
@@ -19,13 +19,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Bạn muốn thoát mà không lưu bài làm?"
         android:textAlignment="center"
         android:textColor="@color/den"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +38,10 @@
         android:layout_width="165dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/timhong"
+        android:backgroundTint="@color/timxanh"
         android:fontFamily="@font/roboto_bold"
-        android:text="Lưu lại"
+        android:text="Làm tiếp"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/button_thoat"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,27 +52,14 @@
         android:layout_width="165dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/timxanh"
+        android:backgroundTint="@color/hong"
         android:fontFamily="@font/roboto_bold"
         android:text="Thoát"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_luu"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

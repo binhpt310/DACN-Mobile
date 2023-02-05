@@ -18,6 +18,9 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".hoanthanhbai.HienDiem"
+            android:exported="false" />
+        <activity
             android:name=".popup.popup_tro_ve"
             android:theme="@style/Theme.AppCompat.Dialog.Alert"
             android:exported="false" />
@@ -108,6 +111,10 @@
         <activity
             android:name=".search.search_question"
             android:exported="false" />
+        <activity
+            android:name=".search.popup_search"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".trangchu2"
             android:exported="false"/>

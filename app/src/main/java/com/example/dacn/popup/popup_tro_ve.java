@@ -1,7 +1,9 @@
 package com.example.dacn.popup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,13 +18,13 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
-public class popup_tro_ve extends AppCompatActivity {
+public class popup_tro_ve extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_tro_ve);
-
+        setFinishOnTouchOutside(false);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -44,9 +46,6 @@ public class popup_tro_ve extends AppCompatActivity {
         btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // CHỗ này lưu lại bài làm
-                //
-
                 finish();
             }
         });
