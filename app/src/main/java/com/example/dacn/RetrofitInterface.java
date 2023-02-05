@@ -8,8 +8,7 @@ import com.example.dacn.cauhoi.Result;
 import com.example.dacn.dangnhap.DangNhapResult;
 import com.example.dacn.hoanthanhbai.NdungCardModel;
 import com.example.dacn.mucluc.ThayDoiThongTin.dulieu_thaydoi;
-import com.example.dacn.search.CardModelDataSearch;
-import com.example.dacn.search.SearchAdapter;
+import com.example.dacn.search.DataSearch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -77,7 +76,7 @@ public interface RetrofitInterface {
                                      @Part("matkhau") RequestBody matkhau);
 
     @POST("/search")
-    Call<ArrayList<CardModelDataSearch>> getSearch(@Body HashMap<String, String> map);
+    Call<ArrayList<DataSearch>> getSearch(@Body HashMap<String, String> map);
 
     @POST("/saveresult")
     Call<Result> saveResult(@Body Result result);

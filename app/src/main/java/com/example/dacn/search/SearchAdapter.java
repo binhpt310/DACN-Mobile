@@ -16,17 +16,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
-import com.example.dacn.popup.popup_search;
 
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
 
     private static Context context;
-    private final List<CardModelDataSearch> searchModelArrayList;
+    private final List<DataSearch> searchModelArrayList;
 
     // Constructor
-    public SearchAdapter(Context context, List<CardModelDataSearch> courseModelArrayList) {
+    public SearchAdapter(Context context, List<DataSearch> courseModelArrayList) {
         this.context = context;
         this.searchModelArrayList = courseModelArrayList;
     }
@@ -40,7 +39,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
-        CardModelDataSearch model = searchModelArrayList.get(position);
+        DataSearch model = searchModelArrayList.get(position);
         holder.question.setText(model.getQuestion());
         holder.answer.setText(model.getAnw());
     }

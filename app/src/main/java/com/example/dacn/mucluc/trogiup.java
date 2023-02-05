@@ -22,7 +22,7 @@ public class trogiup extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse("https://www.facebook.com/messages/t/103458255886633"));
+        intent.setData(Uri.parse("h\"https://www.facebook.com/profile.php?id=100086798493025"));
         startActivity(intent);
 
         String imageUrl = "https://www.baby-connect.com/images/baby2.gif";
@@ -35,7 +35,7 @@ public class trogiup extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("https://www.facebook.com/messages/t/103458255886633"));
+                intent.setData(Uri.parse("https://www.facebook.com/profile.php?id=100086798493025"));
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 finish();

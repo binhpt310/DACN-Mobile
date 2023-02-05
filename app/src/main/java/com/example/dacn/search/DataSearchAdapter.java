@@ -86,8 +86,8 @@ public class DataSearchAdapter extends RecyclerView.Adapter<DataSearchAdapter.My
             super(itemView);
             question = itemView.findViewById(R.id.question_search);
             answer = itemView.findViewById(R.id.ans_search);
-            deon = itemView.findViewById(R.id.listcode_search_1);
-            dethi = itemView.findViewById(R.id.listcode_search_2);
+            deon = itemView.findViewById(R.id.btn_de_on);
+            dethi = itemView.findViewById(R.id.btn_de_thi);
         }
     }
 }
