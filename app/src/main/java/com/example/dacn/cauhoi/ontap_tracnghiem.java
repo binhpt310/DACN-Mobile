@@ -4,10 +4,12 @@ import static com.example.dacn.RetrofitInterface.retrofitInterface;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -32,6 +34,7 @@ import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_ky;
+import com.example.dacn.hoanthanhbai.HienDiem;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 import com.example.dacn.popup.LoadingDialog;
 import com.example.dacn.popup.popup_hoan_thanh_thi_thu;
@@ -98,6 +101,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ontap_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
+
             }
         });
 
@@ -113,8 +117,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
+                showDialogDone();
             }
         });
 
@@ -189,6 +192,28 @@ public class ontap_tracnghiem extends AppCompatActivity {
             }
         };
         LocalBroadcastManager.getInstance(ontap_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
+    }
+
+    private void showDialogDone() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ontap_tracnghiem.this);
+        builder.setTitle("Bạn đã hoàn thành bài thi?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Hoàn thành", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                sendResultApi();
+                startActivity(new Intent(ontap_tracnghiem.this, HienDiem.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                TruyenDuLieu.trCau = "20";
+                TruyenDuLieu.trDangBai = "review";
+            }
+        });
+        builder.setNegativeButton("Làm tiếp", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.create().show();
     }
 
     private void sendResultApi() {

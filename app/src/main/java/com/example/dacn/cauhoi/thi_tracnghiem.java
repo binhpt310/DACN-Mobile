@@ -9,12 +9,16 @@ import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
+import com.example.dacn.hoanthanhbai.HienDiem;
 import com.example.dacn.popup.*;
+import com.example.dacn.trangchu2;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -104,8 +108,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
+                showDialogDone();
                 setTime(usedTime, usedtime);
             }
         });
@@ -151,8 +154,6 @@ public class thi_tracnghiem extends AppCompatActivity {
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("Trắc nghiệm thi");
-        filter.addAction("Lưu kết quả");
-        filter.addAction("Canceltimer");
         BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -161,26 +162,9 @@ public class thi_tracnghiem extends AppCompatActivity {
                     gan_gia_tri(adslist,ar_string,ar_textview);
                     bamTracNghiem(adslist);
                 }
-
-                //Gọi hàm sendResult
-                else if (intent.getAction().equals("Lưu kết quả")){
-                    cancelTimer();
-                    Log.i("dacn_usedtime:", String.valueOf(usedTime));
-                    sendResultApi();
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-                    TruyenDuLieu.trDiem = String.valueOf(socaudung);
-                    TruyenDuLieu.trCau = "40";
-                    TruyenDuLieu.trDangBai = "exam";
-                }
-
-                else if (intent.getAction().equals("Canceltimer")) {
-                    cancelTimer();
-                }
             }
         };
         LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
-
-
     }
 
     private void khaibao() {
@@ -220,10 +204,58 @@ public class thi_tracnghiem extends AppCompatActivity {
             }
             public void onFinish() {
                 tv.setText("00:00");
-                Intent intent = new Intent(getApplicationContext(), popup_ket_thuc_thi_thu.class);
-                startActivity(intent);
+                showDialogTimeOut();
             }
         }.start();
+    }
+
+    private void showDialogTimeOut() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(thi_tracnghiem.this);
+        builder.setTitle("Đã hết thời gian làm bài.");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Kết quả", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                cancelTimer();
+                sendResultApi();
+                startActivity(new Intent(thi_tracnghiem.this, HienDiem.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                TruyenDuLieu.trCau = "40";
+                TruyenDuLieu.trDangBai = "exam";
+            }
+        });
+        builder.setNegativeButton("Trang chủ", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+                cancelTimer();
+                startActivity(new Intent(thi_tracnghiem.this, trangchu2.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+            }
+        });
+        builder.create().show();
+    }
+
+    private void showDialogDone() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(thi_tracnghiem.this);
+        builder.setTitle("Bạn đã hoàn thành bài thi?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Hoàn thành", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                cancelTimer();
+                sendResultApi();
+                startActivity(new Intent(thi_tracnghiem.this, HienDiem.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                TruyenDuLieu.trCau = "40";
+                TruyenDuLieu.trDangBai = "exam";
+            }
+        });
+        builder.setNegativeButton("Làm tiếp", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.create().show();
     }
 
     public void callApi () {
