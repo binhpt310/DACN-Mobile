@@ -16,6 +16,7 @@ import android.widget.Button;
 
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
+import com.example.dacn.hoanthanhbai.HienDiem;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 
 public class popup_tro_ve extends Activity {
@@ -54,7 +55,9 @@ public class popup_tro_ve extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(popup_tro_ve.this, bo_de_thi.class);
-                startActivity(intent);;
+                intent.setAction("Canceltimer");
+                LocalBroadcastManager.getInstance(popup_tro_ve.this).sendBroadcast(intent);
+                startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
             }

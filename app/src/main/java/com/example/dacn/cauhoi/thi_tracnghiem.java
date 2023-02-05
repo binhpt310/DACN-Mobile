@@ -152,6 +152,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction("Trắc nghiệm thi");
         filter.addAction("Lưu kết quả");
+        filter.addAction("Canceltimer");
         BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -170,6 +171,10 @@ public class thi_tracnghiem extends AppCompatActivity {
                     TruyenDuLieu.trDiem = String.valueOf(socaudung);
                     TruyenDuLieu.trCau = "40";
                     TruyenDuLieu.trDangBai = "exam";
+                }
+
+                else if (intent.getAction().equals("Canceltimer")) {
+                    cancelTimer();
                 }
             }
         };
