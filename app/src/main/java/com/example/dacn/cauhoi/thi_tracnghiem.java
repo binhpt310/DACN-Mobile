@@ -47,7 +47,7 @@ public class thi_tracnghiem extends AppCompatActivity {
     String[] ar_string = new String[7]; //0 cauhoi, 1-4 dapan, 5 dapandung, 6 cauchon
     ImageView btn_back, img_toi, img_lui, btn_done;
 
-    public int Cauhoihientai = 0, Diem = 0, socauchualam = 40, socaudalam = 0;
+    public int Cauhoihientai = 0, socauchualam = 40, socaudung = 0, socausai = 40;
 
     TextView[] ar_tv_bottom = new TextView[40];
     String MaBoDe;
@@ -55,15 +55,17 @@ public class thi_tracnghiem extends AppCompatActivity {
     ProgressDialog progressdialog;
 
     public String[] chondapan = new String[40];
-    List<CauHoiTracNghiem> adslist = new ArrayList<CauHoiTracNghiem>();
+    List<CauHoiTracNghiem> adslist = new ArrayList<>();
+
+    long usedTime = 0;
+    int examTime = 21;
+    TextView usedtime;
+    int remainingTime ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thi_tracnghiem);
-
-        /*LoadingDialog loadingDialog = new LoadingDialog(this);
-        callDialog(loadingDialog);*/
 
         progressdialog = new ProgressDialog(thi_tracnghiem.this);
         progressdialog.setMessage("Loadinggg");
@@ -83,10 +85,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         txt_toolbar.setText(text);
 
         //Call the timer
-        reverseTimer(20, time);
-
-        //Stop the timer
-        cancelTimer();
+        reverseTimer(examTime, time);
 
         //20 giá trị rỗng cho mảng chọn đáp án
         for (int i = 0; i < chondapan.length; i++) {
@@ -98,6 +97,16 @@ public class thi_tracnghiem extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(thi_tracnghiem.this, popup_tro_ve.class);
                 startActivity(intent);
+                setTime(usedTime, usedtime);
+            }
+        });
+
+        btn_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                startActivity(intent);
+                setTime(usedTime, usedtime);
             }
         });
 
@@ -107,22 +116,6 @@ public class thi_tracnghiem extends AppCompatActivity {
                 showDialog();
             }
         });
-
-        callApi();
-
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("Trắc nghiệm thi");
-        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equals("Trắc nghiệm thi")) {
-                    Cauhoihientai = intent.getIntExtra("id",-1);
-                    gan_gia_tri(adslist,ar_string,ar_textview);
-                    bamTracNghiem(adslist);
-                }
-            }
-        };
-        LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
 
         img_toi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,14 +147,39 @@ public class thi_tracnghiem extends AppCompatActivity {
             }
         });
 
-        btn_done.setOnClickListener(new View.OnClickListener() {
+        callApi();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("Trắc nghiệm thi");
+        filter.addAction("Lưu kết quả");
+        filter.addAction("Canceltimer");
+        BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
-            public void onClick(View view) {
-                sendResultApi(); //chưa xử lý time
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
-                startActivity(intent);
+            public void onReceive(Context context, Intent intent) {
+                if (intent.getAction().equals("Trắc nghiệm thi")) {
+                    Cauhoihientai = intent.getIntExtra("id",-1);
+                    gan_gia_tri(adslist,ar_string,ar_textview);
+                    bamTracNghiem(adslist);
+                }
+
+                //Gọi hàm sendResult
+                else if (intent.getAction().equals("Lưu kết quả")){
+                    cancelTimer();
+                    Log.i("dacn_usedtime:", String.valueOf(usedTime));
+                    sendResultApi();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+                    TruyenDuLieu.trDiem = String.valueOf(socaudung);
+                    TruyenDuLieu.trCau = "40";
+                    TruyenDuLieu.trDangBai = "exam";
+                }
+
+                else if (intent.getAction().equals("Canceltimer")) {
+                    cancelTimer();
+                }
             }
-        });
+        };
+        LocalBroadcastManager.getInstance(thi_tracnghiem.this).registerReceiver(mRefreshReceiver, filter);
+
 
     }
 
@@ -182,21 +200,23 @@ public class thi_tracnghiem extends AppCompatActivity {
         img_lui = findViewById(R.id.img_lui_thi);
 
         time = findViewById(R.id.txt_time);
+        usedtime = findViewById(R.id.used_time_txt);
     }
 
     CountDownTimer cTimer = null;
+
     void cancelTimer() {
-        if(cTimer!=null)
+        if(cTimer!=null) {
             cTimer.cancel();
+            //cTimer = null;
+        }
     }
 
     public void reverseTimer(int Seconds,final TextView tv){
-        new CountDownTimer(Seconds* 1000, 1000) {
+        cTimer = new CountDownTimer(Seconds* 1000, 1000) {
             public void onTick(long millisUntilFinished) {
-                int seconds = (int) (millisUntilFinished / 1000);
-                int minutes = seconds / 60;
-                seconds = seconds % 60;
-                tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+                setTime(millisUntilFinished,tv);
+                usedTime = Seconds*1000 - millisUntilFinished;
             }
             public void onFinish() {
                 tv.setText("00:00");
@@ -230,9 +250,8 @@ public class thi_tracnghiem extends AppCompatActivity {
         });
     }
 
-    private void sendResultApi() {
-        //chưa xử lý và truyền time
-        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam","",MaBoDe,adslist);
+    public void sendResultApi() {
+        Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"exam", String.valueOf(usedTime),MaBoDe,"",Integer.toString(socaudung),Integer.toString(socausai),adslist);
         Call<Result> call = retrofitInterface.saveResult(result);
         call.enqueue(new Callback<Result>() {
             @Override
@@ -268,16 +287,17 @@ public class thi_tracnghiem extends AppCompatActivity {
                 list.get(Cauhoihientai).setCauhoidachon(ar_string[6]);
 
                 a.setBackgroundResource(R.drawable.bg_otracnghiem_cam);
-                socaudalam++;
                 socauchualam--;
                 chondapan[Cauhoihientai] = "dachon";
 
                 if (a.getText().toString().equals(b)) {
-                    Diem++;
-                }
+                    socaudung++;
+                    socausai--;
+                    list.get(Cauhoihientai).setDungsai("dung");
+                } else list.get(Cauhoihientai).setDungsai("sai");
             }
         });
-        Log.e("Diem", String.valueOf(Diem));
+
     }
 
     private void gan_gia_tri(List<CauHoiTracNghiem> a, String arg[], TextView tv[]) {
@@ -363,7 +383,7 @@ public class thi_tracnghiem extends AppCompatActivity {
         TextView txt_socauchualam = dialog.findViewById(R.id.txt_thi_xemnhanh_chualam);
 
         txt_socauchualam.setText(String.format("%02d",socauchualam));
-        txt_socaudalam.setText(String.format("%02d",socaudalam));
+        txt_socaudalam.setText(String.format("%02d",40-socauchualam));
 
         for (int i = 0; i < chondapan.length; i++) {
             if (chondapan[i] == "dachon") {
@@ -425,7 +445,6 @@ public class thi_tracnghiem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-
                 Intent intent = new Intent();
                 intent.setAction("Trắc nghiệm thi");
                 intent.putExtra("id",i);
@@ -434,4 +453,10 @@ public class thi_tracnghiem extends AppCompatActivity {
         });
     }
 
+    private void setTime (long millisUntilFinished, TextView tv){
+        int seconds = (int) (millisUntilFinished / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        tv.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+    }
 }

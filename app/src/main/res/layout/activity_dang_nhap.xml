@@ -29,7 +29,7 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Đăng Nhập"
         android:textColor="@color/timxanh"
@@ -104,15 +104,15 @@
         android:id="@+id/btn_dangnhap"
         android:layout_width="270dp"
         android:layout_height="60dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="55dp"
         android:backgroundTint="@color/timxanh"
         android:fontFamily="@font/roboto_bold"
         android:text="Đăng nhập"
-        android:textSize="20sp"
         android:textColor="@color/trang"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutdn_matkhau"/>
+        app:layout_constraintTop_toBottomOf="@+id/layoutdn_matkhau" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -141,68 +141,6 @@
             android:textSize="15sp"
             android:id="@+id/btn_dangkyotrangdangnhap"/>
 
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="Hoặc đăng nhập với"
-        android:textColor="@color/den80"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_dangky"
-        android:layout_marginTop="20dp"
-        android:id="@+id/text2"
-        android:gravity="center"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/text2"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="15dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="80dp"
-            android:layout_height="60dp"
-            android:background="@drawable/bg_o_nhap_thong_tin"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="41dp"
-                android:layout_height="40dp"
-                android:src="@drawable/google_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </ImageView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="80dp"
-            android:layout_height="60dp">
-
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="80dp"
-            android:background="@drawable/bg_o_nhap_thong_tin"
-            android:layout_height="60dp">
-            <ImageView
-                android:layout_width="41dp"
-                android:layout_height="40dp"
-                android:src="@drawable/fb_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </ImageView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

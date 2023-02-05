@@ -24,11 +24,11 @@
             app:iconTint="@color/black"
             app:showAsAction="never" />
 
-        <item android:id="@+id/action_back"
-            android:title="@string/action_back"
-            android:icon="@drawable/ic_back"
-            app:iconTint="@color/black"
-            app:showAsAction="never" />
+<!--        <item android:id="@+id/action_back"-->
+<!--            android:title="@string/action_back"-->
+<!--            android:icon="@drawable/ic_back"-->
+<!--            app:iconTint="@color/black"-->
+<!--            app:showAsAction="never" />-->
 
 
 

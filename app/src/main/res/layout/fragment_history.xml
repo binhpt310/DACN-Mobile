@@ -9,6 +9,17 @@
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/card_lich_su_lam_bai" />
+         />
+
+    <TextView
+        android:id="@+id/tv_his"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Chưa có bài làm"
+        android:textColor="@color/den80"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
 
 </RelativeLayout>

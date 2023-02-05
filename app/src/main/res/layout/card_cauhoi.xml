@@ -20,19 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
+            android:justificationMode="inter_word"
             android:text="Câu 01: Căn cứ vào Atlat Địa lí Việt Nam trang 13, hãy cho biết Đèo Ngang nằm giữa hai tỉnh nào:"
             android:textColor="@color/den"
             android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/txt_caudachon_cardcauhoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="Câu đã chọn: Hà Tĩnh và Quảng Bình."
-            android:textColor="@color/den"
-            android:textSize="18sp"
-            android:layout_marginTop="5dp"/>
 
         <TextView
             android:id="@+id/txt_dapan_cardcauhoi"
@@ -44,6 +35,15 @@
             android:textSize="18sp"
             android:layout_marginTop="5dp"/>
 
+        <TextView
+            android:id="@+id/txt_caudachon_cardcauhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Câu đã chọn: Hà Tĩnh và Quảng Bình."
+            android:textColor="@color/den"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"/>
 
     </LinearLayout>
 

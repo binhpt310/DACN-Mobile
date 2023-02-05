@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="Bạn muốn đăng xuất?"
@@ -35,9 +35,11 @@
         android:layout_width="155dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/timhong"
+        android:backgroundTint="@color/timxanh"
         android:fontFamily="@font/roboto_bold"
         android:text="Ở lại"
+
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_dangxuat"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +50,10 @@
         android:layout_width="155dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/timxanh"
+        android:backgroundTint="@color/hong"
         android:fontFamily="@font/roboto_bold"
         android:text="Đăng xuất"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_olai"

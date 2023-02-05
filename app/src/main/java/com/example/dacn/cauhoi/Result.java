@@ -3,15 +3,18 @@ package com.example.dacn.cauhoi;
 import java.util.List;
 
 public class Result {
-    String email,sub,type,time,code;
+    String email,sub,type,time,code,socauchualam,socaudung,socausai;
     List<CauHoiTracNghiem> done;
 
-    public Result(String email, String sub, String type, String time, String code, List<CauHoiTracNghiem> done) {
+    public Result(String email, String sub, String type, String time, String code, String socauchualam, String socaudung, String socausai, List<CauHoiTracNghiem> done) {
         this.email = email;
         this.sub = sub;
         this.type = type;
         this.time = time;
         this.code = code;
+        this.socauchualam = socauchualam;
+        this.socaudung = socaudung;
+        this.socausai = socausai;
         this.done = done;
     }
 
@@ -63,6 +66,30 @@ public class Result {
         this.done = done;
     }
 
+    public String getSocauchualam() {
+        return socauchualam;
+    }
+
+    public void setSocauchualam(String socauchualam) {
+        this.socauchualam = socauchualam;
+    }
+
+    public String getSocaudung() {
+        return socaudung;
+    }
+
+    public void setSocaudung(String socaudung) {
+        this.socaudung = socaudung;
+    }
+
+    public String getSocausai() {
+        return socausai;
+    }
+
+    public void setSocausai(String socausai) {
+        this.socausai = socausai;
+    }
+
     @Override
     public String toString() {
         return "Result{" +
@@ -70,7 +97,10 @@ public class Result {
                 ", sub='" + sub + '\'' +
                 ", type='" + type + '\'' +
                 ", time='" + time + '\'' +
-                ", made='" + code + '\'' +
+                ", code='" + code + '\'' +
+                ", socauchualam='" + socauchualam + '\'' +
+                ", socaudung='" + socaudung + '\'' +
+                ", socausai='" + socausai + '\'' +
                 ", done=" + done +
                 '}';
     }

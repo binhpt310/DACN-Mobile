@@ -18,6 +18,9 @@
         android:theme="@style/Theme.DACN"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".hoanthanhbai.HienDiem"
+            android:exported="false" />
+        <activity
             android:name=".popup.popup_tro_ve"
             android:theme="@style/Theme.AppCompat.Dialog.Alert"
             android:exported="false" />
@@ -106,16 +109,17 @@
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".search.search_question"
             android:exported="false" />
         <activity
-            android:name=".popup.popup_search"
-            android:exported="false" />
+            android:name=".search.popup_search"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".trangchu2"
             android:exported="false"/>
         <activity
-            android:name=".search.search_question"
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

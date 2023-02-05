@@ -1,33 +1,27 @@
-package com.example.dacn.popup;
+package com.example.dacn.search;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn.Bo_de_thi.BoDe;
-import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
-import com.example.dacn.search.CardModelDataSearch;
-import com.example.dacn.search.ListCodeAdapter;
-import com.example.dacn.search.SearchAdapter;
-import com.example.dacn.search.search_question;
+import com.example.dacn.TruyenDuLieu;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class popup_search extends AppCompatActivity {
+public class popup_search extends Activity {
 
-    ArrayList<BoDe> boDeArrayList = new ArrayList<>();
+    List<BoDe> boDeArrayList = new ArrayList<>();
     RecyclerView recyclerView;
 
     @Override
@@ -53,20 +47,19 @@ public class popup_search extends AppCompatActivity {
         params.y = 0;
         getWindow().setAttributes(params);
 
-        boDeArrayList = new ArrayList<BoDe>();
-        boDeArrayList.add(new BoDe("1"));
-        boDeArrayList.add(new BoDe("2"));
-        boDeArrayList.add(new BoDe("3"));
-        boDeArrayList.add(new BoDe("4"));
-        boDeArrayList.add(new BoDe("5"));
-        boDeArrayList.add(new BoDe("6"));
-        boDeArrayList.add(new BoDe("7"));
-        boDeArrayList.add(new BoDe("8"));
-        boDeArrayList.add(new BoDe("9"));
-        boDeArrayList.add(new BoDe("10"));
-        boDeArrayList.add(new BoDe("11"));
-        boDeArrayList.add(new BoDe("12"));
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            return;
+        }
+        List<String> list = (List<String>) bundle.get("list");
+
+        for (int i=0;i<list.size();i++) {
+            boDeArrayList.add(new BoDe(list.get(i)));
+        }
         ListCodeAdapter codeAdapter = new ListCodeAdapter(popup_search.this, boDeArrayList);
         recyclerView.setAdapter(codeAdapter);
+
+        TruyenDuLieu.trMaDe = TruyenDuLieu.trMon + TruyenDuLieu.trLoaiDe;
+        Log.e("MaDe",TruyenDuLieu.trMaDe);
     }
 }

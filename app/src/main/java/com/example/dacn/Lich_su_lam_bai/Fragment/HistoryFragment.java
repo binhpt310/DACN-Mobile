@@ -1,11 +1,13 @@
 package com.example.dacn.Lich_su_lam_bai.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,8 +15,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -39,7 +43,9 @@ public class HistoryFragment extends Fragment {
     private List<History> newsArrayList = new ArrayList<>();
     private HistoryAdapter historyAdapter;
     private RecyclerView recyclerView;
-    String tenmon;
+    String tenmon,id,url;
+    TextView tv;
+    ProgressDialog progressdialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -57,57 +63,49 @@ public class HistoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tenmon = "History";
+
+        progressdialog = new ProgressDialog(getContext());
+        progressdialog.setMessage("Loadinggg");
+        progressdialog.show();
+
+        callApi();
+
+        tv = view.findViewById(R.id.tv_his);
         recyclerView = view.findViewById(R.id.result);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         historyAdapter = new HistoryAdapter(newsArrayList, new IClickItemHistory() {
             @Override
-            public void onClickItemHistory(History history) {
-                onClickGoToDeTail(history);
+            public void onClickItemHistory(String id) {
+                onClickGoToDeTail(id);
             }
         });
         recyclerView.setAdapter(historyAdapter);
-
-        callApi();
-
     }
 
     private void callApi() {
-        String url = "https://newdacn.onrender.com/getresult?email=a@gm.com&type=exam&sub=Gdcd";
-        //String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
         Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressdialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
-                    JSONObject exam = object.getJSONObject("exam");
-                    JSONArray gdcd = exam.getJSONArray("Gdcd");
-                    Log.e("length", String.valueOf(gdcd.length()));
+                    JSONObject exam = object.getJSONObject(TruyenDuLieu.trDangBai);
+                    JSONArray gdcd = exam.getJSONArray(tenmon);
 
                     for (int i=0;i<gdcd.length();i++) {
                         JSONObject arrGdcd = gdcd.getJSONObject(i);
+                        id = arrGdcd.getString("_id");
                         String code = arrGdcd.getString("code");
                         String time = arrGdcd.getString("time");
-                        JSONArray done = arrGdcd.getJSONArray("done");
-                        Log.e("code", code);
-                        Log.e("time", time);
-                        Log.e("done_length", String.valueOf(done.length()));
-
-                        /*for (int j=0;j<done.length();j++) {
-                            JSONObject arrDone = done.getJSONObject(i);
-                            String Questions = arrDone.getString("Questions");
-                            String Selected = arrDone.getString("Selected");
-                            String aws = arrDone.getString("aws");
-                            String check = arrDone.getString("check");
-                            Log.e("Questions", Questions);
-                            Log.e("Selected", Selected);
-                            Log.e("aws", aws);
-                            Log.e("check", check);
-                        }*/
-                        newsArrayList.add(new History(code));
-                        historyAdapter.notifyDataSetChanged();
+                        String socauchualam = arrGdcd.getString("socauchualam");
+                        String socaudung = arrGdcd.getString("socaudung");
+                        String socausai = arrGdcd.getString("socausai");
+                        newsArrayList.add(new History(id,code,socauchualam,socaudung,socausai,time));
                     }
+                    historyAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -115,21 +113,30 @@ public class HistoryFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                progressdialog.dismiss();
+                tv.setVisibility(View.VISIBLE);
             }
-        });
+        }) {
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                int mStatusCode = response.statusCode;
+                return super.parseNetworkResponse(response);
+            }
+        };
         requestQueue.add(stringRequest);
 
     }
 
-    private void onClickGoToDeTail(History history){
+    private void onClickGoToDeTail(String id){
         Intent intent = new Intent(getActivity(), hoanthanhbaithi.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("object_history", history.getHeading());
-        Log.e("history", history.getHeading());
+        bundle.putSerializable("object_history_id", id);
+        Log.e("id",id);
+        bundle.putSerializable("object_history_url", url);
+        Log.e("url",url);
         intent.putExtras(bundle);
-        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_left);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 }
 

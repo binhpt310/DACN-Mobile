@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="15dp">
+    app:cardCornerRadius="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/timmongmo"
+        android:background="@color/trang"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="15dp">
@@ -19,64 +18,58 @@
             android:id="@+id/question_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="9dp"
-            android:text="Đáp án:"
+            android:text="Câu hỏi"
+            android:fontFamily="@font/roboto_medium"
             android:textColor="@color/den"
+            android:justificationMode="inter_word"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/ans_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Câu hỏi:"
+            android:layout_marginTop="5dp"
+            android:text="Đáp án"
+            android:justificationMode="inter_word"
+            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/den"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/btn_de_on"
+                android:id="@+id/listcode_search_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:text="Đề ôn"
+                android:background="@drawable/bg_card_hoanthanhbaithi_hong"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/timxanh"
-                android:textSize="18sp" />
-
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/listcode_search_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="/"
-                android:textColor="@color/timxanh"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/btn_de_thi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:text="Đề thi"
+                android:background="@drawable/bg_card_hoanthanhbaithi_hong"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/timxanh"
-                android:textSize="18sp" />
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="20sp"
+                android:layout_marginStart="30dp" />
         </LinearLayout>
 
     </LinearLayout>

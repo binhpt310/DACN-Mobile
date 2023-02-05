@@ -3,10 +3,15 @@ package com.example.dacn.hoanthanhbai;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +33,8 @@ import com.example.dacn.Lich_su_lam_bai.subjectHistory;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
+import com.example.dacn.cauhoi.ontap_tracnghiem;
+import com.example.dacn.trangchu2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,11 +52,28 @@ public class hoanthanhbaithi extends AppCompatActivity {
     RecyclerView rcv_hoanthanhbaithi;
     ImageView img_quaylai;
     HoanThanh_Adapter hoanThanh_adapter;
+    String id,url,Question,cauhoidachon,anw,dungsai,tenmon;
+    int tamp;
+
+    JSONObject exam,jsArr;
+    JSONArray mon;
+
+    ProgressDialog progressdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoanthanhbaithi);
+
+        progressdialog = new ProgressDialog(hoanthanhbaithi.this);
+        progressdialog.setMessage("Loadinggg");
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            return;
+        }
+        id = (String) bundle.get("object_history_id");
+        url = (String) bundle.get("object_history_url");
 
         img_quaylai = findViewById(R.id.img_back_hoanthanhbaithi);
         rcv_hoanthanhbaithi = findViewById(R.id.rcv_hoanthanhbaithi);
@@ -57,58 +81,100 @@ public class hoanthanhbaithi extends AppCompatActivity {
         hoanThanh_adapter = new HoanThanh_Adapter(ndungCardModels,this);
         rcv_hoanthanhbaithi.setAdapter(hoanThanh_adapter);
 
-        View img_back_hoanthanhbaithi = findViewById(R.id.img_back_hoanthanhbaithi);
-
-        img_back_hoanthanhbaithi.setOnClickListener(new View.OnClickListener() {
+        img_quaylai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(hoanthanhbaithi.this, subjectHistory.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                finish();
+                if (id==null) goTrangchu();
+                else goToHistory();
             }
         });
 
         callApi();
-
     }
 
     private void callApi() {
-        String url = "https://newdacn.onrender.com/getresult?email=a@gm.com&type=exam&sub=Gdcd";
-        //String url = "https://newdacn.onrender.com/getresult?email="+ TruyenDuLieu.trEmail_dnhap +"&type="+TruyenDuLieu.trDangBai+"&sub="+tenmon;
+        progressdialog.show();
         Log.e("url",url);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressdialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
-                    JSONObject exam = object.getJSONObject("exam");
-                    JSONArray gdcd = exam.getJSONArray("Gdcd");
-                    Log.e("length", String.valueOf(gdcd.length()));
 
-                    for (int i=0;i<gdcd.length();i++) {
-                        JSONObject arrGdcd = gdcd.getJSONObject(i);
-                        String code = arrGdcd.getString("code");
-                        String time = arrGdcd.getString("time");
-                        JSONArray done = arrGdcd.getJSONArray("done");
-                        Log.e("code", code);
-                        Log.e("time", time);
-                        Log.e("done_length", String.valueOf(done.length()));
+                    if (object.has("exam")) {
+                        exam = object.getJSONObject("exam");
 
-                        JSONObject arrDone = done.getJSONObject(0);
-                        String Questions = arrDone.getString("Questions");
-                        String Selected = arrDone.getString("Selected");
-                        String aws = arrDone.getString("aws");
-                        String check = arrDone.getString("check");
-                        Log.e("Questions", Questions);
-                        Log.e("Selected", Selected);
-                        Log.e("aws", aws);
-                        Log.e("check", check);
+                        if (exam.has("History")) { mon = exam.getJSONArray("History");}
+                        else if (exam.has("English")) {mon = exam.getJSONArray("English");}
+                        else if (exam.has("Gdcd")) {mon = exam.getJSONArray("Gdcd");}
+                        else if (exam.has("Geography")) {mon = exam.getJSONArray("Geography");}
 
-                        ndungCardModels.add(new NdungCardModel(Questions,Selected,aws,check));
-                        hoanThanh_adapter.notifyDataSetChanged();
+                        for (int i=0;i<mon.length();i++) {
+                            JSONObject arrMon = mon.getJSONObject(i);
+                            String idCheck = arrMon.getString("_id");
+                            if (id==null) tamp = mon.length()-1;
+                            else {
+                                if (idCheck.equals(id)) tamp = i;
+                            }
+                        }
+                        jsArr = mon.getJSONObject(tamp);
+                        JSONArray done = jsArr.getJSONArray("done");
+
+                        for (int j=0;j<done.length();j++) {
+                            JSONObject arrDone = done.getJSONObject(j);
+
+                            Question = arrDone.getString("Question");
+                            anw = arrDone.getString("anw");
+
+                            if (arrDone.has("cauhoidachon")) {cauhoidachon = arrDone.getString("cauhoidachon");}
+                            else cauhoidachon = "";
+
+                            if (arrDone.has("dungsai")){dungsai = arrDone.getString("dungsai");}
+                            else dungsai = "sai";
+
+                            ndungCardModels.add(new NdungCardModel(Question,cauhoidachon,anw,dungsai));
+                            hoanThanh_adapter.notifyDataSetChanged();
+                        }
                     }
+
+                    else if (object.has("review")) {
+                        exam = object.getJSONObject("review");
+
+                        if (exam.has("History")) {mon = exam.getJSONArray("History");}
+                        else if (exam.has("English")) {mon = exam.getJSONArray("English");}
+                        else if (exam.has("Gdcd")) {mon = exam.getJSONArray("Gdcd");}
+                        else if (exam.has("Geography")) {mon = exam.getJSONArray("Geography");}
+
+                        for (int i=0;i<mon.length();i++) {
+                            JSONObject arrMon = mon.getJSONObject(i);
+                            String idCheck = arrMon.getString("_id");
+                            if (id==null) tamp = mon.length()-1;
+                            else {
+                                if (idCheck.equals(id)) tamp = i;
+                            }
+                        }
+                        jsArr = mon.getJSONObject(tamp);
+                        JSONArray done = jsArr.getJSONArray("done");
+
+                        for (int j=0;j<done.length();j++) {
+                            JSONObject arrDone = done.getJSONObject(j);
+
+                            Question = arrDone.getString("Question");
+                            anw = arrDone.getString("anw");
+
+                            if (arrDone.has("cauhoidachon")) {cauhoidachon = arrDone.getString("cauhoidachon");}
+                            else cauhoidachon = "";
+
+                            if (arrDone.has("dungsai")){dungsai = arrDone.getString("dungsai");}
+                            else dungsai = "";
+
+                            ndungCardModels.add(new NdungCardModel(Question,cauhoidachon,anw,dungsai));
+                            hoanThanh_adapter.notifyDataSetChanged();
+                        }
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -116,10 +182,24 @@ public class hoanthanhbaithi extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressdialog.dismiss();
                 Toast.makeText(hoanthanhbaithi.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(stringRequest);
+    }
 
+    private void goToHistory() {
+        Intent intent = new Intent(hoanthanhbaithi.this, subjectHistory.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        finish();
+    }
+
+    private void goTrangchu() {
+        Intent intent = new Intent(hoanthanhbaithi.this, trangchu2.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        finish();
     }
 }

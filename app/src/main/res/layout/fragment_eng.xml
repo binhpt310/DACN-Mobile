@@ -10,7 +10,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_eng"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/card_lich_su_lam_bai" />
+        android:gravity="center"
+        android:text="Chưa có bài làm"
+        android:textColor="@color/den80"
+        android:textSize="20sp"
+        android:visibility="gone"/>
 
 </FrameLayout>
