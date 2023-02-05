@@ -106,13 +106,16 @@
             android:name=".FirstInstall.waiting"
             android:exported="false" />
         <activity
-            android:name=".search.search_question"
+            android:name=".dangnhap.Logo_screen"
+            android:exported="false" />
+        <activity
+            android:name=".popup.popup_search"
             android:exported="false" />
         <activity
             android:name=".trangchu2"
             android:exported="false"/>
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".search.search_question"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

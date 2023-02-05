@@ -5,7 +5,14 @@ import java.util.List;
 
 public class CardModelDataSearch {
     private String Question,anw;
-    private List<String> exam,review;
+    private ArrayList<String> exam,review;
+
+    public CardModelDataSearch(String Question,String anw, ArrayList<String> exam,ArrayList<String> review){
+        this.Question = Question;
+        this.anw = anw;
+        this.exam = exam;
+        this.review = review;
+    }
 
     public String getQuestion() {
         return Question;
@@ -27,7 +34,7 @@ public class CardModelDataSearch {
         return exam;
     }
 
-    public void setExam(List<String> exam) {
+    public void setExam(ArrayList<String> exam) {
         this.exam = exam;
     }
 
@@ -35,7 +42,7 @@ public class CardModelDataSearch {
         return review;
     }
 
-    public void setReview(List<String> review) {
+    public void setReview(ArrayList<String> review) {
         this.review = review;
     }
 }

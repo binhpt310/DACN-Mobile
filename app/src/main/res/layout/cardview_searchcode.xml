@@ -15,7 +15,7 @@
         android:padding="10dp" >
 
         <TextView
-            android:id="@+id/imgvCode"
+            android:id="@+id/tvCode"
             android:layout_width="61dp"
             android:layout_height="57dp"
             android:background="@drawable/hinhtron3"

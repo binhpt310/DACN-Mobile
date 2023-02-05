@@ -4,29 +4,25 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
+
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
-import com.example.dacn.dangnhap.dang_nhap;
-import com.example.dacn.popup.popup_dang_xuat;
-import com.example.dacn.popupCodeSearch.popup_code;
+import com.example.dacn.popup.popup_search;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
 
-    private final Context context;
+    private static Context context;
     private final List<CardModelDataSearch> searchModelArrayList;
 
     // Constructor
@@ -35,35 +31,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         this.searchModelArrayList = courseModelArrayList;
     }
 
-/*
-    public void onButtonShowPopupWindowClick(View view) {
-
-        // inflate the layout of the popup window
-        Intent intent = new Intent(search_question.this, popup_code.class);
-
-//        View popupView = inflater.inflate(R.layout.activity_popup_search, null);
-
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
-    }
-*/
     @NonNull
     @Override
     public SearchAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -87,11 +54,35 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView question;
         private final TextView answer;
+        private final TextView de_on;
+        private final TextView de_thi;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             question = itemView.findViewById(R.id.question_search);
             answer = itemView.findViewById(R.id.ans_search);
+            de_on = itemView.findViewById(R.id.btn_de_on);
+            de_thi = itemView.findViewById(R.id.btn_de_thi);
+            de_on.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent(context, popup_search.class);
+                    context.startActivity(intent);;
+
+                }
+            });
+            de_on.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent(context, popup_search.class);
+                    context.startActivity(intent);;
+
+                }
+            });
         }
     }
 }
