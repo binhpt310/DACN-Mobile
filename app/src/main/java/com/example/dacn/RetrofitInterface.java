@@ -1,5 +1,7 @@
 package com.example.dacn;
 
+import android.widget.ArrayAdapter;
+
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.cauhoi.Result;
@@ -75,7 +77,7 @@ public interface RetrofitInterface {
                                      @Part("matkhau") RequestBody matkhau);
 
     @POST("/search")
-    Call<List<CardModelDataSearch>> getSearch(@Body HashMap<String, String> map);
+    Call<ArrayList<CardModelDataSearch>> getSearch(@Body HashMap<String, String> map);
 
     @POST("/saveresult")
     Call<Result> saveResult(@Body Result result);

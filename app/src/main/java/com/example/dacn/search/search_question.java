@@ -15,13 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dacn.Bo_de_thi.BoDe;
-import com.example.dacn.Bo_de_thi.Bo_de_on_adapter;
-import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
-import com.example.dacn.dangnhap.dang_nhap;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,53 +48,53 @@ public class search_question extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(search_question.this, LinearLayoutManager.VERTICAL, false));
 
-        searchModelArrayList = new ArrayList<CardModelDataSearch>();
-        ArrayList<String> ques = new ArrayList<String>();
-        ques.add("1");
-        ArrayList<String> ans = new ArrayList<String>();
-        ques.add("1");
-        searchModelArrayList.add(new CardModelDataSearch("aa", "a",ques,ans));
-        SearchAdapter courseAdapter = new SearchAdapter(search_question.this, searchModelArrayList);
-        recyclerView.setAdapter(courseAdapter);
+//        searchModelArrayList = new ArrayList<CardModelDataSearch>();
+//        ArrayList<String> ques = new ArrayList<String>();
+//        ques.add("1");
+//        ArrayList<String> ans = new ArrayList<String>();
+//        ques.add("1");
+//        searchModelArrayList.add(new CardModelDataSearch("aa", "a",ques,ans));
+//        SearchAdapter courseAdapter = new SearchAdapter(search_question.this, searchModelArrayList);
+//        recyclerView.setAdapter(courseAdapter);
 
-//        btn_search.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                progressdialog.show();
-//                HashMap<String, String> maps = new HashMap<>();
-//                maps.put("search", nhaptu.getText().toString());
-//                maps.put("sub", TruyenDuLieu.trMon);
-//                Log.e("search", nhaptu.getText().toString());
-//                Log.e("sub", TruyenDuLieu.trMon);
-//
-//                Call<List<CardModelDataSearch>> calls = retrofitInterface.getSearch(maps);
-//                calls.enqueue(new Callback<List<CardModelDataSearch>>() {
-//                    @Override
-//                    public void onResponse(Call<List<CardModelDataSearch>> call, Response<List<CardModelDataSearch>> response) {
-//                        progressdialog.dismiss();
-//                        if (response.code() == 200) {
-//                            Toast.makeText(search_question.this, "OK", Toast.LENGTH_SHORT).show();
-//                            searchModelArrayList = response.body();
-//                            SearchAdapter courseAdapter = new SearchAdapter(search_question.this, searchModelArrayList);
-//                            recyclerView.setAdapter(courseAdapter);
-//                        } else if (response.code() == 401) {
-//                            Toast.makeText(search_question.this, "Không tìm thấy từ khóa", Toast.LENGTH_SHORT).show();
-//                        } else if (response.code() == 404) {
-//                            Toast.makeText(search_question.this, "Lỗi", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<List<CardModelDataSearch>> call, Throwable t) {
-//                        progressdialog.dismiss();
-//                        nullText.setVisibility(View.VISIBLE);
-//                        nullText.setText("Không có kết quả");
-//                        Toast.makeText(search_question.this, t.getMessage(),Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//            }
-//        });
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressdialog.show();
+                HashMap<String, String> maps = new HashMap<>();
+                maps.put("search", nhaptu.getText().toString());
+                maps.put("sub", TruyenDuLieu.trMon);
+                Log.e("search", nhaptu.getText().toString());
+                Log.e("sub", TruyenDuLieu.trMon);
+
+                Call<ArrayList<CardModelDataSearch>> calls = retrofitInterface.getSearch(maps);
+                calls.enqueue(new Callback<ArrayList<CardModelDataSearch>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<CardModelDataSearch>> call, Response<ArrayList<CardModelDataSearch>> response) {
+                        progressdialog.dismiss();
+                        if (response.code() == 200) {
+                            Toast.makeText(search_question.this, "OK", Toast.LENGTH_SHORT).show();
+                            searchModelArrayList = response.body();
+                            SearchAdapter courseAdapter = new SearchAdapter(search_question.this, searchModelArrayList);
+                            recyclerView.setAdapter(courseAdapter);
+                        } else if (response.code() == 401) {
+                            Toast.makeText(search_question.this, "Không tìm thấy từ khóa", Toast.LENGTH_SHORT).show();
+                        } else if (response.code() == 404) {
+                            Toast.makeText(search_question.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<CardModelDataSearch>> call, Throwable t) {
+                        progressdialog.dismiss();
+                        nullText.setVisibility(View.VISIBLE);
+                        nullText.setText("Không có kết quả");
+                        Toast.makeText(search_question.this, t.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
     }
 
     private void khaibao() {
