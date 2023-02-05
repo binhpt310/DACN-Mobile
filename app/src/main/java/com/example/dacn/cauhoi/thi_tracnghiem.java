@@ -170,6 +170,7 @@ public class thi_tracnghiem extends AppCompatActivity {
                     TruyenDuLieu.trDiem = String.valueOf(socaudung);
                     TruyenDuLieu.trCau = "40";
                     TruyenDuLieu.trDangBai = "exam";
+                    adslist.clear();
                 }
             }
         };

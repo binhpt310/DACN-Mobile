@@ -373,8 +373,7 @@ public class EditActivity extends AppCompatActivity {
         // Create the TaskStackBuilder and add the intent
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntentWithParentStack(intent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_MUTABLE);
 
         // Build the notification
         NotificationCompat.Builder builder =

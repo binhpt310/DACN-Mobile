@@ -115,6 +115,7 @@ public class HienDiem extends AppCompatActivity {
                 progressdialog.dismiss();
                 if (response.code() == 200) {
                     Bodeonmodels = response.body();
+                    Bodethimodels = response.body();
                     if (TruyenDuLieu.trMaDe.equals("His_review") || TruyenDuLieu.trMaDe.equals("Geo_review") || TruyenDuLieu.trMaDe.equals("Eng_review") || TruyenDuLieu.trMaDe.equals("Gdcd_review")) {
                         Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(HienDiem.this,Bodeonmodels);
                         rcv.setAdapter(bo_de_on_adapter);
@@ -126,12 +127,14 @@ public class HienDiem extends AppCompatActivity {
                     }
 
                 } else if (response.code() == 404) {
+                    progressdialog.dismiss();
                     Toast.makeText(HienDiem.this, "Lỗi", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<BoDe>> call, Throwable t) {
+                progressdialog.dismiss();
                 Toast.makeText(HienDiem.this,"Fail",Toast.LENGTH_SHORT).show();
             }
         });
