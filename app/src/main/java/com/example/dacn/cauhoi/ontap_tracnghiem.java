@@ -185,8 +185,6 @@ public class ontap_tracnghiem extends AppCompatActivity {
                     TruyenDuLieu.trDiem = String.valueOf(socaudung);
                     TruyenDuLieu.trCau = "20";
                     TruyenDuLieu.trDangBai = "review";
-                    adslist.clear();
-
                 }
             }
         };

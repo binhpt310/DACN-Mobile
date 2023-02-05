@@ -93,6 +93,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="20sp"
+            android:text="Không tìm thấy nội dung"
             android:textColor="@color/den80"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"

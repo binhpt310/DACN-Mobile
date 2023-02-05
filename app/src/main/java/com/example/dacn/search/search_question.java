@@ -165,8 +165,9 @@ public class search_question extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressdialog.dismiss();
+                nullText.setVisibility(View.VISIBLE);
                 Log.e("search","fail");
-                Toast.makeText(search_question.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(search_question.this,error.getMessage(),Toast.LENGTH_SHORT);
             }
         }) {
             @Override

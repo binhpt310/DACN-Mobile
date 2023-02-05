@@ -60,5 +60,6 @@ public class popup_search extends Activity {
         recyclerView.setAdapter(codeAdapter);
 
         TruyenDuLieu.trMaDe = TruyenDuLieu.trMon + TruyenDuLieu.trLoaiDe;
+        Log.e("MaDe",TruyenDuLieu.trMaDe);
     }
 }

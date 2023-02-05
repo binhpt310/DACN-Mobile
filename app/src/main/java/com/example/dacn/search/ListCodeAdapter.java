@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
 import com.example.dacn.R;
+import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.cauhoi.ontap_tracnghiem;
+import com.example.dacn.cauhoi.thi_tracnghiem;
 
 import java.util.List;
 
@@ -44,7 +46,12 @@ public class ListCodeAdapter extends RecyclerView.Adapter<ListCodeAdapter.MyView
         holder.ll_cardsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextActivity(bode);
+                if (TruyenDuLieu.trMaDe.equals("His_review") || TruyenDuLieu.trMaDe.equals("Geo_review") || TruyenDuLieu.trMaDe.equals("Eng_review") || TruyenDuLieu.trMaDe.equals("Gdcd_review")) {
+                    nextActivityOn(bode);
+                } else if (TruyenDuLieu.trMaDe.equals("His_exam") || TruyenDuLieu.trMaDe.equals("Geo_exam") || TruyenDuLieu.trMaDe.equals("Eng_exam") || TruyenDuLieu.trMaDe.equals("Gdcd_exam")) {
+                    nextActivityThi(bode);
+                }
+
             }
         });
     }
@@ -69,11 +76,18 @@ public class ListCodeAdapter extends RecyclerView.Adapter<ListCodeAdapter.MyView
         }
     }
 
-    private void nextActivity(BoDe boDe) {
+    private void nextActivityOn(BoDe boDe) {
         Intent intent = new Intent(context, ontap_tracnghiem.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("Truyền mã bộ đề", boDe);
-        bundle.putSerializable("Truyền từ search", "ok");
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    private void nextActivityThi(BoDe boDe) {
+        Intent intent = new Intent(context, thi_tracnghiem.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Truyền mã bộ đề", boDe);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
