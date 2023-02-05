@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.Bo_de_thi.Bo_de_on_adapter;
+import com.example.dacn.Bo_de_thi.Bo_de_thi_adapter;
 import com.example.dacn.Bo_de_thi.bo_de_thi;
 import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
@@ -37,6 +38,7 @@ public class HienDiem extends AppCompatActivity {
     ImageView back;
     TextView tvDiem,tvXem,tvCau;
     RecyclerView rcv;
+    private List<BoDe> Bodethimodels = new ArrayList<>();
     private List<BoDe> Bodeonmodels = new ArrayList<>();
 
     ProgressDialog progressdialog;
@@ -113,9 +115,16 @@ public class HienDiem extends AppCompatActivity {
                 progressdialog.dismiss();
                 if (response.code() == 200) {
                     Bodeonmodels = response.body();
-                    Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(HienDiem.this,Bodeonmodels);
-                    rcv.setAdapter(bo_de_on_adapter);
-                    bo_de_on_adapter.notifyDataSetChanged();
+                    if (TruyenDuLieu.trMaDe.equals("His_review") || TruyenDuLieu.trMaDe.equals("Geo_review") || TruyenDuLieu.trMaDe.equals("Eng_review") || TruyenDuLieu.trMaDe.equals("Gdcd_review")) {
+                        Bo_de_on_adapter bo_de_on_adapter = new Bo_de_on_adapter(HienDiem.this,Bodeonmodels);
+                        rcv.setAdapter(bo_de_on_adapter);
+                        bo_de_on_adapter.notifyDataSetChanged();
+                    } else if (TruyenDuLieu.trMaDe.equals("His_exam") || TruyenDuLieu.trMaDe.equals("Geo_exam") || TruyenDuLieu.trMaDe.equals("Eng_exam") || TruyenDuLieu.trMaDe.equals("Gdcd_exam")) {
+                        Bo_de_thi_adapter bo_de_thi_adapter = new Bo_de_thi_adapter(HienDiem.this, Bodethimodels);
+                        rcv.setAdapter(bo_de_thi_adapter);
+                        bo_de_thi_adapter.notifyDataSetChanged();
+                    }
+
                 } else if (response.code() == 404) {
                     Toast.makeText(HienDiem.this, "Lỗi", Toast.LENGTH_LONG).show();
                 }
