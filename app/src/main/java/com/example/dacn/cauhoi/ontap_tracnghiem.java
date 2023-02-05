@@ -34,6 +34,7 @@ import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.dangnhap.dang_ky;
 import com.example.dacn.hoanthanhbai.hoanthanhbaithi;
 import com.example.dacn.popup.LoadingDialog;
+import com.example.dacn.popup.popup_hoan_thanh_on_tap;
 import com.example.dacn.popup.popup_hoan_thanh_thi_thu;
 import com.example.dacn.popup.popup_tro_ve;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -113,7 +114,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_thi_thu.class);
+                Intent intent = new Intent(getApplicationContext(), popup_hoan_thanh_on_tap.class);
                 startActivity(intent);
             }
         });
@@ -162,7 +163,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("Trắc nghiệm ôn");
-        filter.addAction("Lưu kết quả");
+        filter.addAction("Lưu kết quả ôn");
         BroadcastReceiver mRefreshReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -179,7 +180,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 }
 
                 //Gọi hàm sendResult
-                else if (intent.getAction().equals("Lưu kết quả")){
+                else if (intent.getAction().equals("Lưu kết quả ôn")){
                     sendResultApi();
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                     TruyenDuLieu.trDiem = String.valueOf(socaudung);
@@ -193,19 +194,27 @@ public class ontap_tracnghiem extends AppCompatActivity {
 
     private void sendResultApi() {
         Result result = new Result(TruyenDuLieu.trEmail_dnhap,TruyenDuLieu.trMon,"review","",MaBoDe,Integer.toString(socauchualam),Integer.toString(socaudung),Integer.toString(socausai),adslist);
+        try {
         Call<Result> call = retrofitInterface.saveResult(result);
+        Log.i("result_on: " ,result.getCode());
         call.enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
-                Log.e("send result","ok");
+                Log.e("send result1","ok");
             }
 
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
-                Log.e("send result","fail");
+                Log.e("send result1","fail");
                 Toast.makeText(ontap_tracnghiem.this, t.getMessage(),Toast.LENGTH_LONG).show();
             }
-        });
+        });}
+
+        finally {
+            result = null;
+            System.gc();
+        }
+
     }
 
     public void callApi () {
