@@ -67,15 +67,15 @@ public class BootReceiver extends BroadcastReceiver {
                 // mAlarmReceiver.cancelAlarm(context, mReceivedID);
 
                 // Check repeat type
-                if (mRepeatType.equals("Minute")) {
+                if (mRepeatType.equals("Phút")) {
                     mRepeatTime = Integer.parseInt(mRepeatNo) * milMinute;
-                } else if (mRepeatType.equals("Hour")) {
+                } else if (mRepeatType.equals("Giờ")) {
                     mRepeatTime = Integer.parseInt(mRepeatNo) * milHour;
-                } else if (mRepeatType.equals("Day")) {
+                } else if (mRepeatType.equals("Ngày")) {
                     mRepeatTime = Integer.parseInt(mRepeatNo) * milDay;
-                } else if (mRepeatType.equals("Week")) {
+                } else if (mRepeatType.equals("Tuần")) {
                     mRepeatTime = Integer.parseInt(mRepeatNo) * milWeek;
-                } else if (mRepeatType.equals("Month")) {
+                } else if (mRepeatType.equals("Tháng")) {
                     mRepeatTime = Integer.parseInt(mRepeatNo) * milMonth;
                 }
 

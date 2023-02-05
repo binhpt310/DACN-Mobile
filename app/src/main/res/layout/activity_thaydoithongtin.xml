@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/hong"
     android:orientation="vertical"
-    tools:context=".mucluc.thaydoithongtin">
+    tools:context=".mucluc.ThayDoiThongTin.thaydoithongtin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
@@ -61,7 +61,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/img_ava"
         app:layout_constraintEnd_toEndOf="@+id/img_ava"
         app:rippleColor="@color/timxanh"
-        app:srcCompat="@drawable/ic_photo_camera" />
+        app:srcCompat="@drawable/ic_photo_camera"
+        app:tint="@color/trang" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

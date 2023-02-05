@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ public class HoanThanh_Adapter extends RecyclerView.Adapter<HoanThanh_Adapter.Ho
     public static class HoanThanhViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_cauhoi,tv_cauchon,tv_dapan;
+        private LinearLayout layout_card_cauhoi;
 
         public HoanThanhViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -48,18 +50,29 @@ public class HoanThanh_Adapter extends RecyclerView.Adapter<HoanThanh_Adapter.Ho
             tv_cauhoi = itemView.findViewById(R.id.txt_cauhoi_cardcauhoi);
             tv_cauchon = itemView.findViewById(R.id.txt_caudachon_cardcauhoi);
             tv_dapan = itemView.findViewById(R.id.txt_dapan_cardcauhoi);
+            layout_card_cauhoi = itemView.findViewById(R.id.layout_card_cauhoi);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull HoanThanhViewHolder holder, int position) {
         NdungCardModel ndungCardModel = ndungCardModels.get(position);
-        if (ndungCardModel == null) {
-            return;
+
+        holder.tv_cauhoi.setText(ndungCardModel.getQuestions());
+        holder.tv_cauchon.setText("Câu đã chọn: "+ ndungCardModel.getSelected());
+
+        if (ndungCardModel.getCheck().equals("dung")) {
+            holder.tv_dapan.setVisibility(View.GONE);
+            holder.layout_card_cauhoi.setBackgroundResource(R.drawable.bg_card_hoanthanhbaithi);
+        } else if (ndungCardModel.getCheck().equals("sai")) {
+            holder.tv_dapan.setVisibility(View.VISIBLE);
+            holder.tv_dapan.setText("Đáp án: "+ ndungCardModel.getAws());
+            holder.layout_card_cauhoi.setBackgroundResource(R.drawable.bg_card_hoanthanhbaithi_do);
+        } else if (ndungCardModel.getCheck().equals("")) {
+            holder.tv_dapan.setVisibility(View.VISIBLE);
+            holder.tv_dapan.setText("Đáp án: "+ ndungCardModel.getAws());
+            holder.layout_card_cauhoi.setBackgroundResource(R.drawable.bg_card_hoanthanhbaithi_hong);
         }
-        holder.tv_cauhoi.setText(ndungCardModel.getQuestion());
-        holder.tv_cauchon.setText("Câu đã chọn: "+ndungCardModel.getA());
-        holder.tv_dapan.setText("Đáp án: "+ndungCardModel.getAnw());
     }
 
 }

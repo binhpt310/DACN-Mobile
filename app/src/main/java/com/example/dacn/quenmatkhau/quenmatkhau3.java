@@ -53,6 +53,7 @@ public class quenmatkhau3 extends AppCompatActivity {
                             if (response.code() == 200) {
                                 Intent intent = new Intent(quenmatkhau3.this, quenmatkhau4.class);
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                                 finish();
                             } else if (response.code() == 400) {
                                 Toast.makeText(quenmatkhau3.this, "lỗi",Toast.LENGTH_SHORT).show();
