@@ -3,6 +3,7 @@ package com.example.dacn.cauhoi;
 import static com.example.dacn.RetrofitInterface.retrofitInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.dacn.Bo_de_thi.BoDe;
@@ -13,6 +14,7 @@ import com.example.dacn.hoanthanhbai.HienDiem;
 import com.example.dacn.popup.*;
 import com.example.dacn.trangchu2;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -26,11 +28,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -210,10 +214,10 @@ public class thi_tracnghiem extends AppCompatActivity {
     }
 
     private void showDialogTimeOut() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(thi_tracnghiem.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(thi_tracnghiem.this,  R.style.AlertDialogStyle);
         builder.setTitle("Đã hết thời gian làm bài.");
         builder.setCancelable(false);
-        builder.setPositiveButton("Kết quả", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(Html.fromHtml("<font color='#F36B2B'>Kết quả</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 cancelTimer();
                 sendResultApi();
@@ -224,7 +228,7 @@ public class thi_tracnghiem extends AppCompatActivity {
                 TruyenDuLieu.trDangBai = "exam";
             }
         });
-        builder.setNegativeButton("Trang chủ", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(Html.fromHtml("<font color='#F36B2B'>Trang chủ</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
                 cancelTimer();
@@ -235,11 +239,12 @@ public class thi_tracnghiem extends AppCompatActivity {
         builder.create().show();
     }
 
+    @SuppressLint("ResourceAsColor")
     private void showDialogDone() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(thi_tracnghiem.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(thi_tracnghiem.this, R.style.AlertDialogStyle);
         builder.setTitle("Bạn đã hoàn thành bài thi?");
         builder.setCancelable(false);
-        builder.setPositiveButton("Hoàn thành", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(Html.fromHtml("<font color='#F36B2B'>Hoàn thành</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 cancelTimer();
                 sendResultApi();
@@ -250,12 +255,14 @@ public class thi_tracnghiem extends AppCompatActivity {
                 TruyenDuLieu.trDangBai = "exam";
             }
         });
-        builder.setNegativeButton("Làm tiếp", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(Html.fromHtml("<font color='#F36B2B'>Làm tiếp</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
         });
-        builder.create().show();
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void callApi () {

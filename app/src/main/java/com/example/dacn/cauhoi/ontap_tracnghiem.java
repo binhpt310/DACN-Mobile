@@ -16,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -196,10 +197,10 @@ public class ontap_tracnghiem extends AppCompatActivity {
     }
 
     private void showDialogDone() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(ontap_tracnghiem.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ontap_tracnghiem.this,  R.style.AlertDialogStyle);
         builder.setTitle("Bạn đã hoàn thành bài thi?");
         builder.setCancelable(false);
-        builder.setPositiveButton("Hoàn thành", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(Html.fromHtml("<font color='#F36B2B'>Hoàn thành</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 sendResultApi();
                 startActivity(new Intent(ontap_tracnghiem.this, HienDiem.class));
@@ -209,7 +210,7 @@ public class ontap_tracnghiem extends AppCompatActivity {
                 TruyenDuLieu.trDangBai = "review";
             }
         });
-        builder.setNegativeButton("Làm tiếp", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(Html.fromHtml("<font color='#F36B2B'>Làm tiếp</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
