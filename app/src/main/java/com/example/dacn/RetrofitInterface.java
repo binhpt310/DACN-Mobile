@@ -1,14 +1,20 @@
 package com.example.dacn;
 
+import android.widget.ArrayAdapter;
+
 import com.example.dacn.Bo_de_thi.BoDe;
 import com.example.dacn.cauhoi.CauHoiTracNghiem;
 import com.example.dacn.cauhoi.Result;
 import com.example.dacn.dangnhap.DangNhapResult;
+import com.example.dacn.hoanthanhbai.NdungCardModel;
 import com.example.dacn.mucluc.ThayDoiThongTin.dulieu_thaydoi;
 import com.example.dacn.search.DataSearch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,9 +24,12 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.QueryMap;
 
 public interface RetrofitInterface {
 
@@ -65,6 +74,9 @@ public interface RetrofitInterface {
                                      @Part MultipartBody.Part image,
                                      @Part("tenngdung") RequestBody tenngdung,
                                      @Part("matkhau") RequestBody matkhau);
+
+    @POST("/search")
+    Call<ArrayList<DataSearch>> getSearch(@Body HashMap<String, String> map);
 
     @POST("/saveresult")
     Call<Result> saveResult(@Body Result result);
