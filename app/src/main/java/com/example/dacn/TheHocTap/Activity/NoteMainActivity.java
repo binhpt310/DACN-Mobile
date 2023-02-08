@@ -53,6 +53,7 @@ public class NoteMainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = findViewById(R.id.toolbar);
         myToolbar.setTitle("Thẻ học tập");
+        myToolbar.setTitleTextAppearance(this, R.style.RegularTextAppearance);
         setSupportActionBar(myToolbar);
         myToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
