@@ -26,8 +26,6 @@ public class mucluc extends AppCompatActivity {
     ImageView img_close;
     CircleImageView avamuluc;
     TextView txt_tenngdung, txt_email;
-    String tenngdung,email;
-    Intent intent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +33,10 @@ public class mucluc extends AppCompatActivity {
 
         khaibao();
 
-        tenngdung = TruyenDuLieu.trTenTk_dnhap;
-        email = TruyenDuLieu.trEmail_dnhap;
         Glide.with(mucluc.this).load(TruyenDuLieu.tr_linkanh).into(avamuluc);
 
-        txt_email.setText(email);
-        txt_tenngdung.setText(tenngdung);
-
+        txt_email.setText(TruyenDuLieu.trEmail_dnhap);
+        txt_tenngdung.setText(TruyenDuLieu.trTenTk_dnhap);
 
         chinhsuathongtin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +47,7 @@ public class mucluc extends AppCompatActivity {
                 finish();
             }
         });
-        View support;
+
         trogiup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +57,7 @@ public class mucluc extends AppCompatActivity {
                 finish();
             }
         });
+        
         veapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,19 +140,3 @@ public class mucluc extends AppCompatActivity {
         super.onStart();
         }
     }
-
-    /*private void nextActivity(){
-        Intent intent = new Intent(mucluc.this, thaydoithongtin.class);
-        intent.putExtra("key_tenngdung", tenngdung);
-        startActivityForResult(intent, MY_REQUEST_CODE);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (MY_REQUEST_CODE == requestCode && resultCode == Activity.RESULT_OK) {
-            txt_tenngdung.setText(data.getStringExtra("key_key_tenngdung"));
-        }
-    }*/

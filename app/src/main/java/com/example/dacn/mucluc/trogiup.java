@@ -11,8 +11,6 @@ import com.example.dacn.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class trogiup extends AppCompatActivity {
-    public static void setOnClickListener(View.OnClickListener onClickListener) {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +20,11 @@ public class trogiup extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse("h\"https://www.facebook.com/profile.php?id=100086798493025"));
+        intent.setData(Uri.parse("https://www.facebook.com/profile.php?id=100086798493025"));
         startActivity(intent);
 
-        String imageUrl = "https://www.baby-connect.com/images/baby2.gif";
-
         CircleImageView img = (CircleImageView) findViewById(R.id.ava_mucluc);
-
         img.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
@@ -41,8 +35,8 @@ public class trogiup extends AppCompatActivity {
                 finish();
             }
         });
-        View img_back = findViewById(R.id.img_back_trogiup);
 
+        View img_back = findViewById(R.id.img_back_trogiup);
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
