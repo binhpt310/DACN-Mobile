@@ -71,6 +71,10 @@
         <item name="android:background">#EBCBAF</item>
     </style>
 
-
+    <style name="RegularTextAppearance">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">26sp</item>
+    </style>
 
 </resources>
