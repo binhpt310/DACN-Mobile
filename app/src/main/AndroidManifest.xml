@@ -44,15 +44,6 @@
             android:name=".TheHocTap.Activity.NoteMainActivity"
             android:exported="false" />
         <activity
-            android:name=".mucluc.Notification_Menu.Reminder.ReminderAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".mucluc.Notification_Menu.NotificationMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".mucluc.Notification_Menu.Reminder.ReminderEditActivity"
-            android:exported="false" />
-        <activity
             android:name=".popup.popup_dang_xuat"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
@@ -120,10 +111,10 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
-            android:name=".dangnhap.Logo_screen"
+            android:name=".trangchu2"
             android:exported="false" />
         <activity
-            android:name=".trangchu2"
+            android:name=".dangnhap.Logo_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -131,15 +122,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <receiver android:name=".mucluc.Notification_Menu.AlarmReceiver" />
-        <receiver
-            android:name=".mucluc.Notification_Menu.BootReceiver"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

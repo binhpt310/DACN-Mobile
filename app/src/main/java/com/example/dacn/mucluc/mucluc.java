@@ -14,7 +14,6 @@ import com.example.dacn.R;
 import com.example.dacn.TruyenDuLieu;
 import com.example.dacn.Lich_su_lam_bai.lich_su_lam_bai;
 import com.example.dacn.mucluc.Notification.NotificationsActivity;
-import com.example.dacn.mucluc.Notification_Menu.NotificationMainActivity;
 import com.example.dacn.mucluc.ThayDoiThongTin.thaydoithongtin;
 import com.example.dacn.popup.popup_dang_xuat;
 import com.example.dacn.trangchu2;

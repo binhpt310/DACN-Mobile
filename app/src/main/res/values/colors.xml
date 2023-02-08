@@ -56,30 +56,4 @@
         <item>#FA4444</item>
     </array>
 
-    <string-array name="themeColorHex">
-        <item>#f6e58d</item>
-        <item>#ffbe76</item>
-        <item>#ff7979</item>
-        <item>#badc58</item>
-        <item>#dff9fb</item>
-        <item>#7ed6df</item>
-        <item>#e056fd</item>
-        <item>#686de0</item>
-        <item>#30336b</item>
-        <item>#95afc0</item>
-    </string-array>
-
-    <string-array name="greyHex">
-        <item>@color/grey_50</item>
-        <item>@color/grey_100</item>
-        <item>@color/grey_200</item>
-        <item>@color/grey_300</item>
-        <item>@color/grey_400</item>
-        <item>@color/grey_500</item>
-        <item>@color/grey_600</item>
-        <item>@color/grey_700</item>
-        <item>@color/grey_800</item>
-        <item>@color/grey_900</item>
-        <item>@color/black</item>
-    </string-array>
 </resources>

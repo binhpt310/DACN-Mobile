@@ -378,7 +378,7 @@ public class EditActivity extends AppCompatActivity {
         // Build the notification
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this, "NoteChannel")
-                        .setSmallIcon(R.drawable.event_icon)
+                        .setSmallIcon(R.drawable.ic_event_icon)
                         .setContentTitle(title)
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(content))
                         .setAutoCancel(true)
