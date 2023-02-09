@@ -57,7 +57,7 @@ public class mucluc extends AppCompatActivity {
                 finish();
             }
         });
-        
+
         veapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

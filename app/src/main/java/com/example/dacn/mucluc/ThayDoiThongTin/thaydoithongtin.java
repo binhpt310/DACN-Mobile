@@ -104,7 +104,6 @@ public class thaydoithongtin extends AppCompatActivity {
         btn_luuthaydoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //email = TruyenDuLieu.trEmail_dnhap;
                 progressDialog = new ProgressDialog(thaydoithongtin.this);
                 progressDialog.setMessage("Đợi tí....");
 
@@ -118,7 +117,6 @@ public class thaydoithongtin extends AppCompatActivity {
                 } else {
                     callApi();
                 }
-
             }
         });
 
@@ -184,32 +182,36 @@ public class thaydoithongtin extends AppCompatActivity {
     }
 
     private void callApi() {
-        HashMap<String, String> map = new HashMap<>();
+        if(validatePassword()) {
+            progressDialog.show();
+            HashMap<String, String> map = new HashMap<>();
 
-        map.put("email", email);
-        map.put("tenngdung", str_tenngdung);
-        map.put("matkhau", str_matkhaumoi);
+            map.put("email", email);
+            map.put("tenngdung", str_tenngdung);
+            map.put("matkhau", str_matkhaumoi);
 
-        Call<Void> call = retrofitInterface.changeInfo(map);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.code() == 200) {
-                    progressDialog.dismiss();
-                    Toast.makeText(thaydoithongtin.this, "Cập nhật thông tin thành công",Toast.LENGTH_LONG).show();
-                    TruyenDuLieu.trTenTk_dnhap = str_tenngdung;
-                } else if (response.code() == 400) {
-                    progressDialog.dismiss();
-                    Toast.makeText(thaydoithongtin.this, "Tài khoản mail không tồn tại",Toast.LENGTH_LONG).show();
+            Call<Void> call = retrofitInterface.changeInfo(map);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.code() == 200) {
+                        progressDialog.dismiss();
+                        Toast.makeText(thaydoithongtin.this, "Cập nhật thông tin thành công",Toast.LENGTH_LONG).show();
+                        TruyenDuLieu.trTenTk_dnhap = str_tenngdung;
+                    } else if (response.code() == 400) {
+                        progressDialog.dismiss();
+                        Toast.makeText(thaydoithongtin.this, "Tài khoản mail không tồn tại",Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(thaydoithongtin.this, "Lỗi kết nối",Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(thaydoithongtin.this, "Lỗi kết nối",Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
     }
 
     private void onClickRequestPermission() {
@@ -241,5 +243,21 @@ public class thaydoithongtin extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         mActivityResultLauncher.launch(Intent.createChooser(intent,"Select Picture"));
+    }
+
+    private boolean validatePassword() {
+       if (str_matkhaumoi.isEmpty()) {
+            Toast.makeText(this, "Mật khẩu đang để trống", Toast.LENGTH_SHORT).show();
+            return false;
+        }  if (str_matkhaumoi.length()<5) {
+            Toast.makeText(this, "Mật khẩu quá ngắn", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!str_matkhaumoi.equals(str_nhaplaimk)) {
+            Toast.makeText(this, "Mật khẩu khác nhau", Toast.LENGTH_SHORT).show();
+            return false;
+        }else {
+            return true;
+        }
     }
 }
