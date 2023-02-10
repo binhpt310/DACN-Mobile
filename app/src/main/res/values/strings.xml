@@ -43,7 +43,7 @@
 
     //Thẻ học tập
     <string name="button_text">Thêm thẻ</string>
-    <string name="enter_your_note">Nhập tên thẻ…</string>
+    <string name="enter_your_note">Nhập nội dung thẻ…</string>
     <string name="search_hint">Tìm kiếm thẻ…</string>
     <string name="search_hint_fav">Tìm kiếm thẻ yêu thích…</string>
 
