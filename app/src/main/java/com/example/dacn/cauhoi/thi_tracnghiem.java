@@ -66,7 +66,7 @@ public class thi_tracnghiem extends AppCompatActivity {
     List<CauHoiTracNghiem> adslist = new ArrayList<>();
 
     long usedTime = 0;
-    int examTime = 21;
+    int examTime = 2401;
     TextView usedtime;
     int remainingTime ;
 
